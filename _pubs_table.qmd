@@ -1,0 +1,40 @@
+The table lists the **articles in JCR journals** published by team members since 2023 in the research areas of the project. Articles are marked according to the topics and transfer areas of the project: <span class="sym sym-ineq">⚖</span> inequality and poverty, <span class="sym sym-water">💧</span> water, <span class="sym sym-tour">✈</span> tourism and <span class="sym sym-firm">🏭</span> firms; an article can carry more than one mark. Click on a title to open the article (DOI or, if not available, Google Scholar). **🔓 Open access** links to the version deposited in an open repository, and **▶ 1-min video** to a [one-minute video](videos.qmd) that explains the article in plain language. Quality indicators: JCR quartile of the journal **in the year of publication** and, where applicable, rating in the Chartered ABS *Academic Journal Guide* (AJG). Citations and online attention of each article are on the [Impact](impact.qmd) page.
+
+<!-- The table is generated from data/publications.csv: edit that file (one row per article) to add articles, DOIs, open-access links or videos. -->
+
+```{r}
+#| echo: false
+#| output: asis
+pubs <- read.csv("data/publications.csv", fileEncoding = "UTF-8", stringsAsFactors = FALSE,
+                 colClasses = "character", na.strings = character(0))
+pubs[is.na(pubs)] <- ""
+sym <- c(ineq  = '<span class="sym sym-ineq" title="Inequality and poverty">⚖</span>',
+         water = '<span class="sym sym-water" title="Water">💧</span>',
+         tour  = '<span class="sym sym-tour" title="Tourism">✈</span>',
+         firm  = '<span class="sym sym-firm" title="Firms">🏭</span>')
+n   <- nrow(pubs)
+q1  <- sum(pubs$jcr == "Q1"); q12 <- sum(pubs$jcr %in% c("Q1", "Q2"))
+a3  <- sum(pubs$abs %in% c("3", "4", "4*")); a4 <- sum(pubs$abs %in% c("4", "4*"))
+oa  <- sum(pubs$open_access != "")
+cat("::: {.stats}\n",
+    sprintf("<span class='stat'><b>%d</b> JCR articles</span> <span class='stat'><b>%d</b> in Q1</span> <span class='stat'><b>%d</b> in Q1–Q2</span> <span class='stat'><b>%d</b> in ABS 3/4/4*</span> <span class='stat'><b>%d</b> in ABS 4/4*</span> <span class='stat'><b>%d</b> in open access</span>",
+            n, q1, q12, a3, a4, oa), "\n:::\n\n", sep = "")
+make_row <- function(r) {
+  tp  <- strsplit(r[["topics"]], ";", fixed = TRUE)[[1]]
+  s   <- paste(sym[tp[tp %in% names(sym)]], collapse = "")
+  url <- if (nzchar(r[["doi"]])) paste0("https://doi.org/", r[["doi"]]) else
+           paste0("https://scholar.google.com/scholar?q=", utils::URLencode(r[["scholar_query"]], reserved = TRUE))
+  extra <- ""
+  if (nzchar(r[["open_access"]])) extra <- paste0(extra, ' <a class="oa-link" href="', r[["open_access"]], '" target="_blank" title="Open-access version">🔓 Open access</a>')
+  if (nzchar(r[["video"]]))       extra <- paste0(extra, ' <a class="vid-link" href="videos.html#', r[["video"]], '" title="Watch the one-minute video">▶ 1-min video</a>')
+  abs <- if (nzchar(r[["abs"]])) r[["abs"]] else "–"
+  sprintf('| %s [%s](%s){target="_blank"}%s | *%s* | %s | %s | %s |',
+          s, r[["title"]], url, extra, r[["journal"]], r[["members"]], r[["jcr"]], abs)
+}
+for (y in sort(unique(pubs$year), decreasing = TRUE)) {
+  sub <- pubs[pubs$year == y, , drop = FALSE]
+  cat("### ", y, "\n\n| Article | Journal | Team members | JCR | ABS |\n|---|---|---|:-:|:-:|\n", sep = "")
+  for (i in seq_len(nrow(sub))) cat(make_row(sub[i, ]), "\n", sep = "")
+  cat("\n")
+}
+```

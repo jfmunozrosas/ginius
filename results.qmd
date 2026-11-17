@@ -3,7 +3,7 @@ title: "Results and conclusions"
 subtitle: "Main findings of GiniUs, by general objective"
 ---
 
-This page summarises the main results of the project. It is updated as new articles are published; the full list is in [Publications](publications.qmd). The main articles are also explained in plain language in [one-minute videos](videos.qmd).
+This page summarises the main results of the project. It is updated as new articles are published; the full list is in [Publications](publications.qmd). The main articles are also explained in plain language in [one-minute videos](videos.qmd), and the evidence of their impact (open access, citations, online attention and use) is on the [Impact](impact.qmd) page.
 
 ## OG1 · The bias of the Gini index
 

@@ -1,0 +1,173 @@
+---
+title: "Impact"
+subtitle: "Evidence of the scientific and social impact of GiniUs: quality, open science, attention, use of software and tools, and dissemination"
+engine: knitr
+toc: true
+---
+
+This page gathers verifiable evidence of the relevance and impact of the research of the project: the quality of the journals, open access to publications, data and code, the attention that each article receives (citations, news, policy documents and social media), the use of the software and online tools, and the activities of dissemination and science communication. Most indicators are **updated automatically** from their original sources. Each indicator links to its source so that it can be checked.
+
+<p><button class="btn btn-outline-primary btn-sm" onclick="window.print()">🖨 Print or save this page as a PDF report</button></p>
+
+```{r}
+#| include: false
+rd <- function(f) {
+  x <- read.csv(f, fileEncoding = "UTF-8", stringsAsFactors = FALSE, colClasses = "character", na.strings = character(0))
+  x[is.na(x)] <- ""
+  x
+}
+pubs  <- rd("data/publications.csv")
+imp   <- rd("data/impact_log.csv")
+train <- rd("data/training.csv")
+months <- c("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December")
+fmt_date <- function(d) {
+  p <- strsplit(d, "-", fixed = TRUE)[[1]]
+  if (length(p) >= 2) paste(months[as.integer(p[2])], p[1]) else d
+}
+lnk <- function(text, url) if (nzchar(url)) sprintf('<a href="%s" target="_blank">%s</a>', url, text) else text
+```
+
+## Key figures
+
+```{r}
+#| echo: false
+#| output: asis
+n   <- nrow(pubs); q1 <- sum(pubs$jcr == "Q1"); q12 <- sum(pubs$jcr %in% c("Q1", "Q2"))
+oa  <- sum(pubs$open_access != ""); vid <- sum(pubs$video != "")
+a3  <- sum(pubs$abs %in% c("3", "4", "4*"))
+diss <- sum(imp$category %in% c("Workshop", "Seminar", "Conference"))
+cat(sprintf('
+<div class="kpi-grid">
+<div class="kpi"><div class="kpi-n">%d</div><div class="kpi-l">articles in JCR journals (since 2023)</div></div>
+<div class="kpi"><div class="kpi-n">%d</div><div class="kpi-l">in Q1 (%d in Q1–Q2)</div></div>
+<div class="kpi"><div class="kpi-n">%d</div><div class="kpi-l">in ABS 3, 4 or 4* journals</div></div>
+<div class="kpi"><div class="kpi-n">%d</div><div class="kpi-l">in open access (repository)</div></div>
+<div class="kpi"><div class="kpi-n">%d</div><div class="kpi-l">explained in one-minute videos</div></div>
+<div class="kpi"><div class="kpi-n">%d</div><div class="kpi-l">workshops, seminars and conferences</div></div>
+<div class="kpi"><div class="kpi-n" data-gc="TOTAL">…</div><div class="kpi-l">visits to this website</div></div>
+<div class="kpi"><div class="kpi-n"><img class="kpi-badge" src="https://cranlogs.r-pkg.org/badges/grand-total/giniVarCI" alt="Total CRAN downloads of giniVarCI"></div><div class="kpi-l">downloads of giniVarCI from CRAN</div></div>
+</div>
+', n, q1, q12, a3, oa, vid, diss))
+```
+
+::: {.source}
+Sources: [publications](publications.qmd) of the team (JCR quartile in the year of publication; Chartered ABS *Academic Journal Guide*); visits counted with GoatCounter (no cookies); downloads from the RStudio CRAN mirror ([cranlogs](https://cranlogs.r-pkg.org/)).
+:::
+
+## Articles: open access and attention
+
+For each article with a DOI: open-access version, **citations** ([Dimensions](https://www.dimensions.ai/)) and **online attention** ([Altmetric](https://www.altmetric.com/): mentions in news, blogs, policy documents, Wikipedia and social media). Badges appear when the article has data in those services; click on a badge to see the details.
+
+```{r}
+#| echo: false
+#| output: asis
+d <- pubs[pubs$doi != "", , drop = FALSE]
+d <- d[order(d$year, decreasing = TRUE), , drop = FALSE]
+cat('<div class="impact-table"><table class="table table-sm"><thead><tr><th>Article</th><th>Journal (JCR/ABS)</th><th>Open access</th><th>Video</th><th>Citations</th><th>Attention</th></tr></thead><tbody>\n')
+for (i in seq_len(nrow(d))) {
+  r <- d[i, ]
+  q <- r$jcr; if (nzchar(r$abs)) q <- paste0(q, " · ABS ", r$abs)
+  cat(sprintf('<tr><td><a href="https://doi.org/%s" target="_blank">%s</a> (%s)</td><td><i>%s</i> <span class="q">%s</span></td><td>%s</td><td>%s</td><td><span class="__dimensions_badge_embed__" data-doi="%s" data-style="small_rectangle" data-hide-zero-citations="false"></span></td><td><div class="altmetric-embed" data-badge-type="donut" data-badge-popover="left" data-doi="%s" data-hide-no-mentions="true"></div></td></tr>\n',
+              r$doi, r$title, r$year, r$journal, q,
+              if (nzchar(r$open_access)) sprintf('<a class="oa-link" href="%s" target="_blank">🔓 Open</a>', r$open_access) else "–",
+              if (nzchar(r$video)) sprintf('<a class="vid-link" href="videos.html#%s">▶ <span class="gc-n" data-gc="video/%s">…</span> plays</a>', r$video, r$video) else "–",
+              r$doi, r$doi))
+}
+cat('</tbody></table></div>\n')
+cat(sprintf('\n<p class="source">%d of %d articles have a DOI in <code>data/publications.csv</code>. Add the DOI and the open-access link of the remaining articles to include them here.</p>\n', nrow(d), nrow(pubs)))
+```
+
+```{=html}
+<script async src="https://badge.dimensions.ai/badge.js" charset="utf-8"></script>
+<script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script>
+```
+
+## Open science
+
+- **Publications:** accepted versions deposited in the institutional repository [DIGIBUG](https://digibug.ugr.es/) (University of Granada) or other open repositories, with persistent identifiers (DOI, Handle).
+- **Software:** R package [giniVarCI](software.qmd), open source, on [CRAN](https://cran.r-project.org/package=giniVarCI) (DOI [10.32614/CRAN.package.giniVarCI](https://doi.org/10.32614/CRAN.package.giniVarCI)) and [R-universe](https://jfmunozrosas.r-universe.dev/giniVarCI). <img src="https://cranlogs.r-pkg.org/badges/grand-total/giniVarCI" alt="CRAN downloads (total)"> <img src="https://cranlogs.r-pkg.org/badges/last-month/giniVarCI" alt="CRAN downloads (last month)">
+- **Data and code:** probabilistic datasets in giniVarCI and DIGIBUG; data and R code of published articles (e.g. [OSF](https://doi.org/10.17605/OSF.IO/ADFNQ)); R code of the simulations in [Research data and R code](data-code.qmd); code of the interactive tools on [GitHub](https://github.com/jfmunozrosas/ginius), following the FAIR principles.
+- **Open tools:** [Gini index calculator](calculator.qmd), [missing data simulator](missing-data.qmd), [bias explorer](simulation.qmd) and [R exercises](practice.qmd), free and without registration.
+
+## Use of the online tools and videos
+
+Counted with GoatCounter (no cookies, no personal data), once per visit.
+
+| Indicator | Count |
+|---|:-:|
+| Visits to the website | <span class="gc-n" data-gc="TOTAL">…</span> |
+| Uses of the [Gini index calculator](calculator.qmd) | <span class="gc-n" data-gc="tool/calculator-run">…</span> |
+| R exercises run in the browser ([webR](practice.qmd)) | <span class="gc-n" data-gc="tool/webr-run">…</span> |
+| Visits to the [missing data simulator](missing-data.qmd) | <span class="gc-n" data-gc="/ginius/missing-data.html">…</span> |
+| Visits to the [bias explorer](simulation.qmd) | <span class="gc-n" data-gc="/ginius/simulation.html">…</span> |
+| Visits to the [observatory](observatory.qmd) | <span class="gc-n" data-gc="/ginius/observatory.html">…</span> |
+| Plays of the [one-minute videos](videos.qmd) | <span class="gc-n" data-gc-list="video/gini-practical-guide,video/gini-bias,video/tourism-poverty-pandemic,video/happy-and-poor,video/water-sanitation-growth,video/tourism-inequality-polarization,video/talents-earnings,video/innovation-poverty-gaps">…</span> |
+| Satisfaction survey: votes | <span class="gc-n" data-gc-list="survey/satisfaction-1,survey/satisfaction-2,survey/satisfaction-3,survey/satisfaction-4,survey/satisfaction-5">…</span> |
+
+<p class="source">The counts start on the publication date of this website (November 2026). If the website is published at another address, change the paths that start with <code>/ginius/</code> in this page.</p>
+
+## Dissemination and science communication
+
+```{r}
+#| echo: false
+#| output: asis
+imp <- imp[order(imp$date, decreasing = TRUE), , drop = FALSE]
+tab <- table(imp$category)
+cat(paste0('<p>', paste(sprintf('<span class="stat"><b>%d</b> %s</span>', as.integer(tab), names(tab)), collapse = " "), '</p>\n\n'))
+cat("| Date | Type | Activity | Members |\n|---|---|---|---|\n")
+for (i in seq_len(nrow(imp))) {
+  r <- imp[i, ]
+  cat(sprintf("| %s | %s | %s | %s |\n", fmt_date(r$date), r$category, lnk(r$title, r$link), r$members))
+}
+cat('\n<p class="source">Source: <code>data/impact_log.csv</code>. Add one row per activity: press releases and interviews, articles in <i>The Conversation</i>, talks at schools or the European Researchers\' Night, collaboration with public institutions, use of the results in reports or policies, use of the materials in teaching, etc.</p>\n')
+```
+
+```{r}
+#| echo: false
+#| output: asis
+if (nrow(train) > 0) {
+  cat("## Training and internationalisation\n\n| Year | Type | Title | Person | Supervisors / host |\n|---|---|---|---|---|\n")
+  train <- train[order(train$year, decreasing = TRUE), , drop = FALSE]
+  for (i in seq_len(nrow(train))) {
+    r <- train[i, ]
+    cat(sprintf("| %s | %s | %s | %s | %s |\n", r$year, r$type, lnk(r$title, r$link), r$person, r$supervisors_or_host))
+  }
+  cat("\n")
+}
+```
+
+```{=html}
+<script>
+(function () {
+  const GC = "https://ginius.goatcounter.com/counter/";
+  const local = location.hostname === "localhost" || location.hostname === "127.0.0.1";
+  const num = s => parseInt(String(s).replace(/[^0-9]/g, ""), 10) || 0;
+  const get = p => local ? Promise.resolve(null) :
+    fetch(GC + encodeURIComponent(p) + ".json").then(r => r.ok ? r.json() : {count: "0"}).then(d => num(d.count)).catch(() => null);
+  const fmt = n => n === null ? "–" : n.toLocaleString("en");
+  document.querySelectorAll("[data-gc]").forEach(el => get(el.dataset.gc).then(n => { el.textContent = fmt(n); }));
+  document.querySelectorAll("[data-gc-list]").forEach(el => {
+    Promise.all(el.dataset.gcList.split(",").map(get)).then(v => {
+      el.textContent = v.every(x => x === null) ? "–" : fmt(v.reduce((a, b) => a + (b || 0), 0));
+    });
+  });
+})();
+</script>
+```
+
+## Using this evidence in research assessments
+
+::: {.callout-note collapse="true"}
+## For team members: how to use these indicators (e.g. CNEAI research periods, *sexenios*)
+
+The assessment of research periods is based on a narrative of the **relevance and impact** of each contribution, supported by a responsible use of quantitative indicators (DORA and CoARA principles), and values open access with persistent identifiers. For each article, this page offers evidence that can be cited in the narrative:
+
+1. **Quality and visibility of the journal**: JCR quartile in the year of publication and ABS rating ([publications](publications.qmd)).
+2. **Open access**: link to the deposited version (Handle or DOI).
+3. **Scientific impact**: citations (Dimensions badge; check also Web of Science, Scopus and Google Scholar), always in context (field, year).
+4. **Social impact**: online attention (Altmetric: news, policy documents, blogs), one-minute video and its plays, blog posts, seminars and workshops where the results were presented ([dissemination](dissemination.qmd)).
+5. **Reuse**: downloads of giniVarCI and use of the online tools based on the article.
+6. **Context**: the article is a result of the competitive project PID2022-136235NB-I00, with an interdisciplinary and international team.
+
+Save a copy of this page as a PDF (button at the top) with the date of each assessment, and keep the original sources (certificates, programmes, links) for the period being assessed.
+:::

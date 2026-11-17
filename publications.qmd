@@ -1,6 +1,7 @@
 ---
 title: "Publications"
 subtitle: "Articles, software and open data of the GiniUs project"
+engine: knitr
 ---
 
 ## Articles of the project
@@ -9,7 +10,7 @@ subtitle: "Articles, software and open data of the GiniUs project"
 **Our research in one minute.** The articles on inequality and poverty have a short [video](videos.qmd) that explains, in plain language, the question, the method and the main conclusions. Look for **▶ 1-min video** next to the title.
 :::
 
-{{< include _pubs_table.md >}}
+{{< include _pubs_table.qmd >}}
 
 ## Software
 

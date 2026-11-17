@@ -75,7 +75,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-118d0816e27965c35f7a8d0b0cdfa029.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-88b26ec838f0e0a940b819747d048df3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -157,6 +157,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="./results.html">
  <span class="dropdown-text">Results and conclusions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./impact.html">
+ <span class="dropdown-text">Impact (open science, citations, use, dissemination)</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./news.html">
@@ -413,6 +417,7 @@ Publications, conferences, seminars and research stays. <a href="./publications.
 <li><strong>Inequality observatory.</strong> The <a href="./observatory.html">observatory</a> shows official Gini indices from Eurostat, the World Bank and the Spanish Statistical Office (INE).</li>
 <li><strong>Science communication.</strong> <a href="./videos.html">One-minute videos</a> explain our articles on inequality in plain language, so that the results reach society.</li>
 <li><strong>Dissemination and internationalisation.</strong> Results, data and software are openly available to researchers worldwide.</li>
+<li><strong>Transparency about impact.</strong> The <a href="./impact.html">Impact</a> page gathers, with links to the original sources, the quality and open access of the publications, their citations and online attention, the use of the software and tools, and the dissemination activities.</li>
 </ol>
 </section>
 <section id="funding" class="level2">
@@ -584,6 +589,34 @@ Project <b>PID2022-136235NB-I00</b> funded by <b>MICIU/AEI/10.13039/501100011033
     if (window.goatcounter && window.goatcounter.count) {
       window.goatcounter.count({path: "download/" + name, title: "Download: " + name + " (from " + page + ")", event: true});
     }
+  }, true);
+})();
+</script>
+
+<script>
+// ---- Use of videos and tools (evidence of reach for project reports and research assessment) ----
+// Records, once per page visit, GoatCounter events (no cookies, no personal data):
+//   video/<name>           a one-minute video is played
+//   tool/calculator-run    the Gini index calculator is used
+//   tool/webr-run          an R exercise is run in the browser
+(function () {
+  const done = new Set();
+  function ev(path, title) {
+    if (done.has(path)) return; done.add(path);
+    const send = () => window.goatcounter && window.goatcounter.count && window.goatcounter.count({path, title, event: true});
+    if (window.goatcounter && window.goatcounter.count) send(); else setTimeout(send, 1500);
+  }
+  document.addEventListener("play", function (e) {
+    const v = e.target;
+    if (!v || v.tagName !== "VIDEO") return;
+    const src = (v.currentSrc || (v.querySelector("source") || {}).src || "").split("/").pop().replace(/\.mp4.*$/i, "");
+    if (src) ev("video/" + src, "Video played: " + src);
+  }, true);
+  document.addEventListener("click", function (e) {
+    const b = e.target.closest ? e.target.closest("button") : null;
+    if (!b) return;
+    if (b.id === "calc-run" || b.hasAttribute("data-example")) ev("tool/calculator-run", "Gini index calculator used");
+    else if (b.classList.contains("ex-run")) ev("tool/webr-run", "R exercise run in the browser");
   }, true);
 })();
 </script>
@@ -1127,20 +1160,21 @@ Project <b>PID2022-136235NB-I00</b> funded by <b>MICIU/AEI/10.13039/501100011033
 <span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>**Inequality observatory.** The <span class="co">[</span><span class="ot">observatory</span><span class="co">](observatory.qmd)</span> shows official Gini indices from Eurostat, the World Bank and the Spanish Statistical Office (INE).</span>
 <span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a><span class="ss">6. </span>**Science communication.** <span class="co">[</span><span class="ot">One-minute videos</span><span class="co">](videos.qmd)</span> explain our articles on inequality in plain language, so that the results reach society.</span>
 <span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a><span class="ss">7. </span>**Dissemination and internationalisation.** Results, data and software are openly available to researchers worldwide.</span>
-<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a><span class="fu">## Funding</span></span>
-<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a>::: {.funders}</span>
-<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/funders_micin_aei_eu.png)</span>{fig-alt="Ministerio de Ciencia, Innovación y Universidades; Cofinanciado por la Unión Europea; Agencia Estatal de Investigación"}</span>
-<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="ot"> class</span><span class="op">=</span><span class="st">"funders-note"</span><span class="dt">&gt;</span>Project <span class="dt">&lt;</span><span class="kw">b</span><span class="dt">&gt;</span>PID2022-136235NB-I00<span class="dt">&lt;/</span><span class="kw">b</span><span class="dt">&gt;</span> funded by <span class="dt">&lt;</span><span class="kw">b</span><span class="dt">&gt;</span>MICIU/AEI/10.13039/501100011033<span class="dt">&lt;/</span><span class="kw">b</span><span class="dt">&gt;</span> and by <span class="dt">&lt;</span><span class="kw">b</span><span class="dt">&gt;</span>ERDF/EU<span class="dt">&lt;/</span><span class="kw">b</span><span class="dt">&gt;</span>. Knowledge Generation Projects, 2022 call. Duration: 1 September 2023 – 31 August 2027.<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
-<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a><span class="fu">## Your opinion</span></span>
-<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a>Is this website useful to you? Rate it with one click and leave us your recommendations.</span>
-<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a>{{&lt; include _survey.qmd &gt;}}</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a><span class="ss">8. </span>**Transparency about impact.** The <span class="co">[</span><span class="ot">Impact</span><span class="co">](impact.qmd)</span> page gathers, with links to the original sources, the quality and open access of the publications, their citations and online attention, the use of the software and tools, and the dissemination activities.</span>
+<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a><span class="fu">## Funding</span></span>
+<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a>::: {.funders}</span>
+<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/funders_micin_aei_eu.png)</span>{fig-alt="Ministerio de Ciencia, Innovación y Universidades; Cofinanciado por la Unión Europea; Agencia Estatal de Investigación"}</span>
+<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="ot"> class</span><span class="op">=</span><span class="st">"funders-note"</span><span class="dt">&gt;</span>Project <span class="dt">&lt;</span><span class="kw">b</span><span class="dt">&gt;</span>PID2022-136235NB-I00<span class="dt">&lt;/</span><span class="kw">b</span><span class="dt">&gt;</span> funded by <span class="dt">&lt;</span><span class="kw">b</span><span class="dt">&gt;</span>MICIU/AEI/10.13039/501100011033<span class="dt">&lt;/</span><span class="kw">b</span><span class="dt">&gt;</span> and by <span class="dt">&lt;</span><span class="kw">b</span><span class="dt">&gt;</span>ERDF/EU<span class="dt">&lt;/</span><span class="kw">b</span><span class="dt">&gt;</span>. Knowledge Generation Projects, 2022 call. Duration: 1 September 2023 – 31 August 2027.<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a><span class="fu">## Your opinion</span></span>
+<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a>Is this website useful to you? Rate it with one click and leave us your recommendations.</span>
+<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a>{{&lt; include _survey.qmd &gt;}}</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">

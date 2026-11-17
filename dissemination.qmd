@@ -73,7 +73,7 @@ Other regular meetings of interest whose 2027 dates have not yet been announced:
 
 ## Science communication: our research in one minute
 
-To bring the results of the project closer to society, the articles of the team on inequality and poverty are explained in **[one-minute videos](videos.qmd)** in plain language. They can be freely shared in classes, talks and social networks, citing GiniUs. They are also published in the [blog](blog/index.qmd).
+To bring the results of the project closer to society, the articles of the team on inequality and poverty are explained in **[one-minute videos](videos.qmd)** in plain language. They can be freely shared in classes, talks and social networks, citing GiniUs. They are also published in the [blog](blog/index.qmd). All the dissemination activities, with their sources, are also listed on the [Impact](impact.qmd) page.
 
 ## Research stays
 

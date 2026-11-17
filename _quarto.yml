@@ -34,6 +34,8 @@ website:
             text: "Objectives, activities and work plan"
           - href: results.qmd
             text: "Results and conclusions"
+          - href: impact.qmd
+            text: "Impact (open science, citations, use, dissemination)"
           - href: news.qmd
             text: "Status and news"
       - href: team.qmd

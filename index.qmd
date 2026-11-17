@@ -88,6 +88,7 @@ Research on inequality should reach everyone. Our **one-minute videos** explain 
 5. **Inequality observatory.** The [observatory](observatory.qmd) shows official Gini indices from Eurostat, the World Bank and the Spanish Statistical Office (INE).
 6. **Science communication.** [One-minute videos](videos.qmd) explain our articles on inequality in plain language, so that the results reach society.
 7. **Dissemination and internationalisation.** Results, data and software are openly available to researchers worldwide.
+8. **Transparency about impact.** The [Impact](impact.qmd) page gathers, with links to the original sources, the quality and open access of the publications, their citations and online attention, the use of the software and tools, and the dissemination activities.
 
 ## Funding
 

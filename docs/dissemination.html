@@ -75,7 +75,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-118d0816e27965c35f7a8d0b0cdfa029.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-88b26ec838f0e0a940b819747d048df3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -157,6 +157,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="./results.html">
  <span class="dropdown-text">Results and conclusions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./impact.html">
+ <span class="dropdown-text">Impact (open science, citations, use, dissemination)</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./news.html">
@@ -467,7 +471,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="science-communication-our-research-in-one-minute" class="level2">
 <h2 class="anchored" data-anchor-id="science-communication-our-research-in-one-minute">Science communication: our research in one minute</h2>
-<p>To bring the results of the project closer to society, the articles of the team on inequality and poverty are explained in <strong><a href="./videos.html">one-minute videos</a></strong> in plain language. They can be freely shared in classes, talks and social networks, citing GiniUs. They are also published in the <a href="./blog/index.html">blog</a>.</p>
+<p>To bring the results of the project closer to society, the articles of the team on inequality and poverty are explained in <strong><a href="./videos.html">one-minute videos</a></strong> in plain language. They can be freely shared in classes, talks and social networks, citing GiniUs. They are also published in the <a href="./blog/index.html">blog</a>. All the dissemination activities, with their sources, are also listed on the <a href="./impact.html">Impact</a> page.</p>
 </section>
 <section id="research-stays" class="level2">
 <h2 class="anchored" data-anchor-id="research-stays">Research stays</h2>
@@ -538,6 +542,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     if (window.goatcounter && window.goatcounter.count) {
       window.goatcounter.count({path: "download/" + name, title: "Download: " + name + " (from " + page + ")", event: true});
     }
+  }, true);
+})();
+</script>
+
+<script>
+// ---- Use of videos and tools (evidence of reach for project reports and research assessment) ----
+// Records, once per page visit, GoatCounter events (no cookies, no personal data):
+//   video/<name>           a one-minute video is played
+//   tool/calculator-run    the Gini index calculator is used
+//   tool/webr-run          an R exercise is run in the browser
+(function () {
+  const done = new Set();
+  function ev(path, title) {
+    if (done.has(path)) return; done.add(path);
+    const send = () => window.goatcounter && window.goatcounter.count && window.goatcounter.count({path, title, event: true});
+    if (window.goatcounter && window.goatcounter.count) send(); else setTimeout(send, 1500);
+  }
+  document.addEventListener("play", function (e) {
+    const v = e.target;
+    if (!v || v.tagName !== "VIDEO") return;
+    const src = (v.currentSrc || (v.querySelector("source") || {}).src || "").split("/").pop().replace(/\.mp4.*$/i, "");
+    if (src) ev("video/" + src, "Video played: " + src);
+  }, true);
+  document.addEventListener("click", function (e) {
+    const b = e.target.closest ? e.target.closest("button") : null;
+    if (!b) return;
+    if (b.id === "calc-run" || b.hasAttribute("data-example")) ev("tool/calculator-run", "Gini index calculator used");
+    else if (b.classList.contains("ex-run")) ev("tool/webr-run", "R exercise run in the browser");
   }, true);
 })();
 </script>
@@ -1066,7 +1098,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a><span class="fu">## Science communication: our research in one minute</span></span>
 <span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a>To bring the results of the project closer to society, the articles of the team on inequality and poverty are explained in **[one-minute videos](videos.qmd)** in plain language. They can be freely shared in classes, talks and social networks, citing GiniUs. They are also published in the <span class="co">[</span><span class="ot">blog</span><span class="co">](blog/index.qmd)</span>.</span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a>To bring the results of the project closer to society, the articles of the team on inequality and poverty are explained in **[one-minute videos](videos.qmd)** in plain language. They can be freely shared in classes, talks and social networks, citing GiniUs. They are also published in the <span class="co">[</span><span class="ot">blog</span><span class="co">](blog/index.qmd)</span>. All the dissemination activities, with their sources, are also listed on the <span class="co">[</span><span class="ot">Impact</span><span class="co">](impact.qmd)</span> page.</span>
 <span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a><span class="fu">## Research stays</span></span>
 <span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a></span>
