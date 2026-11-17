@@ -4,7 +4,7 @@ subtitle: "Short videos that explain, in plain language, the articles of the tea
 toc: false
 ---
 
-Research on inequality should reach everyone, not only specialists. Each of these **one-minute videos** explains an article of the team in plain language: the question, how it was answered, what was found and why it matters for society. You can share them freely on social networks, in classes or in public talks, citing GiniUs. Each video shows the quality indicators of the journal: JCR quartile in the year of publication and, where applicable, rating in the Chartered ABS *Academic Journal Guide*.
+Research on inequality should reach everyone, not only specialists. Each of these **one-minute videos** explains an article of the team in plain language: the question, how it was answered, what was found, **a key result shown as a figure** and why it matters for society. You can share them freely on social networks, in classes or in public talks, citing GiniUs. Each video shows the quality indicators of the journal: JCR quartile in the year of publication and, where applicable, rating in the Chartered ABS *Academic Journal Guide*.
 
 ::: {.video-grid}
 <a href="#gini-practical-guide"><img src="media/videos/gini-practical-guide.jpg" alt="Video: A practical guide to proper estimation and inference of the Gini index by avoiding often encountered methodological pitfalls"><span class="vt">A practical guide to proper estimation and inference of the Gini index by avoiding often encountered methodological pitfalls</span></a>
@@ -31,6 +31,8 @@ Research on inequality should reach everyone, not only specialists. Each of thes
 
 **What they found.** Some widely used formulas give inaccurate estimates of inequality. A popular regression-based method seriously underestimates the margin of error when incomes are very skewed and unequal. Jackknife methods give the most accurate margins of error.
 
+**Key result (in the video).** How often the 95% margin of error contains the true Gini. *Monte Carlo illustration: lognormal incomes, samples of 100, 4,000 replications (computed by GiniUs). As inequality grows, the regression method falls far below 95%.*
+
 **Why it matters.** Margins of error that are too small can make us believe inequality changed when it did not. The paper gives practical recommendations and the free R package giniVarCI.
 
 [Download the video (MP4)](media/videos/gini-practical-guide.mp4){.btn .btn-outline-primary .btn-sm download=""}
@@ -48,6 +50,8 @@ Research on inequality should reach everyone, not only specialists. Each of thes
 **The question.** There are many formulas to estimate the Gini index from a sample. Do they all give the right answer?
 
 **What they found.** One popular formula strongly overestimates inequality when inequality is low. With skewed and unequal data, the usual estimators tend to underestimate inequality. Bootstrap and jackknife corrections reduce the bias, and a simple criterion tells when to use them.
+
+**Key result (in the video).** Relative bias (%) of three common Gini formulas. *Monte Carlo illustration with the paper's estimators: lognormal incomes, samples of 20 people, 20,000 replications (computed by GiniUs).*
 
 **Why it matters.** Differences in inequality between countries, regions or groups can come from the formula used, not from real differences. Choosing the right estimator avoids wrong conclusions.
 
@@ -67,6 +71,8 @@ Research on inequality should reach everyone, not only specialists. Each of thes
 
 **Six explanations.** Their basic needs are met and they are satisfied in key areas of life; they adapt to hardship and have modest aspirations. Scientists and policymakers may misjudge how well they are doing. Their culture supports happiness, and maldevelopment has not eroded it.
 
+**The idea in one picture (in the video).** Income and life satisfaction. *Conceptual illustration. The study explains why some poor people are in the top-left corner.*
+
 **Why it matters.** Poverty is not only a lack of income. Listening to how people evaluate their own lives helps design better development policies.
 
 [Download the video (MP4)](media/videos/happy-and-poor.mp4){.btn .btn-outline-primary .btn-sm download=""}
@@ -84,6 +90,8 @@ Research on inequality should reach everyone, not only specialists. Each of thes
 **The question.** When a country grows richer, does access to water and sanitation become more equal?
 
 **What they found.** Growth improves access overall, but the poorest and rural populations are left behind. Inequality in sanitation is not related to growth. Unequal access to water also holds back GDP per capita.
+
+**Key result (in the video).** What economic growth does, and does not do, for water and sanitation. *Source: Sustainable Development (2026), 64 countries.*
 
 **Why it matters.** Growth alone will not deliver water and sanitation for all (SDG 6). Effective governance and efficient water use are needed.
 
@@ -103,6 +111,8 @@ Research on inequality should reach everyone, not only specialists. Each of thes
 
 **What they found.** International (inbound) tourism increases poverty and social exclusion in destination regions. Domestic tourism reduces them, in destinations and in neighbouring regions. Some other effects are statistically significant but economically very small.
 
+**Key result (in the video).** Effect of tourism on the risk of poverty or social exclusion (AROPE). *Source: Economia Politica (2026), EU regions. The inverted-U link of total tourism is negligible in practice.*
+
 **Why it matters.** Tourism does not reduce poverty by itself. Market structures, labour regulation, competitiveness and social protection decide who benefits.
 
 [Download the video (MP4)](media/videos/tourism-poverty-pandemic.mp4){.btn .btn-outline-primary .btn-sm download=""}
@@ -120,6 +130,8 @@ Research on inequality should reach everyone, not only specialists. Each of thes
 **The question.** Does tourism make income more equal in European regions, or less?
 
 **What they found.** Overall, tourism and inequality follow an inverted-U shape. Inbound tourism increases inequality and polarization in destinations; domestic tourism reduces them. Both types improve the income distribution of neighbouring regions.
+
+**Key result (in the video).** Effect of tourism on income inequality and polarization. *Source: Papers in Regional Science (2025), EU NUTS-1 regions. Overall, tourism and inequality follow an inverted-U shape.*
 
 **Why it matters.** Useful for the EU Cohesion Policy: domestic tourism supports cohesion, and social protection (education, health, unemployment and retirement) should be strengthened.
 
@@ -139,6 +151,8 @@ Research on inequality should reach everyone, not only specialists. Each of thes
 
 **What they found.** The wage gap against Italian talents grew in 2022, mainly because the same qualifications are paid less. The gap grew more for women, especially at the top. Gender gap among talents: Italy from 10% to 22.5%; Germany from 27.5% to 15%.
 
+**Key result (in the video).** Gender pay gap among young talents. *Source: Social Indicators Research (2025). In Italy the gap more than doubled; in Germany it almost halved.*
+
 **Why it matters.** Better pay and conditions in Germany help explain why young Italian talents move there. Policies are needed to attract and keep talent.
 
 [Download the video (MP4)](media/videos/talents-earnings.mp4){.btn .btn-outline-primary .btn-sm download=""}
@@ -156,6 +170,8 @@ Research on inequality should reach everyone, not only specialists. Each of thes
 **The question.** How are innovation and entrepreneurship related to the income gaps that affect the poorest households in Europe?
 
 **What the study analyses.** How innovation dynamics interact with income inequality and poverty-related vulnerability. Differences between Northern and Southern Europe. Changes within countries over time and differences between countries.
+
+**What the study compares (in the video).** Innovation, income gaps and poverty in Europe. *Source: Journal of Poverty (2026). Results by country and over time in the article.*
 
 **Why it matters.** Innovation policies can widen or narrow income gaps. Knowing where and how helps to design fairer innovation policies in Europe.
 

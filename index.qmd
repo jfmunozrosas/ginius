@@ -33,7 +33,7 @@ GiniUs develops solutions to these problems, publishes them in leading journals,
 
 ::: {.obs-grid}
 ::: {.obs-card}
-**OG1 · Bias of the Gini index**\
+**OG1 · Bias of the Gini index** <span class="state-done">✔ Achieved</span>\
 Identify and reduce the bias of Gini estimators. [Explore the bias →](simulation.qmd)
 :::
 ::: {.obs-card}
@@ -70,6 +70,8 @@ Research on inequality should reach everyone. Our **one-minute videos** explain 
 ## Latest news
 
 ::: {.news-mini}
+- **November 2026** · [Objective OG1 achieved](results.qmd#og1): the bias of the Gini index is identified and corrected.
+- **November 2026** · 27 articles of the project now in [open access](publications.qmd) (17 in DIGIBUG).
 - **November 2026** · [Our research in one minute](videos.qmd): eight short videos explain the team's articles on inequality and poverty in plain language.
 - **November 2026** · New website, with a [Gini index calculator](calculator.qmd), a [missing data simulator](missing-data.qmd), an [interactive bias explorer](simulation.qmd), [R exercises in your browser](practice.qmd) and an [inequality observatory](observatory.qmd).
 - **23 October 2026** · The project takes part in the [IX EIEE](dissemination.qmd#eiee) (Ciudad Real).

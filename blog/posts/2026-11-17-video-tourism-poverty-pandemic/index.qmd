@@ -20,6 +20,8 @@ image: ../../../media/videos/tourism-poverty-pandemic.jpg
 - Domestic tourism reduces them, in destinations and in neighbouring regions.
 - Some other effects are statistically significant but economically very small.
 
+**Key result (in the video).** Effect of tourism on the risk of poverty or social exclusion (AROPE). *Source: Economia Politica (2026), EU regions. The inverted-U link of total tourism is negligible in practice.*
+
 **Why it matters.** Tourism does not reduce poverty by itself. Market structures, labour regulation, competitiveness and social protection decide who benefits.
 
 All the videos are on the page [Our research in one minute](../../../videos.qmd).

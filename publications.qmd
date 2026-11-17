@@ -20,6 +20,8 @@ Muñoz, J.F., Pavía, J.M., & Álvarez-Verdejo, E. (2024). *giniVarCI: Gini Indi
 
 Muñoz, J.F., Blanco-Encomienda, F.J., Álvarez-Verdejo, E., & Vendrell-Herrero, F. (2023). *186 data sets and free software (using R) for simulation studies derived in the manuscript: Estimation of the lot fraction defective in a finite lot of products with auxiliary quality characteristics*. OSF repository. <https://doi.org/10.17605/OSF.IO/ADFNQ>
 
+Muñoz, J.F., Moya-Fernández, P.J., & Álvarez-Verdejo, E. (2023). *Datasets and free source code (software R) for the manuscript: Exploring and correcting the bias in the estimation of the Gini measure of inequality*. DIGIBUG <https://hdl.handle.net/10481/85964> · OSF <https://doi.org/10.17605/OSF.IO/4YNBS>
+
 ## Working papers
 
 1. *The problem of missing data in strategic management research: critical issues, understanding and methodological insights.* F. Vendrell-Herrero, J.F. Muñoz, E. Gomes and D.W. Lehman.

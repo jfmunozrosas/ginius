@@ -38,7 +38,7 @@ a3  <- sum(pubs$abs %in% c("3", "4", "4*"))
 diss <- sum(imp$category %in% c("Workshop", "Seminar", "Conference"))
 cat(sprintf('
 <div class="kpi-grid">
-<div class="kpi"><div class="kpi-n">%d</div><div class="kpi-l">articles in JCR journals (since 2023)</div></div>
+<div class="kpi"><div class="kpi-n">%d</div><div class="kpi-l">articles in JCR journals (2024–2026)</div></div>
 <div class="kpi"><div class="kpi-n">%d</div><div class="kpi-l">in Q1 (%d in Q1–Q2)</div></div>
 <div class="kpi"><div class="kpi-n">%d</div><div class="kpi-l">in ABS 3, 4 or 4* journals</div></div>
 <div class="kpi"><div class="kpi-n">%d</div><div class="kpi-l">in open access (repository)</div></div>

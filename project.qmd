@@ -10,7 +10,7 @@ GiniUs is a non-oriented research project (Knowledge Generation Projects, 2022 c
 ::: {.og-card}
 ### OG1 · Identify and reduce the bias in studies based on the Gini index
 
-<p class="meta">Coordinator: J.F. Muñoz · Researchers: E. Álvarez, Y.G. Berger, R.M. García, P.J. Moya, J.F. Muñoz · Data: EU-SILC and continuous distributions (Pareto, Dagum, lognormal, Gamma, Weibull) · Status: <span class="state-prog">in progress</span> (first results published in *Sociological Methods & Research* and *Social Indicators Research*)</p>
+<p class="meta">Coordinator: J.F. Muñoz · Researchers: E. Álvarez, Y.G. Berger, R.M. García, P.J. Moya, J.F. Muñoz · Data: EU-SILC and continuous distributions (Pareto, Dagum, lognormal, Gamma, Weibull) · Status: <span class="state-done">✔ achieved</span> (OE1–OE4 completed; results published in *Sociological Methods & Research* and *Social Indicators Research*, and implemented in giniVarCI)</p>
 
 <p class="oe"><b>OE1.</b> Collect and classify all the expressions of the Gini index and analyse their properties and relationships, to resolve the controversy about the optimal expression to use in empirical studies (Q1).</p>
 <p class="oe"><b>OE2.</b> Detect the scenarios in which the Gini index has excessively large biases, and identify the characteristics of the data that cause them (Q2, Q3).</p>

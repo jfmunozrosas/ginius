@@ -1,4 +1,4 @@
-The table lists the **articles in JCR journals** published by team members since 2023 in the research areas of the project. Articles are marked according to the topics and transfer areas of the project: <span class="sym sym-ineq">⚖</span> inequality and poverty, <span class="sym sym-water">💧</span> water, <span class="sym sym-tour">✈</span> tourism and <span class="sym sym-firm">🏭</span> firms; an article can carry more than one mark. Click on a title to open the article (DOI or, if not available, Google Scholar). **🔓 Open access** links to the version deposited in an open repository, and **▶ 1-min video** to a [one-minute video](videos.qmd) that explains the article in plain language. Quality indicators: JCR quartile of the journal **in the year of publication** and, where applicable, rating in the Chartered ABS *Academic Journal Guide* (AJG). Citations and online attention of each article are on the [Impact](impact.qmd) page.
+The table lists the **articles in JCR journals** published by team members during the project (2024–2026) in the research areas of the project. Articles are marked according to the topics and transfer areas of the project: <span class="sym sym-ineq">⚖</span> inequality and poverty, <span class="sym sym-water">💧</span> water, <span class="sym sym-tour">✈</span> tourism and <span class="sym sym-firm">🏭</span> firms; an article can carry more than one mark. Click on a title to open the article (DOI or, if not available, Google Scholar). **🔓 DIGIBUG** links to the version deposited in the open repository of the University of Granada and **🔓 Open access** to other open versions (repositories of partner universities or open-access journals), and **▶ 1-min video** to a [one-minute video](videos.qmd) that explains the article in plain language. Quality indicators: JCR quartile of the journal **in the year of publication** and, where applicable, rating in the Chartered ABS *Academic Journal Guide* (AJG). Citations and online attention of each article are on the [Impact](impact.qmd) page.
 
 <!-- The table is generated from data/publications.csv: edit that file (one row per article) to add articles, DOIs, open-access links or videos. -->
 
@@ -16,16 +16,22 @@ n   <- nrow(pubs)
 q1  <- sum(pubs$jcr == "Q1"); q12 <- sum(pubs$jcr %in% c("Q1", "Q2"))
 a3  <- sum(pubs$abs %in% c("3", "4", "4*")); a4 <- sum(pubs$abs %in% c("4", "4*"))
 oa  <- sum(pubs$open_access != "")
+dg_n <- sum(grepl("10481/", pubs$open_access, fixed = TRUE))
 cat("::: {.stats}\n",
-    sprintf("<span class='stat'><b>%d</b> JCR articles</span> <span class='stat'><b>%d</b> in Q1</span> <span class='stat'><b>%d</b> in Q1–Q2</span> <span class='stat'><b>%d</b> in ABS 3/4/4*</span> <span class='stat'><b>%d</b> in ABS 4/4*</span> <span class='stat'><b>%d</b> in open access</span>",
-            n, q1, q12, a3, a4, oa), "\n:::\n\n", sep = "")
+    sprintf("<span class='stat'><b>%d</b> JCR articles</span> <span class='stat'><b>%d</b> in Q1</span> <span class='stat'><b>%d</b> in Q1–Q2</span> <span class='stat'><b>%d</b> in ABS 3/4/4*</span> <span class='stat'><b>%d</b> in ABS 4/4*</span> <span class='stat'><b>%d</b> in open access</span> <span class='stat'><b>%d</b> in DIGIBUG</span>",
+            n, q1, q12, a3, a4, oa, dg_n), "\n:::\n\n", sep = "")
 make_row <- function(r) {
   tp  <- strsplit(r[["topics"]], ";", fixed = TRUE)[[1]]
   s   <- paste(sym[tp[tp %in% names(sym)]], collapse = "")
   url <- if (nzchar(r[["doi"]])) paste0("https://doi.org/", r[["doi"]]) else
            paste0("https://scholar.google.com/scholar?q=", utils::URLencode(r[["scholar_query"]], reserved = TRUE))
   extra <- ""
-  if (nzchar(r[["open_access"]])) extra <- paste0(extra, ' <a class="oa-link" href="', r[["open_access"]], '" target="_blank" title="Open-access version">🔓 Open access</a>')
+  if (nzchar(r[["open_access"]])) {
+    dg  <- grepl("10481/", r[["open_access"]], fixed = TRUE)
+    lab <- if (dg) "🔓 DIGIBUG" else "🔓 Open access"
+    ttl <- if (dg) "Open-access version in DIGIBUG (University of Granada)" else "Open-access version"
+    extra <- paste0(extra, ' <a class="oa-link" href="', r[["open_access"]], '" target="_blank" title="', ttl, '">', lab, '</a>')
+  }
   if (nzchar(r[["video"]]))       extra <- paste0(extra, ' <a class="vid-link" href="videos.html#', r[["video"]], '" title="Watch the one-minute video">▶ 1-min video</a>')
   abs <- if (nzchar(r[["abs"]])) r[["abs"]] else "–"
   sprintf('| %s [%s](%s){target="_blank"}%s | *%s* | %s | %s | %s |',

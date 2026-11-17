@@ -20,6 +20,8 @@ image: ../../../media/videos/gini-bias.jpg
 - With skewed and unequal data, the usual estimators tend to underestimate inequality.
 - Bootstrap and jackknife corrections reduce the bias, and a simple criterion tells when to use them.
 
+**Key result (in the video).** Relative bias (%) of three common Gini formulas. *Monte Carlo illustration with the paper's estimators: lognormal incomes, samples of 20 people, 20,000 replications (computed by GiniUs).*
+
 **Why it matters.** Differences in inequality between countries, regions or groups can come from the formula used, not from real differences. Choosing the right estimator avoids wrong conclusions.
 
 All the videos are on the page [Our research in one minute](../../../videos.qmd).

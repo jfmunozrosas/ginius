@@ -20,6 +20,8 @@ image: ../../../media/videos/talents-earnings.jpg
 - The gap grew more for women, especially at the top.
 - Gender gap among talents: Italy from 10% to 22.5%; Germany from 27.5% to 15%.
 
+**Key result (in the video).** Gender pay gap among young talents. *Source: Social Indicators Research (2025). In Italy the gap more than doubled; in Germany it almost halved.*
+
 **Why it matters.** Better pay and conditions in Germany help explain why young Italian talents move there. Policies are needed to attract and keep talent.
 
 All the videos are on the page [Our research in one minute](../../../videos.qmd).

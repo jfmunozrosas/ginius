@@ -5,7 +5,11 @@ subtitle: "Main findings of GiniUs, by general objective"
 
 This page summarises the main results of the project. It is updated as new articles are published; the full list is in [Publications](publications.qmd). The main articles are also explained in plain language in [one-minute videos](videos.qmd), and the evidence of their impact (open access, citations, online attention and use) is on the [Impact](impact.qmd) page.
 
-## OG1 · The bias of the Gini index
+## OG1 · The bias of the Gini index {#og1}
+
+::: {.callout-tip appearance="simple"}
+**✔ Objective achieved.** The four specific objectives of OG1 (OE1–OE4) have been completed: the expressions of the Gini index have been classified, the scenarios with large biases identified, bias-correction techniques (bootstrap and jackknife) proposed, and a practical criterion for applied users established. The results are published in *Sociological Methods & Research* (2025) and *Social Indicators Research* (2026) and implemented in the R package [giniVarCI](software.qmd).
+:::
 
 **Results.** Monte Carlo studies with six distributions (Pareto, Dagum with $p=20$ and $p=0.5$, lognormal, Weibull and Gamma), Gini indices from 0.1 to 0.8 and different sample sizes. They can be reproduced with the [interactive bias explorer](simulation.qmd).
 

@@ -20,6 +20,8 @@ image: ../../../media/videos/happy-and-poor.jpg
 - Scientists and policymakers may misjudge how well they are doing.
 - Their culture supports happiness, and maldevelopment has not eroded it.
 
+**The idea in one picture (in the video).** Income and life satisfaction. *Conceptual illustration. The study explains why some poor people are in the top-left corner.*
+
 **Why it matters.** Poverty is not only a lack of income. Listening to how people evaluate their own lives helps design better development policies.
 
 All the videos are on the page [Our research in one minute](../../../videos.qmd).

@@ -21,7 +21,46 @@
   "why": "Margins of error that are too small can make us believe inequality changed when it did not. The paper gives practical recommendations and the free R package giniVarCI.",
   "quality": [
    "JCR Q1"
-  ]
+  ],
+  "figure": {
+   "type": "bars",
+   "label": "KEY RESULT",
+   "title": "How often the 95% margin of error contains the true Gini",
+   "groups": [
+    "G = 0.3",
+    "G = 0.5",
+    "G = 0.7",
+    "G = 0.8"
+   ],
+   "series": [
+    {
+     "name": "Regression-based method",
+     "col": "RED",
+     "y": [
+      100.0,
+      98.2,
+      83.5,
+      69.9
+     ]
+    },
+    {
+     "name": "Jackknife",
+     "col": "BLUE",
+     "y": [
+      93.5,
+      90.4,
+      85.2,
+      81.3
+     ]
+    }
+   ],
+   "ymin": 50,
+   "ymax": 100,
+   "ref": 95,
+   "reflab": "95% target",
+   "unit": "%",
+   "note": "Monte Carlo illustration: lognormal incomes, samples of 100, 4,000 replications (computed by GiniUs). As inequality grows, the regression method falls far below 95%."
+  }
  },
  {
   "slug": "gini-bias",
@@ -45,7 +84,70 @@
   "why": "Differences in inequality between countries, regions or groups can come from the formula used, not from real differences. Choosing the right estimator avoids wrong conclusions.",
   "quality": [
    "JCR Q1"
-  ]
+  ],
+  "figure": {
+   "type": "lines",
+   "label": "KEY RESULT",
+   "title": "Relative bias (%) of three common Gini formulas",
+   "x": [
+    0.1,
+    0.2,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.7,
+    0.8
+   ],
+   "xlab": "True Gini index",
+   "ylab": "Bias (%)",
+   "series": [
+    {
+     "name": "Formula a (Ĝa)",
+     "col": "RED",
+     "y": [
+      44.9,
+      19.7,
+      11.1,
+      6.1,
+      2.5,
+      -0.2,
+      -2.8,
+      -5.2
+     ]
+    },
+    {
+     "name": "Formula b (Ĝb)",
+     "col": "GOLD",
+     "y": [
+      -5.1,
+      -5.3,
+      -5.6,
+      -6.4,
+      -7.5,
+      -8.6,
+      -9.9,
+      -11.4
+     ]
+    },
+    {
+     "name": "Formula c (Ĝc)",
+     "col": "BLUE",
+     "y": [
+      -0.1,
+      -0.3,
+      -0.6,
+      -1.5,
+      -2.6,
+      -3.8,
+      -5.2,
+      -6.8
+     ]
+    }
+   ],
+   "callout": "+45% when inequality is low",
+   "note": "Monte Carlo illustration with the paper's estimators: lognormal incomes, samples of 20 people, 20,000 replications (computed by GiniUs)."
+  }
  },
  {
   "slug": "tourism-poverty-pandemic",
@@ -69,7 +171,49 @@
   "why": "Tourism does not reduce poverty by itself. Market structures, labour regulation, competitiveness and social protection decide who benefits.",
   "quality": [
    "JCR Q2"
-  ]
+  ],
+  "figure": {
+   "type": "grid",
+   "label": "KEY RESULT",
+   "title": "Effect of tourism on the risk of poverty or social exclusion (AROPE)",
+   "cols": [
+    "In the destination",
+    "In neighbouring regions"
+   ],
+   "rows": [
+    {
+     "name": "International (inbound) tourism",
+     "cells": [
+      [
+       "↑",
+       "Increases",
+       "RED"
+      ],
+      [
+       "≈",
+       "Negligible",
+       "GR"
+      ]
+     ]
+    },
+    {
+     "name": "Domestic tourism",
+     "cells": [
+      [
+       "↓",
+       "Reduces",
+       "GREEN"
+      ],
+      [
+       "↓",
+       "Reduces",
+       "GREEN"
+      ]
+     ]
+    }
+   ],
+   "note": "Source: Economia Politica (2026), EU regions. The inverted-U link of total tourism is negligible in practice."
+  }
  },
  {
   "slug": "happy-and-poor",
@@ -93,7 +237,13 @@
   "why": "Poverty is not only a lack of income. Listening to how people evaluate their own lives helps design better development policies.",
   "quality": [
    "JCR Q1"
-  ]
+  ],
+  "figure": {
+   "type": "quadrant",
+   "label": "THE IDEA IN ONE PICTURE",
+   "title": "Income and life satisfaction",
+   "note": "Conceptual illustration. The study explains why some poor people are in the top-left corner."
+  }
  },
  {
   "slug": "water-sanitation-growth",
@@ -117,7 +267,43 @@
   "why": "Growth alone will not deliver water and sanitation for all (SDG 6). Effective governance and efficient water use are needed.",
   "quality": [
    "JCR Q1"
-  ]
+  ],
+  "figure": {
+   "type": "links",
+   "label": "KEY RESULT",
+   "title": "What economic growth does, and does not do, for water and sanitation",
+   "links": [
+    [
+     "Economic growth",
+     "Access overall",
+     "↑",
+     "improves",
+     "GREEN"
+    ],
+    [
+     "Economic growth",
+     "Access of the poorest and rural",
+     "≈",
+     "left behind",
+     "RED"
+    ],
+    [
+     "Economic growth",
+     "Inequality in sanitation",
+     "○",
+     "no link",
+     "GR"
+    ],
+    [
+     "Unequal access to water",
+     "GDP per capita",
+     "↓",
+     "holds back",
+     "RED"
+    ]
+   ],
+   "note": "Source: Sustainable Development (2026), 64 countries."
+  }
  },
  {
   "slug": "tourism-inequality-polarization",
@@ -142,7 +328,49 @@
   "quality": [
    "JCR Q2",
    "ABS 3"
-  ]
+  ],
+  "figure": {
+   "type": "grid",
+   "label": "KEY RESULT",
+   "title": "Effect of tourism on income inequality and polarization",
+   "cols": [
+    "In the destination",
+    "In neighbouring regions"
+   ],
+   "rows": [
+    {
+     "name": "International (inbound) tourism",
+     "cells": [
+      [
+       "↑",
+       "Increases",
+       "RED"
+      ],
+      [
+       "↓",
+       "Improves distribution",
+       "GREEN"
+      ]
+     ]
+    },
+    {
+     "name": "Domestic tourism",
+     "cells": [
+      [
+       "↓",
+       "Reduces",
+       "GREEN"
+      ],
+      [
+       "↓",
+       "Improves distribution",
+       "GREEN"
+      ]
+     ]
+    }
+   ],
+   "note": "Source: Papers in Regional Science (2025), EU NUTS-1 regions. Overall, tourism and inequality follow an inverted-U shape."
+  }
  },
  {
   "slug": "talents-earnings",
@@ -166,7 +394,38 @@
   "why": "Better pay and conditions in Germany help explain why young Italian talents move there. Policies are needed to attract and keep talent.",
   "quality": [
    "JCR Q1"
-  ]
+  ],
+  "figure": {
+   "type": "bars",
+   "label": "KEY RESULT",
+   "title": "Gender pay gap among young talents",
+   "groups": [
+    "Italy",
+    "Germany"
+   ],
+   "series": [
+    {
+     "name": "Earlier",
+     "col": "GOLD",
+     "y": [
+      10,
+      27.5
+     ]
+    },
+    {
+     "name": "Later",
+     "col": "BLUE",
+     "y": [
+      22.5,
+      15
+     ]
+    }
+   ],
+   "ymin": 0,
+   "ymax": 30,
+   "unit": "%",
+   "note": "Source: Social Indicators Research (2025). In Italy the gap more than doubled; in Germany it almost halved."
+  }
  },
  {
   "slug": "innovation-poverty-gaps",
@@ -190,6 +449,21 @@
   "why": "Innovation policies can widen or narrow income gaps. Knowing where and how helps to design fairer innovation policies in Europe.",
   "quality": [
    "JCR Q3"
-  ]
+  ],
+  "figure": {
+   "type": "compare",
+   "label": "WHAT THE STUDY COMPARES",
+   "title": "Innovation, income gaps and poverty in Europe",
+   "chain": [
+    "Innovation dynamics",
+    "Income gaps",
+    "Poverty-related vulnerability"
+   ],
+   "sides": [
+    "Northern Europe",
+    "Southern Europe"
+   ],
+   "note": "Source: Journal of Poverty (2026). Results by country and over time in the article."
+  }
  }
 ]

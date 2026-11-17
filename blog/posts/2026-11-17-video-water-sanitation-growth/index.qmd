@@ -20,6 +20,8 @@ image: ../../../media/videos/water-sanitation-growth.jpg
 - Inequality in sanitation is not related to growth.
 - Unequal access to water also holds back GDP per capita.
 
+**Key result (in the video).** What economic growth does, and does not do, for water and sanitation. *Source: Sustainable Development (2026), 64 countries.*
+
 **Why it matters.** Growth alone will not deliver water and sanitation for all (SDG 6). Effective governance and efficient water use are needed.
 
 All the videos are on the page [Our research in one minute](../../../videos.qmd).

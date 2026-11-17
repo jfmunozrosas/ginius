@@ -20,6 +20,8 @@ image: ../../../media/videos/tourism-inequality-polarization.jpg
 - Inbound tourism increases inequality and polarization in destinations; domestic tourism reduces them.
 - Both types improve the income distribution of neighbouring regions.
 
+**Key result (in the video).** Effect of tourism on income inequality and polarization. *Source: Papers in Regional Science (2025), EU NUTS-1 regions. Overall, tourism and inequality follow an inverted-U shape.*
+
 **Why it matters.** Useful for the EU Cohesion Policy: domestic tourism supports cohesion, and social protection (education, health, unemployment and retirement) should be strengthened.
 
 All the videos are on the page [Our research in one minute](../../../videos.qmd).

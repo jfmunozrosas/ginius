@@ -16,5 +16,5 @@
 <li><span class="dot"></span><span class="label">Completed (Aug 2027)</span></li>
 </ol>
 
-<p class="status-note"><b>Current status: in progress, fourth and last year</b> (1 September 2026 – 31 August 2027). The R package [giniVarCI](software.qmd) is available on CRAN; the work on bias (OG1), missing data (OG2) and applications (OG4) continues. Last update: 17 November 2026.</p>
+<p class="status-note"><b>Current status: in progress, fourth and last year</b> (1 September 2026 – 31 August 2027). The R package [giniVarCI](software.qmd) is available on CRAN; **OG1 (bias of the Gini index) has been achieved**; the work on missing data (OG2) and applications (OG4) continues. Last update: 17 November 2026.</p>
 :::

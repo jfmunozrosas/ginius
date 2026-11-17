@@ -324,7 +324,7 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#og1-the-bias-of-the-gini-index" id="toc-og1-the-bias-of-the-gini-index" class="nav-link active" data-scroll-target="#og1-the-bias-of-the-gini-index">OG1 · The bias of the Gini index</a></li>
+  <li><a href="#og1" id="toc-og1" class="nav-link active" data-scroll-target="#og1">OG1 · The bias of the Gini index</a></li>
   <li><a href="#og2-missing-data-and-the-gini-index" id="toc-og2-missing-data-and-the-gini-index" class="nav-link" data-scroll-target="#og2-missing-data-and-the-gini-index">OG2 · Missing data and the Gini index</a></li>
   <li><a href="#og3-the-r-package-ginivarci" id="toc-og3-the-r-package-ginivarci" class="nav-link" data-scroll-target="#og3-the-r-package-ginivarci">OG3 · The R package giniVarCI</a></li>
   <li><a href="#og4-applications-and-social-impact" id="toc-og4-applications-and-social-impact" class="nav-link" data-scroll-target="#og4-applications-and-social-impact">OG4 · Applications and social impact</a></li>
@@ -362,8 +362,18 @@ window.Quarto = {
 
 
 <p>This page summarises the main results of the project. It is updated as new articles are published; the full list is in <a href="./publications.html">Publications</a>. The main articles are also explained in plain language in <a href="./videos.html">one-minute videos</a>, and the evidence of their impact (open access, citations, online attention and use) is on the <a href="./impact.html">Impact</a> page.</p>
-<section id="og1-the-bias-of-the-gini-index" class="level2">
-<h2 class="anchored" data-anchor-id="og1-the-bias-of-the-gini-index">OG1 · The bias of the Gini index</h2>
+<section id="og1" class="level2">
+<h2 class="anchored" data-anchor-id="og1">OG1 · The bias of the Gini index</h2>
+<div class="callout callout-style-simple callout-tip">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>✔ Objective achieved.</strong> The four specific objectives of OG1 (OE1–OE4) have been completed: the expressions of the Gini index have been classified, the scenarios with large biases identified, bias-correction techniques (bootstrap and jackknife) proposed, and a practical criterion for applied users established. The results are published in <em>Sociological Methods &amp; Research</em> (2025) and <em>Social Indicators Research</em> (2026) and implemented in the R package <a href="./software.html">giniVarCI</a>.</p>
+</div>
+</div>
+</div>
 <p><strong>Results.</strong> Monte Carlo studies with six distributions (Pareto, Dagum with <span class="math inline">p=20</span> and <span class="math inline">p=0.5</span>, lognormal, Weibull and Gamma), Gini indices from 0.1 to 0.8 and different sample sizes. They can be reproduced with the <a href="./simulation.html">interactive bias explorer</a>.</p>
 <p><strong>Conclusions.</strong></p>
 <ul>
@@ -946,51 +956,55 @@ window.Quarto = {
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>This page summarises the main results of the project. It is updated as new articles are published; the full list is in <span class="co">[</span><span class="ot">Publications</span><span class="co">](publications.qmd)</span>. The main articles are also explained in plain language in <span class="co">[</span><span class="ot">one-minute videos</span><span class="co">](videos.qmd)</span>, and the evidence of their impact (open access, citations, online attention and use) is on the <span class="co">[</span><span class="ot">Impact</span><span class="co">](impact.qmd)</span> page.</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">## OG1 · The bias of the Gini index</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">## OG1 · The bias of the Gini index {#og1}</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>**Results.** Monte Carlo studies with six distributions (Pareto, Dagum with $p=20$ and $p=0.5$, lognormal, Weibull and Gamma), Gini indices from 0.1 to 0.8 and different sample sizes. They can be reproduced with the <span class="co">[</span><span class="ot">interactive bias explorer</span><span class="co">](simulation.qmd)</span>.</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>**Conclusions.**</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip appearance="simple"}</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>**✔ Objective achieved.** The four specific objectives of OG1 (OE1–OE4) have been completed: the expressions of the Gini index have been classified, the scenarios with large biases identified, bias-correction techniques (bootstrap and jackknife) proposed, and a practical criterion for applied users established. The results are published in *Sociological Methods &amp; Research* (2025) and *Social Indicators Research* (2026) and implemented in the R package <span class="co">[</span><span class="ot">giniVarCI</span><span class="co">](software.qmd)</span>.</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$\widehat{G}_n^{a}$ has **excessively large biases** in datasets with low inequality. Two equivalent solutions:</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  a. replace $\widehat{F}_n(t)$ with the smoothed (mid-point) distribution function</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  $$\widehat{F}_n^{*}(t)=\frac{1}{n}\sum_{i\in S}\left<span class="co">[</span><span class="ot">\delta(y_i&lt;t)+0.5\,\delta(y_i=t)\right</span><span class="co">]</span>,$$</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  which gives the estimator $\widehat{G}_n^{b}$;</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  b. subtract $1/n$ when there are no ties: $\widehat{G}_n^{b}=\widehat{G}_n^{a}-1/n$.</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Skewness** has a significant effect on the bias of the three versions of the Gini index (hypothesis H1).</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>In highly skewed distributions, **inequality** has a major effect on the bias of the three versions (hypothesis H2).</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>**Publications.** *Exploring and correcting the bias in the estimation of the Gini measure of inequality* (Muñoz, Moya-Fernández and Álvarez-Verdejo, *Sociological Methods &amp; Research*); *A practical guide to proper estimation and inference of the Gini index by avoiding often encountered methodological pitfalls* (*Social Indicators Research*, 2026).</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="fu">## OG2 · Missing data and the Gini index</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>**Results.** Monte Carlo studies with six distributions (Pareto, Dagum with $p=20$ and $p=0.5$, lognormal, Weibull and Gamma), Gini indices from 0.1 to 0.8 and different sample sizes. They can be reproduced with the <span class="co">[</span><span class="ot">interactive bias explorer</span><span class="co">](simulation.qmd)</span>.</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>**Conclusions.**</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$\widehat{G}_n^{a}$ has **excessively large biases** in datasets with low inequality. Two equivalent solutions:</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  a. replace $\widehat{F}_n(t)$ with the smoothed (mid-point) distribution function</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  $$\widehat{F}_n^{*}(t)=\frac{1}{n}\sum_{i\in S}\left<span class="co">[</span><span class="ot">\delta(y_i&lt;t)+0.5\,\delta(y_i=t)\right</span><span class="co">]</span>,$$</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  which gives the estimator $\widehat{G}_n^{b}$;</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  b. subtract $1/n$ when there are no ties: $\widehat{G}_n^{b}=\widehat{G}_n^{a}-1/n$.</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Skewness** has a significant effect on the bias of the three versions of the Gini index (hypothesis H1).</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>In highly skewed distributions, **inequality** has a major effect on the bias of the three versions (hypothesis H2).</span>
 <span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>**In progress.** The project analyses the impact of missing data on the Gini index under the three non-response mechanisms (MCAR, MAR and MNAR), and compares complete-case analysis, single imputation and multiple imputation. The <span class="co">[</span><span class="ot">missing data simulator</span><span class="co">](missing-data.qmd)</span> illustrates the patterns that motivate this objective:</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>**Publications.** *Exploring and correcting the bias in the estimation of the Gini measure of inequality* (Muñoz, Moya-Fernández and Álvarez-Verdejo, *Sociological Methods &amp; Research*); *A practical guide to proper estimation and inference of the Gini index by avoiding often encountered methodological pitfalls* (*Social Indicators Research*, 2026).</span>
 <span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>deleting the cases with missing data (**complete-case analysis**) is only safe when data are missing completely at random (MCAR);</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**mean imputation** always underestimates inequality, because all imputed values are equal;</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**deterministic regression imputation** also underestimates inequality, because it ignores the residual variability;</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**stochastic regression imputation** and **multiple imputation** remove most of the bias when the data are missing at random (MAR) and the imputation model includes the variables related to non-response;</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>when non-response depends on income itself (**MNAR**), no standard method removes the bias.</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>**Working papers.** *The problem of missing data in strategic management research: critical issues, understanding and methodological insights* (Vendrell, Muñoz, Gomes and Lehman); *How to avoid common mistakes in water studies with missing data?* (Muñoz, Álvarez, Tortajada and Sarwar).</span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="fu">## OG3 · The R package giniVarCI</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="fu">## OG2 · Missing data and the Gini index</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>**In progress.** The project analyses the impact of missing data on the Gini index under the three non-response mechanisms (MCAR, MAR and MNAR), and compares complete-case analysis, single imputation and multiple imputation. The <span class="co">[</span><span class="ot">missing data simulator</span><span class="co">](missing-data.qmd)</span> illustrates the patterns that motivate this objective:</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>deleting the cases with missing data (**complete-case analysis**) is only safe when data are missing completely at random (MCAR);</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**mean imputation** always underestimates inequality, because all imputed values are equal;</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**deterministic regression imputation** also underestimates inequality, because it ignores the residual variability;</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**stochastic regression imputation** and **multiple imputation** remove most of the bias when the data are missing at random (MAR) and the imputation model includes the variables related to non-response;</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>when non-response depends on income itself (**MNAR**), no standard method removes the bias.</span>
 <span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>**Achieved.** The package [**giniVarCI**](software.qmd) is available on CRAN. It:</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>**Working papers.** *The problem of missing data in strategic management research: critical issues, understanding and methodological insights* (Vendrell, Muñoz, Gomes and Lehman); *How to avoid common mistakes in water studies with missing data?* (Muñoz, Álvarez, Tortajada and Sarwar).</span>
 <span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>estimates the Gini index for samples from finite and infinite populations with all the expressions of the literature;</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>computes variances and confidence intervals with different methods (jackknife, linearisation, bootstrap, empirical likelihood);</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>computes the Gini index of continuous probability distributions (Beta, Burr, Dagum, F, Fisk, Gamma, lognormal, Pareto, etc.);</span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>draws samples from continuous distributions with a Gini index set by the user;</span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>uses *Rcpp*, so calculations are faster than in other packages that compute the Gini index.</span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="fu">## OG4 · Applications and social impact</span></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>**In progress.** Applications in water economics, tourism, well-being and the labour market. Several of them are explained in <span class="co">[</span><span class="ot">one-minute videos</span><span class="co">](videos.qmd)</span>: tourism and inequality in the EU, tourism and poverty during the pandemic, growth and equal access to water and sanitation, the "happy and poor" paradox and the earnings of young talents. See all the <span class="co">[</span><span class="ot">publications</span><span class="co">](publications.qmd)</span> of the team.</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="fu">## OG3 · The R package giniVarCI</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>**Achieved.** The package [**giniVarCI**](software.qmd) is available on CRAN. It:</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>estimates the Gini index for samples from finite and infinite populations with all the expressions of the literature;</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>computes variances and confidence intervals with different methods (jackknife, linearisation, bootstrap, empirical likelihood);</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>computes the Gini index of continuous probability distributions (Beta, Burr, Dagum, F, Fisk, Gamma, lognormal, Pareto, etc.);</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>draws samples from continuous distributions with a Gini index set by the user;</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>uses *Rcpp*, so calculations are faster than in other packages that compute the Gini index.</span>
 <span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="fu">## OG5 · Dissemination</span></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="fu">## OG4 · Applications and social impact</span></span>
 <span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>**In progress.** See <span class="co">[</span><span class="ot">Publications</span><span class="co">](publications.qmd)</span>, the <span class="co">[</span><span class="ot">one-minute videos</span><span class="co">](videos.qmd)</span> and <span class="co">[</span><span class="ot">Workshops, seminars and conferences</span><span class="co">](dissemination.qmd)</span>, including the working group on inequality organised at the XVIII AECPA Congress (Granada, 2026) and the participation in the VIII and IX EIEE.</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>**In progress.** Applications in water economics, tourism, well-being and the labour market. Several of them are explained in <span class="co">[</span><span class="ot">one-minute videos</span><span class="co">](videos.qmd)</span>: tourism and inequality in the EU, tourism and poverty during the pandemic, growth and equal access to water and sanitation, the "happy and poor" paradox and the earnings of young talents. See all the <span class="co">[</span><span class="ot">publications</span><span class="co">](publications.qmd)</span> of the team.</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="fu">## OG5 · Dissemination</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>**In progress.** See <span class="co">[</span><span class="ot">Publications</span><span class="co">](publications.qmd)</span>, the <span class="co">[</span><span class="ot">one-minute videos</span><span class="co">](videos.qmd)</span> and <span class="co">[</span><span class="ot">Workshops, seminars and conferences</span><span class="co">](dissemination.qmd)</span>, including the working group on inequality organised at the XVIII AECPA Congress (Granada, 2026) and the participation in the VIII and IX EIEE.</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">

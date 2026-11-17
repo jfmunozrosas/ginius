@@ -16,6 +16,18 @@ subtitle: "Project status and short news on the activity of the team"
 ::: {.news-list}
 
 ::: {.news-item}
+<span class="news-date">November 2026</span> <span class="news-tag tag-project">Project</span>
+
+**Objective OG1 achieved.** The first general objective of the project, *identify and reduce the bias in studies based on the Gini index*, has been completed. Its results are published in *Sociological Methods & Research* and *Social Indicators Research* and implemented in [giniVarCI](software.qmd). See the [conclusions](results.qmd#og1).
+:::
+
+::: {.news-item}
+<span class="news-date">November 2026</span> <span class="news-tag tag-paper">Open access</span>
+
+**More articles in open access.** 27 of the 48 articles of the project can now be read free of charge: 17 in [DIGIBUG](https://digibug.ugr.es/), the open repository of the University of Granada, and the rest in repositories of partner universities or open-access journals. Look for **🔓** in [Publications](publications.qmd).
+:::
+
+::: {.news-item}
 <span class="news-date">November 2026</span> <span class="news-tag tag-web">Videos</span>
 
 **Our research in one minute.** Eight [one-minute videos](videos.qmd) explain, in plain language, the team's articles on inequality and poverty: the Gini index, the "happy and poor" paradox, water and sanitation, tourism, young talents' earnings and innovation. They are also published in the [blog](blog/index.qmd).

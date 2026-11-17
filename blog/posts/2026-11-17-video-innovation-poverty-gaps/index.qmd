@@ -20,6 +20,8 @@ image: ../../../media/videos/innovation-poverty-gaps.jpg
 - Differences between Northern and Southern Europe.
 - Changes within countries over time and differences between countries.
 
+**What the study compares (in the video).** Innovation, income gaps and poverty in Europe. *Source: Journal of Poverty (2026). Results by country and over time in the article.*
+
 **Why it matters.** Innovation policies can widen or narrow income gaps. Knowing where and how helps to design fairer innovation policies in Europe.
 
 All the videos are on the page [Our research in one minute](../../../videos.qmd).

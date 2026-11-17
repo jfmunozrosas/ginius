@@ -20,6 +20,8 @@ image: ../../../media/videos/gini-practical-guide.jpg
 - A popular regression-based method seriously underestimates the margin of error when incomes are very skewed and unequal.
 - Jackknife methods give the most accurate margins of error.
 
+**Key result (in the video).** How often the 95% margin of error contains the true Gini. *Monte Carlo illustration: lognormal incomes, samples of 100, 4,000 replications (computed by GiniUs). As inequality grows, the regression method falls far below 95%.*
+
 **Why it matters.** Margins of error that are too small can make us believe inequality changed when it did not. The paper gives practical recommendations and the free R package giniVarCI.
 
 All the videos are on the page [Our research in one minute](../../../videos.qmd).
