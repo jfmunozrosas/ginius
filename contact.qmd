@@ -1,0 +1,104 @@
+---
+title: "Contact and collaboration"
+subtitle: "For researchers, institutions and organisations interested in collaborating with GiniUs"
+toc: false
+---
+
+We welcome contact from external researchers and organisations, in particular in the **transfer areas** of the project:
+
+::: {.transfer-grid}
+<div class="transfer-item"><b>Measuring inequality</b><br>Estimation of the Gini index, bias correction, variances and confidence intervals; income and gender inequality</div>
+<div class="transfer-item"><b>Missing data</b><br>Non-response in income surveys; response mechanisms; single and multiple imputation</div>
+<div class="transfer-item"><b>Software</b><br>The R package <i>giniVarCI</i>; reproducible research with R and Quarto</div>
+<div class="transfer-item"><b>Water</b><br>Inequality in water consumption, availability and prices; water reuse and governance</div>
+<div class="transfer-item"><b>Tourism</b><br>Tourism and inequality; tourism and gender; regional development</div>
+<div class="transfer-item"><b>Business management</b><br>Missing data in strategic management and international business research</div>
+:::
+
+## Send us a message
+
+The form opens your email application with the message ready to send. No data are stored on this website.
+
+```{=html}
+<!-- To change the contact address, edit CONTACT_EMAIL below (one line). -->
+<form id="contact-form" class="contact-form" onsubmit="return giniusContact(event)">
+  <div class="row g-3">
+    <div class="col-md-6"><label class="form-label" for="cf-name">Name</label>
+      <input class="form-control" id="cf-name" required></div>
+    <div class="col-md-6"><label class="form-label" for="cf-inst">Institution</label>
+      <input class="form-control" id="cf-inst"></div>
+    <div class="col-md-6"><label class="form-label" for="cf-area">Area of interest</label>
+      <select class="form-select" id="cf-area">
+        <option>Gini index: bias, variances and confidence intervals</option>
+        <option>Missing data and imputation</option>
+        <option>R package giniVarCI</option>
+        <option>Water</option>
+        <option>Tourism</option>
+        <option>Business management</option>
+        <option>Gender inequality</option>
+        <option>Data sharing</option>
+        <option>Seminars, visits and research stays</option>
+        <option>Other</option>
+      </select></div>
+    <div class="col-md-6"><label class="form-label" for="cf-type">Type of collaboration</label>
+      <select class="form-select" id="cf-type">
+        <option>Joint research or co-authorship</option>
+        <option>Applying the methods to my data</option>
+        <option>Seminar or conference invitation</option>
+        <option>Research stay</option>
+        <option>Information about the project</option>
+      </select></div>
+    <div class="col-12"><label class="form-label" for="cf-msg">Message</label>
+      <textarea class="form-control" id="cf-msg" rows="5" required></textarea></div>
+    <div class="col-12"><button class="btn btn-primary" type="submit">Prepare email</button></div>
+  </div>
+</form>
+<script>
+const CONTACT_EMAIL = "jfmunoz@ugr.es";
+function giniusContact(e) {
+  e.preventDefault();
+  const v = id => document.getElementById(id).value.trim();
+  const subject = `[GiniUs] Collaboration: ${v("cf-area")}`;
+  const body = `Name: ${v("cf-name")}\nInstitution: ${v("cf-inst")}\nArea of interest: ${v("cf-area")}\nType of collaboration: ${v("cf-type")}\n\n${v("cf-msg")}`;
+  window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  return false;
+}
+</script>
+```
+
+## Where to find us
+
+```{=html}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<div class="row g-3 align-items-start">
+  <div class="col-md-7"><div id="contact-map" class="map-box map-box-small" role="region" aria-label="Map of the Faculty of Economics and Business, University of Granada"></div></div>
+  <div class="col-md-5">
+    <p><b>Facultad de Ciencias Económicas y Empresariales</b><br>Universidad de Granada<br>Campus Universitario de Cartuja, s/n<br>18071 Granada, Spain</p>
+    <p>Department of Quantitative Methods for Economics and Business</p>
+    <p><a href="mailto:jfmunoz@ugr.es">jfmunoz@ugr.es</a></p>
+    <p><a href="https://www.openstreetmap.org/?mlat=37.1938&amp;mlon=-3.5985#map=17/37.1938/-3.5985" target="_blank" rel="noopener">Open in OpenStreetMap ↗</a></p>
+  </div>
+</div>
+<script>
+(function () {
+  function draw() {
+    if (typeof L === "undefined") { setTimeout(draw, 200); return; }
+    const p = [37.1938, -3.5985];
+    const map = L.map("contact-map", {scrollWheelZoom: false}).setView(p, 16);
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+    L.circleMarker(p, {radius: 11, color: "#fff", weight: 2, fillColor: "#C9962B", fillOpacity: 0.95}).addTo(map)
+      .bindPopup("<b>Facultad de Ciencias Económicas y Empresariales</b><br>Universidad de Granada<br>Campus de Cartuja, 18071 Granada").openPopup();
+  }
+  draw();
+})();
+</script>
+```
+
+## Other ways to get in touch
+
+- **Email:** [jfmunoz@ugr.es](mailto:jfmunoz@ugr.es)
+- **Principal investigators:** [Juan Francisco Muñoz Rosas](https://scholar.google.es/citations?user=gedX7Z8AAAAJ&hl=es&oi=ao) (Department of Quantitative Methods for Economics and Business) and Francisco José González Gómez (Department of Applied Economics), Faculty of Economics and Business, University of Granada (Spain).
+- **Code and data:** suggestions and issues can be posted in the [GitHub repository](https://github.com/jfmunozrosas/ginius/issues).

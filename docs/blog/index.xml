@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>GiniUs</title>
+<link>https://jfmunozrosas.github.io/ginius/blog/</link>
+<atom:link href="https://jfmunozrosas.github.io/ginius/blog/index.xml" rel="self" type="application/rss+xml"/>
+<description>GiniUs research project (PID2022-136235NB-I00). Challenges for the analysis of inequality with applications in the Social Sciences: using new methodological developments to avoid biases and errors in the Gini index.</description>
+<generator>quarto-1.7.32</generator>
+<lastBuildDate>Mon, 16 Nov 2026 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>Missing incomes can make inequality look smaller than it is</title>
+  <dc:creator>GiniUs team</dc:creator>
+  <link>https://jfmunozrosas.github.io/ginius/blog/posts/2026-11-17-missing-incomes/</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Income is one of the questions that people most often refuse to answer in surveys. If the people who do not answer were just a random subset of the sample (<strong>MCAR</strong>), deleting them would only cost precision. But non-response is rarely random: very rich and, sometimes, very poor households answer less often.</p>
+<p>When high incomes are more often missing, the respondents look <strong>more equal</strong> than the population, and the Gini index computed with the complete cases <strong>underestimates inequality</strong>. Two popular fixes make things worse:</p>
+<ul>
+<li><strong>Mean imputation</strong> gives every non-respondent the same income, so it removes inequality by construction.</li>
+<li><strong>Regression imputation</strong> without a random residual places every imputed value on the regression line, with the same effect.</li>
+</ul>
+<p>If non-response depends on variables that we observe for everybody, such as education, age or region (<strong>MAR</strong>), <strong>multiple imputation</strong> with these variables in the imputation model removes most of the bias and gives honest margins of error. If it depends on income itself (<strong>MNAR</strong>), no standard method is enough, and sensitivity analyses are needed.</p>
+<p>You can see all this with your own eyes in the <a href="../../../missing-data.html">missing data simulator</a>: choose a distribution, a percentage of missing data and a mechanism, and compare six methods. This is the topic of objective OG2 of GiniUs.</p>
+
+
+<!-- -->
+
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
+  <category>missing data</category>
+  <category>methods</category>
+  <guid>https://jfmunozrosas.github.io/ginius/blog/posts/2026-11-17-missing-incomes/</guid>
+  <pubDate>Mon, 16 Nov 2026 23:00:00 GMT</pubDate>
+  <media:content url="https://jfmunozrosas.github.io/ginius/images/favicon_ginius.png" medium="image" type="image/png" height="128" width="128"/>
+</item>
+<item>
+  <title>Welcome to the new GiniUs website</title>
+  <dc:creator>GiniUs team</dc:creator>
+  <link>https://jfmunozrosas.github.io/ginius/blog/posts/2026-11-17-welcome/</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>GiniUs studies how to measure inequality reliably with the <strong>Gini index</strong>: which estimator to use, how large its bias can be, how to obtain margins of error that can be trusted, and how to deal with missing incomes. The project, funded by the Spanish State Research Agency (PID2022-136235NB-I00), is now in its fourth and last year.</p>
+<p>The new website brings together the results of the project and several tools that run in your browser, without installing anything:</p>
+<ul>
+<li>a <a href="../../../calculator.html">Gini index calculator</a> for your own data, with jackknife and bootstrap confidence intervals and the Lorenz curve;</li>
+<li>an <a href="../../../simulation.html">interactive bias explorer</a> that reproduces the Monte Carlo studies of the project;</li>
+<li>a <a href="../../../missing-data.html">missing data simulator</a> that compares complete-case analysis, single imputation and multiple imputation under the MCAR, MAR and MNAR mechanisms;</li>
+<li><a href="../../../practice.html">R exercises</a>, including the R package <strong>giniVarCI</strong> running in the browser;</li>
+<li>an <a href="../../../observatory.html">inequality observatory</a> with official Gini indices from Eurostat, the World Bank and INE.</li>
+</ul>
+<p>In this blog we will publish <strong>short posts</strong> on new articles, software releases, seminars and practical advice on measuring inequality. You can follow it through the RSS feed or by <a href="../../../news.html">subscribing</a>.</p>
+
+
+<!-- -->
+
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
+  <category>news</category>
+  <guid>https://jfmunozrosas.github.io/ginius/blog/posts/2026-11-17-welcome/</guid>
+  <pubDate>Mon, 16 Nov 2026 23:00:00 GMT</pubDate>
+  <media:content url="https://jfmunozrosas.github.io/ginius/images/logo_ginius.png" medium="image" type="image/png" height="38" width="144"/>
+</item>
+</channel>
+</rss>

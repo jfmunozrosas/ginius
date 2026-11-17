@@ -1,0 +1,18 @@
+---
+title: "Missing incomes can make inequality look smaller than it is"
+date: "2026-11-17"
+categories: [missing data, methods]
+description: "Why deleting the people who do not report their income, or imputing the mean, biases the Gini index downwards, and what to do instead."
+image: ../../../images/favicon_ginius.png
+---
+
+Income is one of the questions that people most often refuse to answer in surveys. If the people who do not answer were just a random subset of the sample (**MCAR**), deleting them would only cost precision. But non-response is rarely random: very rich and, sometimes, very poor households answer less often.
+
+When high incomes are more often missing, the respondents look **more equal** than the population, and the Gini index computed with the complete cases **underestimates inequality**. Two popular fixes make things worse:
+
+- **Mean imputation** gives every non-respondent the same income, so it removes inequality by construction.
+- **Regression imputation** without a random residual places every imputed value on the regression line, with the same effect.
+
+If non-response depends on variables that we observe for everybody, such as education, age or region (**MAR**), **multiple imputation** with these variables in the imputation model removes most of the bias and gives honest margins of error. If it depends on income itself (**MNAR**), no standard method is enough, and sensitivity analyses are needed.
+
+You can see all this with your own eyes in the [missing data simulator](../../../missing-data.qmd): choose a distribution, a percentage of missing data and a mechanism, and compare six methods. This is the topic of objective OG2 of GiniUs.

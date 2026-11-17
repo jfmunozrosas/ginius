@@ -1,0 +1,52 @@
+---
+title: "Results and conclusions"
+subtitle: "Main findings of GiniUs, by general objective"
+---
+
+This page summarises the main results of the project. It is updated as new articles are published; the full list is in [Publications](publications.qmd).
+
+## OG1 · The bias of the Gini index
+
+**Results.** Monte Carlo studies with six distributions (Pareto, Dagum with $p=20$ and $p=0.5$, lognormal, Weibull and Gamma), Gini indices from 0.1 to 0.8 and different sample sizes. They can be reproduced with the [interactive bias explorer](simulation.qmd).
+
+**Conclusions.**
+
+- $\widehat{G}_n^{a}$ has **excessively large biases** in datasets with low inequality. Two equivalent solutions:
+  a. replace $\widehat{F}_n(t)$ with the smoothed (mid-point) distribution function
+  $$\widehat{F}_n^{*}(t)=\frac{1}{n}\sum_{i\in S}\left[\delta(y_i<t)+0.5\,\delta(y_i=t)\right],$$
+  which gives the estimator $\widehat{G}_n^{b}$;
+  b. subtract $1/n$ when there are no ties: $\widehat{G}_n^{b}=\widehat{G}_n^{a}-1/n$.
+- **Skewness** has a significant effect on the bias of the three versions of the Gini index (hypothesis H1).
+- In highly skewed distributions, **inequality** has a major effect on the bias of the three versions (hypothesis H2).
+
+**Publications.** *Exploring and correcting the bias in the estimation of the Gini measure of inequality* (Muñoz, Moya-Fernández and Álvarez-Verdejo, *Sociological Methods & Research*); *A practical guide to proper estimation and inference of the Gini index by avoiding often encountered methodological pitfalls* (*Social Indicators Research*, 2026).
+
+## OG2 · Missing data and the Gini index
+
+**In progress.** The project analyses the impact of missing data on the Gini index under the three non-response mechanisms (MCAR, MAR and MNAR), and compares complete-case analysis, single imputation and multiple imputation. The [missing data simulator](missing-data.qmd) illustrates the patterns that motivate this objective:
+
+- deleting the cases with missing data (**complete-case analysis**) is only safe when data are missing completely at random (MCAR);
+- **mean imputation** always underestimates inequality, because all imputed values are equal;
+- **deterministic regression imputation** also underestimates inequality, because it ignores the residual variability;
+- **stochastic regression imputation** and **multiple imputation** remove most of the bias when the data are missing at random (MAR) and the imputation model includes the variables related to non-response;
+- when non-response depends on income itself (**MNAR**), no standard method removes the bias.
+
+**Working papers.** *The problem of missing data in strategic management research: critical issues, understanding and methodological insights* (Vendrell, Muñoz, Gomes and Lehman); *How to avoid common mistakes in water studies with missing data?* (Muñoz, Álvarez, Tortajada and Sarwar).
+
+## OG3 · The R package giniVarCI
+
+**Achieved.** The package [**giniVarCI**](software.qmd) is available on CRAN. It:
+
+1. estimates the Gini index for samples from finite and infinite populations with all the expressions of the literature;
+2. computes variances and confidence intervals with different methods (jackknife, linearisation, bootstrap, empirical likelihood);
+3. computes the Gini index of continuous probability distributions (Beta, Burr, Dagum, F, Fisk, Gamma, lognormal, Pareto, etc.);
+4. draws samples from continuous distributions with a Gini index set by the user;
+5. uses *Rcpp*, so calculations are faster than in other packages that compute the Gini index.
+
+## OG4 · Applications and social impact
+
+**In progress.** Applications in water economics, tourism and business management. See the [publications](publications.qmd) of the team in these areas.
+
+## OG5 · Dissemination
+
+**In progress.** See [Publications](publications.qmd) and [Seminars and conferences](dissemination.qmd).

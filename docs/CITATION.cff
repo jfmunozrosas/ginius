@@ -1,0 +1,35 @@
+cff-version: 1.2.0
+message: "If you use the materials or tools of this website, please cite it as below."
+title: "GiniUs: avoiding biases and errors in the Gini index (website, interactive tools and R code)"
+type: software
+authors:
+  - family-names: "Muñoz Rosas"
+    given-names: "Juan Francisco"
+    orcid: "https://orcid.org/0000-0001-7427-6630"
+    affiliation: "University of Granada"
+  - family-names: "González Gómez"
+    given-names: "Francisco José"
+    affiliation: "University of Granada"
+date-released: "2026-11-17"
+url: "https://jfmunozrosas.github.io/ginius/"
+repository-code: "https://github.com/jfmunozrosas/ginius"
+license: CC-BY-4.0
+keywords:
+  - Gini index
+  - inequality
+  - bias
+  - missing data
+  - confidence intervals
+  - R
+references:
+  - type: software
+    title: "giniVarCI: Gini Indices, Variances and Confidence Intervals for Finite and Infinite Populations"
+    authors:
+      - family-names: "Muñoz"
+        given-names: "Juan Francisco"
+      - family-names: "Pavía"
+        given-names: "Jose M."
+      - family-names: "Álvarez Verdejo"
+        given-names: "Encarnación"
+    doi: "10.32614/CRAN.package.giniVarCI"
+    version: "0.0.1-3"

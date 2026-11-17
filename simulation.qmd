@@ -1,0 +1,162 @@
+---
+title: "Interactive bias explorer"
+subtitle: "How skewness, inequality and sample size affect the bias of the estimators of the Gini index"
+---
+
+This page runs Monte Carlo experiments **in your browser**, reproducing and extending the study of the project proposal (Figure 2) and of Muñoz, Moya-Fernández and Álvarez-Verdejo (*Sociological Methods & Research*). For each value of the Gini index $G$, it draws `R` samples of size `n` from each distribution, whose parameters are chosen so that the true Gini index equals $G$, and computes the empirical **relative bias**
+
+$$
+RB(\%) = 100 \times \frac{\frac{1}{R}\sum_{r=1}^{R}\widehat{G}^{(r)} - G}{G}.
+$$
+
+The bias is *negligible* if $|RB|<2\%$, *acceptable* if $|RB|<5\%$ and *large* otherwise. In terms of skewness, Pareto is the most skewed distribution, followed by Dagum ($p=20$), Dagum ($p=0.5$), lognormal, Weibull and Gamma.
+
+```{=html}
+<script src="js/gini-sim.js"></script>
+```
+
+```{ojs}
+//| echo: false
+//| output: false
+GS = new Promise(resolve => { const ok = () => window.GiniSim ? resolve(window.GiniSim) : setTimeout(ok, 50); ok(); })
+Ggrid = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8]
+estColors = ({"Ga": "#D43F3A", "Gb": "#1A5FA8", "Gc": "#C9962B", "Gc (jackknife-corrected)": "#5E8C61"})
+```
+
+## Relative bias of $\widehat{G}_n^{a}$, $\widehat{G}_n^{b}$ and $\widehat{G}_n^{c}$
+
+```{ojs}
+//| echo: false
+viewof biasPar = Inputs.form({
+  n: Inputs.select([20, 50, 100, 200, 500], {label: "Sample size (n)", value: 50}),
+  R: Inputs.select([200, 500, 1000, 2000], {label: "Replications (R)", value: 500}),
+  dists: Inputs.checkbox(["Pareto", "Dagum-p20", "Dagum-p0.5", "Lognormal", "Weibull", "Gamma"], {label: "Distributions", value: ["Pareto", "Dagum-p20", "Dagum-p0.5", "Lognormal", "Weibull", "Gamma"]}),
+  est: Inputs.checkbox(["Ga", "Gb", "Gc", "Gc (jackknife-corrected)"], {label: "Estimators", value: ["Ga", "Gb", "Gc"]})
+})
+```
+
+```{ojs}
+//| echo: false
+biasRes = GS.biasExperiment({dists: biasPar.dists, Ggrid, n: biasPar.n, R: biasPar.R, jack: biasPar.est.includes("Gc (jackknife-corrected)")})
+biasShown = biasRes.filter(d => biasPar.est.includes(d.estimator))
+biasPar.dists.length && biasPar.est.length ? Plot.plot({
+  width: 960, height: 240 * Math.ceil(biasPar.dists.length / 3), marginLeft: 50,
+  fx: {label: null}, fy: {label: null, axis: null},
+  x: {label: "True Gini index (G)", ticks: [0.2, 0.4, 0.6, 0.8], grid: true},
+  y: {label: "Relative bias (%)", grid: true},
+  color: {legend: true, domain: biasPar.est, range: biasPar.est.map(e => estColors[e])},
+  marks: [
+    Plot.rect([{x1: 0.07, x2: 0.83, y1: -2, y2: 2}], {x1: "x1", x2: "x2", y1: "y1", y2: "y2", fill: "#5E8C61", fillOpacity: 0.12}),
+    Plot.ruleY([0], {stroke: "#888", strokeDasharray: "4,3"}),
+    Plot.line(biasShown, {x: "G", y: "RB", stroke: "estimator", strokeWidth: 2.3,
+      fx: d => biasPar.dists.indexOf(d.distribution) % 3, fy: d => Math.floor(biasPar.dists.indexOf(d.distribution) / 3)}),
+    Plot.dot(biasShown, {x: "G", y: "RB", fill: "estimator", r: 3, tip: true,
+      fx: d => biasPar.dists.indexOf(d.distribution) % 3, fy: d => Math.floor(biasPar.dists.indexOf(d.distribution) / 3),
+      title: d => `${d.distribution} · G = ${d.G}\n${d.estimator}: RB = ${d.RB.toFixed(2)}%`}),
+    Plot.text(biasPar.dists, {text: d => d, frameAnchor: "top", dy: 4, fontWeight: 700,
+      fx: d => biasPar.dists.indexOf(d) % 3, fy: d => Math.floor(biasPar.dists.indexOf(d) / 3)})
+  ]
+}) : html`<p class="pending">Select at least one distribution and one estimator.</p>`
+```
+
+<p class="rb-legend">Shaded band: negligible bias (|RB| &lt; 2%). Hover over the points to see the values.</p>
+
+```{ojs}
+//| echo: false
+Inputs.table(biasShown.map(d => ({Distribution: d.distribution, G: d.G, Estimator: d.estimator, "RB (%)": +d.RB.toFixed(2),
+  Assessment: Math.abs(d.RB) < 2 ? "negligible" : Math.abs(d.RB) < 5 ? "acceptable" : "large"})), {rows: 10})
+```
+
+::: {.callout-note}
+## How to read the results
+- $\widehat{G}_n^{a}$ has **very large positive biases when inequality is low** (around +18% with $G=0.1$ and $n=50$): it adds approximately $1/n$ to $\widehat{G}_n^{b}$.
+- With **highly skewed** distributions (Pareto, Dagum) and **high inequality**, all the estimators **underestimate** the Gini index, and the bias remains large even with moderate sample sizes (hypotheses H1 and H2).
+- $\widehat{G}_n^{c}=\frac{n}{n-1}\widehat{G}_n^{b}$ removes most of the bias in symmetric or moderately skewed data, and the jackknife correction reduces, but does not remove, the bias of highly skewed data.
+:::
+
+## Skewness and inequality
+
+The expected (Fisher) skewness coefficient of the samples, for each distribution and value of $G$. Skewness grows with inequality, and so does the bias of the Gini estimators.
+
+```{ojs}
+//| echo: false
+Plot.plot({
+  width: 760, height: 340, marginLeft: 50,
+  x: {label: "True Gini index (G)", grid: true},
+  y: {label: "Expected skewness of the sample", grid: true},
+  color: {legend: true},
+  marks: [
+    Plot.line(biasRes.filter(d => d.estimator === "skewness"), {x: "G", y: "RB", stroke: "distribution", strokeWidth: 2.2}),
+    Plot.dot(biasRes.filter(d => d.estimator === "skewness"), {x: "G", y: "RB", fill: "distribution", r: 3, tip: true,
+      title: d => `${d.distribution} · G = ${d.G}\nskewness = ${d.RB.toFixed(2)}`})
+  ]
+})
+```
+
+## Comparing two distributions: box plots of $\widehat{G}_n^{c}$
+
+```{ojs}
+//| echo: false
+viewof boxPar = Inputs.form({
+  d1: Inputs.select(["Pareto", "Dagum-p20", "Dagum-p0.5", "Lognormal", "Weibull", "Gamma"], {label: "First distribution", value: "Pareto"}),
+  d2: Inputs.select(["Pareto", "Dagum-p20", "Dagum-p0.5", "Lognormal", "Weibull", "Gamma"], {label: "Second distribution", value: "Gamma"}),
+  n: Inputs.select([20, 50, 100, 200, 500], {label: "Sample size (n)", value: 50}),
+  R: Inputs.select([100, 200, 500, 1000], {label: "Number of estimates", value: 200})
+})
+```
+
+```{ojs}
+//| echo: false
+boxData = [...GS.replicates({dist: boxPar.d1, Ggrid: [0.2, 0.4, 0.6, 0.8], n: boxPar.n, R: boxPar.R, seed: 11}),
+           ...(boxPar.d2 === boxPar.d1 ? [] : GS.replicates({dist: boxPar.d2, Ggrid: [0.2, 0.4, 0.6, 0.8], n: boxPar.n, R: boxPar.R, seed: 22}))]
+Plot.plot({
+  width: 760, height: 380, marginLeft: 50,
+  fx: {label: "True Gini index (G)", padding: 0.15},
+  x: {axis: null, domain: [boxPar.d1, boxPar.d2]},
+  y: {label: "Estimates of the Gini index", grid: true},
+  color: {legend: true, domain: [boxPar.d1, boxPar.d2], range: ["#C9962B", "#1A5FA8"]},
+  marks: [
+    Plot.boxY(boxData, {fx: "G", x: "distribution", y: "estimate", fill: "distribution", fillOpacity: 0.6, r: 1.5}),
+    Plot.ruleY([0.2, 0.4, 0.6, 0.8].map(g => ({g})), {fx: d => d.g, y: "g", stroke: "#D43F3A", strokeDasharray: "4,3"})
+  ]
+})
+```
+
+<p class="rb-legend">Dashed red line: true value of the Gini index. With highly skewed distributions the estimates are more variable and most of them are below the true value.</p>
+
+## What do these distributions look like?
+
+```{ojs}
+//| echo: false
+viewof histPar = Inputs.form({
+  G: Inputs.range([0.1, 0.8], {label: "Gini index (G)", step: 0.1, value: 0.3}),
+  n: Inputs.select([50, 100, 200, 500, 1000], {label: "Sample size (n)", value: 500})
+})
+```
+
+```{ojs}
+//| echo: false
+histData = {
+  const rng = GS.makeRng(5), out = [];
+  for (const d of GS.DISTRIBUTIONS) {
+    const y = GS.sample(d, histPar.G, histPar.n, rng), m = GS.mean(y);
+    for (const v of y) out.push({distribution: d, value: v / m});
+  }
+  return out;
+}
+Plot.plot({
+  width: 960, height: 440, marginLeft: 45,
+  fx: {label: null}, fy: {label: null, axis: null},
+  x: {label: "Value relative to the sample mean (values above 4 are grouped at 4)", domain: [0, 4.05]},
+  y: {label: "Frequency", grid: true},
+  marks: [
+    Plot.rectY(histData, Plot.binX({y: "count"}, {x: d => Math.min(d.value, 4), thresholds: 30, fill: "#1A5FA8", fillOpacity: 0.75,
+      fx: d => GS.DISTRIBUTIONS.indexOf(d.distribution) % 3, fy: d => Math.floor(GS.DISTRIBUTIONS.indexOf(d.distribution) / 3)})),
+    Plot.text(GS.DISTRIBUTIONS, {text: d => d, frameAnchor: "top-right", dy: 4, dx: -4, fontWeight: 700,
+      fx: d => GS.DISTRIBUTIONS.indexOf(d) % 3, fy: d => Math.floor(GS.DISTRIBUTIONS.indexOf(d) / 3)}),
+    Plot.ruleY([0])
+  ]
+})
+```
+
+The code of these simulations is in [`js/gini-sim.js`](js/gini-sim.js). The full simulation studies of the project are carried out in R; see [Research data and R code](data-code.qmd).

@@ -1,0 +1,800 @@
+[
+  {
+    "objectID": "team.html",
+    "href": "team.html",
+    "title": "Team",
+    "section": "",
+    "text": "Click on a name to open the researcher’s profile. Researchers at foreign institutions reinforce the international character of the project, and the four fields of knowledge ensure that the new methods are transferred to the Social Sciences."
+  },
+  {
+    "objectID": "team.html#principal-investigators",
+    "href": "team.html#principal-investigators",
+    "title": "Team",
+    "section": "Principal investigators",
+    "text": "Principal investigators\n\nJuan Francisco Muñoz Rosas (PI 1). University of Granada, Spain · Quantitative Methods for Economics and Business.\nFrancisco José González Gómez (PI 2). University of Granada, Spain · Applied Economics."
+  },
+  {
+    "objectID": "team.html#members-by-field",
+    "href": "team.html#members-by-field",
+    "title": "Team",
+    "section": "Members by field",
+    "text": "Members by field\n\nQuantitative Methods for Economics and Business\n\nGini index · Bias · Variance estimation · Missing data · Survey sampling · Econometrics · R software\n\n\nEncarnación Álvarez Verdejo — University of Granada, Spain\nJorge Miguel Chica Olmo — University of Granada, Spain\nIrene García Garrido — University of Granada, Spain\nRosa María García Fernández — University of Granada, Spain\nPablo José Moya Fernández — University of Granada, Spain\nJuan Francisco Muñoz Rosas (PI 1) — University of Granada, Spain\nYves G. Berger — University of Southampton, United Kingdom\n\n\n\nApplied Economics\n\nWater economics · Well-being · Poverty · Labour economics\n\n\nFrancisco José González Gómez (PI 2) — University of Granada, Spain\nJorge Guardiola Wanden-Berghe — University of Granada, Spain\nMª Nazaret Ibáñez Rueda — University of León, Spain\nSamara López Ruiz — University of Valladolid, Spain\nJosé Antonio Rodríguez Martín — University of Granada, Spain\nTindara Addabbo — University of Modena and Reggio Emilia, Italy\nCecilia Tortajada Quiroz — University of Glasgow, United Kingdom\n\n\n\nInternational and Spanish Economics\n\nTourism · Poverty · Regional development\n\n\nAmalia Cristina Casas Jurado — University of Granada, Spain\nCarmen María Llorca Rodríguez — University of Granada, Spain\n\n\n\nBusiness Management\n\nStrategic management · International business · Servitization\n\n\nFerran Vendrell-Herrero — University of Edinburgh, United Kingdom\nEmanuel Gomes — NOVA University Lisbon, Portugal\n\n\nQuantitative Methods Applied Economics International Economics Business Management United Kingdom · Italy · Portugal"
+  },
+  {
+    "objectID": "team.html#where-we-work",
+    "href": "team.html#where-we-work",
+    "title": "Team",
+    "section": "Where we work",
+    "text": "Where we work\nClick on a marker to see the institution and its researchers."
+  },
+  {
+    "objectID": "team.html#co-authorship-network",
+    "href": "team.html#co-authorship-network",
+    "title": "Team",
+    "section": "Co-authorship network",
+    "text": "Co-authorship network\nNumber of co-authored articles in journals indexed in the Journal Citation Reports between members of the project. Researchers at foreign institutions are written in capitals. Hover over a researcher to highlight his or her co-authorships.\n\n\nCode\ncoauthNames = [\"González\", \"Ibáñez\", \"López\", \"TORTAJADA\", \"Guardiola\", \"ADDABBO\", \"Álvarez\", \"Chica\", \"R.M. García\", \"Moya\", \"Muñoz\", \"BERGER\", \"VENDRELL\", \"GOMES\", \"Casas\", \"Llorca\"]\ncoauthField = [\"Applied Economics\", \"Applied Economics\", \"Applied Economics\", \"Applied Economics\", \"Applied Economics\", \"Applied Economics\",\n               \"Quantitative Methods\", \"Quantitative Methods\", \"Quantitative Methods\", \"Quantitative Methods\", \"Quantitative Methods\", \"Quantitative Methods\",\n               \"Business Management\", \"Business Management\", \"International and Spanish Economics\", \"International and Spanish Economics\"]\ncoauthMatrix = {\n  // Columns of the original co-authorship table (row order = coauthNames)\n  const cols = {\n    \"González\":   [0, 2, 4, 5, 25, 0, 0, 2, 0, 2, 0, 0, 0, 0, 0, 0],\n    \"Ibáñez\":     [0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],\n    \"López\":      [0, 0, 0, 0, 1, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0],\n    \"TORTAJADA\":  [0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],\n    \"Guardiola\":  [0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0],\n    \"ADDABBO\":    [0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 4],\n    \"Álvarez\":    [0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 12, 0, 0, 0, 0, 0],\n    \"Chica\":      [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1],\n    \"R.M. García\":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 3, 8],\n    \"Moya\":       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0],\n    \"Muñoz\":      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0],\n    \"BERGER\":     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],\n    \"VENDRELL\":   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 0, 0],\n    \"GOMES\":      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],\n    \"Casas\":      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5]\n  };\n  const n = coauthNames.length, M = Array.from({length: n}, () =&gt; new Array(n).fill(0));\n  Object.values(cols).forEach((col, j) =&gt; col.forEach((v, i) =&gt; { if (v) { M[i][j] += v; M[j][i] += v; } }));\n  return M;\n}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\n{\n  const width = 640, height = 640, outer = Math.min(width, height) / 2 - 90, inner = outer - 14;\n  const fieldColor = d3.scaleOrdinal([\"Quantitative Methods\", \"Applied Economics\", \"International and Spanish Economics\", \"Business Management\"],\n                                     [\"#1A5FA8\", \"#C9962B\", \"#D43F3A\", \"#5E8C61\"]);\n  const chord = d3.chord().padAngle(0.04).sortSubgroups(d3.descending)(coauthMatrix);\n  const svg = d3.create(\"svg\").attr(\"viewBox\", [-width / 2, -height / 2, width, height]).attr(\"width\", \"100%\").style(\"max-width\", \"640px\").style(\"font\", \"13px sans-serif\");\n  svg.append(\"g\").attr(\"fill-opacity\", 0.7).selectAll(\"path\").data(chord).join(\"path\")\n    .attr(\"d\", d3.ribbon().radius(inner)).attr(\"fill\", d =&gt; fieldColor(coauthField[d.source.index])).attr(\"stroke\", \"white\")\n    .append(\"title\").text(d =&gt; `${coauthNames[d.source.index]} – ${coauthNames[d.target.index]}: ${d.source.value} article(s)`);\n  const group = svg.append(\"g\").selectAll(\"g\").data(chord.groups).join(\"g\");\n  group.append(\"path\").attr(\"d\", d3.arc().innerRadius(inner).outerRadius(outer)).attr(\"fill\", d =&gt; fieldColor(coauthField[d.index]))\n    .append(\"title\").text(d =&gt; `${coauthNames[d.index]}: ${d.value} co-authorship(s)`);\n  group.append(\"text\").each(d =&gt; { d.angle = (d.startAngle + d.endAngle) / 2; })\n    .attr(\"dy\", \"0.35em\")\n    .attr(\"transform\", d =&gt; `rotate(${d.angle * 180 / Math.PI - 90}) translate(${outer + 8}) ${d.angle &gt; Math.PI ? \"rotate(180)\" : \"\"}`)\n    .attr(\"text-anchor\", d =&gt; d.angle &gt; Math.PI ? \"end\" : null)\n    .text(d =&gt; coauthNames[d.index]);\n  const ribbonPaths = svg.select(\"g\").selectAll(\"path\");\n  group.on(\"mouseenter\", (e, g) =&gt; ribbonPaths.attr(\"fill-opacity\", d =&gt; d.source.index === g.index || d.target.index === g.index ? 0.9 : 0.08))\n       .on(\"mouseleave\", () =&gt; ribbonPaths.attr(\"fill-opacity\", null));\n  const legend = html`&lt;div style=\"display:flex;flex-wrap:wrap;gap:.8rem;font-size:.85rem;margin:.3rem 0 1rem\"&gt;${fieldColor.domain().map(f =&gt; html`&lt;span&gt;&lt;span style=\"display:inline-block;width:12px;height:12px;border-radius:2px;background:${fieldColor(f)};margin-right:4px\"&gt;&lt;/span&gt;${f}&lt;/span&gt;`)}&lt;/div&gt;`;\n  return html`${svg.node()}${legend}`;\n}\n\n\n\n\n\n\n\n\nSource: co-authorships in JCR journals among the members of the project, as reported in the project proposal (2022)."
+  },
+  {
+    "objectID": "team.html#join-us",
+    "href": "team.html#join-us",
+    "title": "Team",
+    "section": "Join us",
+    "text": "Join us\nExternal researchers interested in collaborating, in particular in the application areas (water, tourism, business management and gender inequality), are welcome to get in touch."
+  },
+  {
+    "objectID": "simulation.html",
+    "href": "simulation.html",
+    "title": "Interactive bias explorer",
+    "section": "",
+    "text": "This page runs Monte Carlo experiments in your browser, reproducing and extending the study of the project proposal (Figure 2) and of Muñoz, Moya-Fernández and Álvarez-Verdejo (Sociological Methods & Research). For each value of the Gini index G, it draws R samples of size n from each distribution, whose parameters are chosen so that the true Gini index equals G, and computes the empirical relative bias\nRB(\\%) = 100 \\times \\frac{\\frac{1}{R}\\sum_{r=1}^{R}\\widehat{G}^{(r)} - G}{G}.\nThe bias is negligible if |RB|&lt;2\\%, acceptable if |RB|&lt;5\\% and large otherwise. In terms of skewness, Pareto is the most skewed distribution, followed by Dagum (p=20), Dagum (p=0.5), lognormal, Weibull and Gamma.\nCode\nGS = new Promise(resolve =&gt; { const ok = () =&gt; window.GiniSim ? resolve(window.GiniSim) : setTimeout(ok, 50); ok(); })\nGgrid = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8]\nestColors = ({\"Ga\": \"#D43F3A\", \"Gb\": \"#1A5FA8\", \"Gc\": \"#C9962B\", \"Gc (jackknife-corrected)\": \"#5E8C61\"})"
+  },
+  {
+    "objectID": "simulation.html#relative-bias-of-widehatg_na-widehatg_nb-and-widehatg_nc",
+    "href": "simulation.html#relative-bias-of-widehatg_na-widehatg_nb-and-widehatg_nc",
+    "title": "Interactive bias explorer",
+    "section": "Relative bias of \\widehat{G}_n^{a}, \\widehat{G}_n^{b} and \\widehat{G}_n^{c}",
+    "text": "Relative bias of \\widehat{G}_n^{a}, \\widehat{G}_n^{b} and \\widehat{G}_n^{c}\n\n\nCode\nviewof biasPar = Inputs.form({\n  n: Inputs.select([20, 50, 100, 200, 500], {label: \"Sample size (n)\", value: 50}),\n  R: Inputs.select([200, 500, 1000, 2000], {label: \"Replications (R)\", value: 500}),\n  dists: Inputs.checkbox([\"Pareto\", \"Dagum-p20\", \"Dagum-p0.5\", \"Lognormal\", \"Weibull\", \"Gamma\"], {label: \"Distributions\", value: [\"Pareto\", \"Dagum-p20\", \"Dagum-p0.5\", \"Lognormal\", \"Weibull\", \"Gamma\"]}),\n  est: Inputs.checkbox([\"Ga\", \"Gb\", \"Gc\", \"Gc (jackknife-corrected)\"], {label: \"Estimators\", value: [\"Ga\", \"Gb\", \"Gc\"]})\n})\n\n\n\n\n\n\n\n\n\nCode\nbiasRes = GS.biasExperiment({dists: biasPar.dists, Ggrid, n: biasPar.n, R: biasPar.R, jack: biasPar.est.includes(\"Gc (jackknife-corrected)\")})\nbiasShown = biasRes.filter(d =&gt; biasPar.est.includes(d.estimator))\nbiasPar.dists.length && biasPar.est.length ? Plot.plot({\n  width: 960, height: 240 * Math.ceil(biasPar.dists.length / 3), marginLeft: 50,\n  fx: {label: null}, fy: {label: null, axis: null},\n  x: {label: \"True Gini index (G)\", ticks: [0.2, 0.4, 0.6, 0.8], grid: true},\n  y: {label: \"Relative bias (%)\", grid: true},\n  color: {legend: true, domain: biasPar.est, range: biasPar.est.map(e =&gt; estColors[e])},\n  marks: [\n    Plot.rect([{x1: 0.07, x2: 0.83, y1: -2, y2: 2}], {x1: \"x1\", x2: \"x2\", y1: \"y1\", y2: \"y2\", fill: \"#5E8C61\", fillOpacity: 0.12}),\n    Plot.ruleY([0], {stroke: \"#888\", strokeDasharray: \"4,3\"}),\n    Plot.line(biasShown, {x: \"G\", y: \"RB\", stroke: \"estimator\", strokeWidth: 2.3,\n      fx: d =&gt; biasPar.dists.indexOf(d.distribution) % 3, fy: d =&gt; Math.floor(biasPar.dists.indexOf(d.distribution) / 3)}),\n    Plot.dot(biasShown, {x: \"G\", y: \"RB\", fill: \"estimator\", r: 3, tip: true,\n      fx: d =&gt; biasPar.dists.indexOf(d.distribution) % 3, fy: d =&gt; Math.floor(biasPar.dists.indexOf(d.distribution) / 3),\n      title: d =&gt; `${d.distribution} · G = ${d.G}\\n${d.estimator}: RB = ${d.RB.toFixed(2)}%`}),\n    Plot.text(biasPar.dists, {text: d =&gt; d, frameAnchor: \"top\", dy: 4, fontWeight: 700,\n      fx: d =&gt; biasPar.dists.indexOf(d) % 3, fy: d =&gt; Math.floor(biasPar.dists.indexOf(d) / 3)})\n  ]\n}) : html`&lt;p class=\"pending\"&gt;Select at least one distribution and one estimator.&lt;/p&gt;`\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nShaded band: negligible bias (|RB| &lt; 2%). Hover over the points to see the values.\n\n\n\nCode\nInputs.table(biasShown.map(d =&gt; ({Distribution: d.distribution, G: d.G, Estimator: d.estimator, \"RB (%)\": +d.RB.toFixed(2),\n  Assessment: Math.abs(d.RB) &lt; 2 ? \"negligible\" : Math.abs(d.RB) &lt; 5 ? \"acceptable\" : \"large\"})), {rows: 10})\n\n\n\n\n\n\n\n\n\n\n\n\n\nHow to read the results\n\n\n\n\n\\widehat{G}_n^{a} has very large positive biases when inequality is low (around +18% with G=0.1 and n=50): it adds approximately 1/n to \\widehat{G}_n^{b}.\nWith highly skewed distributions (Pareto, Dagum) and high inequality, all the estimators underestimate the Gini index, and the bias remains large even with moderate sample sizes (hypotheses H1 and H2).\n\\widehat{G}_n^{c}=\\frac{n}{n-1}\\widehat{G}_n^{b} removes most of the bias in symmetric or moderately skewed data, and the jackknife correction reduces, but does not remove, the bias of highly skewed data."
+  },
+  {
+    "objectID": "simulation.html#skewness-and-inequality",
+    "href": "simulation.html#skewness-and-inequality",
+    "title": "Interactive bias explorer",
+    "section": "Skewness and inequality",
+    "text": "Skewness and inequality\nThe expected (Fisher) skewness coefficient of the samples, for each distribution and value of G. Skewness grows with inequality, and so does the bias of the Gini estimators.\n\n\nCode\nPlot.plot({\n  width: 760, height: 340, marginLeft: 50,\n  x: {label: \"True Gini index (G)\", grid: true},\n  y: {label: \"Expected skewness of the sample\", grid: true},\n  color: {legend: true},\n  marks: [\n    Plot.line(biasRes.filter(d =&gt; d.estimator === \"skewness\"), {x: \"G\", y: \"RB\", stroke: \"distribution\", strokeWidth: 2.2}),\n    Plot.dot(biasRes.filter(d =&gt; d.estimator === \"skewness\"), {x: \"G\", y: \"RB\", fill: \"distribution\", r: 3, tip: true,\n      title: d =&gt; `${d.distribution} · G = ${d.G}\\nskewness = ${d.RB.toFixed(2)}`})\n  ]\n})"
+  },
+  {
+    "objectID": "simulation.html#comparing-two-distributions-box-plots-of-widehatg_nc",
+    "href": "simulation.html#comparing-two-distributions-box-plots-of-widehatg_nc",
+    "title": "Interactive bias explorer",
+    "section": "Comparing two distributions: box plots of \\widehat{G}_n^{c}",
+    "text": "Comparing two distributions: box plots of \\widehat{G}_n^{c}\n\n\nCode\nviewof boxPar = Inputs.form({\n  d1: Inputs.select([\"Pareto\", \"Dagum-p20\", \"Dagum-p0.5\", \"Lognormal\", \"Weibull\", \"Gamma\"], {label: \"First distribution\", value: \"Pareto\"}),\n  d2: Inputs.select([\"Pareto\", \"Dagum-p20\", \"Dagum-p0.5\", \"Lognormal\", \"Weibull\", \"Gamma\"], {label: \"Second distribution\", value: \"Gamma\"}),\n  n: Inputs.select([20, 50, 100, 200, 500], {label: \"Sample size (n)\", value: 50}),\n  R: Inputs.select([100, 200, 500, 1000], {label: \"Number of estimates\", value: 200})\n})\n\n\n\n\n\n\n\n\n\nCode\nboxData = [...GS.replicates({dist: boxPar.d1, Ggrid: [0.2, 0.4, 0.6, 0.8], n: boxPar.n, R: boxPar.R, seed: 11}),\n           ...(boxPar.d2 === boxPar.d1 ? [] : GS.replicates({dist: boxPar.d2, Ggrid: [0.2, 0.4, 0.6, 0.8], n: boxPar.n, R: boxPar.R, seed: 22}))]\nPlot.plot({\n  width: 760, height: 380, marginLeft: 50,\n  fx: {label: \"True Gini index (G)\", padding: 0.15},\n  x: {axis: null, domain: [boxPar.d1, boxPar.d2]},\n  y: {label: \"Estimates of the Gini index\", grid: true},\n  color: {legend: true, domain: [boxPar.d1, boxPar.d2], range: [\"#C9962B\", \"#1A5FA8\"]},\n  marks: [\n    Plot.boxY(boxData, {fx: \"G\", x: \"distribution\", y: \"estimate\", fill: \"distribution\", fillOpacity: 0.6, r: 1.5}),\n    Plot.ruleY([0.2, 0.4, 0.6, 0.8].map(g =&gt; ({g})), {fx: d =&gt; d.g, y: \"g\", stroke: \"#D43F3A\", strokeDasharray: \"4,3\"})\n  ]\n})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDashed red line: true value of the Gini index. With highly skewed distributions the estimates are more variable and most of them are below the true value."
+  },
+  {
+    "objectID": "simulation.html#what-do-these-distributions-look-like",
+    "href": "simulation.html#what-do-these-distributions-look-like",
+    "title": "Interactive bias explorer",
+    "section": "What do these distributions look like?",
+    "text": "What do these distributions look like?\n\n\nCode\nviewof histPar = Inputs.form({\n  G: Inputs.range([0.1, 0.8], {label: \"Gini index (G)\", step: 0.1, value: 0.3}),\n  n: Inputs.select([50, 100, 200, 500, 1000], {label: \"Sample size (n)\", value: 500})\n})\n\n\n\n\n\n\n\n\n\nCode\nhistData = {\n  const rng = GS.makeRng(5), out = [];\n  for (const d of GS.DISTRIBUTIONS) {\n    const y = GS.sample(d, histPar.G, histPar.n, rng), m = GS.mean(y);\n    for (const v of y) out.push({distribution: d, value: v / m});\n  }\n  return out;\n}\nPlot.plot({\n  width: 960, height: 440, marginLeft: 45,\n  fx: {label: null}, fy: {label: null, axis: null},\n  x: {label: \"Value relative to the sample mean (values above 4 are grouped at 4)\", domain: [0, 4.05]},\n  y: {label: \"Frequency\", grid: true},\n  marks: [\n    Plot.rectY(histData, Plot.binX({y: \"count\"}, {x: d =&gt; Math.min(d.value, 4), thresholds: 30, fill: \"#1A5FA8\", fillOpacity: 0.75,\n      fx: d =&gt; GS.DISTRIBUTIONS.indexOf(d.distribution) % 3, fy: d =&gt; Math.floor(GS.DISTRIBUTIONS.indexOf(d.distribution) / 3)})),\n    Plot.text(GS.DISTRIBUTIONS, {text: d =&gt; d, frameAnchor: \"top-right\", dy: 4, dx: -4, fontWeight: 700,\n      fx: d =&gt; GS.DISTRIBUTIONS.indexOf(d) % 3, fy: d =&gt; Math.floor(GS.DISTRIBUTIONS.indexOf(d) / 3)}),\n    Plot.ruleY([0])\n  ]\n})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe code of these simulations is in js/gini-sim.js. The full simulation studies of the project are carried out in R; see Research data and R code."
+  },
+  {
+    "objectID": "research.html",
+    "href": "research.html",
+    "title": "Research problems and questions",
+    "section": "",
+    "text": "Inequality is a source of conflict in society, and its measurement is essential to respond to the social and economic concerns of citizens. Recent events (the 2008 financial crisis, COVID-19, inflation, rising energy costs and interest rates) increase the risk of widening inequality. To have a realistic view of inequality and design corrective policies, measurements must be reliable, without biases or errors: a large bias can lead to invalid inferences and wrong conclusions (Särndal et al., 2003).\nThe Gini index (G) is the most popular inequality indicator. It is easy to interpret (0 means perfect equality and 1 maximum inequality) and allows comparisons between countries, regions or groups (by sex, age, etc.). The project identifies and quantifies four problems, formulates eleven research questions and tests two hypotheses that had not been investigated in the literature."
+  },
+  {
+    "objectID": "research.html#theoretical-framework",
+    "href": "research.html#theoretical-framework",
+    "title": "Research problems and questions",
+    "section": "Theoretical framework",
+    "text": "Theoretical framework\nLet Y be a continuous, non-negative variable (e.g. income) with mean \\mu and distribution function F(y). The most popular formulations of the Gini index are (Berger and Gedik, 2020):\n\nG = \\frac{1}{\\mu}\\int \\{2F(y)-1\\}\\,y\\,dF(y) = \\frac{1}{2\\mu}\\iint |x-y|\\,dF(x)\\,dF(y).\n\nIn practice, G is estimated from a sample S of size n. There is a great controversy about which empirical version should be used, because the many available expressions give different results (Giorgi and Gigliarano, 2017). The three most common estimators are\n\n\\widehat{G}_n^{a} = \\frac{2}{n\\bar{y}}\\sum_{i\\in S} y_i\\widehat{F}_n(y_i) - 1, \\qquad\n\\widehat{G}_n^{b} = \\frac{1}{2n^2\\bar{y}}\\sum_{i\\in S}\\sum_{j\\in S}|y_i-y_j|, \\qquad\n\\widehat{G}_n^{c} = \\frac{n}{n-1}\\,\\widehat{G}_n^{b},\n\nwhere \\widehat{G}_n^{c} is frequently used to reduce the bias of \\widehat{G}_n^{b}. All the expressions are listed on the page Definition and estimation."
+  },
+  {
+    "objectID": "research.html#problem-1.-large-biases-in-the-estimation-of-the-gini-index",
+    "href": "research.html#problem-1.-large-biases-in-the-estimation-of-the-gini-index",
+    "title": "Research problems and questions",
+    "section": "Problem 1. Large biases in the estimation of the Gini index",
+    "text": "Problem 1. Large biases in the estimation of the Gini index\n\nQuestion 1. Is there an exhaustive review that collects all the expressions of the Gini index and establishes the relationships among them?\nQuestion 2. Which expression of the Gini index should be used, given the data available in an empirical study of inequality?\nQuestion 3. Can characteristics of the data, such as skewness or inequality, affect the bias of the Gini estimators?\n\nNo reference collects and relates all the expressions of the Gini index; Giorgi and Gigliarano (2017) ignore finite populations and estimators such as \\widehat{G}_n^{c}. Previous studies on the bias (Deltas, 2003; Davidson, 2009; Berger and Gedik, 2020) analyse a single estimator with data of similar inequality and skewness. The project tests two new hypotheses:\n\nH1. The skewness of the data affects the bias of the Gini estimators.\nH2. The inequality of the data affects the bias of the Gini estimators.\n\nA Monte Carlo study with 48 scenarios (Pareto, Dagum with p=20 and p=0.5, lognormal, Weibull and Gamma distributions, with G = 0.1,\\ldots,0.8 and n=50) showed that:\n\n\\widehat{G}_n^{a} has excessively large biases with low inequality;\nskewness has an important effect on the bias of the three estimators;\nin highly skewed distributions, inequality also has an important effect on the bias.\n\nThe bias is considered negligible when |RB| &lt; 2\\%, acceptable when |RB| &lt; 5\\%, and large otherwise, where RB = 100\\times\\{E(\\widehat{G})-G\\}/G is the relative bias. You can reproduce and extend this study with the interactive bias explorer.\n\nQuestion 4. Which methods should be applied to reduce this bias?\nQuestion 5. Can a criterion be established to help institutions and researchers know when their data may have large biases, so that correction techniques must be applied?\n\nThe project investigates the bootstrap (including the rescaled bootstrap; Berger and Muñoz, 2015; Muñoz et al., 2018; Moya et al., 2023), the jackknife (Berger and Skinner, 2005; Berger, 2008) and the empirical bootstrap (Pfeffermann and Correa, 2012), and a practical criterion based on the relative bias, the bias ratio and the mean squared error."
+  },
+  {
+    "objectID": "research.html#problem-2.-missing-data-and-the-gini-index",
+    "href": "research.html#problem-2.-missing-data-and-the-gini-index",
+    "title": "Research problems and questions",
+    "section": "Problem 2. Missing data and the Gini index",
+    "text": "Problem 2. Missing data and the Gini index\n\nQuestion 6. What are the consequences of missing data for the estimation of the Gini index?\nQuestion 7. What is the best strategy to deal with missing data in studies based on the Gini index, so that estimates are precise, robust and reliable?\n\nThe consequences of missing data (non-response bias, larger variance, distortion of the relationships between variables) have not been exhaustively investigated for the Gini index. The most common solution is to replace each missing value by one (single imputation) or several (multiple imputation) plausible values (Van Buuren, 2018; Muñoz and Rueda, 2009). Studies on inequality measures have important limitations: they do not compare imputation techniques, ignore the effect of skewness and inequality, and ignore the type of non-response mechanism. Missing data are very likely because people are less willing to answer sensitive questions such as income, which generates larger non-response bias. The missing data simulator illustrates the problem under the three mechanisms (MCAR, MAR and MNAR)."
+  },
+  {
+    "objectID": "research.html#problem-3.-lack-of-software-for-the-gini-index",
+    "href": "research.html#problem-3.-lack-of-software-for-the-gini-index",
+    "title": "Research problems and questions",
+    "section": "Problem 3. Lack of software for the Gini index",
+    "text": "Problem 3. Lack of software for the Gini index\n\nQuestion 8. Is there software that computes the different expressions of the Gini index, their variances and confidence intervals with all the methods available in the literature?\n\nWhen the project started, R packages such as DescTools and laeken did not estimate the variance and only provided bootstrap intervals; ineq, reldist, GiniWegNeg and dineq only computed point estimates. Stata (fastgini, ineqdeco, ineqerr), SPSS and SAS had similar limitations. Other methods (jackknife, linearisation, empirical likelihood) can be more accurate (Berger, 2008; Berger and Gedik, 2020). This problem has been solved with the R package giniVarCI."
+  },
+  {
+    "objectID": "research.html#problem-4.-applications-in-the-social-sciences",
+    "href": "research.html#problem-4.-applications-in-the-social-sciences",
+    "title": "Research problems and questions",
+    "section": "Problem 4. Applications in the Social Sciences",
+    "text": "Problem 4. Applications in the Social Sciences\n\nQuestion 9. What are the applications of the Gini index, and which techniques are used to deal with missing data, in the research areas of the members of the project?\nQuestion 10. Do inequality studies in these areas use the optimal expression of the Gini index and confidence intervals with desirable properties?\nQuestion 11. Do inequality studies with missing information in these areas deal with missing data with the required scientific rigour?\n\nThe review of the literature found studies on water that use multiple imputation with 50% missing data without reporting the imputation model or checking its assumptions, or that impute with the mean; studies in strategic management and international business (some in ABS 4* and 4 journals) that use five imputations with 23% missing data or ignore the non-response mechanism with 75% missing data; and studies on tourism and inequality that simply delete the cases with missing data. Some do not use the unbiased version of the Gini index, so bias is a serious problem with small samples or highly skewed data. The project prepares methodological contributions for each area that explain how to detect and avoid these biases and errors."
+  },
+  {
+    "objectID": "research.html#references",
+    "href": "research.html#references",
+    "title": "Research problems and questions",
+    "section": "References",
+    "text": "References\nBerger, Y.G. (2008). A note on the asymptotic equivalence of jackknife and linearization variance estimation for the Gini coefficient. Journal of Official Statistics, 24(4), 541–555.\nBerger, Y.G., & Gedik, İ. (2020). Confidence intervals of Gini coefficient under unequal probability sampling. Journal of Official Statistics, 36(2), 237–249.\nBerger, Y.G., & Muñoz, J.F. (2015). On estimating quantiles using auxiliary information. Journal of Official Statistics, 31(1), 101–119.\nBerger, Y.G., & Skinner, C.J. (2005). A jackknife variance estimator for unequal probability sampling. JRSS B, 67(1), 79–89.\nDavidson, R. (2009). Reliable inference for the Gini index. Journal of Econometrics, 150(1), 30–40.\nDeltas, G. (2003). The small-sample bias of the Gini coefficient. Review of Economics and Statistics, 85(1), 226–234.\nGiorgi, G.M., & Gigliarano, C. (2017). The Gini concentration index: a review of the inference literature. Journal of Economic Surveys, 31(4), 1130–1148.\nMoya, P.J., Muñoz, J.F., Álvarez, E., & Blanco, F.J. (2023). Rescaled bootstrap confidence intervals for the population variance in the presence of outliers or spikes. Communications in Statistics – Simulation and Computation, 52(2), 466–481.\nMuñoz, J.F., Álvarez, E., & García, R.M. (2018). On estimating the poverty gap and the poverty severity indices with auxiliary information. Sociological Methods & Research, 47(3), 598–625.\nMuñoz, J.F., & Rueda, M. (2009). New imputation methods for missing data using quantiles. Journal of Computational and Applied Mathematics, 232(2), 305–317.\nPfeffermann, D., & Correa, S. (2012). Empirical bootstrap bias correction and estimation of prediction mean square error in small area estimation. Biometrika, 99(2), 457–472.\nSärndal, C.E., Swensson, B., & Wretman, J.H. (2003). Model Assisted Survey Sampling. Springer.\nVan Buuren, S. (2018). Flexible Imputation of Missing Data. CRC Press."
+  },
+  {
+    "objectID": "project.html",
+    "href": "project.html",
+    "title": "Objectives, activities and work plan",
+    "section": "",
+    "text": "Year 1 (2023–24)\n\n\nYear 2 (2024–25)\n\n\nYear 3 (2025–26)\n\n\nYear 4 (2026–27)\n\n\nCompleted (Aug 2027)\n\n\n\nCurrent status: in progress, fourth and last year (1 September 2026 – 31 August 2027). The R package giniVarCI is available on CRAN; the work on bias (OG1), missing data (OG2) and applications (OG4) continues. Last update: 17 November 2026.\nGiniUs is a non-oriented research project (Knowledge Generation Projects, 2022 call). Its general objectives (OG) and specific objectives (OE) respond to the research questions of the project. Studies based on data that include income and sex also analyse income inequality and gender inequality."
+  },
+  {
+    "objectID": "project.html#activities-and-milestones",
+    "href": "project.html#activities-and-milestones",
+    "title": "Objectives, activities and work plan",
+    "section": "Activities and milestones",
+    "text": "Activities and milestones\n\nActivities and milestones of the project.\n\n\n\n\n\n\n\n\nOG\nOE\nActivity\nMilestone\n\n\n\n\nOG1\nOE1\nA1: Collect the expressions of the Gini index\nh1: Table with references and summary\n\n\n\n\nA2: Analysis of properties and relationships\nh2: Scheme of properties and relationships\n\n\n\nOE2\nA3: Bias of the Gini index; validation of H1 and H2\nh3: Figures illustrating the biases\n\n\n\nOE3\nA4: Analysis of correction techniques\nh4: Figures illustrating the solutions\n\n\n\nOE4\nA5: Algorithm for the bias criterion\nh5: Figures and algorithm of the criterion\n\n\nOG2\nOE5\nA6: Consequences of missing data\nh6: Scheme of consequences\n\n\n\n\nA7: Algorithm for the use of imputation\nh7: Figures and algorithm of the criterion\n\n\n\nOE6\nA8: Literature reviews\nh8: Table with references and summary\n\n\n\n\nA9: Multiple imputation and the Gini index\nh9: Figures illustrating the solutions\n\n\nOG3\nOE7\nA10: Review of R libraries on the Gini index\nh10: Table of libraries and summary\n\n\n\n\nA11: Development of the R library\nh11: Publication in R (CRAN) ✔\n\n\n\n\nA12: Dissemination (website/app, RPubs, forums)\nh12: Publications in RPubs and forums\n\n\nOG4\nOE8\nA13: Literature review\nh13: Table with references and summary\n\n\n\n\nA14: Methodological contributions\nh14: Contribution completed\n\n\n\nOE9\nA15: Literature review\nh15: Table with references and summary\n\n\n\n\nA16: Methodological contributions\nh16: Contribution completed\n\n\n\nOE10\nA17: Specific contributions\nh17: Contribution completed\n\n\nOG5\nOE11\nA18: Publications in journals\nArticles submitted\n\n\n\n\nA19: Participation in conferences\nCertificates of attendance\n\n\n\n\nA20: Research stays\nCertificates of stays and seminars\n\n\n\n\nA21: Organisation of workshops and seminars\nCalls for workshops and seminars\n\n\n\n\nA22: Other publications (media, social networks)\nPublications in social networks and other media"
+  },
+  {
+    "objectID": "project.html#work-plan",
+    "href": "project.html#work-plan",
+    "title": "Objectives, activities and work plan",
+    "section": "Work plan",
+    "text": "Work plan\nThe activities of OG1 and OG2 are carried out first, because their results are needed for OG3 and OG4. Articles are submitted to journals from the first year onwards, results are presented at conferences before submission, research stays are scheduled in periods without teaching, seminars are organised regularly and an international workshop is held at the end of the project. After each publication, results are disseminated through the media, social networks and official institutions.\n\n\n\n\n\n\n\nPeriod\nMain activities\n\n\n\n\nYear 1 (Sep 2023 – Aug 2024)\nA1–A3 (expressions and bias of the Gini index), A6 (consequences of missing data), A10 (review of R libraries), A13 (literature reviews), A17\n\n\nYear 2 (Sep 2024 – Aug 2025)\nA3–A5 (bias, correction techniques and criterion), A6–A9 (missing data and multiple imputation), A10–A11 (R library), A14, A17\n\n\nYear 3 (Sep 2025 – Aug 2026)\nA4–A5, A7–A9, A11–A12 (library and dissemination), A14–A16 (methodological contributions), A17\n\n\nYear 4 (Sep 2026 – Aug 2027)\nA9, A11–A12, A16–A17, final international workshop\n\n\nAll years\nA18–A22: publications, conferences, stays, seminars and dissemination"
+  },
+  {
+    "objectID": "project.html#data-sources",
+    "href": "project.html#data-sources",
+    "title": "Objectives, activities and work plan",
+    "section": "Data sources",
+    "text": "Data sources\n\nEU-SILC (2016–2020): European Union Statistics on Income and Living Conditions (Eurostat).\nHFCN (2013, 2016, 2020): Eurosystem Household Finance and Consumption Survey.\nWater habits (2022): survey of 2,400 individuals in Andalusia on water consumption habits, well-being, health and pro-environmental behaviour.\nWater prices (2022): price of water in more than 1,000 Spanish municipalities, to be updated to analyse inequality over time.\nAQUASTAT (1958–2019): FAO global information system on water resources and agricultural water management.\nWBES (2002–2020): World Bank Enterprise Survey of private firms in more than 130 countries.\nProbabilistic data: samples from Pareto, Dagum, lognormal, Gamma and Weibull distributions with different levels of skewness and inequality (Research data and R code)."
+  },
+  {
+    "objectID": "project.html#target-journals",
+    "href": "project.html#target-journals",
+    "title": "Objectives, activities and work plan",
+    "section": "Target journals",
+    "text": "Target journals\n\nTarget journals of the project, with the indicators at the time of the proposal (2022).\n\n\n\n\n\n\n\nJournal\nJCR category\nQuality indicator\n\n\n\n\nSociological Methods & Research\nSocial Sciences, Mathematical Methods\nD1\n\n\nSocial Indicators Research\nSocial Sciences, Interdisciplinary\nQ2\n\n\nEconomic Modelling\nEconomics\nQ1; ABS 2\n\n\nQuantitative Economics\nEconomics\nQ2; ABS 4\n\n\nJournal of Economic Surveys\nEconomics\nQ1; ABS 2\n\n\nJournal of Economic Inequality\nEconomics\nQ3; ABS 2\n\n\nJournal of Statistical Software\nStatistics & Probability\nD1\n\n\nR Journal\nStatistics & Probability\nD1\n\n\nInt. J. Water Resources Development\nWater Resources\nQ1\n\n\nUrban Water Journal\nWater Resources\nQ2\n\n\nPublic Administration Review\nPublic Administration\nD1; ABS 4*\n\n\nPublic Administration\nPublic Administration\nQ1; ABS 4\n\n\nAnnals of Tourism Research\nHospitality, Leisure, Sport & Tourism\nD1; ABS 4*\n\n\nJournal of Sustainable Tourism\nHospitality, Leisure, Sport & Tourism\nD1; ABS 3\n\n\nCurrent Issues in Tourism\nHospitality, Leisure, Sport & Tourism\nQ1; ABS 2\n\n\nInternational Journal of Tourism Research\nHospitality, Leisure, Sport & Tourism\nQ2; ABS 2\n\n\nTourism Management\nManagement; Hospitality, Leisure, Sport & Tourism\nD1; ABS 4\n\n\nGlobal Strategy Journal\nManagement\nQ1; ABS 4\n\n\nJournal of World Business\nBusiness\nQ1; ABS 4\n\n\nStrategic Management Journal\nBusiness; Management\nD1; ABS 4*\n\n\nJournal of International Business Studies\nBusiness; Management\nD1; ABS 4*"
+  },
+  {
+    "objectID": "project.html#data-management-and-reproducibility",
+    "href": "project.html#data-management-and-reproducibility",
+    "title": "Objectives, activities and work plan",
+    "section": "Data management and reproducibility",
+    "text": "Data management and reproducibility\nThe data management plan follows the FAIR principles (Findable, Accessible, Interoperable, Reusable). Data from official sources (EU-SILC, HFCN, AQUASTAT, WBES) are available from those institutions. Data generated from probability distributions are included in the R package and stored in the institutional repository DIGIBUG of the University of Granada; the water datasets will be deposited at the Centre for Sociological Research (CIS) once the corresponding articles are published. Analyses are carried out with R and R Markdown/Quarto, fixing random seeds with set.seed() so that every result can be replicated."
+  },
+  {
+    "objectID": "project.html#gender-perspective",
+    "href": "project.html#gender-perspective",
+    "title": "Objectives, activities and work plan",
+    "section": "Gender perspective",
+    "text": "Gender perspective\nGender inequality is one of the most important applications of inequality analysis. EU-SILC and HFCN allow the data to be disaggregated by sex, so the studies are also carried out by sex: for example, whether the non-response mechanism, the impact of missing data, the biases, the skewness or the optimal imputation technique differ between women and men."
+  },
+  {
+    "objectID": "project.html#funding",
+    "href": "project.html#funding",
+    "title": "Objectives, activities and work plan",
+    "section": "Funding",
+    "text": "Funding\n\n\n\n\nProject PID2022-136235NB-I00 funded by MICIU/AEI/10.13039/501100011033 and by ERDF/EU. Principal investigators: Juan Francisco Muñoz Rosas and Francisco José González Gómez (University of Granada). Budget: €86,875. Duration: 1 September 2023 – 31 August 2027."
+  },
+  {
+    "objectID": "observatory.html",
+    "href": "observatory.html",
+    "title": "Inequality observatory",
+    "section": "",
+    "text": "This observatory gathers the Gini index and other public inequality indicators for European and world countries and for the Spanish regions. Eurostat data are downloaded live from the official source every time the page is opened, so they always show the latest release; World Bank and INE data are downloaded every time the website is updated. Each chart can be explored by hovering over the points, and the data can be downloaded as CSV.\nCode\nfunction jsonstat(js) {\n  // Flattens a JSON-stat 2.0 dataset (Eurostat API) into an array of records\n  const ids = js.id, size = js.size, dims = js.dimension;\n  const codes = ids.map(d =&gt; {\n    const idx = dims[d].category.index;\n    const arr = Array.isArray(idx) ? idx : Object.keys(idx).sort((a, b) =&gt; idx[a] - idx[b]);\n    return arr;\n  });\n  const labels = ids.map(d =&gt; dims[d].category.label || {});\n  const out = [];\n  const vals = js.value;\n  const keys = Array.isArray(vals) ? vals.map((v, i) =&gt; i).filter(i =&gt; vals[i] != null) : Object.keys(vals).map(Number);\n  for (const i of keys) {\n    let rem = i; const rec = {};\n    for (let d = ids.length - 1; d &gt;= 0; d--) {\n      const c = codes[d][rem % size[d]];\n      rec[ids[d]] = c;\n      if (ids[d] === \"geo\") rec.country = labels[d][c] || c;\n      rem = Math.floor(rem / size[d]);\n    }\n    rec.value = +vals[i];\n    out.push(rec);\n  }\n  return out;\n}\npref = [\"TOTAL\", \"T\", \"SHARE\", \"EUR\", \"PC\", \"A\"]\nfunction keepPreferred(recs, keepDims) {\n  // For dimensions other than geo/time (and keepDims) keep a single category\n  if (!recs.length) return recs;\n  const dimsAll = Object.keys(recs[0]).filter(k =&gt; ![\"geo\", \"time\", \"value\", \"country\", ...keepDims].includes(k));\n  let r = recs;\n  for (const d of dimsAll) {\n    const cats = [...new Set(r.map(x =&gt; x[d]))];\n    const chosen = pref.find(p =&gt; cats.includes(p)) ?? cats[0];\n    r = r.filter(x =&gt; x[d] === chosen);\n  }\n  return r;\n}\nasync function eurostat(code, query = \"\") {\n  const url = `https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/${code}?format=JSON&lang=EN${query}`;\n  const res = await fetch(url);\n  if (!res.ok) {\n    // Eurostat returns the reason of the error in the body (JSON-stat \"error\" field)\n    let msg = `HTTP ${res.status}`;\n    try {\n      const js = await res.json();\n      const err = Array.isArray(js.error) ? js.error[0] : js.error;\n      if (err && err.label) msg += ` – ${err.label}`;\n    } catch (e) {}\n    throw new Error(`Eurostat ${code}: ${msg}`);\n  }\n  return jsonstat(await res.json());\n}\nEU = new Set([\"AT\",\"BE\",\"BG\",\"CY\",\"CZ\",\"DE\",\"DK\",\"EE\",\"EL\",\"ES\",\"FI\",\"FR\",\"HR\",\"HU\",\"IE\",\"IT\",\"LT\",\"LU\",\"LV\",\"MT\",\"NL\",\"PL\",\"PT\",\"RO\",\"SE\",\"SI\",\"SK\",\"EU27_2020\",\"NO\",\"CH\",\"IS\",\"RS\",\"TR\",\"MK\",\"ME\",\"AL\"])\nCode\n// ---------- Download Eurostat data ----------\neuroData = {\n  // Each dataset is loaded independently: if one of them fails, the others are still shown\n  const [gini, s80] = await Promise.allSettled([eurostat(\"ilc_di12\"), eurostat(\"ilc_di11\")]);\n  const rows = [], errors = [];\n  if (gini.status === \"fulfilled\") {\n    for (const r of keepPreferred(gini.value, [])) rows.push({geo: r.geo, country: r.country, year: +r.time, indicator: \"Gini index\", value: r.value});\n  } else errors.push(gini.reason.message);\n  if (s80.status === \"fulfilled\") {\n    for (const r of keepPreferred(s80.value, [])) rows.push({geo: r.geo, country: r.country, year: +r.time, indicator: \"S80/S20 ratio\", value: r.value});\n  } else errors.push(s80.reason.message);\n  const out = rows.filter(r =&gt; EU.has(r.geo) && Number.isFinite(r.value));\n  return {ok: out.length &gt; 0, rows: out, errors, error: errors.join(\"; \"),\n          indicators: [...new Set(out.map(r =&gt; r.indicator))]};\n}"
+  },
+  {
+    "objectID": "observatory.html#europe-eu-silc-indicators-eurostat",
+    "href": "observatory.html#europe-eu-silc-indicators-eurostat",
+    "title": "Inequality observatory",
+    "section": "Europe: EU-SILC indicators (Eurostat)",
+    "text": "Europe: EU-SILC indicators (Eurostat)\n\n\nCode\neuroCountries = [...new Set(euroData.rows.map(r =&gt; r.country))].sort()\nviewof euroSel = Inputs.form({\n  indicator: Inputs.radio(euroData.indicators.length ? euroData.indicators : [\"Gini index\"], {label: \"Indicator\", value: euroData.indicators.includes(\"Gini index\") ? \"Gini index\" : euroData.indicators[0]}),\n  countries: Inputs.select(euroCountries, {label: \"Countries\", multiple: true, value: euroCountries.filter(c =&gt; /^(Spain|Italy|Portugal|Germany|France|European Union)/.test(c)).slice(0, 6), size: 8})\n})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\neuroData.ok && euroData.errors.length ? html`&lt;div class=\"callout callout-note\"&gt;&lt;p&gt;Some Eurostat series could not be loaded and are not shown (${euroData.error}).&lt;/p&gt;&lt;/div&gt;` : html``\n\n\n\n\n\n\n\n\n\nCode\neuroData.ok ? (euroSel.countries.length ? Plot.plot({\n  height: 420, marginLeft: 55, marginRight: 140,\n  x: {label: \"Year\", tickFormat: \"d\", grid: true},\n  y: {label: euroSel.indicator, grid: true, zero: false},\n  color: {legend: false},\n  marks: [\n    Plot.line(euroData.rows.filter(r =&gt; r.indicator === euroSel.indicator && euroSel.countries.includes(r.country)), {x: \"year\", y: \"value\", stroke: \"country\", strokeWidth: 2.2, sort: \"year\"}),\n    Plot.dot(euroData.rows.filter(r =&gt; r.indicator === euroSel.indicator && euroSel.countries.includes(r.country)), {x: \"year\", y: \"value\", fill: \"country\", r: 3, tip: true, title: d =&gt; `${d.country} · ${d.year}\\n${euroSel.indicator}: ${d.value.toFixed(3)}`}),\n    Plot.text(euroData.rows.filter(r =&gt; r.indicator === euroSel.indicator && euroSel.countries.includes(r.country)), Plot.selectLast({x: \"year\", y: \"value\", z: \"country\", text: \"country\", textAnchor: \"start\", dx: 6, fill: \"country\"}))\n  ]\n}) : html`&lt;p class=\"pending\"&gt;Select at least one country.&lt;/p&gt;`)\n: html`&lt;div class=\"callout callout-warning\"&gt;&lt;p&gt;&lt;b&gt;Eurostat data could not be loaded&lt;/b&gt; (${euroData.error}). Please try again later or consult &lt;a href=\"https://ec.europa.eu/eurostat/databrowser/view/ilc_di12/default/table\"&gt;Eurostat&lt;/a&gt; directly.&lt;/p&gt;&lt;/div&gt;`\n\n\n\n\n\n\n\n\n\nCode\neuroLatest = {\n  const r = euroData.rows.filter(d =&gt; d.indicator === euroSel.indicator);\n  const last = d3.rollup(r, v =&gt; v.sort((a, b) =&gt; b.year - a.year)[0], d =&gt; d.geo);\n  return [...last.values()].sort((a, b) =&gt; b.value - a.value);\n}\neuroData.ok ? Plot.plot({\n  height: Math.max(300, 16 * euroLatest.length), marginLeft: 170,\n  x: {label: `${euroSel.indicator} (latest available year)`, grid: true},\n  y: {label: null},\n  marks: [\n    Plot.barX(euroLatest, {y: \"country\", x: \"value\", sort: {y: \"-x\"}, fill: d =&gt; d.geo === \"EU27_2020\" ? \"#C9962B\" : (d.geo === \"ES\" ? \"#1A5FA8\" : \"#A9C4E4\"), tip: true, title: d =&gt; `${d.country} (${d.year}): ${d.value.toFixed(3)}`}),\n    Plot.ruleX([0])\n  ]\n}) : html``\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\neuroData.ok ? DOM.download(new Blob([d3.csvFormat(euroData.rows)], {type: \"text/csv\"}), \"ginius_eurostat_inequality.csv\", \"Download Eurostat data (CSV)\") : html``\n\n\n\n\n\n\n\n\nSources: Eurostat, EU-SILC: ilc_di12 (Gini coefficient of equivalised disposable income, 0–100 scale) and ilc_di11 (S80/S20 income quintile share ratio)."
+  },
+  {
+    "objectID": "observatory.html#world-gini-index-world-bank-pip",
+    "href": "observatory.html#world-gini-index-world-bank-pip",
+    "title": "Inequality observatory",
+    "section": "World: Gini index (World Bank PIP)",
+    "text": "World: Gini index (World Bank PIP)\n\n\nCode\nwbData = {\n  // 1) Data downloaded when the website was rendered (reliable: no browser restrictions)\n  let recs = transpose(wbRaw);\n  let source = \"render\";\n  // 2) Fallback: try a live request from the browser\n  if (!recs.length) {\n    try {\n      const res = await fetch(\"https://api.worldbank.org/pip/v1/pip?country=all&year=all&fill_gaps=false&format=csv\");\n      if (!res.ok) throw new Error(`HTTP ${res.status}`);\n      recs = d3.csvParse(await res.text()).filter(r =&gt; r.reporting_level === \"national\");\n      source = \"live\";\n    } catch (e) {\n      return {ok: false, error: `World Bank PIP: ${e.message}`, rows: []};\n    }\n  }\n  const rows = [];\n  for (const r of recs) {\n    const base = {code: r.country_code, country: r.country_name, year: +r.reporting_year, welfare: r.welfare_type};\n    if (r.gini !== null && r.gini !== \"\" && r.gini !== \"NA\" && Number.isFinite(+r.gini)) rows.push({...base, indicator: \"Gini index\", value: +r.gini});\n  }\n  return {ok: rows.length &gt; 0, rows, source, error: rows.length ? \"\" : \"no data\"};\n}\nwbCountries = [...new Set(wbData.rows.map(r =&gt; r.country))].sort()\nviewof wbSel = Inputs.form({\n  indicator: Inputs.radio([\"Gini index\"], {label: \"Indicator\", value: \"Gini index\"}),\n  countries: Inputs.select(wbCountries, {label: \"Countries\", multiple: true, value: wbCountries.filter(c =&gt; /^(Spain|Brazil|South Africa|United States|India|China)$/.test(c)), size: 8})\n})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nwbData.ok ? (wbSel.countries.length ? Plot.plot({\n  height: 420, marginLeft: 55, marginRight: 140,\n  x: {label: \"Year\", tickFormat: \"d\", grid: true},\n  y: {label: wbSel.indicator, grid: true, zero: false},\n  marks: [\n    Plot.line(wbData.rows.filter(r =&gt; r.indicator === wbSel.indicator && wbSel.countries.includes(r.country)), {x: \"year\", y: \"value\", stroke: \"country\", z: d =&gt; d.country + d.welfare, strokeWidth: 2.2, sort: \"year\"}),\n    Plot.dot(wbData.rows.filter(r =&gt; r.indicator === wbSel.indicator && wbSel.countries.includes(r.country)), {x: \"year\", y: \"value\", fill: \"country\", r: 3, tip: true, title: d =&gt; `${d.country} · ${d.year} (${d.welfare})\\n${wbSel.indicator}: ${d.value.toFixed(3)}`}),\n    Plot.text(wbData.rows.filter(r =&gt; r.indicator === wbSel.indicator && wbSel.countries.includes(r.country)), Plot.selectLast({x: \"year\", y: \"value\", z: \"country\", text: \"country\", textAnchor: \"start\", dx: 6, fill: \"country\"}))\n  ]\n}) : html`&lt;p class=\"pending\"&gt;Select at least one country.&lt;/p&gt;`)\n: html`&lt;div class=\"callout callout-warning\"&gt;&lt;p&gt;&lt;b&gt;World Bank data could not be loaded&lt;/b&gt; (${wbData.error}). Please try again later or consult the &lt;a href=\"https://pip.worldbank.org\"&gt;Poverty and Inequality Platform&lt;/a&gt; directly.&lt;/p&gt;&lt;/div&gt;`\n\n\n\n\n\n\n\n\n\nCode\nwbData.ok ? DOM.download(new Blob([d3.csvFormat(wbData.rows)], {type: \"text/csv\"}), \"ginius_worldbank_pip.csv\", \"Download World Bank data (CSV)\") : html``\n\n\n\n\n\n\n\n\nSource: World Bank, Poverty and Inequality Platform (PIP). National estimates; depending on the country, they refer to income or consumption (shown when hovering). The Gini index is expressed on a 0–1 scale.\n\n\nWorld map of inequality\nThe map shows, for each country, the most recent estimate available up to the selected year (at most five years earlier). Hover over a country to see its value, year and whether it refers to income or consumption.\n\n\nCode\nworldGeo = fetch(\"https://cdn.jsdelivr.net/gh/nvkelso/natural-earth-vector@master/geojson/ne_110m_admin_0_countries.geojson\")\n  .then(r =&gt; r.ok ? r.json() : null).catch(() =&gt; null)\nwbYears = wbData.ok ? d3.extent(wbData.rows, r =&gt; r.year) : [2000, 2024]\nviewof wbMap = Inputs.form({\n  indicator: Inputs.radio([\"Gini index\"], {label: \"Indicator\", value: \"Gini index\"}),\n  year: Inputs.range(wbYears, {label: \"Year\", step: 1, value: wbYears[1]})\n})\nwbMapValues = {\n  const m = new Map();\n  if (!wbData.ok) return m;\n  const rows = wbData.rows.filter(r =&gt; r.indicator === wbMap.indicator && r.year &lt;= wbMap.year && r.year &gt;= wbMap.year - 5)\n    .sort((a, b) =&gt; b.year - a.year);\n  for (const r of rows) if (!m.has(r.code)) m.set(r.code, r);\n  return m;\n}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\n(wbData.ok && worldGeo) ? Plot.plot({\n  projection: \"equal-earth\", width: 1000, height: 520,\n  color: {type: \"quantile\", n: 6, scheme: \"YlOrRd\", legend: true, label: wbMap.indicator,\n          tickFormat: v =&gt; wbMap.indicator === \"Gini index\" ? v.toFixed(2) : v.toFixed(3)},\n  marks: [\n    Plot.sphere({fill: \"#F7F4EE\", stroke: \"#ddd\"}),\n    Plot.geo(worldGeo, {fill: \"#e6e2da\", stroke: \"white\", strokeWidth: 0.4}),\n    Plot.geo(worldGeo.features.filter(f =&gt; wbMapValues.has(f.properties.ADM0_A3) || wbMapValues.has(f.properties.ISO_A3)), {\n      fill: f =&gt; (wbMapValues.get(f.properties.ADM0_A3) ?? wbMapValues.get(f.properties.ISO_A3)).value,\n      stroke: \"white\", strokeWidth: 0.4,\n      tip: true,\n      title: f =&gt; { const r = wbMapValues.get(f.properties.ADM0_A3) ?? wbMapValues.get(f.properties.ISO_A3);\n                    return `${r.country} (${r.year}, ${r.welfare})\\n${wbMap.indicator}: ${r.value.toFixed(3)}`; }\n    })\n  ]\n}) : (wbData.ok ? html`&lt;p class=\"pending\"&gt;The world map could not be loaded. Please try again later.&lt;/p&gt;` : html``)\n\n\n\n\n\n\n\n\nGrey: no estimate in the five years up to the selected year. Colours split the countries with data into six groups of similar size (sextiles). Map: Natural Earth (public domain)."
+  },
+  {
+    "objectID": "observatory.html#spain-inequality-by-region-ine",
+    "href": "observatory.html#spain-inequality-by-region-ine",
+    "title": "Inequality observatory",
+    "section": "Spain: inequality by region (INE)",
+    "text": "Spain: inequality by region (INE)\nThe Spanish Statistical Office (INE) publishes the Gini index and the S80/S20 ratio of equivalised disposable income for Spain and its 19 regions (autonomous communities and cities), from the Living Conditions Survey (ECV). The data are downloaded from the INE API every time the website is rendered.\n\n\nCode\nineRows = transpose(ineRaw)\nineOk = ineRows.length &gt; 0\nineRegions = [...new Set(ineRows.map(r =&gt; r.region))].sort((a, b) =&gt; a === \"Spain (total)\" ? -1 : b === \"Spain (total)\" ? 1 : a.localeCompare(b, \"es\"))\nviewof ineSel = ineOk ? Inputs.form({\n  indicator: Inputs.radio([\"Gini index\", \"S80/S20 ratio\", \"Gini index (with imputed rent)\", \"S80/S20 ratio (with imputed rent)\"], {label: \"Indicator\", value: \"Gini index\"}),\n  regions: Inputs.select(ineRegions, {label: \"Regions\", multiple: true, value: [\"Spain (total)\", \"Andalucía\", \"Madrid, Comunidad de\", \"Cataluña\", \"País Vasco\"].filter(r =&gt; ineRegions.includes(r)), size: 8})\n}) : html`&lt;div class=\"callout callout-warning\"&gt;&lt;p&gt;&lt;b&gt;INE data could not be loaded.&lt;/b&gt; Please consult the &lt;a href=\"https://www.ine.es/jaxiT3/Tabla.htm?t=67246\"&gt;INE table&lt;/a&gt; directly.&lt;/p&gt;&lt;/div&gt;`\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nineOk ? (ineSel.regions.length ? Plot.plot({\n  height: 420, marginLeft: 55, marginRight: 150,\n  x: {label: \"Year (survey)\", tickFormat: \"d\", grid: true},\n  y: {label: ineSel.indicator, grid: true, zero: false},\n  marks: [\n    Plot.line(ineRows.filter(r =&gt; r.indicator === ineSel.indicator && ineSel.regions.includes(r.region)), {x: \"year\", y: \"value\", stroke: \"region\", strokeWidth: 2.2, sort: \"year\"}),\n    Plot.dot(ineRows.filter(r =&gt; r.indicator === ineSel.indicator && ineSel.regions.includes(r.region)), {x: \"year\", y: \"value\", fill: \"region\", r: 3, tip: true, title: d =&gt; `${d.region} · ${d.year}\\n${ineSel.indicator}: ${d.value}`}),\n    Plot.text(ineRows.filter(r =&gt; r.indicator === ineSel.indicator && ineSel.regions.includes(r.region)), Plot.selectLast({x: \"year\", y: \"value\", z: \"region\", text: \"region\", textAnchor: \"start\", dx: 6, fill: \"region\"}))\n  ]\n}) : html`&lt;p class=\"pending\"&gt;Select at least one region.&lt;/p&gt;`) : html``\n\n\n\n\n\n\n\n\n\nCode\nineLatest = {\n  if (!ineOk) return [];\n  const r = ineRows.filter(d =&gt; d.indicator === ineSel.indicator);\n  const y = d3.max(r, d =&gt; d.year);\n  return r.filter(d =&gt; d.year === y).sort((a, b) =&gt; b.value - a.value);\n}\nineOk ? Plot.plot({\n  height: Math.max(300, 20 * ineLatest.length), marginLeft: 190,\n  x: {label: `${ineSel.indicator} (${ineLatest.length ? ineLatest[0].year : \"\"})`, grid: true},\n  y: {label: null},\n  marks: [\n    Plot.barX(ineLatest, {y: \"region\", x: \"value\", sort: {y: \"-x\"}, fill: d =&gt; d.region === \"Spain (total)\" ? \"#C9962B\" : (d.region === \"Andalucía\" ? \"#1A5FA8\" : \"#A9C4E4\"), tip: true, title: d =&gt; `${d.region} (${d.year}): ${d.value}`}),\n    Plot.ruleX([0])\n  ]\n}) : html``\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nineOk ? DOM.download(new Blob([d3.csvFormat(ineRows)], {type: \"text/csv\"}), \"ginius_ine_inequality.csv\", \"Download INE data (CSV)\") : html``\n\n\n\n\n\n\n\n\nSource: Instituto Nacional de Estadística (INE), Living Conditions Survey (ECV): Inequality in the distribution of income (S80/S20 and Gini coefficient) by region. The Gini index is expressed on a 0–100 scale. The year is the survey year; income refers to the previous year. For inequality at the municipal and census-tract level, see the INE Household Income Distribution Atlas."
+  },
+  {
+    "objectID": "observatory.html#other-inequality-observatories",
+    "href": "observatory.html#other-inequality-observatories",
+    "title": "Inequality observatory",
+    "section": "Other inequality observatories",
+    "text": "Other inequality observatories\n\n\nObservatorio de Desigualdad de Andalucía\nPlatform of more than twenty organisations and Andalusian universities (including the University of Granada) that publishes periodic reports on inequality in Andalusia.\n\n\nMonitor de Desigualdad · CaixaBank Research\nReal-time monitor of wage-income inequality in Spain, built from anonymised payroll data (with Pompeu Fabra University and IPEG).\n\n\nEAPN Andalucía\nRed Andaluza de Lucha contra la Pobreza y la Exclusión Social: reports and indicators on poverty and social exclusion in Andalusia.\n\n\nEl Estado de la Pobreza · EAPN España\nAnnual report on poverty and social exclusion (AROPE) in Spain and its regions.\n\n\nFundación FOESSA\nReports on social exclusion and development in Spain, promoted by Cáritas.\n\n\nINE · Household Income Distribution Atlas\nGini index and P80/P20 ratio for every Spanish municipality, district and census tract.\n\n\nWorld Inequality Database (WID)\nIncome and wealth inequality series, including top income shares, for most countries.\n\n\nUNU-WIDER · World Income Inequality Database (WIID)\nThe most comprehensive collection of income inequality statistics, including Gini indices from many sources.\n\n\nOECD Income Distribution Database\nInequality and poverty indicators for OECD countries, based on harmonised definitions.\n\n\nLIS Cross-National Data Center\nHarmonised income and wealth microdata for more than 50 countries.\n\n\nWorld Bank · Poverty and Inequality Platform\nPoverty and inequality indicators, including the Gini index, for about 170 countries.\n\n\nEurostat · Living conditions\nEU-SILC indicators on income distribution, poverty and social exclusion in Europe."
+  },
+  {
+    "objectID": "missing-data.html",
+    "href": "missing-data.html",
+    "title": "Missing data simulator",
+    "section": "",
+    "text": "Missing data are very common in inequality studies: people are less willing to answer sensitive questions such as their income, and those who do not answer are often different from those who do. This simulator, linked to objective OG2 of the project, shows how much the Gini index can be biased by missing data, depending on the response mechanism and on the method used to deal with the missing values. It runs a Monte Carlo experiment in your browser."
+  },
+  {
+    "objectID": "missing-data.html#the-three-response-mechanisms",
+    "href": "missing-data.html#the-three-response-mechanisms",
+    "title": "Missing data simulator",
+    "section": "The three response mechanisms",
+    "text": "The three response mechanisms\n\n\nMCAR · Missing completely at randomThe probability of non-response is the same for everybody. The respondents are a random subsample of the sample.\n\n\nMAR · Missing at randomNon-response depends on an observed variable x (for example, education, age or occupation) that is related to income, but not on income itself once x is known.\n\n\nMNAR · Missing not at randomNon-response depends on the income itself: for example, people with very high (or very low) incomes are less willing to report it.\n\n\nIn the simulation, the probability that unit i does not respond follows a logistic model P(\\text{missing}_i)=\\{1+\\exp(-\\alpha-\\beta\\,v_i)\\}^{-1}, where v_i=0 under MCAR, v_i=x_i under MAR and v_i is the (standardised) rank of y_i under MNAR. The intercept \\alpha is set so that the expected percentage of missing data is the one chosen, and \\beta is the strength of the mechanism. The auxiliary variable x is observed for everybody and its correlation with the (normal scores of) income is \\rho.\n\n\n\nCode\nGS = new Promise(resolve =&gt; { const ok = () =&gt; window.GiniSim ? resolve(window.GiniSim) : setTimeout(ok, 50); ok(); })\nmethodColors = [\"#8A8F98\", \"#D43F3A\", \"#E89A3C\", \"#9C6ADE\", \"#1A5FA8\", \"#5E8C61\"]"
+  },
+  {
+    "objectID": "missing-data.html#scenario",
+    "href": "missing-data.html#scenario",
+    "title": "Missing data simulator",
+    "section": "Scenario",
+    "text": "Scenario\n\n\nCode\nviewof sc = Inputs.form({\n  dist: Inputs.select([\"Pareto\", \"Dagum-p20\", \"Dagum-p0.5\", \"Lognormal\", \"Weibull\"], {label: \"Distribution of income\", value: \"Lognormal\"}),\n  G: Inputs.range([0.2, 0.7], {label: \"True Gini index (G)\", step: 0.05, value: 0.35}),\n  n: Inputs.select([100, 200, 500, 1000], {label: \"Sample size (n)\", value: 200}),\n  rate: Inputs.range([0.05, 0.6], {label: \"Percentage of missing data\", step: 0.05, value: 0.3, format: x =&gt; `${Math.round(100 * x)}%`}),\n  strength: Inputs.radio(new Map([[\"Weak\", 0.5], [\"Moderate\", 1], [\"Strong\", 2]]), {label: \"Strength of the mechanism (MAR, MNAR)\", value: 1}),\n  direction: Inputs.radio(new Map([[\"High incomes are more often missing\", 1], [\"Low incomes are more often missing\", -1]]), {label: \"Who does not respond?\", value: 1}),\n  rho: Inputs.range([0, 0.95], {label: \"Correlation between x and income (ρ)\", step: 0.05, value: 0.6}),\n  R: Inputs.select([100, 200, 500, 1000], {label: \"Replications (R)\", value: 200})\n})\n\n\n\n\n\n\n\n\n\nCode\nviewof methods = Inputs.checkbox(GS.METHODS, {label: \"Methods to compare\", value: GS.METHODS})"
+  },
+  {
+    "objectID": "missing-data.html#results-relative-bias-of-the-gini-index",
+    "href": "missing-data.html#results-relative-bias-of-the-gini-index",
+    "title": "Missing data simulator",
+    "section": "Results: relative bias of the Gini index",
+    "text": "Results: relative bias of the Gini index\n\n\nCode\nmissRes = GS.missingExperiment({dist: sc.dist, G: sc.G, n: sc.n, R: sc.R, rate: sc.rate, strength: sc.strength, rho: sc.rho, direction: sc.direction, methods})\nfullRB = missRes.find(d =&gt; d.mechanism === \"No missing data\")\nmissShown = missRes.filter(d =&gt; d.mechanism !== \"No missing data\")\nmethods.length ? Plot.plot({\n  width: 960, height: 360, marginLeft: 50, marginBottom: 40,\n  fx: {label: null, domain: GS.MECHANISMS, padding: 0.12},\n  x: {axis: null, domain: methods},\n  y: {label: \"Relative bias of the Gini index (%)\", grid: true},\n  color: {legend: true, domain: GS.METHODS, range: methodColors},\n  marks: [\n    Plot.ruleY([-2, 2], {stroke: \"#5E8C61\", strokeWidth: 1.5, strokeOpacity: 0.7}),\n    Plot.barY(missShown, {fx: \"mechanism\", x: \"method\", y: \"RB\", fill: \"method\", tip: true,\n      title: d =&gt; `${d.mechanism} · ${d.method}\\nRelative bias: ${d.RB.toFixed(2)}%\\nRelative RMSE: ${d.RRMSE.toFixed(2)}%\\nMean estimate: ${d.mean.toFixed(4)} (true G = ${sc.G})`}),\n    Plot.ruleY([0], {stroke: \"#333\"}),\n    Plot.ruleY([fullRB.RB], {stroke: \"#333\", strokeDasharray: \"5,3\"})\n  ]\n}) : html`&lt;p class=\"pending\"&gt;Select at least one method.&lt;/p&gt;`\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nGreen lines: limits of negligible bias (±2%). Dashed line: relative bias of \\widehat{G}_n^{c} with the complete sample, before any data are lost (%). Hover over the bars to see the values.\n\n\n\nCode\nInputs.table(missRes.map(d =&gt; ({Mechanism: d.mechanism, Method: d.method, \"Mean estimate\": +d.mean.toFixed(4),\n  \"Relative bias (%)\": +d.RB.toFixed(2), \"Relative RMSE (%)\": +d.RRMSE.toFixed(2)})), {rows: 20})\n\n\n\n\n\n\n\n\n\nCode\nDOM.download(new Blob([d3.csvFormat(missRes.map(d =&gt; ({...d, distribution: sc.dist, G: sc.G, n: sc.n, missing_rate: sc.rate, strength: sc.strength, direction: sc.direction, rho: sc.rho})))], {type: \"text/csv\"}), \"ginius_missing_data_simulation.csv\", \"Download results (CSV)\")\n\n\n\n\n\n\n\n\n\n\n\n\n\nHow to read the results\n\n\n\n\nComplete cases (deleting the units with missing data) is only safe under MCAR. Under MAR and MNAR the respondents are no longer representative, and if the richest people do not respond, inequality is underestimated.\nMean imputation always underestimates inequality, because all the imputed incomes are equal. It should never be used to estimate the Gini index.\nRegression imputation also underestimates inequality, because it ignores the residual variability of income.\nStochastic regression imputation and multiple imputation add a random residual to the prediction. Under MAR, they remove most of the bias, provided that the imputation model includes the variable x that explains non-response. Multiple imputation also reflects the uncertainty due to imputation and has a smaller error.\nUnder MNAR, no standard method removes the bias. Sensitivity analyses and auxiliary information on the non-respondents are needed.\nIncrease the percentage of missing data, the strength of the mechanism or the inequality of the data to see how the problems grow; reduce the correlation \\rho to see how imputation loses its advantage under MAR."
+  },
+  {
+    "objectID": "missing-data.html#one-sample-who-does-not-respond",
+    "href": "missing-data.html#one-sample-who-does-not-respond",
+    "title": "Missing data simulator",
+    "section": "One sample: who does not respond?",
+    "text": "One sample: who does not respond?\n\n\nCode\nviewof exMech = Inputs.radio(GS.MECHANISMS, {label: \"Mechanism\", value: \"MNAR\"})\n\n\n\n\n\n\n\n\n\nCode\nexData = GS.missingExample({dist: sc.dist, G: sc.G, n: Math.max(sc.n, 300), rate: sc.rate, strength: sc.strength, rho: sc.rho, direction: sc.direction, mechanism: exMech})\nexQuint = {\n  const ys = exData.map(d =&gt; d.y).sort((a, b) =&gt; a - b), q = [0.2, 0.4, 0.6, 0.8].map(p =&gt; ys[Math.floor(p * ys.length)]);\n  const lab = [\"Q1 (poorest 20%)\", \"Q2\", \"Q3\", \"Q4\", \"Q5 (richest 20%)\"];\n  const g = d =&gt; lab[q.filter(t =&gt; d.y &gt;= t).length];\n  return lab.map(l =&gt; { const s = exData.filter(d =&gt; g(d) === l); return {quintile: l, missing: 100 * s.filter(d =&gt; d.status === \"Missing\").length / s.length}; });\n}\nhtml`&lt;div style=\"display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1rem\"&gt;${[\n  html`&lt;div&gt;&lt;b&gt;Income and auxiliary variable x&lt;/b&gt;${Plot.plot({\n    height: 330, marginLeft: 55,\n    x: {label: \"Auxiliary variable x\", grid: true}, y: {label: \"Income (log scale)\", type: \"log\", grid: true},\n    color: {legend: true, domain: [\"Observed\", \"Missing\"], range: [\"#1A5FA8\", \"#D43F3A\"]},\n    marks: [Plot.dot(exData, {x: \"x\", y: \"y\", fill: \"status\", r: 2.6, fillOpacity: 0.7})]\n  })}&lt;/div&gt;`,\n  html`&lt;div&gt;&lt;b&gt;Percentage of missing data by income quintile&lt;/b&gt;${Plot.plot({\n    height: 330, marginLeft: 55, marginBottom: 45,\n    x: {label: null, domain: exQuint.map(d =&gt; d.quintile), tickRotate: -15}, y: {label: \"Missing (%)\", grid: true, domain: [0, 100]},\n    marks: [Plot.barY(exQuint, {x: \"quintile\", y: \"missing\", fill: \"#D43F3A\", fillOpacity: 0.8, tip: true}), Plot.ruleY([100 * sc.rate], {stroke: \"#333\", strokeDasharray: \"4,3\"}), Plot.ruleY([0])]\n  })}&lt;/div&gt;`\n]}&lt;/div&gt;`\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDashed line: overall percentage of missing data. Under MCAR the percentage is similar in every quintile; under MAR and MNAR it depends on income, directly (MNAR) or through x (MAR)."
+  },
+  {
+    "objectID": "missing-data.html#methods-compared",
+    "href": "missing-data.html#methods-compared",
+    "title": "Missing data simulator",
+    "section": "Methods compared",
+    "text": "Methods compared\n\nMethods for dealing with missing data.\n\n\n\n\n\n\n\nMethod\nWhat it does\nWhen it works\n\n\n\n\nComplete cases\nDeletes the units with missing income\nMCAR only\n\n\nMean imputation\nReplaces each missing income with the mean of the respondents\nNever for inequality measures\n\n\nHot-deck imputation\nReplaces each missing income with the income of a randomly chosen respondent\nMCAR (or within classes that explain non-response)\n\n\nRegression imputation\nPredicts \\log y from x with a linear regression fitted to the respondents\nNot for inequality measures (ignores residual variability)\n\n\nStochastic regression imputation\nPrediction plus a residual drawn at random from the respondents’ residuals\nMAR, if the model includes the variables that explain non-response\n\n\nMultiple imputation (M=5)\nStochastic regression repeated M times, refitting the model on bootstrap samples of the respondents; the M Gini indices are averaged (Rubin’s rules)\nMAR; also gives valid variances and intervals\n\n\n\n\n\n\n\n\n\nGood practice when estimating the Gini index with missing data. Report the percentage of missing data and analyse the response mechanism; never use mean imputation or simply delete the incomplete cases unless the data are MCAR; include in the imputation model the variables related to income and to non-response; use multiple imputation with enough imputations for the percentage of missing data; and report the uncertainty due to imputation.\n\n\n\nThe code of the simulator is in js/gini-sim.js. Estimator of the Gini index: \\widehat{G}_n^{c}. Gamma is not included because the simulator generates the income and the auxiliary variable through a normal copula, which requires a closed-form quantile function."
+  },
+  {
+    "objectID": "missing-data.html#references",
+    "href": "missing-data.html#references",
+    "title": "Missing data simulator",
+    "section": "References",
+    "text": "References\nVan Buuren, S. (2018). Flexible Imputation of Missing Data (2nd ed.). CRC Press.\nLittle, R.J.A., & Rubin, D.B. (2019). Statistical Analysis with Missing Data (3rd ed.). Wiley.\nÁlvarez-Verdejo, E., Moya-Fernández, P.J., & Muñoz-Rosas, J.F. (2021). Single imputation methods and confidence intervals for the Gini index. Mathematics, 9(24), 3252.\nMuñoz, J.F., & Rueda, M. (2009). New imputation methods for missing data using quantiles. Journal of Computational and Applied Mathematics, 232(2), 305–317."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "GiniUs",
+    "section": "",
+    "text": "Challenges for the analysis of inequality with applications in the Social Sciences: using new methodological developments to avoid biases and errors in the Gini index.\n\n\nResearch project · In progress (2023–2027)"
+  },
+  {
+    "objectID": "index.html#project-status",
+    "href": "index.html#project-status",
+    "title": "GiniUs",
+    "section": "Project status",
+    "text": "Project status\n\n\n\n\nYear 1 (2023–24)\n\n\nYear 2 (2024–25)\n\n\nYear 3 (2025–26)\n\n\nYear 4 (2026–27)\n\n\nCompleted (Aug 2027)\n\n\n\nCurrent status: in progress, fourth and last year (1 September 2026 – 31 August 2027). The R package giniVarCI is available on CRAN; the work on bias (OG1), missing data (OG2) and applications (OG4) continues. Last update: 17 November 2026."
+  },
+  {
+    "objectID": "index.html#about-ginius",
+    "href": "index.html#about-ginius",
+    "title": "GiniUs",
+    "section": "About GiniUs",
+    "text": "About GiniUs\nGiniUs is a research project of the University of Granada (Spain), funded by the Spanish State Research Agency, that makes methodological contributions to the measurement of inequality through the Gini index, the most widely used inequality indicator.\nInequality is a priority challenge of the UN 2030 Agenda, Horizon Europe and the Spanish State Plan for Scientific, Technical and Innovation Research. To design sound policies, inequality must be measured without biases or errors. However, the Gini index is always estimated from samples, and the project has shown that:\n\nthere are many different estimators of the Gini index, which give different results;\nsome of them have large biases when data have low inequality, or are highly skewed and unequal;\nmissing data, very common in income surveys, can bias the Gini index, and the way they are treated matters;\nstatistical software for the Gini index rarely provides variances and confidence intervals.\n\nGiniUs develops solutions to these problems, publishes them in leading journals, implements them in the open-source R package giniVarCI, and applies them in three areas of the Social Sciences: water economics, tourism and business management."
+  },
+  {
+    "objectID": "index.html#the-project-at-a-glance",
+    "href": "index.html#the-project-at-a-glance",
+    "title": "GiniUs",
+    "section": "The project at a glance",
+    "text": "The project at a glance\n\n\nOG1 · Bias of the Gini index\nIdentify and reduce the bias of Gini estimators. Explore the bias →\n\n\nOG2 · Missing data\nIdentify and reduce the impact of missing data on the Gini index. Try the simulator →\n\n\nOG3 · Open software\nThe R package giniVarCI, available on CRAN. See the package →\n\n\nOG4 · Applications and social impact\nWater, tourism, business management and gender inequality. Objectives →\n\n\nOG5 · Dissemination\nPublications, conferences, seminars and research stays. Publications →"
+  },
+  {
+    "objectID": "index.html#latest-news",
+    "href": "index.html#latest-news",
+    "title": "GiniUs",
+    "section": "Latest news",
+    "text": "Latest news\n\n\nNovember 2026 · New website, with a Gini index calculator, a missing data simulator, an interactive bias explorer, R exercises in your browser and an inequality observatory.\n2026 · A practical guide to proper estimation and inference of the Gini index, published in Social Indicators Research.\n22 May 2024 · Seminar on methodological aspects of the Gini index and the R package giniVarCI.\n\n\nAll news →"
+  },
+  {
+    "objectID": "index.html#what-this-website-offers",
+    "href": "index.html#what-this-website-offers",
+    "title": "GiniUs",
+    "section": "What this website offers",
+    "text": "What this website offers\n\nCommunication and collaboration. Data, R code, results and conclusions are shared among the members of the project.\nReproducible research. Anyone can run the R code and obtain the same results.\nInteractivity. The bias explorer and the missing data simulator run Monte Carlo experiments in your browser under many scenarios.\nTools. The calculator estimates the Gini index of your own data with its standard error and confidence interval, and the R exercises run in your browser without installing anything.\nInequality observatory. The observatory shows official Gini indices from Eurostat, the World Bank and the Spanish Statistical Office (INE).\nDissemination and internationalisation. Results, data and software are openly available to researchers worldwide."
+  },
+  {
+    "objectID": "index.html#funding",
+    "href": "index.html#funding",
+    "title": "GiniUs",
+    "section": "Funding",
+    "text": "Funding\n\n\n\n\nProject PID2022-136235NB-I00 funded by MICIU/AEI/10.13039/501100011033 and by ERDF/EU. Knowledge Generation Projects, 2022 call. Duration: 1 September 2023 – 31 August 2027."
+  },
+  {
+    "objectID": "index.html#your-opinion",
+    "href": "index.html#your-opinion",
+    "title": "GiniUs",
+    "section": "Your opinion",
+    "text": "Your opinion\nIs this website useful to you? Rate it with one click and leave us your recommendations.\n\n  How satisfied are you with the GiniUs website?\n  \n    😞I don't like it\n    🙁Not much\n    😐It's OK\n    🙂Quite a lot\n    😄I like it\n  \n  Thank you for your opinion! You can also leave us a recommendation below.\n  \n\n  \n    Recommendations: what would you improve or add (data, guides, software, features)?\n    \n    \n      \n      Send recommendation\n    \n    Thank you! Your recommendation has been sent.\n  \n  Anonymous: no cookies or personal data are stored. Your rating is counted only once per browser."
+  },
+  {
+    "objectID": "gini-index.html#definitions",
+    "href": "gini-index.html#definitions",
+    "title": "The Gini index: definition and estimation",
+    "section": "Definitions",
+    "text": "Definitions\nLet Y be a non-negative continuous random variable with distribution function F_Y and mean \\mu_Y = E[Y]=\\int_0^{\\infty} y\\,dF_Y(y). The Gini index has several equivalent definitions.\nDefinition 1 (Lorenz, 1905; Langel and Tillé, 2013). Twice the area between the line of equality and the Lorenz curve L_\\alpha: \nG = 2\\left(0.5 - \\int_{0}^{1} L_{\\alpha}\\, d\\alpha \\right), \\qquad\nL_{\\alpha} = \\frac{1}{\\mu_{Y}}\\int_{0}^{Y_{\\alpha}}y\\,dF_{Y}(y)=\\frac{1}{\\mu_{Y}}\\int_{0}^{\\alpha}Y_{u}\\,du,\n where Y_{\\alpha}=F_{Y}^{-1}(\\alpha)=\\inf\\{t:F_{Y}(t)\\geq \\alpha\\} is the \\alpha-quantile of Y.\nDefinition 2 (Kendall and Stuart, 1977). Half the relative mean absolute difference: \nG = \\frac{D_{G}}{2 \\mu_{Y}}, \\qquad D_{G}=E|X-Y|=\\int_{0}^{\\infty}\\!\\!\\int_{0}^{\\infty} |x-y|\\,dF_{Y}(x)\\,dF_{Y}(y).\n\nDefinition 3 (Qin et al., 2010; Berger and Gedik-Balay, 2020): \nG=\\frac{1}{\\mu_{Y}}\\int_{0}^{\\infty}\\{2F_{Y}(y)-1\\}\\,y\\,dF_{Y}(y)=1 - \\frac{1}{\\mu_{Y}}\\int_{0}^{\\infty}\\{1-F_{Y}(y)\\}^{2}dy.\n\nDefinition 4 (Anand, 1983; Lerman and Yitzhaki, 1984): \nG=\\frac{2}{\\mu_{Y}}\\,\\mathrm{cov}\\{Y, F_{Y}(Y)\\}.\n\nDefinition 5 (Yitzhaki, 1998; Peng, 2011; Berger and Gedik-Balay, 2020): \nG=1 - \\frac{\\mu_{Z}}{\\mu_{Y}}, \\qquad \\mu_{Z} = E(Z)= \\int_{0}^{\\infty}\\{1-F_{Z}(z)\\}\\,dz,\n where Z=\\min\\{Y_{a}, Y_{b}\\} and Y_{a}, Y_{b} are independent copies of Y.\n\n\n\n\n\n\nAll these estimators, with variances and confidence intervals, are implemented in the R package giniVarCI, developed in this project: install.packages(\"giniVarCI\")."
+  },
+  {
+    "objectID": "gini-index.html#estimation-in-infinite-populations",
+    "href": "gini-index.html#estimation-in-infinite-populations",
+    "title": "The Gini index: definition and estimation",
+    "section": "Estimation in infinite populations",
+    "text": "Estimation in infinite populations\nWe use a sample of size n=50 from a Pareto distribution. The R functions below are written in base R so that they can be read and checked easily; giniVarCI computes them much faster with C++ code.\n\n# Sample selection (Pareto distribution with scale 1 and shape 1.5, by inversion)\nset.seed(123)\nrpareto_base &lt;- function(n, scale = 1, shape) scale / runif(n)^(1 / shape)\nY.n &lt;- rpareto_base(n = 50, shape = 1.5)\nround(Y.n, 3)\n\n [1]  2.295  1.172  1.815  1.086  1.042  7.840  1.531  1.079  1.487  1.686\n[11]  1.030  1.695  1.296  1.450  4.553  1.073  2.546  8.268  2.103  1.032\n[21]  1.081  1.277  1.346  1.004  1.325  1.258  1.500  1.415  2.287  3.588\n[31]  1.025  1.071  1.280  1.165 11.818  1.636  1.202  2.774  2.146  2.651\n[41]  3.660  1.799  1.801  1.944  3.504  3.730  2.641  1.664  2.418  1.108\n\n\nEstimator \\widehat{G}_{n}^{a}: \\widehat{G}_{n}^{a}= \\frac{1}{n\\overline{y}}\\sum_{i \\in S}\\{2\\widehat{F}_{n}(y_{i})-1\\}y_{i}= \\frac{1}{T}\\sum_{i \\in S}\\{2\\widehat{F}_{n}(y_{i})-1\\}y_{i},\\qquad T=\\sum_{i \\in S}y_{i}.\n\nGn.a &lt;- function(y) {\n  FDi &lt;- sapply(y, function(Yi) mean(y &lt;= Yi))\n  (1 / sum(y)) * sum((2 * FDi - 1) * y)\n}\nGn.a(Y.n)\n\n[1] 0.3803843\n\n\nEstimator \\widehat{G}_{n}^{b}: \\widehat{G}_{n}^{b}=\\frac{1}{2n^{2}\\overline{y}}\\sum_{i \\in S}\\sum_{j \\in S}|y_{i}-y_{j}|=\\frac{1}{2nT}\\sum_{i \\in S}\\sum_{j \\in S}|y_{i}-y_{j}|.\n\nGn.b &lt;- function(y) {\n  n &lt;- length(y)\n  ABSi &lt;- sapply(y, function(Yi) sum(abs(y - Yi)))\n  sum(ABSi) / (2 * n * sum(y))\n}\nGn.b(Y.n)\n\n[1] 0.3603843\n\n\nEstimators \\widehat{G}_{n}^{b1}, \\widehat{G}_{n}^{b2} and \\widehat{G}_{n}^{b3} (equivalent expressions of \\widehat{G}_{n}^{b} based on the ordered sample y_{(1)}\\le\\cdots\\le y_{(n)}): \\widehat{G}_{n}^{b1} = \\frac{2}{nT}\\sum_{i=1}^{n} i\\, y_{(i)} - \\frac{n+1}{n},\\qquad\n\\widehat{G}_{n}^{b2} = \\frac{2\\widehat{\\beta}}{n} - \\frac{n+1}{n},\\quad \\widehat{\\beta}=\\frac{1}{T}\\sum_{i=1}^{n} i\\,y_{(i)},\\qquad\n\\widehat{G}_{n}^{b3} = \\frac{2}{T}\\,\\mathrm{cov}(i, y_{(i)}).\n\nGn.b1 &lt;- function(y) { n &lt;- length(y); (2 / (n * sum(y))) * sum((1:n) * sort(y)) - (n + 1) / n }\nGn.b2 &lt;- function(y) { n &lt;- length(y); Beta &lt;- sum((1:n) * sort(y)) / sum(y); 2 * Beta / n - (n + 1) / n }\nGn.b3 &lt;- function(y) { n &lt;- length(y); (2 / sum(y)) * (mean((1:n) * sort(y)) - mean(1:n) * mean(y)) }\nc(b1 = Gn.b1(Y.n), b2 = Gn.b2(Y.n), b3 = Gn.b3(Y.n))\n\n       b1        b2        b3 \n0.3603843 0.3603843 0.3603843 \n\n\nEstimator \\widehat{G}_{n}^{c} (bias-corrected version): \\widehat{G}_{n}^{c}= \\frac{n}{n-1}\\widehat{G}_{n}^{b}=\\frac{1}{2(n-1)T}\\sum_{i \\in S}\\sum_{j \\in S}|y_{i}-y_{j}|.\n\nGn.c &lt;- function(y) { n &lt;- length(y); n * Gn.b(y) / (n - 1) }\nGn.c(Y.n)\n\n[1] 0.3677391\n\n\nEstimators \\widehat{G}_{n}^{c1}, \\widehat{G}_{n}^{c2} and \\widehat{G}_{n}^{c3}: \\widehat{G}_{n}^{c1} = \\frac{2}{(n-1)T}\\sum_{i=1}^{n} i\\, y_{(i)} - \\frac{n+1}{n-1},\\qquad\n\\widehat{G}_{n}^{c2} = \\frac{1}{2\\overline{y}}\\binom{n}{2}^{-1}\\sum_{1 \\leq i_{1} &lt; i_{2} \\leq n} |y_{i_{1}}-y_{i_{2}}|,\\qquad\n\\widehat{G}_{n}^{c3} = 1 - \\frac{\\overline{z}}{\\overline{y}}, where z_i = (n-1)^{-1}\\sum_{j\\neq i}\\min(y_i,y_j).\n\nGn.c1 &lt;- function(y) { n &lt;- length(y); (2 / ((n - 1) * sum(y))) * sum((1:n) * sort(y)) - (n + 1) / (n - 1) }\nGn.c2 &lt;- function(y) {\n  n &lt;- length(y); pairs &lt;- combn(n, 2)\n  (1 / (2 * mean(y))) * sum(abs(y[pairs[1, ]] - y[pairs[2, ]])) / choose(n, 2)\n}\nGn.c3 &lt;- function(y) {\n  n &lt;- length(y)\n  zi &lt;- sapply(1:n, function(i) sum(pmin(y[-i], y[i]))) / (n - 1)\n  1 - mean(zi) / mean(y)\n}\nc(c1 = Gn.c1(Y.n), c2 = Gn.c2(Y.n), c3 = Gn.c3(Y.n))\n\n       c1        c2        c3 \n0.3677391 0.3677391 0.3677391"
+  },
+  {
+    "objectID": "gini-index.html#estimation-in-finite-populations",
+    "href": "gini-index.html#estimation-in-finite-populations",
+    "title": "The Gini index: definition and estimation",
+    "section": "Estimation in finite populations",
+    "text": "Estimation in finite populations\nA sample of size n=50 is selected by simple random sampling without replacement from a population of size N=10{,}000 generated from a Pareto distribution. The survey weights are w_i = N/n.\n\nset.seed(123)\nY.N &lt;- rpareto_base(n = 10000, shape = 1.5)\nY.n &lt;- sample(Y.N, size = 50)\nw.n &lt;- rep(10000 / 50, 50)\n\nEstimator \\widehat{G}_{w}^{a}: \\widehat{G}_{w}^{a}= \\frac{2}{\\widehat{N}\\overline{y}_{w}}\\sum_{i \\in S}w_{i}y_{i}\\widehat{F}_{w}(y_{i})-1.\n\nGw.a &lt;- function(y, w) {\n  N.Hat &lt;- sum(w)\n  FDi &lt;- sapply(y, function(Yi) sum(w * (y &lt;= Yi)) / N.Hat)\n  Mean.y &lt;- sum(w * y) / N.Hat\n  (2 / (N.Hat * Mean.y)) * sum(w * y * FDi) - 1\n}\nGw.a(Y.n, w.n)\n\n[1] 0.3356694\n\n\nEstimator \\widehat{G}_{w}^{b}: \\widehat{G}_{w}^{b}=\\frac{1}{2\\widehat{N}^{2}\\overline{y}_{w}}\\sum_{i \\in S}\\sum_{j \\in S}w_{i}w_{j}|y_{i}-y_{j}|.\n\nGw.b &lt;- function(y, w) {\n  N.Hat &lt;- sum(w)\n  ABSi &lt;- sapply(y, function(Yi) sum(w * abs(y - Yi)))\n  Mean.y &lt;- sum(w * y) / N.Hat\n  sum(w * ABSi) / (2 * N.Hat^2 * Mean.y)\n}\nGw.b(Y.n, w.n)\n\n[1] 0.3156694\n\n\nEstimator \\widehat{G}_{w}^{c}: \\widehat{G}_{w}^{c} =1 - \\frac{\\overline{z}_{w}}{\\overline{y}_{w}}.\n\nGw.c &lt;- function(y, w) {\n  N.Hat &lt;- sum(w); n &lt;- length(y)\n  zi &lt;- sapply(1:n, function(i) sum(w[-i] * pmin(y[-i], y[i])) / (N.Hat - w[i]))\n  1 - (sum(w * zi) / N.Hat) / (sum(w * y) / N.Hat)\n}\nGw.c(Y.n, w.n)\n\n[1] 0.3221116"
+  },
+  {
+    "objectID": "gini-index.html#with-the-r-package-ginivarci",
+    "href": "gini-index.html#with-the-r-package-ginivarci",
+    "title": "The Gini index: definition and estimation",
+    "section": "With the R package giniVarCI",
+    "text": "With the R package giniVarCI\n\ninstall.packages(\"giniVarCI\")\nlibrary(giniVarCI)\n\n# Infinite populations: estimate with bias correction and confidence interval\nigini(Y.n)                              # point estimate\nigini(Y.n, interval = \"zjackknife\")     # jackknife interval\nicompareCI(Y.n, plotCI = TRUE)          # compares all the intervals\n\n# Finite populations: survey weights\nfgini(Y.n, w.n, interval = \"zalinearization\")\n\nSee the giniVarCI page for more examples."
+  },
+  {
+    "objectID": "gini-index.html#references",
+    "href": "gini-index.html#references",
+    "title": "The Gini index: definition and estimation",
+    "section": "References",
+    "text": "References\nAnand, S. (1983). Inequality and Poverty in Malaysia: Measurement and Decomposition. The World Bank.\nBerger, Y.G., & Gedik-Balay, İ. (2020). Confidence intervals of Gini coefficient under unequal probability sampling. Journal of Official Statistics, 36(2), 237–249.\nKendall, M., & Stuart, A. (1977). The Advanced Theory of Statistics. Vol. 1: Distribution Theory. Griffin.\nLangel, M., & Tillé, Y. (2013). Variance estimation of the Gini index: revisiting a result several times published. JRSS A, 176(2), 521–540.\nLerman, R.I., & Yitzhaki, S. (1984). A note on the calculation and interpretation of the Gini index. Economics Letters, 15(3–4), 363–368.\nLorenz, M.O. (1905). Methods of measuring the concentration of wealth. Publications of the American Statistical Association, 9(70), 209–219.\nPeng, L. (2011). Empirical likelihood methods for the Gini index. Australian & New Zealand Journal of Statistics, 53(2), 131–139.\nQin, Y., Rao, J.N.K., & Wu, C. (2010). Empirical likelihood confidence intervals for the Gini measure of income inequality. Economic Modelling, 27(6), 1429–1435.\nYitzhaki, S. (1998). More than a dozen alternative ways of spelling Gini. Research on Economic Inequality, 8, 13–30."
+  },
+  {
+    "objectID": "dissemination.html",
+    "href": "dissemination.html",
+    "title": "Seminars and conferences",
+    "section": "",
+    "text": "Aspectos metodológicos del índice de Gini y biblioteca de R giniVarCI para su estimación y construcción de intervalos de confianza. E. Álvarez, P.J. Moya, J.F. Muñoz and J.M. Pavía. Seminar organised by the research group EPIC (Economía Pública y Globalización, SEJ-393), University of Granada.\n\n\n\nSeminar of 22 May 2024 on the Gini index and the R package giniVarCI."
+  },
+  {
+    "objectID": "dissemination.html#seminars",
+    "href": "dissemination.html#seminars",
+    "title": "Seminars and conferences",
+    "section": "",
+    "text": "Aspectos metodológicos del índice de Gini y biblioteca de R giniVarCI para su estimación y construcción de intervalos de confianza. E. Álvarez, P.J. Moya, J.F. Muñoz and J.M. Pavía. Seminar organised by the research group EPIC (Economía Pública y Globalización, SEJ-393), University of Granada.\n\n\n\nSeminar of 22 May 2024 on the Gini index and the R package giniVarCI."
+  },
+  {
+    "objectID": "dissemination.html#conferences",
+    "href": "dissemination.html#conferences",
+    "title": "Seminars and conferences",
+    "section": "Conferences",
+    "text": "Conferences\nConferences where the results of the project are presented will be listed here.\n\nUpcoming conferences (2027)\nConferences of interest for the project with confirmed dates for 2027. Dates and venues are taken from the official websites (checked in November 2026); please check them before planning a trip.\n\n\n\n\nDates\nConference\nVenue\nWhy it matters for GiniUs\n\n\n\n\nFebruary 2027\n3rd III/LIS Comparative Economic Inequality Conference\nLondon School of Economics, London (UK)\nComparative measurement of income inequality\n\n\n24–25 May 2027\nIARIW–WIUT Conference: Measuring Income, Wealth, and Well-being in Central Asia, the Caucasus, and Neighboring Regions\nWestminster International University in Tashkent (Uzbekistan)\nInequality measurement; abstracts due 25 November 2026; selected papers in the Review of Income and Wealth\n\n\n6–9 July 2027\n10th International Conference on Econometrics and Statistics (EcoSta 2027)\nShanghaiTech University, Shanghai (China)\nBias correction and inference for the Gini index (OG1, OG2)\n\n\n11–15 July 2027\n66th ISI World Statistics Congress (WSC 2027)\nLusaka (Zambia)\nOfficial statistics and inequality indicators; transfer to statistical offices\n\n\n19–23 July 2027\n12th Conference of the European Survey Research Association (ESRA 2027)\nParis (France), jointly with WAPOR\nSurvey data, non-response and missing data (OG2)\n\n\n31 Aug – 3 Sep 2027\n12th ECINEQ Conference\nUNU-WIDER, Helsinki (Finland); policy event on 31 August\nThe main international meeting on economic inequality\n\n\n22–24 September 2027\nEnvStat27 – Environmental Statistics and Data Science\nBOKU University, Vienna (Austria)\nStatistical methods for water applications (OG4)\n\n\n\n\nOther regular meetings of interest whose 2027 dates have not yet been announced: the Spring Servitization Conference, the useR! conference, the SEIO and ASEPELT congresses, COMPSTAT and CMStatistics."
+  },
+  {
+    "objectID": "dissemination.html#research-stays",
+    "href": "dissemination.html#research-stays",
+    "title": "Seminars and conferences",
+    "section": "Research stays",
+    "text": "Research stays\nThe project plans research stays at the centres of its foreign members (University of Glasgow, University of Edinburgh and University of Modena and Reggio Emilia), with seminars to disseminate the results. Completed stays will be listed here."
+  },
+  {
+    "objectID": "dissemination.html#final-international-workshop",
+    "href": "dissemination.html#final-international-workshop",
+    "title": "Seminars and conferences",
+    "section": "Final international workshop",
+    "text": "Final international workshop\nAn international workshop will be organised at the end of the project (2027) to disseminate the results, with institutions interested in inequality and missing data such as the Spanish Statistical Office (INE)."
+  },
+  {
+    "objectID": "dissemination.html#inequality-in-the-news",
+    "href": "dissemination.html#inequality-in-the-news",
+    "title": "Seminars and conferences",
+    "section": "Inequality in the news",
+    "text": "Inequality in the news\n\n2025 · Eurostat. Inequality in enlargement countries.\n2024 · World Bank. The geography of high inequality: monitoring the World Bank’s new indicator.\n2023 · World Bank. 2023 in nine charts: a growing inequality.\n2023 · World Economic Forum. Global inequality is a failure of imagination.\n2023 · National Review. Was the panic over ‘income inequality’ all based on a mistake?\n2023 · World Economic Forum (Davos). José María Álvarez-Pallete: inequality is the greatest challenge that society faces in the change of era brought by digital transformation."
+  },
+  {
+    "objectID": "contact.html",
+    "href": "contact.html",
+    "title": "Contact and collaboration",
+    "section": "",
+    "text": "We welcome contact from external researchers and organisations, in particular in the transfer areas of the project:"
+  },
+  {
+    "objectID": "contact.html#send-us-a-message",
+    "href": "contact.html#send-us-a-message",
+    "title": "Contact and collaboration",
+    "section": "Send us a message",
+    "text": "Send us a message\nThe form opens your email application with the message ready to send. No data are stored on this website.\n\n\n  \n    Name\n      \n    Institution\n      \n    Area of interest\n      \n        Gini index: bias, variances and confidence intervals\n        Missing data and imputation\n        R package giniVarCI\n        Water\n        Tourism\n        Business management\n        Gender inequality\n        Data sharing\n        Seminars, visits and research stays\n        Other\n      \n    Type of collaboration\n      \n        Joint research or co-authorship\n        Applying the methods to my data\n        Seminar or conference invitation\n        Research stay\n        Information about the project\n      \n    Message\n      \n    Prepare email"
+  },
+  {
+    "objectID": "contact.html#where-to-find-us",
+    "href": "contact.html#where-to-find-us",
+    "title": "Contact and collaboration",
+    "section": "Where to find us",
+    "text": "Where to find us\n\n\n\n  \n  \n    Facultad de Ciencias Económicas y EmpresarialesUniversidad de GranadaCampus Universitario de Cartuja, s/n18071 Granada, Spain\n    Department of Quantitative Methods for Economics and Business\n    jfmunoz@ugr.es\n    Open in OpenStreetMap ↗"
+  },
+  {
+    "objectID": "contact.html#other-ways-to-get-in-touch",
+    "href": "contact.html#other-ways-to-get-in-touch",
+    "title": "Contact and collaboration",
+    "section": "Other ways to get in touch",
+    "text": "Other ways to get in touch\n\nEmail: jfmunoz@ugr.es\nPrincipal investigators: Juan Francisco Muñoz Rosas (Department of Quantitative Methods for Economics and Business) and Francisco José González Gómez (Department of Applied Economics), Faculty of Economics and Business, University of Granada (Spain).\nCode and data: suggestions and issues can be posted in the GitHub repository."
+  },
+  {
+    "objectID": "calculator.html",
+    "href": "calculator.html",
+    "title": "Gini index calculator",
+    "section": "",
+    "text": "Paste your data or upload a CSV file to obtain the Gini index with the estimators studied in the project, its jackknife bias and standard error, a 95% confidence interval (jackknife and bootstrap), the Lorenz curve and, if you choose a grouping variable (for example, sex or region), the Gini index of each group."
+  },
+  {
+    "objectID": "calculator.html#how-to-interpret-the-results",
+    "href": "calculator.html#how-to-interpret-the-results",
+    "title": "Gini index calculator",
+    "section": "How to interpret the results",
+    "text": "How to interpret the results\n\n\\widehat{G}_n^{b} is the usual estimator (equivalently, the Gini index with the mid-point distribution function); \\widehat{G}_n^{c} = \\frac{n}{n-1}\\widehat{G}_n^{b} is its bias-corrected version; \\widehat{G}_n^{a} is shown for comparison only: it overestimates inequality when inequality is low.\nWith sampling weights, the weighted estimator \\widehat{G}_{w} (mid-point distribution function) is used.\nJackknife bias: estimated bias of the estimator. With small samples or very skewed data the Gini index is usually underestimated.\nStandard error and 95% intervals: precision of the estimate. Differences between groups, regions or years should be interpreted in the light of these margins of error.\nWith sampling weights, the jackknife and the bootstrap delete or resample one unit at a time and ignore the sampling design (strata, clusters); for complex surveys, use fgini() in giniVarCI."
+  },
+  {
+    "objectID": "blog/posts/2026-11-17-missing-incomes/index.html",
+    "href": "blog/posts/2026-11-17-missing-incomes/index.html",
+    "title": "Missing incomes can make inequality look smaller than it is",
+    "section": "",
+    "text": "Income is one of the questions that people most often refuse to answer in surveys. If the people who do not answer were just a random subset of the sample (MCAR), deleting them would only cost precision. But non-response is rarely random: very rich and, sometimes, very poor households answer less often.\nWhen high incomes are more often missing, the respondents look more equal than the population, and the Gini index computed with the complete cases underestimates inequality. Two popular fixes make things worse:\n\nMean imputation gives every non-respondent the same income, so it removes inequality by construction.\nRegression imputation without a random residual places every imputed value on the regression line, with the same effect.\n\nIf non-response depends on variables that we observe for everybody, such as education, age or region (MAR), multiple imputation with these variables in the imputation model removes most of the bias and gives honest margins of error. If it depends on income itself (MNAR), no standard method is enough, and sensitivity analyses are needed.\nYou can see all this with your own eyes in the missing data simulator: choose a distribution, a percentage of missing data and a mechanism, and compare six methods. This is the topic of objective OG2 of GiniUs.\n\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "blog/index.html",
+    "href": "blog/index.html",
+    "title": "Blog",
+    "section": "",
+    "text": "Stay informed. Receive the news and blog posts of GiniUs by email, or follow the RSS feed.\n  \n    \n    Subscribe\n  \n  You can unsubscribe at any time. Your email is used only to send GiniUs news.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMissing incomes can make inequality look smaller than it is\n\n\n\nmissing data\n\nmethods\n\n\n\nWhy deleting the people who do not report their income, or imputing the mean, biases the Gini index downwards, and what to do instead.\n\n\n\n\n\nNov 17, 2026\n\n\nGiniUs team\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome to the new GiniUs website\n\n\n\nnews\n\n\n\nWhat is new on the website of the GiniUs project and how to follow it.\n\n\n\n\n\nNov 17, 2026\n\n\nGiniUs team\n\n\n\n\n\nNo matching items\n Back to top"
+  },
+  {
+    "objectID": "blog/posts/2026-11-17-welcome/index.html",
+    "href": "blog/posts/2026-11-17-welcome/index.html",
+    "title": "Welcome to the new GiniUs website",
+    "section": "",
+    "text": "GiniUs studies how to measure inequality reliably with the Gini index: which estimator to use, how large its bias can be, how to obtain margins of error that can be trusted, and how to deal with missing incomes. The project, funded by the Spanish State Research Agency (PID2022-136235NB-I00), is now in its fourth and last year.\nThe new website brings together the results of the project and several tools that run in your browser, without installing anything:\n\na Gini index calculator for your own data, with jackknife and bootstrap confidence intervals and the Lorenz curve;\nan interactive bias explorer that reproduces the Monte Carlo studies of the project;\na missing data simulator that compares complete-case analysis, single imputation and multiple imputation under the MCAR, MAR and MNAR mechanisms;\nR exercises, including the R package giniVarCI running in the browser;\nan inequality observatory with official Gini indices from Eurostat, the World Bank and INE.\n\nIn this blog we will publish short posts on new articles, software releases, seminars and practical advice on measuring inequality. You can follow it through the RSS feed or by subscribing.\n\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "cite.html",
+    "href": "cite.html",
+    "title": "How to cite",
+    "section": "",
+    "text": "If you use the materials, data or tools of GiniUs in your work, please cite them. Citations help us show the impact of the project."
+  },
+  {
+    "objectID": "cite.html#website",
+    "href": "cite.html#website",
+    "title": "How to cite",
+    "section": "Website",
+    "text": "Website\n\nGiniUs (2026). GiniUs: avoiding biases and errors in the Gini index website. Research project PID2022-136235NB-I00, University of Granada. https://jfmunozrosas.github.io/ginius/\n\n@misc{ginius_web,\n  author       = {{GiniUs project}},\n  title        = {{GiniUs}: avoiding biases and errors in the {Gini} index},\n  year         = {2026},\n  howpublished = {\\url{https://jfmunozrosas.github.io/ginius/}},\n  note         = {Research project PID2022-136235NB-I00, University of Granada. Accessed: YYYY-MM-DD}\n}\nWhen you use data from the observatory, please also cite the original source (Eurostat, World Bank or INE), indicated under each chart."
+  },
+  {
+    "objectID": "cite.html#interactive-tools",
+    "href": "cite.html#interactive-tools",
+    "title": "How to cite",
+    "section": "Interactive tools",
+    "text": "Interactive tools\n\nGiniUs (2026). Gini index calculator [online tool]. University of Granada. https://jfmunozrosas.github.io/ginius/calculator.html\n\n\nGiniUs (2026). Missing data simulator for the Gini index [online tool]. University of Granada. https://jfmunozrosas.github.io/ginius/missing-data.html"
+  },
+  {
+    "objectID": "cite.html#software",
+    "href": "cite.html#software",
+    "title": "How to cite",
+    "section": "Software",
+    "text": "Software\n\nMuñoz, J.F., Pavía, J.M., & Álvarez-Verdejo, E. (2024). giniVarCI: Gini Indices, Variances and Confidence Intervals for Finite and Infinite Populations. R package version 0.0.1-3. https://doi.org/10.32614/CRAN.package.giniVarCI\n\nIn R: citation(\"giniVarCI\")."
+  },
+  {
+    "objectID": "cite.html#publications",
+    "href": "cite.html#publications",
+    "title": "How to cite",
+    "section": "Publications",
+    "text": "Publications\n\nMuñoz, J.F., Moya-Fernández, P.J., & Álvarez-Verdejo, E. (2025). Exploring and correcting the bias in the estimation of the Gini measure of inequality. Sociological Methods & Research, 54(1), 237–274. https://doi.org/10.1177/00491241231176847\n\n\nMuñoz, J.F., Pavía, J.M., & Álvarez-Verdejo, E. (2026). A practical guide to proper estimation and inference of the Gini index by avoiding often encountered methodological pitfalls. Social Indicators Research. https://doi.org/10.1007/s11205-026-03831-x\n\nAll the articles of the project are listed in Publications."
+  },
+  {
+    "objectID": "cite.html#acknowledgement-of-funding",
+    "href": "cite.html#acknowledgement-of-funding",
+    "title": "How to cite",
+    "section": "Acknowledgement of funding",
+    "text": "Acknowledgement of funding\nWorks derived from the project should include: “This work is part of the project PID2022-136235NB-I00, funded by MICIU/AEI/10.13039/501100011033 and by ERDF/EU.”\nThe GitHub repository of the website includes a CITATION.cff file, so GitHub shows a “Cite this repository” button."
+  },
+  {
+    "objectID": "data-code.html",
+    "href": "data-code.html",
+    "title": "Research data and R code",
+    "section": "",
+    "text": "The simulation studies of GiniUs use samples from continuous distributions frequently used to model incomes: Pareto, Dagum (with shape parameters p=20 and p=0.5), lognormal, Weibull and Gamma. Their parameters are chosen so that the Gini index takes a given value G, which allows the effect of inequality and skewness on the estimators to be studied. All the code fixes the random seed with set.seed(), so every result can be replicated."
+  },
+  {
+    "objectID": "data-code.html#parameters-for-a-given-gini-index",
+    "href": "data-code.html#parameters-for-a-given-gini-index",
+    "title": "Research data and R code",
+    "section": "Parameters for a given Gini index",
+    "text": "Parameters for a given Gini index\n\nGini index of the distributions used in the project.\n\n\n\n\n\n\n\nDistribution\nGini index\nParameter for a given G\n\n\n\n\nLognormal(\\mu,\\sigma)\n2\\Phi(\\sigma/\\sqrt{2})-1\n\\sigma=\\sqrt{2}\\,\\Phi^{-1}\\{(G+1)/2\\}\n\n\nPareto (shape \\alpha)\n1/(2\\alpha-1)\n\\alpha=(1+G)/(2G)\n\n\nWeibull (shape k)\n1-2^{-1/k}\nk=1/\\log_2\\{1/(1-G)\\}\n\n\nGamma (shape k)\n\\dfrac{\\Gamma(k+1/2)}{k\\,\\Gamma(k)\\sqrt{\\pi}}\nnumerical root in k\n\n\nDagum (a,p)\n\\dfrac{\\Gamma(p)\\Gamma(2p+1/a)}{\\Gamma(2p)\\Gamma(p+1/a)}-1\nnumerical root in a, for fixed p\n\n\n\nGINI.GAMMA &lt;- function(k, GINI) gamma((2 * k + 1) / 2) / (k * gamma(k) * sqrt(pi)) - GINI\nGINI.DAGUM &lt;- function(p, GINI, a) gamma(p) * gamma(2 * p + 1 / a) / (gamma(2 * p) * gamma(p + 1 / a)) - 1 - GINI\n\nG &lt;- 0.4\nSIGMA.Log &lt;- qnorm((G + 1) / 2) * sqrt(2)\nALPHA.Par &lt;- (1 + G) / (2 * G)\nK.Wei     &lt;- 1 / log2(1 / (1 - G))\nK.Gam     &lt;- uniroot(GINI.GAMMA, c(0.15, 130), GINI = G)$root\na.Dag     &lt;- uniroot(GINI.DAGUM, c(0.1, 16), GINI = G, p = 20)$root    # Dagum, p = 20\na.Dag05   &lt;- uniroot(GINI.DAGUM, c(0.1, 16), GINI = G, p = 0.5)$root   # Dagum, p = 0.5"
+  },
+  {
+    "objectID": "data-code.html#samples",
+    "href": "data-code.html#samples",
+    "title": "Research data and R code",
+    "section": "Samples",
+    "text": "Samples\nlibrary(VGAM)       # rpareto() and rdagum()\nset.seed(123)\nN &lt;- 50\nY.Par   &lt;- rpareto(N, scale = 1, shape = ALPHA.Par)\nY.Dag   &lt;- rdagum(N, shape1.a = a.Dag, shape2.p = 20)\nY.Dag05 &lt;- rdagum(N, shape1.a = a.Dag05, shape2.p = 0.5)\nY.Log   &lt;- rlnorm(N, meanlog = 5, sdlog = SIGMA.Log)\nY.Wei   &lt;- rweibull(N, shape = K.Wei, scale = 1)\nY.Gam   &lt;- rgamma(N, shape = K.Gam, scale = 1)\nThe package giniVarCI does the same in one line: giniVarCI::gsample(n = 50, gini = 0.4, distribution = \"lognormal\")."
+  },
+  {
+    "objectID": "data-code.html#monte-carlo-study-of-the-bias-figure-2-of-the-proposal",
+    "href": "data-code.html#monte-carlo-study-of-the-bias-figure-2-of-the-proposal",
+    "title": "Research data and R code",
+    "section": "Monte Carlo study of the bias (Figure 2 of the proposal)",
+    "text": "Monte Carlo study of the bias (Figure 2 of the proposal)\nlibrary(VGAM)\nset.seed(2023)\nR &lt;- 1000; N &lt;- 50\nVECTOR.G &lt;- seq(0.1, 0.8, by = 0.1)\n\nestimators &lt;- function(y) {\n  n &lt;- length(y)\n  Gb &lt;- (2 / (n * sum(y))) * sum(rank(y) * y) - (n + 1) / n\n  c(Ga = Gb + 1 / n, Gb = Gb, Gc = n * Gb / (n - 1))\n}\ndraw &lt;- function(dist, G, n) {\n  switch(dist,\n    Pareto    = rpareto(n, scale = 1, shape = (1 + G) / (2 * G)),\n    Lognormal = rlnorm(n, 5, qnorm((G + 1) / 2) * sqrt(2)),\n    Weibull   = rweibull(n, shape = 1 / log2(1 / (1 - G))),\n    Gamma     = rgamma(n, shape = uniroot(GINI.GAMMA, c(0.15, 130), GINI = G)$root),\n    DagumP20  = rdagum(n, shape1.a = uniroot(GINI.DAGUM, c(0.1, 16), GINI = G, p = 20)$root, shape2.p = 20),\n    DagumP05  = rdagum(n, shape1.a = uniroot(GINI.DAGUM, c(0.1, 16), GINI = G, p = 0.5)$root, shape2.p = 0.5))\n}\nRB &lt;- do.call(rbind, lapply(c(\"Pareto\", \"DagumP20\", \"DagumP05\", \"Lognormal\", \"Weibull\", \"Gamma\"), function(dist)\n  do.call(rbind, lapply(VECTOR.G, function(G) {\n    est &lt;- replicate(R, estimators(draw(dist, G, N)))\n    data.frame(distribution = dist, G = G, t(round(100 * (rowMeans(est) - G) / G, 2)))\n  }))))\nRB\nThe same study can be run interactively, with other sample sizes, in the bias explorer."
+  },
+  {
+    "objectID": "data-code.html#data-repositories",
+    "href": "data-code.html#data-repositories",
+    "title": "Research data and R code",
+    "section": "Data repositories",
+    "text": "Data repositories\n\nProbabilistic datasets. Included in the R package giniVarCI (function gsample()) and deposited in the institutional repository DIGIBUG of the University of Granada.\nOpen science. Data and R code of published articles: OSF repository of Estimation of the lot fraction defective in a finite lot of products with auxiliary quality characteristics.\nOfficial microdata. EU-SILC, HFCN, AQUASTAT and WBES are available from the institutions that produce them (see Links of interest).\nWater datasets (habits and prices): to be deposited at the Spanish Centre for Sociological Research (CIS) once the corresponding articles are published.\nCode of the interactive tools of this website: js/gini-sim.js (open source)."
+  },
+  {
+    "objectID": "feedback.html",
+    "href": "feedback.html",
+    "title": "Your opinion",
+    "section": "",
+    "text": "We would like to know whether this website is useful to you. Rate it with one click and, if you wish, tell us what you would improve or add: new data in the observatory, new tools, features of the giniVarCI R package, or anything else.\n\n  How satisfied are you with the GiniUs website?\n  \n    😞I don't like it\n    🙁Not much\n    😐It's OK\n    🙂Quite a lot\n    😄I like it\n  \n  Thank you for your opinion! You can also leave us a recommendation below.\n  \n\n  \n    Recommendations: what would you improve or add (data, guides, software, features)?\n    \n    \n      \n      Send recommendation\n    \n    Thank you! Your recommendation has been sent.\n  \n  Anonymous: no cookies or personal data are stored. Your rating is counted only once per browser.\n\n\n\nYou can also contact us to collaborate with the project.\n\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "glossary.html",
+    "href": "glossary.html",
+    "title": "Glossary and FAQ",
+    "section": "",
+    "text": "Gini index\n\nThe most widely used measure of inequality, proposed by Corrado Gini (1912). It is 0 under perfect equality (everybody has the same income) and approaches 1 when one person has all the income. It can be read as half the expected absolute difference between the incomes of two people chosen at random, divided by the mean income.\n\nLorenz curve\n\nCurve that shows the cumulative share of income held by the poorest p\\% of the population. The Gini index is twice the area between the line of equality and the Lorenz curve.\n\nEstimator\n\nFormula that computes the Gini index from a sample. The literature contains many estimators (\\widehat{G}_n^{a}, \\widehat{G}_n^{b}, \\widehat{G}_n^{c}, …), which give different results in the same sample; see Definition and estimation.\n\nInfinite and finite populations\n\nIn the infinite-population (model-based) approach, data are independent draws from a distribution. In the finite-population (design-based) approach, data come from a sample survey with sampling weights w_i, and the target is the Gini index of the finite population.\n\nBias of an estimator\n\nDifference between the average value of an estimator over all possible samples and the true value. Gini estimators can be biased upwards (\\widehat{G}_n^{a} with low inequality) or downwards (highly skewed and unequal data).\n\nRelative bias (RB)\n\nBias divided by the true value, in percent. In GiniUs: negligible if |RB|&lt;2\\%, acceptable if |RB|&lt;5\\%, and large otherwise.\n\nSkewness\n\nAsymmetry of a distribution. Incomes have a long right tail: few people with very high values. The project shows that skewness and inequality affect the bias of the Gini estimators.\n\nJackknife\n\nResampling method that recomputes the estimator leaving out one observation at a time, to estimate its bias and variance.\n\nBootstrap\n\nResampling method that draws many samples with replacement from the data to approximate the distribution of an estimator and build confidence intervals. The rescaled bootstrap adapts it to finite populations, and the empirical bootstrap is used to correct biases.\n\nLinearisation\n\nApproximation of the variance of an estimator by a first-order Taylor expansion (influence functions).\n\nEmpirical likelihood\n\nNon-parametric method that builds confidence intervals without assuming a distribution, with good coverage for the Gini index.\n\nConfidence interval and coverage\n\nRange of values that contains the true value with a given probability (e.g. 95%). An interval has good coverage when that probability is achieved in practice.\n\nMissing data, non-response\n\nValues that should have been observed but were not, for example because a person refused to report his or her income.\n\nMCAR, MAR and MNAR\n\nResponse mechanisms (Rubin, 1976). MCAR: the probability of non-response is the same for everybody. MAR: it depends only on observed variables. MNAR: it depends on the unobserved value itself (e.g. high incomes are less often reported). See the missing data simulator.\n\nComplete-case analysis\n\nDeleting the units with missing values. It is unbiased only under MCAR and always loses precision.\n\nSingle and multiple imputation\n\nReplacing each missing value with one (single) or several (multiple) plausible values. Multiple imputation repeats the imputation M times and combines the results with Rubin’s rules, so that the uncertainty due to imputation is reflected in the variance."
+  },
+  {
+    "objectID": "glossary.html#glossary",
+    "href": "glossary.html#glossary",
+    "title": "Glossary and FAQ",
+    "section": "",
+    "text": "Gini index\n\nThe most widely used measure of inequality, proposed by Corrado Gini (1912). It is 0 under perfect equality (everybody has the same income) and approaches 1 when one person has all the income. It can be read as half the expected absolute difference between the incomes of two people chosen at random, divided by the mean income.\n\nLorenz curve\n\nCurve that shows the cumulative share of income held by the poorest p\\% of the population. The Gini index is twice the area between the line of equality and the Lorenz curve.\n\nEstimator\n\nFormula that computes the Gini index from a sample. The literature contains many estimators (\\widehat{G}_n^{a}, \\widehat{G}_n^{b}, \\widehat{G}_n^{c}, …), which give different results in the same sample; see Definition and estimation.\n\nInfinite and finite populations\n\nIn the infinite-population (model-based) approach, data are independent draws from a distribution. In the finite-population (design-based) approach, data come from a sample survey with sampling weights w_i, and the target is the Gini index of the finite population.\n\nBias of an estimator\n\nDifference between the average value of an estimator over all possible samples and the true value. Gini estimators can be biased upwards (\\widehat{G}_n^{a} with low inequality) or downwards (highly skewed and unequal data).\n\nRelative bias (RB)\n\nBias divided by the true value, in percent. In GiniUs: negligible if |RB|&lt;2\\%, acceptable if |RB|&lt;5\\%, and large otherwise.\n\nSkewness\n\nAsymmetry of a distribution. Incomes have a long right tail: few people with very high values. The project shows that skewness and inequality affect the bias of the Gini estimators.\n\nJackknife\n\nResampling method that recomputes the estimator leaving out one observation at a time, to estimate its bias and variance.\n\nBootstrap\n\nResampling method that draws many samples with replacement from the data to approximate the distribution of an estimator and build confidence intervals. The rescaled bootstrap adapts it to finite populations, and the empirical bootstrap is used to correct biases.\n\nLinearisation\n\nApproximation of the variance of an estimator by a first-order Taylor expansion (influence functions).\n\nEmpirical likelihood\n\nNon-parametric method that builds confidence intervals without assuming a distribution, with good coverage for the Gini index.\n\nConfidence interval and coverage\n\nRange of values that contains the true value with a given probability (e.g. 95%). An interval has good coverage when that probability is achieved in practice.\n\nMissing data, non-response\n\nValues that should have been observed but were not, for example because a person refused to report his or her income.\n\nMCAR, MAR and MNAR\n\nResponse mechanisms (Rubin, 1976). MCAR: the probability of non-response is the same for everybody. MAR: it depends only on observed variables. MNAR: it depends on the unobserved value itself (e.g. high incomes are less often reported). See the missing data simulator.\n\nComplete-case analysis\n\nDeleting the units with missing values. It is unbiased only under MCAR and always loses precision.\n\nSingle and multiple imputation\n\nReplacing each missing value with one (single) or several (multiple) plausible values. Multiple imputation repeats the imputation M times and combines the results with Rubin’s rules, so that the uncertainty due to imputation is reflected in the variance."
+  },
+  {
+    "objectID": "glossary.html#frequently-asked-questions",
+    "href": "glossary.html#frequently-asked-questions",
+    "title": "Glossary and FAQ",
+    "section": "Frequently asked questions",
+    "text": "Frequently asked questions\nWhich estimator of the Gini index should I use? It depends on the data. With samples without weights, \\widehat{G}_n^{c}=\\frac{n}{n-1}\\widehat{G}_n^{b} corrects most of the bias of the usual estimator in symmetric or moderately skewed data; \\widehat{G}_n^{a} should be avoided when inequality is low. With highly skewed data and small samples, a bias correction (e.g. jackknife) is advisable. With survey data, use the weighted estimators. The articles of the project explain the choice in detail.\nIs the bias important in practice? It can be. With small samples, small groups or highly skewed distributions, the relative bias of the usual estimators can exceed 10%. Try the bias explorer or the calculator.\nHow can I obtain a margin of error for my Gini index? With the jackknife, the bootstrap, linearisation or empirical likelihood, all available in the R package giniVarCI. The calculator gives jackknife and bootstrap intervals in your browser.\nCan the Gini index be computed with zero or negative incomes? Zero incomes are allowed. With negative incomes the Gini index can exceed 1 and loses its usual interpretation; they should be treated explicitly and reported.\nCan the Gini index be decomposed by groups? Not additively: the Gini index of a population is not the sum of a between-group and a within-group term (there is a residual overlap term). Theil indices can be decomposed exactly; see the follow-up project THEILUMINA.\nMy survey has missing incomes. What should I do? Report the percentage of missing data, analyse the response mechanism, avoid mean imputation and complete-case analysis unless the data are MCAR, and use multiple imputation with an imputation model that includes the variables related to income and to non-response. See the missing data simulator.\nWhere can I find official data on inequality? In the observatory (Eurostat, World Bank and INE) and in the links of interest.\nCan I use the materials of this website in my classes? Yes, citing the source as indicated in How to cite."
+  },
+  {
+    "objectID": "links.html",
+    "href": "links.html",
+    "title": "Links of interest",
+    "section": "",
+    "text": "World Inequality Lab\nSociety for the Study of Economic Inequality (ECINEQ)\nInternational Association for Research in Income and Wealth (IARIW)\nFight Inequality Alliance"
+  },
+  {
+    "objectID": "links.html#websites-on-inequality",
+    "href": "links.html#websites-on-inequality",
+    "title": "Links of interest",
+    "section": "",
+    "text": "World Inequality Lab\nSociety for the Study of Economic Inequality (ECINEQ)\nInternational Association for Research in Income and Wealth (IARIW)\nFight Inequality Alliance"
+  },
+  {
+    "objectID": "links.html#inequality-observatories",
+    "href": "links.html#inequality-observatories",
+    "title": "Links of interest",
+    "section": "Inequality observatories",
+    "text": "Inequality observatories\n\nObservatorio de Desigualdad de Andalucía\nMonitor de Desigualdad · CaixaBank Research\nRed Andaluza de Lucha contra la Pobreza y la Exclusión Social (EAPN Andalucía)\nEl Estado de la Pobreza · EAPN España\nFundación FOESSA\nINE · Household Income Distribution Atlas\nWorld Inequality Database (WID)\nUNU-WIDER · World Income Inequality Database (WIID)\nOECD Income Distribution Database\nLIS Cross-National Data Center\n\nSee also the GiniUs inequality observatory."
+  },
+  {
+    "objectID": "links.html#institutions-and-agendas",
+    "href": "links.html#institutions-and-agendas",
+    "title": "Links of interest",
+    "section": "Institutions and agendas",
+    "text": "Institutions and agendas\n\nEurostat\nInstituto Nacional de Estadística (Spain)\nWorld Bank\nThe 2030 Agenda for Sustainable Development\nHorizon Europe, Pillar II: Global Challenges and European Industrial Competitiveness\nSpanish State Plan for Scientific, Technical and Innovation Research (PEICTI)"
+  },
+  {
+    "objectID": "links.html#datasets",
+    "href": "links.html#datasets",
+    "title": "Links of interest",
+    "section": "Datasets",
+    "text": "Datasets\n\nEU-SILC\nHFCN — Eurosystem Household Finance and Consumption Network\nAQUASTAT\nWorld Bank Enterprise Surveys\nSHIW — Bank of Italy Survey on Household Income and Wealth"
+  },
+  {
+    "objectID": "links.html#software",
+    "href": "links.html#software",
+    "title": "Links of interest",
+    "section": "Software",
+    "text": "Software\n\nR · giniVarCI · Quarto · Posit (RStudio) · Rcpp · Stata"
+  },
+  {
+    "objectID": "news.html",
+    "href": "news.html",
+    "title": "Status and news",
+    "section": "",
+    "text": "Year 1 (2023–24)\n\n\nYear 2 (2024–25)\n\n\nYear 3 (2025–26)\n\n\nYear 4 (2026–27)\n\n\nCompleted (Aug 2027)\n\n\n\nCurrent status: in progress, fourth and last year (1 September 2026 – 31 August 2027). The R package giniVarCI is available on CRAN; the work on bias (OG1), missing data (OG2) and applications (OG4) continues. Last update: 17 November 2026."
+  },
+  {
+    "objectID": "news.html#project-status",
+    "href": "news.html#project-status",
+    "title": "Status and news",
+    "section": "",
+    "text": "Year 1 (2023–24)\n\n\nYear 2 (2024–25)\n\n\nYear 3 (2025–26)\n\n\nYear 4 (2026–27)\n\n\nCompleted (Aug 2027)\n\n\n\nCurrent status: in progress, fourth and last year (1 September 2026 – 31 August 2027). The R package giniVarCI is available on CRAN; the work on bias (OG1), missing data (OG2) and applications (OG4) continues. Last update: 17 November 2026."
+  },
+  {
+    "objectID": "news.html#news",
+    "href": "news.html#news",
+    "title": "Status and news",
+    "section": "News",
+    "text": "News\n\n\n  Stay informed. Receive the news and blog posts of GiniUs by email, or follow the RSS feed.\n  \n    \n    Subscribe\n  \n  You can unsubscribe at any time. Your email is used only to send GiniUs news.\n\n\n\n\nNovember 2026 Website\nNew GiniUs website. The project website moves to Quarto, with new interactive tools that run in the browser: a Gini index calculator, a missing data simulator (MCAR, MAR and MNAR), an interactive bias explorer, R exercises and an inequality observatory.\n\n\n2026 Publication\nA practical guide to proper estimation and inference of the Gini index by avoiding often encountered methodological pitfalls, by J.F. Muñoz, J.M. Pavía and E. Álvarez-Verdejo, published in Social Indicators Research. DOI\n\n\nSeptember 2026 Project\nThe project enters its fourth and last year (September 2026 – August 2027).\n\n\n22 May 2024 Seminar\nSeminar on the Gini index and the R package giniVarCI, organised by the research group EPIC at the University of Granada. See the photos.\n\n\nJanuary 2024 Software\nThe R package giniVarCI is published on CRAN (version 0.0.1-3). More information.\n\n\n2023 Publication\nExploring and correcting the bias in the estimation of the Gini measure of inequality, by J.F. Muñoz, P.J. Moya-Fernández and E. Álvarez-Verdejo, published online in Sociological Methods & Research. DOI\n\n\n1 September 2023 Project\nThe GiniUs project starts, funded by the Spanish State Research Agency (PID2022-136235NB-I00)."
+  },
+  {
+    "objectID": "practice.html",
+    "href": "practice.html",
+    "title": "Try it in R",
+    "section": "",
+    "text": "The exercises on this page run real R in your web browser thanks to webR. Edit the code and press Run. The first run downloads R (about 20 MB) and takes a few seconds; later runs are immediate. Nothing is installed on your computer, and your code and data are not sent anywhere."
+  },
+  {
+    "objectID": "practice.html#exercise-1.-three-estimators-of-the-gini-index",
+    "href": "practice.html#exercise-1.-three-estimators-of-the-gini-index",
+    "title": "Try it in R",
+    "section": "Exercise 1. Three estimators of the Gini index",
+    "text": "Exercise 1. Three estimators of the Gini index\nCompute the three estimators for a small sample. What happens if the richest person earns more?\n\ny &lt;- c(10, 20, 30, 40, 60, 80)\nc(Ga = gini_a(y), Gb = gini_b(y), Gc = gini_c(y))\n\n# What happens if the richest person earns 200 instead of 80?\ny2 &lt;- c(10, 20, 30, 40, 60, 200)\nc(Ga = gini_a(y2), Gb = gini_b(y2), Gc = gini_c(y2))\n\n# Check: Ga = Gb + 1/n when there are no ties\ngini_a(y) - gini_b(y) - 1 / length(y)\n▶ RunResetCtrl/Cmd + Enter\n\n\nQuestion. Why are the three estimators so different with only six observations? Which one would you report?"
+  },
+  {
+    "objectID": "practice.html#exercise-2.-the-lorenz-curve",
+    "href": "practice.html#exercise-2.-the-lorenz-curve",
+    "title": "Try it in R",
+    "section": "Exercise 2. The Lorenz curve",
+    "text": "Exercise 2. The Lorenz curve\n\nset.seed(1)\ny &lt;- rlnorm(500, meanlog = 0, sdlog = 0.8)   # lognormal incomes\ny &lt;- sort(y)\np &lt;- c(0, seq_along(y) / length(y))           # cumulative share of population\nL &lt;- c(0, cumsum(y) / sum(y))                 # cumulative share of income\n\nplot(p, L, type = \"l\", lwd = 3, col = \"#1A5FA8\", asp = 1,\n     xlab = \"Cumulative share of population\", ylab = \"Cumulative share of income\",\n     main = paste(\"Lorenz curve, Gini =\", round(gini_c(y), 3)))\nabline(0, 1, col = \"#D43F3A\", lty = 2, lwd = 2)\n# Gini = 2 x area between the equality line and the Lorenz curve\n2 * (0.5 - sum(diff(p) * (head(L, -1) + tail(L, -1)) / 2))\n▶ RunResetCtrl/Cmd + Enter\n\n\nQuestion. Change sdlog to 0.3 and to 1.5. How do the curve and the Gini index change?"
+  },
+  {
+    "objectID": "practice.html#exercise-3.-the-bias-of-the-estimators-a-small-simulation",
+    "href": "practice.html#exercise-3.-the-bias-of-the-estimators-a-small-simulation",
+    "title": "Try it in R",
+    "section": "Exercise 3. The bias of the estimators: a small simulation",
+    "text": "Exercise 3. The bias of the estimators: a small simulation\nFor a lognormal distribution, the true Gini index is G = 2\\Phi(\\sigma/\\sqrt{2}) - 1. Compare the average of the three estimators with the true value.\n\nset.seed(123)\nG     &lt;- 0.1                              # true Gini index: try 0.1, 0.4 and 0.8\nsigma &lt;- sqrt(2) * qnorm((G + 1) / 2)     # lognormal parameter with this Gini index\nn     &lt;- 50                               # try 20, 50 and 500\n\nest &lt;- replicate(2000, { y &lt;- rlnorm(n, 0, sigma); c(Ga = gini_a(y), Gb = gini_b(y), Gc = gini_c(y)) })\nRB  &lt;- 100 * (rowMeans(est) - G) / G       # relative bias (%)\nround(RB, 2)\n\nboxplot(t(est), col = c(\"#D43F3A\", \"#1A5FA8\", \"#C9962B\"), ylab = \"Estimates\",\n        main = paste(\"G =\", G, \"  n =\", n))\nabline(h = G, lty = 2, lwd = 2)\n▶ RunResetCtrl/Cmd + Enter\n\n\nQuestion. Which estimator is badly biased when inequality is low? Explore more scenarios with the interactive bias explorer."
+  },
+  {
+    "objectID": "practice.html#exercise-4.-jackknife-standard-error-and-confidence-interval",
+    "href": "practice.html#exercise-4.-jackknife-standard-error-and-confidence-interval",
+    "title": "Try it in R",
+    "section": "Exercise 4. Jackknife standard error and confidence interval",
+    "text": "Exercise 4. Jackknife standard error and confidence interval\n\nset.seed(2)\ny &lt;- rlnorm(100, 0, 1)\nn &lt;- length(y)\n\nG_hat &lt;- gini_c(y)\nG_loo &lt;- sapply(seq_len(n), function(i) gini_c(y[-i]))   # leave-one-out estimates\n\nbias &lt;- (n - 1) * (mean(G_loo) - G_hat)\nse   &lt;- sqrt((n - 1) / n * sum((G_loo - mean(G_loo))^2))\n\nc(estimate = G_hat, bias = bias, se = se,\n  ci_lower = G_hat - 1.96 * se, ci_upper = G_hat + 1.96 * se,\n  true_G = 2 * pnorm(1 / sqrt(2)) - 1)\n▶ RunResetCtrl/Cmd + Enter\n\n\nQuestion. Is the true value inside the interval? The calculator applies the same method to your own data."
+  },
+  {
+    "objectID": "practice.html#exercise-5.-missing-data-mcar-versus-mnar",
+    "href": "practice.html#exercise-5.-missing-data-mcar-versus-mnar",
+    "title": "Try it in R",
+    "section": "Exercise 5. Missing data: MCAR versus MNAR",
+    "text": "Exercise 5. Missing data: MCAR versus MNAR\nDelete 30% of the incomes completely at random (MCAR), or delete them more often among the richest (MNAR), and compare complete-case analysis with mean imputation.\n\nset.seed(3)\nn &lt;- 1000\ny &lt;- rlnorm(n, 0, 0.8)\nG_full &lt;- gini_c(y)\n\n# MCAR: every unit has a 30% probability of not responding\nmiss_mcar &lt;- runif(n) &lt; 0.30\n# MNAR: the probability of not responding grows with income (30% on average)\np &lt;- plogis(-1.2 + 1.5 * as.numeric(scale(log(y))))\nmiss_mnar &lt;- runif(n) &lt; p\n\ncomplete &lt;- function(miss) gini_c(y[!miss])\nmean_imp &lt;- function(miss) { z &lt;- y; z[miss] &lt;- mean(y[!miss]); gini_c(z) }\n\nround(rbind(\n  MCAR = c(missing = mean(miss_mcar), complete_cases = complete(miss_mcar), mean_imputation = mean_imp(miss_mcar)),\n  MNAR = c(missing = mean(miss_mnar), complete_cases = complete(miss_mnar), mean_imputation = mean_imp(miss_mnar))), 3)\nc(Gini_full_sample = G_full)\n▶ RunResetCtrl/Cmd + Enter\n\n\nQuestion. Which method works under MCAR? What happens under MNAR? The missing data simulator compares more methods, including multiple imputation."
+  },
+  {
+    "objectID": "practice.html#exercise-6.-the-r-package-ginivarci",
+    "href": "practice.html#exercise-6.-the-r-package-ginivarci",
+    "title": "Try it in R",
+    "section": "Exercise 6. The R package giniVarCI",
+    "text": "Exercise 6. The R package giniVarCI\nThe package developed in this project can also run in your browser. The first run installs it (it may take a minute).\n\nif (!requireNamespace(\"giniVarCI\", quietly = TRUE))\n  webr::install(\"giniVarCI\", repos = c(\"https://jfmunozrosas.r-universe.dev\", \"https://repo.r-wasm.org\"))\nlibrary(giniVarCI)\n\nset.seed(123)\ny &lt;- gsample(n = 100, gini = 0.5, distribution = \"lognormal\")   # sample with G = 0.5\nigini(y)                               # estimate of the Gini index\nigini(y, interval = \"zjackknife\")      # with a jackknife confidence interval\nigini(y, interval = \"ELchisq\")         # empirical likelihood interval\n▶ RunResetCtrl/Cmd + Enter\n\n\nIf the package cannot be installed in your browser, install it in R with install.packages(\"giniVarCI\"). See the giniVarCI page for more examples."
+  },
+  {
+    "objectID": "publications.html",
+    "href": "publications.html",
+    "title": "Publications",
+    "section": "",
+    "text": "Articles acknowledging project PID2022-136235NB-I00, in reverse chronological order.\nMuñoz, J.F., Pavía, J.M., & Álvarez-Verdejo, E. (2026). A practical guide to proper estimation and inference of the Gini index by avoiding often encountered methodological pitfalls. Social Indicators Research. https://doi.org/10.1007/s11205-026-03831-x\nVaillant, Y., Lafuente, E., & Vendrell-Herrero, F. (2026). Automation, augmentation, or dual AI strategies for superior product line performance: the functional subsidiarity challenge. International Journal of Production Economics, 109931. https://doi.org/10.1016/j.ijpe.2026.109931\nMuñoz, J.F., Moya-Fernández, P.J., & Álvarez-Verdejo, E. (2025). Exploring and correcting the bias in the estimation of the Gini measure of inequality. Sociological Methods & Research, 54(1), 237–274 (online first 2023). https://doi.org/10.1177/00491241231176847\nGarcía-Martínez, F.J., Osorio, F., & González-Gómez, F. (2025). Challenges of urban water cycle management in small Spanish municipalities: the case of the province of Granada. Water, 17(12), 1750. https://doi.org/10.3390/w17121750\nTortajada, C., Radcliffe, J.C., van Rensburg, P., & González-Gómez, F. (2025). Sustainable water reuse for water security. Environmental Research Letters, 20(2), 021003. https://doi.org/10.1088/1748-9326/adaf46\nVaillant, Y., Lafuente, E., & Vendrell-Herrero, F. (2025). AI platforms as cooperation enablers favoring the development of strategic situating capabilities within solution delivery ecosystems. Journal of Product Innovation Management. https://doi.org/10.1111/jpim.12807\nVendrell-Herrero, F., Vaillant, Y., & Bustinza, O.F. (2025). Scalability in incumbent firms: the case of Nvidia. Long Range Planning, 102540. https://doi.org/10.1016/j.lrp.2025.102540\nAlguacil-Duarte, F., González-Gómez, F., & Grigoryan, K. (2024). Proposal of an index to evaluate the ‘dewaterization’ of the urban water cycle and a practical application. Sustainable Water Resources Management, 10(1), 6. https://doi.org/10.1007/s40899-023-00984-2\nIbáñez-Rueda, N., Moya-Fernández, P., Guardiola, J., & González-Gómez, F. (2024). The role of knowledge in the decision of Granada University students to drink bottled water. International Journal of Water Resources Development. https://doi.org/10.1080/07900627.2024.2310820\nMuñoz, J.F., Blanco-Encomienda, F.J., Álvarez-Verdejo, E., & Vendrell-Herrero, F. (2024). Estimation of the lot fraction defective in a finite lot of products with auxiliary quality characteristics. Quality Engineering. https://doi.org/10.1080/08982112.2024.2331145\nVaillant, Y., Vendrell-Herrero, F., Bustinza, O.F., & Xing, Y. (2024). HRM algorithms: moderating the relationship between chaotic markets and strategic renewal. British Journal of Management. https://doi.org/10.1111/1467-8551.12852\nVendrell-Herrero, F., Gomes, E., Darko, C.K., & Lehman, D.W. (2024). When do firms learn? Learning before versus after exporting. Small Business Economics. https://doi.org/10.1007/s11187-024-00898-z"
+  },
+  {
+    "objectID": "publications.html#articles-of-the-project",
+    "href": "publications.html#articles-of-the-project",
+    "title": "Publications",
+    "section": "",
+    "text": "Articles acknowledging project PID2022-136235NB-I00, in reverse chronological order.\nMuñoz, J.F., Pavía, J.M., & Álvarez-Verdejo, E. (2026). A practical guide to proper estimation and inference of the Gini index by avoiding often encountered methodological pitfalls. Social Indicators Research. https://doi.org/10.1007/s11205-026-03831-x\nVaillant, Y., Lafuente, E., & Vendrell-Herrero, F. (2026). Automation, augmentation, or dual AI strategies for superior product line performance: the functional subsidiarity challenge. International Journal of Production Economics, 109931. https://doi.org/10.1016/j.ijpe.2026.109931\nMuñoz, J.F., Moya-Fernández, P.J., & Álvarez-Verdejo, E. (2025). Exploring and correcting the bias in the estimation of the Gini measure of inequality. Sociological Methods & Research, 54(1), 237–274 (online first 2023). https://doi.org/10.1177/00491241231176847\nGarcía-Martínez, F.J., Osorio, F., & González-Gómez, F. (2025). Challenges of urban water cycle management in small Spanish municipalities: the case of the province of Granada. Water, 17(12), 1750. https://doi.org/10.3390/w17121750\nTortajada, C., Radcliffe, J.C., van Rensburg, P., & González-Gómez, F. (2025). Sustainable water reuse for water security. Environmental Research Letters, 20(2), 021003. https://doi.org/10.1088/1748-9326/adaf46\nVaillant, Y., Lafuente, E., & Vendrell-Herrero, F. (2025). AI platforms as cooperation enablers favoring the development of strategic situating capabilities within solution delivery ecosystems. Journal of Product Innovation Management. https://doi.org/10.1111/jpim.12807\nVendrell-Herrero, F., Vaillant, Y., & Bustinza, O.F. (2025). Scalability in incumbent firms: the case of Nvidia. Long Range Planning, 102540. https://doi.org/10.1016/j.lrp.2025.102540\nAlguacil-Duarte, F., González-Gómez, F., & Grigoryan, K. (2024). Proposal of an index to evaluate the ‘dewaterization’ of the urban water cycle and a practical application. Sustainable Water Resources Management, 10(1), 6. https://doi.org/10.1007/s40899-023-00984-2\nIbáñez-Rueda, N., Moya-Fernández, P., Guardiola, J., & González-Gómez, F. (2024). The role of knowledge in the decision of Granada University students to drink bottled water. International Journal of Water Resources Development. https://doi.org/10.1080/07900627.2024.2310820\nMuñoz, J.F., Blanco-Encomienda, F.J., Álvarez-Verdejo, E., & Vendrell-Herrero, F. (2024). Estimation of the lot fraction defective in a finite lot of products with auxiliary quality characteristics. Quality Engineering. https://doi.org/10.1080/08982112.2024.2331145\nVaillant, Y., Vendrell-Herrero, F., Bustinza, O.F., & Xing, Y. (2024). HRM algorithms: moderating the relationship between chaotic markets and strategic renewal. British Journal of Management. https://doi.org/10.1111/1467-8551.12852\nVendrell-Herrero, F., Gomes, E., Darko, C.K., & Lehman, D.W. (2024). When do firms learn? Learning before versus after exporting. Small Business Economics. https://doi.org/10.1007/s11187-024-00898-z"
+  },
+  {
+    "objectID": "publications.html#software",
+    "href": "publications.html#software",
+    "title": "Publications",
+    "section": "Software",
+    "text": "Software\nMuñoz, J.F., Pavía, J.M., & Álvarez-Verdejo, E. (2024). giniVarCI: Gini Indices, Variances and Confidence Intervals for Finite and Infinite Populations. R package version 0.0.1-3. https://doi.org/10.32614/CRAN.package.giniVarCI. See the package page."
+  },
+  {
+    "objectID": "publications.html#open-science-data-and-software-of-published-papers",
+    "href": "publications.html#open-science-data-and-software-of-published-papers",
+    "title": "Publications",
+    "section": "Open science (data and software of published papers)",
+    "text": "Open science (data and software of published papers)\nMuñoz, J.F., Blanco-Encomienda, F.J., Álvarez-Verdejo, E., & Vendrell-Herrero, F. (2023). 186 data sets and free software (using R) for simulation studies derived in the manuscript: Estimation of the lot fraction defective in a finite lot of products with auxiliary quality characteristics. OSF repository. https://doi.org/10.17605/OSF.IO/ADFNQ"
+  },
+  {
+    "objectID": "publications.html#working-papers",
+    "href": "publications.html#working-papers",
+    "title": "Publications",
+    "section": "Working papers",
+    "text": "Working papers\n\nThe problem of missing data in strategic management research: critical issues, understanding and methodological insights. F. Vendrell-Herrero, J.F. Muñoz, E. Gomes and D.W. Lehman.\nThe GiniUs library for the estimation of the Gini index. J.F. Muñoz, J.M. Pavía and E. Álvarez-Verdejo. To be submitted to the Journal of Statistical Software.\nHow to avoid common mistakes in water studies with missing data? J.F. Muñoz, E. Álvarez-Verdejo, C. Tortajada and M.D. Sarwar. To be submitted to Water Research."
+  },
+  {
+    "objectID": "publications.html#previous-related-publications-of-the-team",
+    "href": "publications.html#previous-related-publications-of-the-team",
+    "title": "Publications",
+    "section": "Previous related publications of the team",
+    "text": "Previous related publications of the team\n\n\n\n\n\n\nPoverty, inequality, polarisation, life satisfaction and well-being\n\n\n\n\n\nAddabbo, T., García, R.M., Llorca, C.M., & Maccagnan, A. (2016). A microsimulation model to measure the impact of the economic crisis on household income. International Journal of Manpower, 37(3), 474–493.\nAddabbo, T., García, R.M., Llorca, C.M., & Maccagnan, A. (2018). Labor force heterogeneity and wage polarization: Italy and Spain. Journal of Economic Studies, 45, 979–993.\nÁlvarez-Verdejo, E., Moya-Fernández, P.J., & Muñoz-Rosas, J.F. (2021). Single imputation methods and confidence intervals for the Gini index. Mathematics, 9(24), 3252.\nBerger, Y.G. (2008). A note on the asymptotic equivalence of jackknife and linearization variance estimation for the Gini coefficient. Journal of Official Statistics, 24(4), 541–555.\nBerger, Y.G., & Gedik, İ. (2020). Confidence intervals of Gini coefficient under unequal probability sampling. Journal of Official Statistics, 36(2), 237–249.\nGuardiola, J., & Picazo, A.J. (2014). Building weighted-domain composite indices of life satisfaction with data envelopment analysis. Social Indicators Research, 117(1), 257–274.\nGuillen, M., Guardiola, J., & García, F. (2017). Sustainable development in times of economic crisis: a needs-based illustration from Granada (Spain). Journal of Cleaner Production, 150, 267–276.\nMuñoz, J.F., Álvarez, E., & García, R.M. (2018). On estimating the poverty gap and the poverty severity indices with auxiliary information. Sociological Methods & Research, 47(3), 598–625.\nMuñoz, J.F., Álvarez, E., García, R.M., & Barroso, L.J. (2015). Efficient estimation of the headcount index. Social Indicators Research, 123, 713–732.\nRodríguez, J.A., Jiménez, J.D., Salinas, J.A., & Martín, J. (2016). Millennium development goals 4 and 5: progress in the least developed countries of Asia. Social Indicators Research, 129(2), 489–504.\nRojas, M., & Guardiola, J. (2017). Hunger and the experience of being well: absolute and relative concerns. World Development, 96, 78–86.\nRueda, M., & Muñoz, J.F. (2011). Estimation of poverty measures with auxiliary information in sample surveys. Quality & Quantity, 45(3), 687–700.\nSánchez, C., & García, R.M. (2020). A multivariate indicator to compute middle class population. Social Indicators Research, 147(1), 1–14.\nSuárez, M., Guardiola, J., & González, F. (2016). Do pro-environmental behaviors and awareness contribute to improve subjective well-being? Applied Research in Quality of Life, 11(2), 429–444.\n\n\n\n\n\n\n\n\n\nMissing data\n\n\n\n\n\nÁlvarez, E., Arcos, A., González, S., Muñoz, J.F., & Rueda, M. (2013). Estimating population proportions in the presence of missing data. Journal of Computational and Applied Mathematics, 237(1), 470–476.\nBerger, Y.G., & Escobar, E.L. (2017). Variance estimation of imputed estimators of change for repeated rotating surveys. International Statistical Review, 85(3), 421–438.\nMuñoz, J.F., & Rueda, M. (2009). New imputation methods for missing data using quantiles. Journal of Computational and Applied Mathematics, 232(2), 305–317.\n\n\n\n\n\n\n\n\n\nTourism\n\n\n\n\n\nChica, J., González, J.G., & Zafra, J.L. (2020). Effects of location on Airbnb apartment pricing in Málaga. Tourism Management, 77, 103981.\nLlorca, C.M., Casas, A.C., & García, R.M. (2017). Tourism and poverty alleviation: an empirical analysis using panel data on Peru’s departments. International Journal of Tourism Research, 19(6), 746–756.\nLlorca, C.M., Chica, J., & Casas, A.C. (2021). The effects of tourism on EU regional cohesion. Journal of Sustainable Tourism, 29(8), 1319–1343.\nLlorca, C.M., García, R.M., & Casas, A.C. (2020). Domestic versus inbound tourism in poverty reduction: evidence from panel data. Current Issues in Tourism, 23(2), 197–216.\nMartín, J.M., Rodríguez, J.A., Zermeño, K.A., & Salinas, J.A. (2018). Effects of vacation rental websites on the concentration of tourists. International Journal of Environmental Research and Public Health, 15(2), 347.\nMartín, J.M., Salinas, J.A., Rodríguez, J.A., & Ostos, M.S. (2020). Analysis of tourism seasonality as a factor limiting the sustainable development of rural areas. Journal of Hospitality & Tourism Research, 44(1), 45–75.\nSainaghi, R., & Chica, J. (2022). The effects of location before and during COVID-19: impacts on revenue of Airbnb listings in Milan (Italy). Annals of Tourism Research, 96, 103464.\nSalinas, J.A., Azevedo, P.S., Martín, J.M., & Rodríguez, J.A. (2020). Determinants of tourism destination competitiveness in the countries most visited by international tourists. Tourism Management Perspectives, 33, 100582.\n\n\n\n\n\n\n\n\n\nWater\n\n\n\n\n\nAlbalate, D., Bel, G., González, F., & Picazo, A.J. (2020). Contract renewal in urban water services, incumbent advantage, and market concentration. Public Administration Review, 82(2), 314–324.\nGonzález, F., García, M.Á., & Guardiola, J. (2020). Some reflections on water for residential uses in developed countries. International Journal of Water Resources Development, 36(2–3), 311–324.\nGonzález, F., & García, M.Á. (2018). Prices and ownership in the water urban supply: a critical review. Urban Water Journal, 15(3), 259–268.\nLópez, S., Moya, P.J., García, M.Á., & González, F. (2021). Acceptance of direct potable water reuse for domestic purposes: evidence from southern Spain. International Journal of Water Resources Development, 37(5), 772–792.\nMoya, P.J., López, S., Guardiola, J., & González, F. (2021). Determinants of the acceptance of domestic use of recycled water by use type. Sustainable Production and Consumption, 27, 575–586.\nTortajada, C., González, F., Biswas, A.K., & Buurman, J. (2019). Water demand management strategies for water-scarce cities: the case of Spain. Sustainable Cities and Society, 45, 649–656.\n\n\n\n\n\n\n\n\n\nEstimation and properties\n\n\n\n\n\nBerger, Y.G. (2021). Testing conditional moment restriction models using empirical likelihood. The Econometrics Journal, 25(2), 384–403.\nBerger, Y.G., & De La Riva, O. (2016). Empirical likelihood confidence intervals for complex sampling designs. JRSS B, 78(2), 319–341.\nBerger, Y.G., & Kabzińska, E. (2020). Empirical likelihood approach for aligning information from multiple surveys. International Statistical Review, 88(1), 54–74.\nBerger, Y.G., & Muñoz, J.F. (2015). On estimating quantiles using auxiliary information. Journal of Official Statistics, 31(1), 101–119.\nBerger, Y.G., & Priam, R. (2016). A simple variance estimator of change for rotating repeated surveys. JRSS A, 179(1), 251–272.\nBerger, Y.G., & Skinner, C.J. (2005). A jackknife variance estimator for unequal probability sampling. JRSS B, 67(1), 79–89.\nMoya, P.J., Muñoz, J.F., Álvarez, E., & Blanco, F.J. (2023). Rescaled bootstrap confidence intervals for the population variance in the presence of outliers or spikes in the distribution of a variable of interest. Communications in Statistics – Simulation and Computation, 52(2), 466–481.\nMuñoz, J.F., Arcos, A., Álvarez, E., & Rueda, M. (2014). New ratio and difference estimators of the finite population distribution function. Mathematics and Computers in Simulation, 102, 51–61.\nMuñoz, J.F., Álvarez, E., Pérez, M., & Gutiérrez, L. (2016). Empirical comparisons of X-bar charts when control limits are estimated. Quality and Reliability Engineering International, 32(2), 453–464.\nOǧuz, M., & Berger, Y.G. (2020). Modelling multilevel data under complex sampling designs: an empirical likelihood approach. Computational Statistics & Data Analysis, 145, 106906.\n\n\n\n\n\n\n\n\n\nBusiness and management\n\n\n\n\n\nHerzallah, A., Gutiérrez, L.J., & Muñoz, J.F. (2017). Quality ambidexterity, competitive strategies, and financial performance. International Journal of Operations & Production Management, 37(10), 1496–1519.\nRosillo, E., Blanco, F.J., & Muñoz, J.F. (2022). Analysis of the evolution and impact of product quality in business. Total Quality Management & Business Excellence, 33(7–8), 907–928.\nVaillant, Y., Lafuente, E., Horváth, K., & Vendrell, F. (2021). Regions on course for the fourth industrial revolution: the role of a strong indigenous T-KIBS sector. Regional Studies, 55(10–11), 1816–1828.\nVendrell, F., Darko, C.K., Gomes, E., & Lehman, D.W. (2022). Home-market economic development as a moderator of the self-selection and learning-by-exporting effects. Journal of International Business Studies.\nVendrell, F., Gomes, E., Mellahi, K., & Child, J. (2017). Building international business bridges in geographically isolated areas. Journal of World Business, 52(4), 489–502."
+  },
+  {
+    "objectID": "results.html",
+    "href": "results.html",
+    "title": "Results and conclusions",
+    "section": "",
+    "text": "This page summarises the main results of the project. It is updated as new articles are published; the full list is in Publications."
+  },
+  {
+    "objectID": "results.html#og1-the-bias-of-the-gini-index",
+    "href": "results.html#og1-the-bias-of-the-gini-index",
+    "title": "Results and conclusions",
+    "section": "OG1 · The bias of the Gini index",
+    "text": "OG1 · The bias of the Gini index\nResults. Monte Carlo studies with six distributions (Pareto, Dagum with p=20 and p=0.5, lognormal, Weibull and Gamma), Gini indices from 0.1 to 0.8 and different sample sizes. They can be reproduced with the interactive bias explorer.\nConclusions.\n\n\\widehat{G}_n^{a} has excessively large biases in datasets with low inequality. Two equivalent solutions:\n\nreplace \\widehat{F}_n(t) with the smoothed (mid-point) distribution function \\widehat{F}_n^{*}(t)=\\frac{1}{n}\\sum_{i\\in S}\\left[\\delta(y_i&lt;t)+0.5\\,\\delta(y_i=t)\\right], which gives the estimator \\widehat{G}_n^{b};\nsubtract 1/n when there are no ties: \\widehat{G}_n^{b}=\\widehat{G}_n^{a}-1/n.\n\nSkewness has a significant effect on the bias of the three versions of the Gini index (hypothesis H1).\nIn highly skewed distributions, inequality has a major effect on the bias of the three versions (hypothesis H2).\n\nPublications. Exploring and correcting the bias in the estimation of the Gini measure of inequality (Muñoz, Moya-Fernández and Álvarez-Verdejo, Sociological Methods & Research); A practical guide to proper estimation and inference of the Gini index by avoiding often encountered methodological pitfalls (Social Indicators Research, 2026)."
+  },
+  {
+    "objectID": "results.html#og2-missing-data-and-the-gini-index",
+    "href": "results.html#og2-missing-data-and-the-gini-index",
+    "title": "Results and conclusions",
+    "section": "OG2 · Missing data and the Gini index",
+    "text": "OG2 · Missing data and the Gini index\nIn progress. The project analyses the impact of missing data on the Gini index under the three non-response mechanisms (MCAR, MAR and MNAR), and compares complete-case analysis, single imputation and multiple imputation. The missing data simulator illustrates the patterns that motivate this objective:\n\ndeleting the cases with missing data (complete-case analysis) is only safe when data are missing completely at random (MCAR);\nmean imputation always underestimates inequality, because all imputed values are equal;\ndeterministic regression imputation also underestimates inequality, because it ignores the residual variability;\nstochastic regression imputation and multiple imputation remove most of the bias when the data are missing at random (MAR) and the imputation model includes the variables related to non-response;\nwhen non-response depends on income itself (MNAR), no standard method removes the bias.\n\nWorking papers. The problem of missing data in strategic management research: critical issues, understanding and methodological insights (Vendrell, Muñoz, Gomes and Lehman); How to avoid common mistakes in water studies with missing data? (Muñoz, Álvarez, Tortajada and Sarwar)."
+  },
+  {
+    "objectID": "results.html#og3-the-r-package-ginivarci",
+    "href": "results.html#og3-the-r-package-ginivarci",
+    "title": "Results and conclusions",
+    "section": "OG3 · The R package giniVarCI",
+    "text": "OG3 · The R package giniVarCI\nAchieved. The package giniVarCI is available on CRAN. It:\n\nestimates the Gini index for samples from finite and infinite populations with all the expressions of the literature;\ncomputes variances and confidence intervals with different methods (jackknife, linearisation, bootstrap, empirical likelihood);\ncomputes the Gini index of continuous probability distributions (Beta, Burr, Dagum, F, Fisk, Gamma, lognormal, Pareto, etc.);\ndraws samples from continuous distributions with a Gini index set by the user;\nuses Rcpp, so calculations are faster than in other packages that compute the Gini index."
+  },
+  {
+    "objectID": "results.html#og4-applications-and-social-impact",
+    "href": "results.html#og4-applications-and-social-impact",
+    "title": "Results and conclusions",
+    "section": "OG4 · Applications and social impact",
+    "text": "OG4 · Applications and social impact\nIn progress. Applications in water economics, tourism and business management. See the publications of the team in these areas."
+  },
+  {
+    "objectID": "results.html#og5-dissemination",
+    "href": "results.html#og5-dissemination",
+    "title": "Results and conclusions",
+    "section": "OG5 · Dissemination",
+    "text": "OG5 · Dissemination\nIn progress. See Publications and Seminars and conferences."
+  },
+  {
+    "objectID": "software.html",
+    "href": "software.html",
+    "title": "The R package giniVarCI",
+    "section": "",
+    "text": "giniVarCI is the open-source R package developed in GiniUs (objective OG3). It is available on CRAN and on R-universe, where it can also be used in the browser with webR (see the R exercises)."
+  },
+  {
+    "objectID": "software.html#what-it-does",
+    "href": "software.html#what-it-does",
+    "title": "The R package giniVarCI",
+    "section": "What it does",
+    "text": "What it does\n\nEstimates the Gini index for samples from infinite populations (igini(), iginindex()) and from finite populations with survey weights or inclusion probabilities (fgini(), fginindex()), with the different expressions of the literature.\nComputes variances and confidence intervals with different methods: percentile and BCa bootstrap, jackknife, linearisation and empirical likelihood (igini(), fgini()), and compares them (icompareCI(), fcompareCI()).\nComputes the Gini index of continuous probability distributions (Beta, Burr, chi-squared, Dagum, F, Fisk, Gamma, Gompertz, lognormal, Pareto, etc.: functions gbeta(), gdagum(), ggamma(), …).\nDraws samples with a Gini index set by the user (gsample()), very useful for simulation studies.\nUses Rcpp (C++), so calculations are faster than in other packages that compute the Gini index."
+  },
+  {
+    "objectID": "software.html#installation",
+    "href": "software.html#installation",
+    "title": "The R package giniVarCI",
+    "section": "Installation",
+    "text": "Installation\ninstall.packages(\"giniVarCI\")            # from CRAN\nlibrary(giniVarCI)\nvignette(\"GiniVarInterval\", package = \"giniVarCI\")"
+  },
+  {
+    "objectID": "software.html#examples",
+    "href": "software.html#examples",
+    "title": "The R package giniVarCI",
+    "section": "Examples",
+    "text": "Examples\nInfinite populations.\nset.seed(123)\ny &lt;- gsample(n = 100, gini = 0.5, distribution = \"lognormal\")\n\nigini(y)                             # Gini index (with bias correction)\niginindex(y, method = 5)             # a specific expression of the Gini index\nigini(y, interval = \"zjackknife\")    # jackknife interval\nigini(y, interval = \"BCa\")           # BCa bootstrap interval\nigini(y, interval = \"ELchisq\")       # empirical likelihood interval\nicompareCI(y, plotCI = TRUE)         # compares all the intervals\nIntervals available in igini(): \"pbootstrap\", \"BCa\", \"zjackknife\", \"tjackknife\", \"zalinearization\", \"zblinearization\", \"talinearization\", \"tblinearization\", \"ELchisq\" and \"ELboot\".\nFinite populations (survey data).\ndata(eusilc, package = \"laeken\")\ny &lt;- eusilc$eqIncome[eusilc$db040 == \"Burgenland\"]\nw &lt;- eusilc$rb050[eusilc$db040 == \"Burgenland\"]\n\nfgini(y, w)                                    # weighted Gini index\nfginindex(y, w, method = 3)                    # Berger (2008), mid-point distribution function\nfgini(y, w, interval = \"zjackknife\")           # jackknife interval\nfgini(y, w, interval = \"zalinearization\")      # linearisation interval\nMethods available in fginindex(): 1, Langel and Tillé (2013); 2 (default), Alfons and Templ (2012) and Langel and Tillé (2013); 3, Berger (2008); 4, Berger and Gedik-Balay (2020); 5, Lerman and Yitzhaki (1989)."
+  },
+  {
+    "objectID": "software.html#documentation",
+    "href": "software.html#documentation",
+    "title": "The R package giniVarCI",
+    "section": "Documentation",
+    "text": "Documentation\n\nReference manual (PDF)\nVignette: estimation, variances and intervals for the Gini index\nPackage page on CRAN\n\n\n\n\n\n\n\nWithout installing anything, you can estimate the Gini index of your own data, with its jackknife and bootstrap intervals, in the Gini index calculator."
+  }
+]

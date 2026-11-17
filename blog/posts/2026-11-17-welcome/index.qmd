@@ -1,0 +1,19 @@
+---
+title: "Welcome to the new GiniUs website"
+date: "2026-11-17"
+categories: [news]
+description: "What is new on the website of the GiniUs project and how to follow it."
+image: ../../../images/logo_ginius.png
+---
+
+GiniUs studies how to measure inequality reliably with the **Gini index**: which estimator to use, how large its bias can be, how to obtain margins of error that can be trusted, and how to deal with missing incomes. The project, funded by the Spanish State Research Agency (PID2022-136235NB-I00), is now in its fourth and last year.
+
+The new website brings together the results of the project and several tools that run in your browser, without installing anything:
+
+- a [Gini index calculator](../../../calculator.qmd) for your own data, with jackknife and bootstrap confidence intervals and the Lorenz curve;
+- an [interactive bias explorer](../../../simulation.qmd) that reproduces the Monte Carlo studies of the project;
+- a [missing data simulator](../../../missing-data.qmd) that compares complete-case analysis, single imputation and multiple imputation under the MCAR, MAR and MNAR mechanisms;
+- [R exercises](../../../practice.qmd), including the R package **giniVarCI** running in the browser;
+- an [inequality observatory](../../../observatory.qmd) with official Gini indices from Eurostat, the World Bank and INE.
+
+In this blog we will publish **short posts** on new articles, software releases, seminars and practical advice on measuring inequality. You can follow it through the RSS feed or by [subscribing](../../../news.qmd).

@@ -1,0 +1,80 @@
+---
+title: "Glossary and FAQ"
+subtitle: "Key concepts on the Gini index and missing data, and frequently asked questions"
+---
+
+## Glossary
+
+Gini index
+: The most widely used measure of inequality, proposed by Corrado Gini (1912). It is 0 under perfect equality (everybody has the same income) and approaches 1 when one person has all the income. It can be read as half the expected absolute difference between the incomes of two people chosen at random, divided by the mean income.
+
+Lorenz curve
+: Curve that shows the cumulative share of income held by the poorest $p\%$ of the population. The Gini index is twice the area between the line of equality and the Lorenz curve.
+
+Estimator
+: Formula that computes the Gini index from a sample. The literature contains many estimators ($\widehat{G}_n^{a}$, $\widehat{G}_n^{b}$, $\widehat{G}_n^{c}$, ...), which give different results in the same sample; see [Definition and estimation](gini-index.qmd).
+
+Infinite and finite populations
+: In the infinite-population (model-based) approach, data are independent draws from a distribution. In the finite-population (design-based) approach, data come from a sample survey with sampling weights $w_i$, and the target is the Gini index of the finite population.
+
+Bias of an estimator
+: Difference between the average value of an estimator over all possible samples and the true value. Gini estimators can be biased **upwards** ($\widehat{G}_n^{a}$ with low inequality) or **downwards** (highly skewed and unequal data).
+
+Relative bias (RB)
+: Bias divided by the true value, in percent. In GiniUs: negligible if $|RB|<2\%$, acceptable if $|RB|<5\%$, and large otherwise.
+
+Skewness
+: Asymmetry of a distribution. Incomes have a long right tail: few people with very high values. The project shows that skewness and inequality affect the bias of the Gini estimators.
+
+Jackknife
+: Resampling method that recomputes the estimator leaving out one observation at a time, to estimate its bias and variance.
+
+Bootstrap
+: Resampling method that draws many samples with replacement from the data to approximate the distribution of an estimator and build confidence intervals. The *rescaled bootstrap* adapts it to finite populations, and the *empirical bootstrap* is used to correct biases.
+
+Linearisation
+: Approximation of the variance of an estimator by a first-order Taylor expansion (influence functions).
+
+Empirical likelihood
+: Non-parametric method that builds confidence intervals without assuming a distribution, with good coverage for the Gini index.
+
+Confidence interval and coverage
+: Range of values that contains the true value with a given probability (e.g. 95%). An interval has good **coverage** when that probability is achieved in practice.
+
+Missing data, non-response
+: Values that should have been observed but were not, for example because a person refused to report his or her income.
+
+MCAR, MAR and MNAR
+: Response mechanisms (Rubin, 1976). **MCAR**: the probability of non-response is the same for everybody. **MAR**: it depends only on observed variables. **MNAR**: it depends on the unobserved value itself (e.g. high incomes are less often reported). See the [missing data simulator](missing-data.qmd).
+
+Complete-case analysis
+: Deleting the units with missing values. It is unbiased only under MCAR and always loses precision.
+
+Single and multiple imputation
+: Replacing each missing value with one (single) or several (multiple) plausible values. Multiple imputation repeats the imputation $M$ times and combines the results with Rubin's rules, so that the uncertainty due to imputation is reflected in the variance.
+
+## Frequently asked questions
+
+**Which estimator of the Gini index should I use?**
+It depends on the data. With samples without weights, $\widehat{G}_n^{c}=\frac{n}{n-1}\widehat{G}_n^{b}$ corrects most of the bias of the usual estimator in symmetric or moderately skewed data; $\widehat{G}_n^{a}$ should be avoided when inequality is low. With highly skewed data and small samples, a bias correction (e.g. jackknife) is advisable. With survey data, use the weighted estimators. The articles of the project explain the choice in detail.
+
+**Is the bias important in practice?**
+It can be. With small samples, small groups or highly skewed distributions, the relative bias of the usual estimators can exceed 10%. Try the [bias explorer](simulation.qmd) or the [calculator](calculator.qmd).
+
+**How can I obtain a margin of error for my Gini index?**
+With the jackknife, the bootstrap, linearisation or empirical likelihood, all available in the R package [giniVarCI](software.qmd). The [calculator](calculator.qmd) gives jackknife and bootstrap intervals in your browser.
+
+**Can the Gini index be computed with zero or negative incomes?**
+Zero incomes are allowed. With negative incomes the Gini index can exceed 1 and loses its usual interpretation; they should be treated explicitly and reported.
+
+**Can the Gini index be decomposed by groups?**
+Not additively: the Gini index of a population is not the sum of a between-group and a within-group term (there is a residual overlap term). Theil indices can be decomposed exactly; see the follow-up project [THEILUMINA](https://jfmunozrosas.github.io/theilumina/).
+
+**My survey has missing incomes. What should I do?**
+Report the percentage of missing data, analyse the response mechanism, avoid mean imputation and complete-case analysis unless the data are MCAR, and use multiple imputation with an imputation model that includes the variables related to income and to non-response. See the [missing data simulator](missing-data.qmd).
+
+**Where can I find official data on inequality?**
+In the [observatory](observatory.qmd) (Eurostat, World Bank and INE) and in the [links of interest](links.qmd).
+
+**Can I use the materials of this website in my classes?**
+Yes, citing the source as indicated in [How to cite](cite.qmd).

@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Missing data simulator – GiniUs</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./images/favicon_ginius.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-2e67a60b6ceb0e571a24b65c8c311c23.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script type="module" src="site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="Missing data simulator – GiniUs">
+<meta property="og:description" content="Bias of the Gini index under the MCAR, MAR and MNAR response mechanisms, and how to deal with it">
+<meta property="og:image" content="https://jfmunozrosas.github.io/ginius/images/logo_ginius.png">
+<meta property="og:site_name" content="GiniUs">
+<meta property="og:image:height" content="132">
+<meta property="og:image:width" content="497">
+<meta name="twitter:title" content="Missing data simulator – GiniUs">
+<meta name="twitter:description" content="Bias of the Gini index under the MCAR, MAR and MNAR response mechanisms, and how to deal with it">
+<meta name="twitter:image" content="https://jfmunozrosas.github.io/ginius/images/logo_ginius.png">
+<meta name="twitter:image-height" content="132">
+<meta name="twitter:image-width" content="497">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./images/logo_ginius.png" alt="GiniUs logo" class="navbar-logo">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-project" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Project</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-project">    
+        <li>
+    <a class="dropdown-item" href="./research.html">
+ <span class="dropdown-text">Research problems and questions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./project.html">
+ <span class="dropdown-text">Objectives, activities and work plan</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./results.html">
+ <span class="dropdown-text">Results and conclusions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./news.html">
+ <span class="dropdown-text">Status and news</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="./team.html"> 
+<span class="menu-text">Team</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-gini-index" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Gini index</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-gini-index">    
+        <li>
+    <a class="dropdown-item" href="./gini-index.html">
+ <span class="dropdown-text">Definition and estimation (with R code)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./simulation.html">
+ <span class="dropdown-text">Interactive bias explorer</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./missing-data.html">
+ <span class="dropdown-text">Missing data simulator (MCAR, MAR, MNAR)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./calculator.html">
+ <span class="dropdown-text">Gini index calculator</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./practice.html">
+ <span class="dropdown-text">Try it in R (in your browser)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./glossary.html">
+ <span class="dropdown-text">Glossary and FAQ</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./data-code.html">
+ <span class="dropdown-text">Research data and R code</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="./software.html"> 
+<span class="menu-text">giniVarCI</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./observatory.html"> 
+<span class="menu-text">Observatory</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./publications.html"> 
+<span class="menu-text">Publications</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-dissemination" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Dissemination</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-dissemination">    
+        <li>
+    <a class="dropdown-item" href="./dissemination.html">
+ <span class="dropdown-text">Seminars and conferences</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./blog/index.html">
+ <span class="dropdown-text">Blog</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./links.html">
+ <span class="dropdown-text">Links of interest</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./cite.html">
+ <span class="dropdown-text">How to cite</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="./contact.html"> 
+<span class="menu-text">Contact</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./feedback.html"> 
+<span class="menu-text">Your opinion</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./news.html"> 
+<span class="menu-text">● In progress (year 4)</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/jfmunozrosas/ginius"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#the-three-response-mechanisms" id="toc-the-three-response-mechanisms" class="nav-link active" data-scroll-target="#the-three-response-mechanisms">The three response mechanisms</a></li>
+  <li><a href="#scenario" id="toc-scenario" class="nav-link" data-scroll-target="#scenario">Scenario</a></li>
+  <li><a href="#results-relative-bias-of-the-gini-index" id="toc-results-relative-bias-of-the-gini-index" class="nav-link" data-scroll-target="#results-relative-bias-of-the-gini-index">Results: relative bias of the Gini index</a></li>
+  <li><a href="#one-sample-who-does-not-respond" id="toc-one-sample-who-does-not-respond" class="nav-link" data-scroll-target="#one-sample-who-does-not-respond">One sample: who does not respond?</a></li>
+  <li><a href="#methods-compared" id="toc-methods-compared" class="nav-link" data-scroll-target="#methods-compared">Methods compared</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">Missing data simulator</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+<p class="subtitle lead">Bias of the Gini index under the MCAR, MAR and MNAR response mechanisms, and how to deal with it</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">November 17, 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Missing data are very common in inequality studies: people are less willing to answer sensitive questions such as their income, and those who do not answer are often different from those who do. This simulator, linked to <strong>objective OG2</strong> of the project, shows how much the Gini index can be biased by missing data, depending on the <strong>response mechanism</strong> and on the <strong>method</strong> used to deal with the missing values. It runs a Monte Carlo experiment in your browser.</p>
+<section id="the-three-response-mechanisms" class="level2">
+<h2 class="anchored" data-anchor-id="the-three-response-mechanisms">The three response mechanisms</h2>
+<div class="mech-grid">
+<div class="mech">
+<b>MCAR</b> · Missing completely at random<br>The probability of non-response is the same for everybody. The respondents are a random subsample of the sample.
+</div>
+<div class="mech mar">
+<b>MAR</b> · Missing at random<br>Non-response depends on an observed variable <span class="math inline">x</span> (for example, education, age or occupation) that is related to income, but not on income itself once <span class="math inline">x</span> is known.
+</div>
+<div class="mech mnar">
+<b>MNAR</b> · Missing not at random<br>Non-response depends on the income itself: for example, people with very high (or very low) incomes are less willing to report it.
+</div>
+</div>
+<p>In the simulation, the probability that unit <span class="math inline">i</span> does not respond follows a logistic model <span class="math inline">P(\text{missing}_i)=\{1+\exp(-\alpha-\beta\,v_i)\}^{-1}</span>, where <span class="math inline">v_i=0</span> under MCAR, <span class="math inline">v_i=x_i</span> under MAR and <span class="math inline">v_i</span> is the (standardised) rank of <span class="math inline">y_i</span> under MNAR. The intercept <span class="math inline">\alpha</span> is set so that the expected percentage of missing data is the one chosen, and <span class="math inline">\beta</span> is the <strong>strength</strong> of the mechanism. The auxiliary variable <span class="math inline">x</span> is observed for everybody and its correlation with the (normal scores of) income is <span class="math inline">\rho</span>.</p>
+<script src="js/gini-sim.js"></script>
+<div class="cell hidden">
+<details class="code-fold hidden">
+<summary>Code</summary>
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="25" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 24;"><span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>GS <span class="op">=</span> <span class="kw">new</span> <span class="bu">Promise</span>(resolve <span class="kw">=&gt;</span> { <span class="kw">const</span> ok <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="bu">window</span><span class="op">.</span><span class="at">GiniSim</span> <span class="op">?</span> <span class="fu">resolve</span>(<span class="bu">window</span><span class="op">.</span><span class="at">GiniSim</span>) <span class="op">:</span> <span class="pp">setTimeout</span>(ok<span class="op">,</span> <span class="dv">50</span>)<span class="op">;</span> <span class="fu">ok</span>()<span class="op">;</span> })</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>methodColors <span class="op">=</span> [<span class="st">"#8A8F98"</span><span class="op">,</span> <span class="st">"#D43F3A"</span><span class="op">,</span> <span class="st">"#E89A3C"</span><span class="op">,</span> <span class="st">"#9C6ADE"</span><span class="op">,</span> <span class="st">"#1A5FA8"</span><span class="op">,</span> <span class="st">"#5E8C61"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display hidden">
+<div>
+<div id="ojs-cell-1-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display hidden">
+<div>
+<div id="ojs-cell-1-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="scenario" class="level2">
+<h2 class="anchored" data-anchor-id="scenario">Scenario</h2>
+<div class="cell">
+<details class="code-fold hidden">
+<summary>Code</summary>
+<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="32" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 31;"><span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>viewof sc <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">form</span>({</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>  <span class="dt">dist</span><span class="op">:</span> Inputs<span class="op">.</span><span class="fu">select</span>([<span class="st">"Pareto"</span><span class="op">,</span> <span class="st">"Dagum-p20"</span><span class="op">,</span> <span class="st">"Dagum-p0.5"</span><span class="op">,</span> <span class="st">"Lognormal"</span><span class="op">,</span> <span class="st">"Weibull"</span>]<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Distribution of income"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="st">"Lognormal"</span>})<span class="op">,</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>  <span class="dt">G</span><span class="op">:</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="fl">0.2</span><span class="op">,</span> <span class="fl">0.7</span>]<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"True Gini index (G)"</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.05</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="fl">0.35</span>})<span class="op">,</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>  <span class="dt">n</span><span class="op">:</span> Inputs<span class="op">.</span><span class="fu">select</span>([<span class="dv">100</span><span class="op">,</span> <span class="dv">200</span><span class="op">,</span> <span class="dv">500</span><span class="op">,</span> <span class="dv">1000</span>]<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Sample size (n)"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">200</span>})<span class="op">,</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>  <span class="dt">rate</span><span class="op">:</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="fl">0.05</span><span class="op">,</span> <span class="fl">0.6</span>]<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Percentage of missing data"</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.05</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="fl">0.3</span><span class="op">,</span> <span class="dt">format</span><span class="op">:</span> x <span class="kw">=&gt;</span> <span class="vs">`</span><span class="sc">${</span><span class="bu">Math</span><span class="op">.</span><span class="fu">round</span>(<span class="dv">100</span> <span class="op">*</span> x)<span class="sc">}</span><span class="vs">%`</span>})<span class="op">,</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>  <span class="dt">strength</span><span class="op">:</span> Inputs<span class="op">.</span><span class="fu">radio</span>(<span class="kw">new</span> <span class="bu">Map</span>([[<span class="st">"Weak"</span><span class="op">,</span> <span class="fl">0.5</span>]<span class="op">,</span> [<span class="st">"Moderate"</span><span class="op">,</span> <span class="dv">1</span>]<span class="op">,</span> [<span class="st">"Strong"</span><span class="op">,</span> <span class="dv">2</span>]])<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Strength of the mechanism (MAR, MNAR)"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">1</span>})<span class="op">,</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>  <span class="dt">direction</span><span class="op">:</span> Inputs<span class="op">.</span><span class="fu">radio</span>(<span class="kw">new</span> <span class="bu">Map</span>([[<span class="st">"High incomes are more often missing"</span><span class="op">,</span> <span class="dv">1</span>]<span class="op">,</span> [<span class="st">"Low incomes are more often missing"</span><span class="op">,</span> <span class="op">-</span><span class="dv">1</span>]])<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Who does not respond?"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">1</span>})<span class="op">,</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>  <span class="dt">rho</span><span class="op">:</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="fl">0.95</span>]<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Correlation between x and income (ρ)"</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.05</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="fl">0.6</span>})<span class="op">,</span></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>  <span class="dt">R</span><span class="op">:</span> Inputs<span class="op">.</span><span class="fu">select</span>([<span class="dv">100</span><span class="op">,</span> <span class="dv">200</span><span class="op">,</span> <span class="dv">500</span><span class="op">,</span> <span class="dv">1000</span>]<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Replications (R)"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">200</span>})</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold hidden">
+<summary>Code</summary>
+<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="46" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 45;"><span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>viewof methods <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">checkbox</span>(GS<span class="op">.</span><span class="at">METHODS</span><span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Methods to compare"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> GS<span class="op">.</span><span class="at">METHODS</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</section>
+<section id="results-relative-bias-of-the-gini-index" class="level2">
+<h2 class="anchored" data-anchor-id="results-relative-bias-of-the-gini-index">Results: relative bias of the Gini index</h2>
+<div class="cell">
+<details class="code-fold hidden">
+<summary>Code</summary>
+<div class="sourceCode cell-code hidden" id="cb4" data-startfrom="54" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 53;"><span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>missRes <span class="op">=</span> GS<span class="op">.</span><span class="fu">missingExperiment</span>({<span class="dt">dist</span><span class="op">:</span> sc<span class="op">.</span><span class="at">dist</span><span class="op">,</span> <span class="dt">G</span><span class="op">:</span> sc<span class="op">.</span><span class="at">G</span><span class="op">,</span> <span class="dt">n</span><span class="op">:</span> sc<span class="op">.</span><span class="at">n</span><span class="op">,</span> <span class="dt">R</span><span class="op">:</span> sc<span class="op">.</span><span class="at">R</span><span class="op">,</span> <span class="dt">rate</span><span class="op">:</span> sc<span class="op">.</span><span class="at">rate</span><span class="op">,</span> <span class="dt">strength</span><span class="op">:</span> sc<span class="op">.</span><span class="at">strength</span><span class="op">,</span> <span class="dt">rho</span><span class="op">:</span> sc<span class="op">.</span><span class="at">rho</span><span class="op">,</span> <span class="dt">direction</span><span class="op">:</span> sc<span class="op">.</span><span class="at">direction</span><span class="op">,</span> methods})</span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>fullRB <span class="op">=</span> missRes<span class="op">.</span><span class="fu">find</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">mechanism</span> <span class="op">===</span> <span class="st">"No missing data"</span>)</span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>missShown <span class="op">=</span> missRes<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">mechanism</span> <span class="op">!==</span> <span class="st">"No missing data"</span>)</span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>methods<span class="op">.</span><span class="at">length</span> <span class="op">?</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a>  <span class="dt">width</span><span class="op">:</span> <span class="dv">960</span><span class="op">,</span> <span class="dt">height</span><span class="op">:</span> <span class="dv">360</span><span class="op">,</span> <span class="dt">marginLeft</span><span class="op">:</span> <span class="dv">50</span><span class="op">,</span> <span class="dt">marginBottom</span><span class="op">:</span> <span class="dv">40</span><span class="op">,</span></span>
+<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>  <span class="dt">fx</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="kw">null</span><span class="op">,</span> <span class="dt">domain</span><span class="op">:</span> GS<span class="op">.</span><span class="at">MECHANISMS</span><span class="op">,</span> <span class="dt">padding</span><span class="op">:</span> <span class="fl">0.12</span>}<span class="op">,</span></span>
+<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> {<span class="dt">axis</span><span class="op">:</span> <span class="kw">null</span><span class="op">,</span> <span class="dt">domain</span><span class="op">:</span> methods}<span class="op">,</span></span>
+<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Relative bias of the Gini index (%)"</span><span class="op">,</span> <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span>}<span class="op">,</span></span>
+<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a>  <span class="dt">color</span><span class="op">:</span> {<span class="dt">legend</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">domain</span><span class="op">:</span> GS<span class="op">.</span><span class="at">METHODS</span><span class="op">,</span> <span class="dt">range</span><span class="op">:</span> methodColors}<span class="op">,</span></span>
+<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="op">-</span><span class="dv">2</span><span class="op">,</span> <span class="dv">2</span>]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"#5E8C61"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">1.5</span><span class="op">,</span> <span class="dt">strokeOpacity</span><span class="op">:</span> <span class="fl">0.7</span>})<span class="op">,</span></span>
+<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">barY</span>(missShown<span class="op">,</span> {<span class="dt">fx</span><span class="op">:</span> <span class="st">"mechanism"</span><span class="op">,</span> <span class="dt">x</span><span class="op">:</span> <span class="st">"method"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"RB"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"method"</span><span class="op">,</span> <span class="dt">tip</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a>      <span class="dt">title</span><span class="op">:</span> d <span class="kw">=&gt;</span> <span class="vs">`</span><span class="sc">${</span>d<span class="op">.</span><span class="at">mechanism</span><span class="sc">}</span><span class="vs"> · </span><span class="sc">${</span>d<span class="op">.</span><span class="at">method</span><span class="sc">}\n</span><span class="vs">Relative bias: </span><span class="sc">${</span>d<span class="op">.</span><span class="at">RB</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs">%</span><span class="sc">\n</span><span class="vs">Relative RMSE: </span><span class="sc">${</span>d<span class="op">.</span><span class="at">RRMSE</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs">%</span><span class="sc">\n</span><span class="vs">Mean estimate: </span><span class="sc">${</span>d<span class="op">.</span><span class="at">mean</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">4</span>)<span class="sc">}</span><span class="vs"> (true G = </span><span class="sc">${</span>sc<span class="op">.</span><span class="at">G</span><span class="sc">}</span><span class="vs">)`</span>})<span class="op">,</span></span>
+<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"#333"</span>})<span class="op">,</span></span>
+<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleY</span>([fullRB<span class="op">.</span><span class="at">RB</span>]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"#333"</span><span class="op">,</span> <span class="dt">strokeDasharray</span><span class="op">:</span> <span class="st">"5,3"</span>})</span>
+<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a>  ]</span>
+<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a>}) <span class="op">:</span> <span class="fu">html</span><span class="vs">`&lt;p class="pending"&gt;Select at least one method.&lt;/p&gt;`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-4-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-4-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-4-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-4-4" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+<div class="rb-legend">
+<p>Green lines: limits of negligible bias (±2%). Dashed line: relative bias of <span class="math inline">\widehat{G}_n^{c}</span> with the complete sample, before any data are lost <span>(<span id="ojs-element-id-1"></span>%).</span> Hover over the bars to see the values.</p>
+</div>
+<div class="cell">
+<details class="code-fold hidden">
+<summary>Code</summary>
+<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="78" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 77;"><span id="cb5-78"><a href="#cb5-78" aria-hidden="true" tabindex="-1"></a>Inputs<span class="op">.</span><span class="fu">table</span>(missRes<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> ({<span class="dt">Mechanism</span><span class="op">:</span> d<span class="op">.</span><span class="at">mechanism</span><span class="op">,</span> <span class="dt">Method</span><span class="op">:</span> d<span class="op">.</span><span class="at">method</span><span class="op">,</span> <span class="st">"Mean estimate"</span><span class="op">:</span> <span class="op">+</span>d<span class="op">.</span><span class="at">mean</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">4</span>)<span class="op">,</span></span>
+<span id="cb5-79"><a href="#cb5-79" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Relative bias (%)"</span><span class="op">:</span> <span class="op">+</span>d<span class="op">.</span><span class="at">RB</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="op">,</span> <span class="st">"Relative RMSE (%)"</span><span class="op">:</span> <span class="op">+</span>d<span class="op">.</span><span class="at">RRMSE</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)}))<span class="op">,</span> {<span class="dt">rows</span><span class="op">:</span> <span class="dv">20</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-5" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold hidden">
+<summary>Code</summary>
+<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="84" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 83;"><span id="cb6-84"><a href="#cb6-84" aria-hidden="true" tabindex="-1"></a>DOM<span class="op">.</span><span class="fu">download</span>(<span class="kw">new</span> <span class="bu">Blob</span>([d3<span class="op">.</span><span class="fu">csvFormat</span>(missRes<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> ({<span class="op">...</span>d<span class="op">,</span> <span class="dt">distribution</span><span class="op">:</span> sc<span class="op">.</span><span class="at">dist</span><span class="op">,</span> <span class="dt">G</span><span class="op">:</span> sc<span class="op">.</span><span class="at">G</span><span class="op">,</span> <span class="dt">n</span><span class="op">:</span> sc<span class="op">.</span><span class="at">n</span><span class="op">,</span> <span class="dt">missing_rate</span><span class="op">:</span> sc<span class="op">.</span><span class="at">rate</span><span class="op">,</span> <span class="dt">strength</span><span class="op">:</span> sc<span class="op">.</span><span class="at">strength</span><span class="op">,</span> <span class="dt">direction</span><span class="op">:</span> sc<span class="op">.</span><span class="at">direction</span><span class="op">,</span> <span class="dt">rho</span><span class="op">:</span> sc<span class="op">.</span><span class="at">rho</span>})))]<span class="op">,</span> {<span class="dt">type</span><span class="op">:</span> <span class="st">"text/csv"</span>})<span class="op">,</span> <span class="st">"ginius_missing_data_simulation.csv"</span><span class="op">,</span> <span class="st">"Download results (CSV)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-6" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+How to read the results
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Complete cases</strong> (deleting the units with missing data) is only safe under <strong>MCAR</strong>. Under MAR and MNAR the respondents are no longer representative, and if the richest people do not respond, inequality is underestimated.</li>
+<li><strong>Mean imputation</strong> always underestimates inequality, because all the imputed incomes are equal. It should never be used to estimate the Gini index.</li>
+<li><strong>Regression imputation</strong> also underestimates inequality, because it ignores the residual variability of income.</li>
+<li><strong>Stochastic regression imputation</strong> and <strong>multiple imputation</strong> add a random residual to the prediction. Under <strong>MAR</strong>, they remove most of the bias, <em>provided that the imputation model includes the variable</em> <span class="math inline">x</span> <em>that explains non-response</em>. Multiple imputation also reflects the uncertainty due to imputation and has a smaller error.</li>
+<li>Under <strong>MNAR</strong>, no standard method removes the bias. Sensitivity analyses and auxiliary information on the non-respondents are needed.</li>
+<li>Increase the <strong>percentage of missing data</strong>, the <strong>strength</strong> of the mechanism or the <strong>inequality</strong> of the data to see how the problems grow; reduce the correlation <span class="math inline">\rho</span> to see how imputation loses its advantage under MAR.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="one-sample-who-does-not-respond" class="level2">
+<h2 class="anchored" data-anchor-id="one-sample-who-does-not-respond">One sample: who does not respond?</h2>
+<div class="cell">
+<details class="code-fold hidden">
+<summary>Code</summary>
+<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="101" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 100;"><span id="cb7-101"><a href="#cb7-101" aria-hidden="true" tabindex="-1"></a>viewof exMech <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">radio</span>(GS<span class="op">.</span><span class="at">MECHANISMS</span><span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Mechanism"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="st">"MNAR"</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-7" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold hidden">
+<summary>Code</summary>
+<div class="sourceCode cell-code hidden" id="cb8" data-startfrom="107" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 106;"><span id="cb8-107"><a href="#cb8-107" aria-hidden="true" tabindex="-1"></a>exData <span class="op">=</span> GS<span class="op">.</span><span class="fu">missingExample</span>({<span class="dt">dist</span><span class="op">:</span> sc<span class="op">.</span><span class="at">dist</span><span class="op">,</span> <span class="dt">G</span><span class="op">:</span> sc<span class="op">.</span><span class="at">G</span><span class="op">,</span> <span class="dt">n</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(sc<span class="op">.</span><span class="at">n</span><span class="op">,</span> <span class="dv">300</span>)<span class="op">,</span> <span class="dt">rate</span><span class="op">:</span> sc<span class="op">.</span><span class="at">rate</span><span class="op">,</span> <span class="dt">strength</span><span class="op">:</span> sc<span class="op">.</span><span class="at">strength</span><span class="op">,</span> <span class="dt">rho</span><span class="op">:</span> sc<span class="op">.</span><span class="at">rho</span><span class="op">,</span> <span class="dt">direction</span><span class="op">:</span> sc<span class="op">.</span><span class="at">direction</span><span class="op">,</span> <span class="dt">mechanism</span><span class="op">:</span> exMech})</span>
+<span id="cb8-108"><a href="#cb8-108" aria-hidden="true" tabindex="-1"></a>exQuint <span class="op">=</span> {</span>
+<span id="cb8-109"><a href="#cb8-109" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> ys <span class="op">=</span> exData<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">y</span>)<span class="op">.</span><span class="fu">sort</span>((a<span class="op">,</span> b) <span class="kw">=&gt;</span> a <span class="op">-</span> b)<span class="op">,</span> q <span class="op">=</span> [<span class="fl">0.2</span><span class="op">,</span> <span class="fl">0.4</span><span class="op">,</span> <span class="fl">0.6</span><span class="op">,</span> <span class="fl">0.8</span>]<span class="op">.</span><span class="fu">map</span>(p <span class="kw">=&gt;</span> ys[<span class="bu">Math</span><span class="op">.</span><span class="fu">floor</span>(p <span class="op">*</span> ys<span class="op">.</span><span class="at">length</span>)])<span class="op">;</span></span>
+<span id="cb8-110"><a href="#cb8-110" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> lab <span class="op">=</span> [<span class="st">"Q1 (poorest 20%)"</span><span class="op">,</span> <span class="st">"Q2"</span><span class="op">,</span> <span class="st">"Q3"</span><span class="op">,</span> <span class="st">"Q4"</span><span class="op">,</span> <span class="st">"Q5 (richest 20%)"</span>]<span class="op">;</span></span>
+<span id="cb8-111"><a href="#cb8-111" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> g <span class="op">=</span> d <span class="kw">=&gt;</span> lab[q<span class="op">.</span><span class="fu">filter</span>(t <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">y</span> <span class="op">&gt;=</span> t)<span class="op">.</span><span class="at">length</span>]<span class="op">;</span></span>
+<span id="cb8-112"><a href="#cb8-112" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> lab<span class="op">.</span><span class="fu">map</span>(l <span class="kw">=&gt;</span> { <span class="kw">const</span> s <span class="op">=</span> exData<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> <span class="fu">g</span>(d) <span class="op">===</span> l)<span class="op">;</span> <span class="cf">return</span> {<span class="dt">quintile</span><span class="op">:</span> l<span class="op">,</span> <span class="dt">missing</span><span class="op">:</span> <span class="dv">100</span> <span class="op">*</span> s<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">status</span> <span class="op">===</span> <span class="st">"Missing"</span>)<span class="op">.</span><span class="at">length</span> <span class="op">/</span> s<span class="op">.</span><span class="at">length</span>}<span class="op">;</span> })<span class="op">;</span></span>
+<span id="cb8-113"><a href="#cb8-113" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-114"><a href="#cb8-114" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1rem"&gt;</span><span class="sc">${</span>[</span>
+<span id="cb8-115"><a href="#cb8-115" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html</span><span class="vs">`&lt;div&gt;&lt;b&gt;Income and auxiliary variable x&lt;/b&gt;</span><span class="sc">${</span>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb8-116"><a href="#cb8-116" aria-hidden="true" tabindex="-1"></a>    <span class="dt">height</span><span class="op">:</span> <span class="dv">330</span><span class="op">,</span> <span class="dt">marginLeft</span><span class="op">:</span> <span class="dv">55</span><span class="op">,</span></span>
+<span id="cb8-117"><a href="#cb8-117" aria-hidden="true" tabindex="-1"></a>    <span class="dt">x</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Auxiliary variable x"</span><span class="op">,</span> <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span>}<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Income (log scale)"</span><span class="op">,</span> <span class="dt">type</span><span class="op">:</span> <span class="st">"log"</span><span class="op">,</span> <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span>}<span class="op">,</span></span>
+<span id="cb8-118"><a href="#cb8-118" aria-hidden="true" tabindex="-1"></a>    <span class="dt">color</span><span class="op">:</span> {<span class="dt">legend</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">domain</span><span class="op">:</span> [<span class="st">"Observed"</span><span class="op">,</span> <span class="st">"Missing"</span>]<span class="op">,</span> <span class="dt">range</span><span class="op">:</span> [<span class="st">"#1A5FA8"</span><span class="op">,</span> <span class="st">"#D43F3A"</span>]}<span class="op">,</span></span>
+<span id="cb8-119"><a href="#cb8-119" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marks</span><span class="op">:</span> [Plot<span class="op">.</span><span class="fu">dot</span>(exData<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"status"</span><span class="op">,</span> <span class="dt">r</span><span class="op">:</span> <span class="fl">2.6</span><span class="op">,</span> <span class="dt">fillOpacity</span><span class="op">:</span> <span class="fl">0.7</span>})]</span>
+<span id="cb8-120"><a href="#cb8-120" aria-hidden="true" tabindex="-1"></a>  })<span class="sc">}</span><span class="vs">&lt;/div&gt;`</span><span class="op">,</span></span>
+<span id="cb8-121"><a href="#cb8-121" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html</span><span class="vs">`&lt;div&gt;&lt;b&gt;Percentage of missing data by income quintile&lt;/b&gt;</span><span class="sc">${</span>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb8-122"><a href="#cb8-122" aria-hidden="true" tabindex="-1"></a>    <span class="dt">height</span><span class="op">:</span> <span class="dv">330</span><span class="op">,</span> <span class="dt">marginLeft</span><span class="op">:</span> <span class="dv">55</span><span class="op">,</span> <span class="dt">marginBottom</span><span class="op">:</span> <span class="dv">45</span><span class="op">,</span></span>
+<span id="cb8-123"><a href="#cb8-123" aria-hidden="true" tabindex="-1"></a>    <span class="dt">x</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="kw">null</span><span class="op">,</span> <span class="dt">domain</span><span class="op">:</span> exQuint<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">quintile</span>)<span class="op">,</span> <span class="dt">tickRotate</span><span class="op">:</span> <span class="op">-</span><span class="dv">15</span>}<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Missing (%)"</span><span class="op">,</span> <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> <span class="dv">100</span>]}<span class="op">,</span></span>
+<span id="cb8-124"><a href="#cb8-124" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marks</span><span class="op">:</span> [Plot<span class="op">.</span><span class="fu">barY</span>(exQuint<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"quintile"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"missing"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"#D43F3A"</span><span class="op">,</span> <span class="dt">fillOpacity</span><span class="op">:</span> <span class="fl">0.8</span><span class="op">,</span> <span class="dt">tip</span><span class="op">:</span> <span class="kw">true</span>})<span class="op">,</span> Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">100</span> <span class="op">*</span> sc<span class="op">.</span><span class="at">rate</span>]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"#333"</span><span class="op">,</span> <span class="dt">strokeDasharray</span><span class="op">:</span> <span class="st">"4,3"</span>})<span class="op">,</span> Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>])]</span>
+<span id="cb8-125"><a href="#cb8-125" aria-hidden="true" tabindex="-1"></a>  })<span class="sc">}</span><span class="vs">&lt;/div&gt;`</span></span>
+<span id="cb8-126"><a href="#cb8-126" aria-hidden="true" tabindex="-1"></a>]<span class="sc">}</span><span class="vs">&lt;/div&gt;`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-8-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-8-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-8-3" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+<div class="rb-legend">
+<p>Dashed line: overall percentage of missing data. Under MCAR the percentage is similar in every quintile; under MAR and MNAR it depends on income, directly (MNAR) or through <span class="math inline">x</span> (MAR).</p>
+</div>
+</section>
+<section id="methods-compared" class="level2">
+<h2 class="anchored" data-anchor-id="methods-compared">Methods compared</h2>
+<table class="caption-top table">
+<caption>Methods for dealing with missing data.</caption>
+<colgroup>
+<col style="width: 24%">
+<col style="width: 46%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Method</th>
+<th>What it does</th>
+<th>When it works</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Complete cases</td>
+<td>Deletes the units with missing income</td>
+<td>MCAR only</td>
+</tr>
+<tr class="even">
+<td>Mean imputation</td>
+<td>Replaces each missing income with the mean of the respondents</td>
+<td>Never for inequality measures</td>
+</tr>
+<tr class="odd">
+<td>Hot-deck imputation</td>
+<td>Replaces each missing income with the income of a randomly chosen respondent</td>
+<td>MCAR (or within classes that explain non-response)</td>
+</tr>
+<tr class="even">
+<td>Regression imputation</td>
+<td>Predicts <span class="math inline">\log y</span> from <span class="math inline">x</span> with a linear regression fitted to the respondents</td>
+<td>Not for inequality measures (ignores residual variability)</td>
+</tr>
+<tr class="odd">
+<td>Stochastic regression imputation</td>
+<td>Prediction plus a residual drawn at random from the respondents’ residuals</td>
+<td>MAR, if the model includes the variables that explain non-response</td>
+</tr>
+<tr class="even">
+<td>Multiple imputation (<span class="math inline">M=5</span>)</td>
+<td>Stochastic regression repeated <span class="math inline">M</span> times, refitting the model on bootstrap samples of the respondents; the <span class="math inline">M</span> Gini indices are averaged (Rubin’s rules)</td>
+<td>MAR; also gives valid variances and intervals</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-simple callout-tip">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Good practice when estimating the Gini index with missing data.</strong> Report the percentage of missing data and analyse the response mechanism; never use mean imputation or simply delete the incomplete cases unless the data are MCAR; include in the imputation model the variables related to income and to non-response; use multiple imputation with enough imputations for the percentage of missing data; and report the uncertainty due to imputation.</p>
+</div>
+</div>
+</div>
+<p>The code of the simulator is in <a href="js/gini-sim.js"><code>js/gini-sim.js</code></a>. Estimator of the Gini index: <span class="math inline">\widehat{G}_n^{c}</span>. Gamma is not included because the simulator generates the income and the auxiliary variable through a normal copula, which requires a closed-form quantile function.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<p>Van Buuren, S. (2018). <em>Flexible Imputation of Missing Data</em> (2nd ed.). CRC Press.<br>
+Little, R.J.A., &amp; Rubin, D.B. (2019). <em>Statistical Analysis with Missing Data</em> (3rd ed.). Wiley.<br>
+Álvarez-Verdejo, E., Moya-Fernández, P.J., &amp; Muñoz-Rosas, J.F. (2021). Single imputation methods and confidence intervals for the Gini index. <em>Mathematics</em>, 9(24), 3252.<br>
+Muñoz, J.F., &amp; Rueda, M. (2009). New imputation methods for missing data using quantiles. <em>Journal of Computational and Applied Mathematics</em>, 232(2), 305–317.</p>
+
+
+<!-- -->
+
+<div class="ojs-auto-generated hidden">
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6WyAgeyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiaW5saW5lIjoidHJ1ZSIsInNvdXJjZSI6Imh0bC5odG1sYDxzcGFuPiR7ZnVsbFJCID8gZnVsbFJCLlJCLnRvRml4ZWQoMikgOiDigJzigJx9PC9zcGFuPmAiLCAiY2VsbE5hbWUiOiJvanMtZWxlbWVudC1pZC0xIn1dfQ==
+</script>
+</div>
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<!--
+  Visit counter (GoatCounter, free and cookie-free).
+  1. Create an account at https://www.goatcounter.com with the code below (ginius).
+  2. In Settings, enable "Allow adding visitor counts on your website".
+  If the code "ginius" is not available, change GC_CODE here (two places: this line and data-goatcounter).
+-->
+<script data-goatcounter="https://ginius.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+<script>
+(function () {
+  const GC_CODE = "ginius";
+  function show(n) {
+    const box = document.querySelector(".nav-footer-left") || document.querySelector("footer");
+    if (!box || document.getElementById("visit-counter")) return;
+    const s = document.createElement("span");
+    s.id = "visit-counter";
+    s.className = "visit-counter";
+    s.innerHTML = ` · <span class="vc-num">${n}</span> visits`;
+    box.appendChild(s);
+  }
+  // Skip local previews (quarto preview)
+  if (location.hostname === "localhost" || location.hostname === "127.0.0.1") return;
+  fetch(`https://${GC_CODE}.goatcounter.com/counter/TOTAL.json`)
+    .then(r => r.ok ? r.json() : null)
+    .then(d => { if (d && d.count) show(String(d.count).replace(/\s/g, ".")); })
+    .catch(() => {});
+})();
+</script>
+
+<script>
+// ---- Download counter ----
+// Every click on a downloadable file (CSV data, figures, infographic, video, R code, guides...)
+// is recorded in GoatCounter as an event "download/<file name>" (no cookies, no personal data).
+(function () {
+  const EXT = /\.(csv|xlsx|zip|png|svg|jpg|pdf|mp4|r|rds|rdata|qmd|txt|json|docx)(\?|#|$)/i;
+  document.addEventListener("click", function (e) {
+    const a = e.target.closest ? e.target.closest("a") : null;
+    if (!a) return;
+    const href = a.getAttribute("href") || "";
+    if (!a.hasAttribute("download") && !EXT.test(href)) return;
+    let name = a.getAttribute("download") || href.split("#")[0].split("?")[0].split("/").pop() || "file";
+    const page = location.pathname.split("/").pop() || "index.html";
+    if (window.goatcounter && window.goatcounter.count) {
+      window.goatcounter.count({path: "download/" + name, title: "Download: " + name + " (from " + page + ")", event: true});
+    }
+  }, true);
+})();
+</script>
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IkdTID0gbmV3IFByb21pc2UocmVzb2x2ZSA9PiB7IGNvbnN0IG9rID0gKCkgPT4gd2luZG93LkdpbmlTaW0gPyByZXNvbHZlKHdpbmRvdy5HaW5pU2ltKSA6IHNldFRpbWVvdXQob2ssIDUwKTsgb2soKTsgfSlcbm1ldGhvZENvbG9ycyA9IFtcIiM4QThGOThcIiwgXCIjRDQzRjNBXCIsIFwiI0U4OUEzQ1wiLCBcIiM5QzZBREVcIiwgXCIjMUE1RkE4XCIsIFwiIzVFOEM2MVwiXVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0yIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoidmlld29mIHNjID0gSW5wdXRzLmZvcm0oe1xuICBkaXN0OiBJbnB1dHMuc2VsZWN0KFtcIlBhcmV0b1wiLCBcIkRhZ3VtLXAyMFwiLCBcIkRhZ3VtLXAwLjVcIiwgXCJMb2dub3JtYWxcIiwgXCJXZWlidWxsXCJdLCB7bGFiZWw6IFwiRGlzdHJpYnV0aW9uIG9mIGluY29tZVwiLCB2YWx1ZTogXCJMb2dub3JtYWxcIn0pLFxuICBHOiBJbnB1dHMucmFuZ2UoWzAuMiwgMC43XSwge2xhYmVsOiBcIlRydWUgR2luaSBpbmRleCAoRylcIiwgc3RlcDogMC4wNSwgdmFsdWU6IDAuMzV9KSxcbiAgbjogSW5wdXRzLnNlbGVjdChbMTAwLCAyMDAsIDUwMCwgMTAwMF0sIHtsYWJlbDogXCJTYW1wbGUgc2l6ZSAobilcIiwgdmFsdWU6IDIwMH0pLFxuICByYXRlOiBJbnB1dHMucmFuZ2UoWzAuMDUsIDAuNl0sIHtsYWJlbDogXCJQZXJjZW50YWdlIG9mIG1pc3NpbmcgZGF0YVwiLCBzdGVwOiAwLjA1LCB2YWx1ZTogMC4zLCBmb3JtYXQ6IHggPT4gYCR7TWF0aC5yb3VuZCgxMDAgKiB4KX0lYH0pLFxuICBzdHJlbmd0aDogSW5wdXRzLnJhZGlvKG5ldyBNYXAoW1tcIldlYWtcIiwgMC41XSwgW1wiTW9kZXJhdGVcIiwgMV0sIFtcIlN0cm9uZ1wiLCAyXV0pLCB7bGFiZWw6IFwiU3RyZW5ndGggb2YgdGhlIG1lY2hhbmlzbSAoTUFSLCBNTkFSKVwiLCB2YWx1ZTogMX0pLFxuICBkaXJlY3Rpb246IElucHV0cy5yYWRpbyhuZXcgTWFwKFtbXCJIaWdoIGluY29tZXMgYXJlIG1vcmUgb2Z0ZW4gbWlzc2luZ1wiLCAxXSwgW1wiTG93IGluY29tZXMgYXJlIG1vcmUgb2Z0ZW4gbWlzc2luZ1wiLCAtMV1dKSwge2xhYmVsOiBcIldobyBkb2VzIG5vdCByZXNwb25kP1wiLCB2YWx1ZTogMX0pLFxuICByaG86IElucHV0cy5yYW5nZShbMCwgMC45NV0sIHtsYWJlbDogXCJDb3JyZWxhdGlvbiBiZXR3ZWVuIHggYW5kIGluY29tZSAoz4EpXCIsIHN0ZXA6IDAuMDUsIHZhbHVlOiAwLjZ9KSxcbiAgUjogSW5wdXRzLnNlbGVjdChbMTAwLCAyMDAsIDUwMCwgMTAwMF0sIHtsYWJlbDogXCJSZXBsaWNhdGlvbnMgKFIpXCIsIHZhbHVlOiAyMDB9KVxufSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBtZXRob2RzID0gSW5wdXRzLmNoZWNrYm94KEdTLk1FVEhPRFMsIHtsYWJlbDogXCJNZXRob2RzIHRvIGNvbXBhcmVcIiwgdmFsdWU6IEdTLk1FVEhPRFN9KVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC00IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoibWlzc1JlcyA9IEdTLm1pc3NpbmdFeHBlcmltZW50KHtkaXN0OiBzYy5kaXN0LCBHOiBzYy5HLCBuOiBzYy5uLCBSOiBzYy5SLCByYXRlOiBzYy5yYXRlLCBzdHJlbmd0aDogc2Muc3RyZW5ndGgsIHJobzogc2MucmhvLCBkaXJlY3Rpb246IHNjLmRpcmVjdGlvbiwgbWV0aG9kc30pXG5mdWxsUkIgPSBtaXNzUmVzLmZpbmQoZCA9PiBkLm1lY2hhbmlzbSA9PT0gXCJObyBtaXNzaW5nIGRhdGFcIilcbm1pc3NTaG93biA9IG1pc3NSZXMuZmlsdGVyKGQgPT4gZC5tZWNoYW5pc20gIT09IFwiTm8gbWlzc2luZyBkYXRhXCIpXG5tZXRob2RzLmxlbmd0aCA/IFBsb3QucGxvdCh7XG4gIHdpZHRoOiA5NjAsIGhlaWdodDogMzYwLCBtYXJnaW5MZWZ0OiA1MCwgbWFyZ2luQm90dG9tOiA0MCxcbiAgZng6IHtsYWJlbDogbnVsbCwgZG9tYWluOiBHUy5NRUNIQU5JU01TLCBwYWRkaW5nOiAwLjEyfSxcbiAgeDoge2F4aXM6IG51bGwsIGRvbWFpbjogbWV0aG9kc30sXG4gIHk6IHtsYWJlbDogXCJSZWxhdGl2ZSBiaWFzIG9mIHRoZSBHaW5pIGluZGV4ICglKVwiLCBncmlkOiB0cnVlfSxcbiAgY29sb3I6IHtsZWdlbmQ6IHRydWUsIGRvbWFpbjogR1MuTUVUSE9EUywgcmFuZ2U6IG1ldGhvZENvbG9yc30sXG4gIG1hcmtzOiBbXG4gICAgUGxvdC5ydWxlWShbLTIsIDJdLCB7c3Ryb2tlOiBcIiM1RThDNjFcIiwgc3Ryb2tlV2lkdGg6IDEuNSwgc3Ryb2tlT3BhY2l0eTogMC43fSksXG4gICAgUGxvdC5iYXJZKG1pc3NTaG93biwge2Z4OiBcIm1lY2hhbmlzbVwiLCB4OiBcIm1ldGhvZFwiLCB5OiBcIlJCXCIsIGZpbGw6IFwibWV0aG9kXCIsIHRpcDogdHJ1ZSxcbiAgICAgIHRpdGxlOiBkID0+IGAke2QubWVjaGFuaXNtfSDCtyAke2QubWV0aG9kfVxcblJlbGF0aXZlIGJpYXM6ICR7ZC5SQi50b0ZpeGVkKDIpfSVcXG5SZWxhdGl2ZSBSTVNFOiAke2QuUlJNU0UudG9GaXhlZCgyKX0lXFxuTWVhbiBlc3RpbWF0ZTogJHtkLm1lYW4udG9GaXhlZCg0KX0gKHRydWUgRyA9ICR7c2MuR30pYH0pLFxuICAgIFBsb3QucnVsZVkoWzBdLCB7c3Ryb2tlOiBcIiMzMzNcIn0pLFxuICAgIFBsb3QucnVsZVkoW2Z1bGxSQi5SQl0sIHtzdHJva2U6IFwiIzMzM1wiLCBzdHJva2VEYXNoYXJyYXk6IFwiNSwzXCJ9KVxuICBdXG59KSA6IGh0bWxgPHAgY2xhc3M9XCJwZW5kaW5nXCI+U2VsZWN0IGF0IGxlYXN0IG9uZSBtZXRob2QuPC9wPmBcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IklucHV0cy50YWJsZShtaXNzUmVzLm1hcChkID0+ICh7TWVjaGFuaXNtOiBkLm1lY2hhbmlzbSwgTWV0aG9kOiBkLm1ldGhvZCwgXCJNZWFuIGVzdGltYXRlXCI6ICtkLm1lYW4udG9GaXhlZCg0KSxcbiAgXCJSZWxhdGl2ZSBiaWFzICglKVwiOiArZC5SQi50b0ZpeGVkKDIpLCBcIlJlbGF0aXZlIFJNU0UgKCUpXCI6ICtkLlJSTVNFLnRvRml4ZWQoMil9KSksIHtyb3dzOiAyMH0pXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTYiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJET00uZG93bmxvYWQobmV3IEJsb2IoW2QzLmNzdkZvcm1hdChtaXNzUmVzLm1hcChkID0+ICh7Li4uZCwgZGlzdHJpYnV0aW9uOiBzYy5kaXN0LCBHOiBzYy5HLCBuOiBzYy5uLCBtaXNzaW5nX3JhdGU6IHNjLnJhdGUsIHN0cmVuZ3RoOiBzYy5zdHJlbmd0aCwgZGlyZWN0aW9uOiBzYy5kaXJlY3Rpb24sIHJobzogc2MucmhvfSkpKV0sIHt0eXBlOiBcInRleHQvY3N2XCJ9KSwgXCJnaW5pdXNfbWlzc2luZ19kYXRhX3NpbXVsYXRpb24uY3N2XCIsIFwiRG93bmxvYWQgcmVzdWx0cyAoQ1NWKVwiKVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC03IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoidmlld29mIGV4TWVjaCA9IElucHV0cy5yYWRpbyhHUy5NRUNIQU5JU01TLCB7bGFiZWw6IFwiTWVjaGFuaXNtXCIsIHZhbHVlOiBcIk1OQVJcIn0pXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTgiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJleERhdGEgPSBHUy5taXNzaW5nRXhhbXBsZSh7ZGlzdDogc2MuZGlzdCwgRzogc2MuRywgbjogTWF0aC5tYXgoc2MubiwgMzAwKSwgcmF0ZTogc2MucmF0ZSwgc3RyZW5ndGg6IHNjLnN0cmVuZ3RoLCByaG86IHNjLnJobywgZGlyZWN0aW9uOiBzYy5kaXJlY3Rpb24sIG1lY2hhbmlzbTogZXhNZWNofSlcbmV4UXVpbnQgPSB7XG4gIGNvbnN0IHlzID0gZXhEYXRhLm1hcChkID0+IGQueSkuc29ydCgoYSwgYikgPT4gYSAtIGIpLCBxID0gWzAuMiwgMC40LCAwLjYsIDAuOF0ubWFwKHAgPT4geXNbTWF0aC5mbG9vcihwICogeXMubGVuZ3RoKV0pO1xuICBjb25zdCBsYWIgPSBbXCJRMSAocG9vcmVzdCAyMCUpXCIsIFwiUTJcIiwgXCJRM1wiLCBcIlE0XCIsIFwiUTUgKHJpY2hlc3QgMjAlKVwiXTtcbiAgY29uc3QgZyA9IGQgPT4gbGFiW3EuZmlsdGVyKHQgPT4gZC55ID49IHQpLmxlbmd0aF07XG4gIHJldHVybiBsYWIubWFwKGwgPT4geyBjb25zdCBzID0gZXhEYXRhLmZpbHRlcihkID0+IGcoZCkgPT09IGwpOyByZXR1cm4ge3F1aW50aWxlOiBsLCBtaXNzaW5nOiAxMDAgKiBzLmZpbHRlcihkID0+IGQuc3RhdHVzID09PSBcIk1pc3NpbmdcIikubGVuZ3RoIC8gcy5sZW5ndGh9OyB9KTtcbn1cbmh0bWxgPGRpdiBzdHlsZT1cImRpc3BsYXk6Z3JpZDtncmlkLXRlbXBsYXRlLWNvbHVtbnM6cmVwZWF0KGF1dG8tZml0LG1pbm1heCgzMjBweCwxZnIpKTtnYXA6MXJlbVwiPiR7W1xuICBodG1sYDxkaXY+PGI+SW5jb21lIGFuZCBhdXhpbGlhcnkgdmFyaWFibGUgeDwvYj4ke1Bsb3QucGxvdCh7XG4gICAgaGVpZ2h0OiAzMzAsIG1hcmdpbkxlZnQ6IDU1LFxuICAgIHg6IHtsYWJlbDogXCJBdXhpbGlhcnkgdmFyaWFibGUgeFwiLCBncmlkOiB0cnVlfSwgeToge2xhYmVsOiBcIkluY29tZSAobG9nIHNjYWxlKVwiLCB0eXBlOiBcImxvZ1wiLCBncmlkOiB0cnVlfSxcbiAgICBjb2xvcjoge2xlZ2VuZDogdHJ1ZSwgZG9tYWluOiBbXCJPYnNlcnZlZFwiLCBcIk1pc3NpbmdcIl0sIHJhbmdlOiBbXCIjMUE1RkE4XCIsIFwiI0Q0M0YzQVwiXX0sXG4gICAgbWFya3M6IFtQbG90LmRvdChleERhdGEsIHt4OiBcInhcIiwgeTogXCJ5XCIsIGZpbGw6IFwic3RhdHVzXCIsIHI6IDIuNiwgZmlsbE9wYWNpdHk6IDAuN30pXVxuICB9KX08L2Rpdj5gLFxuICBodG1sYDxkaXY+PGI+UGVyY2VudGFnZSBvZiBtaXNzaW5nIGRhdGEgYnkgaW5jb21lIHF1aW50aWxlPC9iPiR7UGxvdC5wbG90KHtcbiAgICBoZWlnaHQ6IDMzMCwgbWFyZ2luTGVmdDogNTUsIG1hcmdpbkJvdHRvbTogNDUsXG4gICAgeDoge2xhYmVsOiBudWxsLCBkb21haW46IGV4UXVpbnQubWFwKGQgPT4gZC5xdWludGlsZSksIHRpY2tSb3RhdGU6IC0xNX0sIHk6IHtsYWJlbDogXCJNaXNzaW5nICglKVwiLCBncmlkOiB0cnVlLCBkb21haW46IFswLCAxMDBdfSxcbiAgICBtYXJrczogW1Bsb3QuYmFyWShleFF1aW50LCB7eDogXCJxdWludGlsZVwiLCB5OiBcIm1pc3NpbmdcIiwgZmlsbDogXCIjRDQzRjNBXCIsIGZpbGxPcGFjaXR5OiAwLjgsIHRpcDogdHJ1ZX0pLCBQbG90LnJ1bGVZKFsxMDAgKiBzYy5yYXRlXSwge3N0cm9rZTogXCIjMzMzXCIsIHN0cm9rZURhc2hhcnJheTogXCI0LDNcIn0pLCBQbG90LnJ1bGVZKFswXSldXG4gIH0pfTwvZGl2PmBcbl19PC9kaXY+YFxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdzYycpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdtZXRob2RzJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ2V4TWVjaCcpIn1dfQ==
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../..";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/jfmunozrosas\.github\.io\/ginius");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb9" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Missing data simulator"</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "Bias of the Gini index under the MCAR, MAR and MNAR response mechanisms, and how to deal with it"</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>Missing data are very common in inequality studies: people are less willing to answer sensitive questions such as their income, and those who do not answer are often different from those who do. This simulator, linked to **objective OG2** of the project, shows how much the Gini index can be biased by missing data, depending on the **response mechanism** and on the **method** used to deal with the missing values. It runs a Monte Carlo experiment in your browser.</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="fu">## The three response mechanisms</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>::: {.mech-grid}</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">"mech"</span><span class="dt">&gt;&lt;</span><span class="kw">b</span><span class="dt">&gt;</span>MCAR<span class="dt">&lt;/</span><span class="kw">b</span><span class="dt">&gt;</span> · Missing completely at random<span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;</span>The probability of non-response is the same for everybody. The respondents are a random subsample of the sample.<span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">"mech mar"</span><span class="dt">&gt;&lt;</span><span class="kw">b</span><span class="dt">&gt;</span>MAR<span class="dt">&lt;/</span><span class="kw">b</span><span class="dt">&gt;</span> · Missing at random<span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;</span>Non-response depends on an observed variable $x$ (for example, education, age or occupation) that is related to income, but not on income itself once $x$ is known.<span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">"mech mnar"</span><span class="dt">&gt;&lt;</span><span class="kw">b</span><span class="dt">&gt;</span>MNAR<span class="dt">&lt;/</span><span class="kw">b</span><span class="dt">&gt;</span> · Missing not at random<span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;</span>Non-response depends on the income itself: for example, people with very high (or very low) incomes are less willing to report it.<span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>In the simulation, the probability that unit $i$ does not respond follows a logistic model $P(\text{missing}_i)=<span class="sc">\{</span>1+\exp(-\alpha-\beta\,v_i)<span class="sc">\}</span>^{-1}$, where $v_i=0$ under MCAR, $v_i=x_i$ under MAR and $v_i$ is the (standardised) rank of $y_i$ under MNAR. The intercept $\alpha$ is set so that the expected percentage of missing data is the one chosen, and $\beta$ is the **strength** of the mechanism. The auxiliary variable $x$ is observed for everybody and its correlation with the (normal scores of) income is $\rho$.</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;script src="js/gini-sim.js"&gt;&lt;/script&gt;</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="co">//| echo: false</span></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a><span class="co">//| output: false</span></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>GS <span class="op">=</span> <span class="kw">new</span> <span class="bu">Promise</span>(resolve <span class="kw">=&gt;</span> { <span class="kw">const</span> ok <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="bu">window</span><span class="op">.</span><span class="at">GiniSim</span> <span class="op">?</span> <span class="fu">resolve</span>(<span class="bu">window</span><span class="op">.</span><span class="at">GiniSim</span>) <span class="op">:</span> <span class="pp">setTimeout</span>(ok<span class="op">,</span> <span class="dv">50</span>)<span class="op">;</span> <span class="fu">ok</span>()<span class="op">;</span> })</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>methodColors <span class="op">=</span> [<span class="st">"#8A8F98"</span><span class="op">,</span> <span class="st">"#D43F3A"</span><span class="op">,</span> <span class="st">"#E89A3C"</span><span class="op">,</span> <span class="st">"#9C6ADE"</span><span class="op">,</span> <span class="st">"#1A5FA8"</span><span class="op">,</span> <span class="st">"#5E8C61"</span>]</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a><span class="fu">## Scenario</span></span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a><span class="co">//| echo: false</span></span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>viewof sc <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">form</span>({</span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>  <span class="dt">dist</span><span class="op">:</span> Inputs<span class="op">.</span><span class="fu">select</span>([<span class="st">"Pareto"</span><span class="op">,</span> <span class="st">"Dagum-p20"</span><span class="op">,</span> <span class="st">"Dagum-p0.5"</span><span class="op">,</span> <span class="st">"Lognormal"</span><span class="op">,</span> <span class="st">"Weibull"</span>]<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Distribution of income"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="st">"Lognormal"</span>})<span class="op">,</span></span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>  <span class="dt">G</span><span class="op">:</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="fl">0.2</span><span class="op">,</span> <span class="fl">0.7</span>]<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"True Gini index (G)"</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.05</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="fl">0.35</span>})<span class="op">,</span></span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>  <span class="dt">n</span><span class="op">:</span> Inputs<span class="op">.</span><span class="fu">select</span>([<span class="dv">100</span><span class="op">,</span> <span class="dv">200</span><span class="op">,</span> <span class="dv">500</span><span class="op">,</span> <span class="dv">1000</span>]<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Sample size (n)"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">200</span>})<span class="op">,</span></span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>  <span class="dt">rate</span><span class="op">:</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="fl">0.05</span><span class="op">,</span> <span class="fl">0.6</span>]<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Percentage of missing data"</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.05</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="fl">0.3</span><span class="op">,</span> <span class="dt">format</span><span class="op">:</span> x <span class="kw">=&gt;</span> <span class="vs">`</span><span class="sc">${</span><span class="bu">Math</span><span class="op">.</span><span class="fu">round</span>(<span class="dv">100</span> <span class="op">*</span> x)<span class="sc">}</span><span class="vs">%`</span>})<span class="op">,</span></span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>  <span class="dt">strength</span><span class="op">:</span> Inputs<span class="op">.</span><span class="fu">radio</span>(<span class="kw">new</span> <span class="bu">Map</span>([[<span class="st">"Weak"</span><span class="op">,</span> <span class="fl">0.5</span>]<span class="op">,</span> [<span class="st">"Moderate"</span><span class="op">,</span> <span class="dv">1</span>]<span class="op">,</span> [<span class="st">"Strong"</span><span class="op">,</span> <span class="dv">2</span>]])<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Strength of the mechanism (MAR, MNAR)"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">1</span>})<span class="op">,</span></span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a>  <span class="dt">direction</span><span class="op">:</span> Inputs<span class="op">.</span><span class="fu">radio</span>(<span class="kw">new</span> <span class="bu">Map</span>([[<span class="st">"High incomes are more often missing"</span><span class="op">,</span> <span class="dv">1</span>]<span class="op">,</span> [<span class="st">"Low incomes are more often missing"</span><span class="op">,</span> <span class="op">-</span><span class="dv">1</span>]])<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Who does not respond?"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">1</span>})<span class="op">,</span></span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a>  <span class="dt">rho</span><span class="op">:</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="fl">0.95</span>]<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Correlation between x and income (ρ)"</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.05</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="fl">0.6</span>})<span class="op">,</span></span>
+<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a>  <span class="dt">R</span><span class="op">:</span> Inputs<span class="op">.</span><span class="fu">select</span>([<span class="dv">100</span><span class="op">,</span> <span class="dv">200</span><span class="op">,</span> <span class="dv">500</span><span class="op">,</span> <span class="dv">1000</span>]<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Replications (R)"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">200</span>})</span>
+<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
+<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a><span class="co">//| echo: false</span></span>
+<span id="cb9-53"><a href="#cb9-53" aria-hidden="true" tabindex="-1"></a>viewof methods <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">checkbox</span>(GS<span class="op">.</span><span class="at">METHODS</span><span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Methods to compare"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> GS<span class="op">.</span><span class="at">METHODS</span>})</span>
+<span id="cb9-54"><a href="#cb9-54" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-56"><a href="#cb9-56" aria-hidden="true" tabindex="-1"></a><span class="fu">## Results: relative bias of the Gini index</span></span>
+<span id="cb9-57"><a href="#cb9-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-60"><a href="#cb9-60" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
+<span id="cb9-61"><a href="#cb9-61" aria-hidden="true" tabindex="-1"></a><span class="co">//| echo: false</span></span>
+<span id="cb9-62"><a href="#cb9-62" aria-hidden="true" tabindex="-1"></a>missRes <span class="op">=</span> GS<span class="op">.</span><span class="fu">missingExperiment</span>({<span class="dt">dist</span><span class="op">:</span> sc<span class="op">.</span><span class="at">dist</span><span class="op">,</span> <span class="dt">G</span><span class="op">:</span> sc<span class="op">.</span><span class="at">G</span><span class="op">,</span> <span class="dt">n</span><span class="op">:</span> sc<span class="op">.</span><span class="at">n</span><span class="op">,</span> <span class="dt">R</span><span class="op">:</span> sc<span class="op">.</span><span class="at">R</span><span class="op">,</span> <span class="dt">rate</span><span class="op">:</span> sc<span class="op">.</span><span class="at">rate</span><span class="op">,</span> <span class="dt">strength</span><span class="op">:</span> sc<span class="op">.</span><span class="at">strength</span><span class="op">,</span> <span class="dt">rho</span><span class="op">:</span> sc<span class="op">.</span><span class="at">rho</span><span class="op">,</span> <span class="dt">direction</span><span class="op">:</span> sc<span class="op">.</span><span class="at">direction</span><span class="op">,</span> methods})</span>
+<span id="cb9-63"><a href="#cb9-63" aria-hidden="true" tabindex="-1"></a>fullRB <span class="op">=</span> missRes<span class="op">.</span><span class="fu">find</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">mechanism</span> <span class="op">===</span> <span class="st">"No missing data"</span>)</span>
+<span id="cb9-64"><a href="#cb9-64" aria-hidden="true" tabindex="-1"></a>missShown <span class="op">=</span> missRes<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">mechanism</span> <span class="op">!==</span> <span class="st">"No missing data"</span>)</span>
+<span id="cb9-65"><a href="#cb9-65" aria-hidden="true" tabindex="-1"></a>methods<span class="op">.</span><span class="at">length</span> <span class="op">?</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb9-66"><a href="#cb9-66" aria-hidden="true" tabindex="-1"></a>  <span class="dt">width</span><span class="op">:</span> <span class="dv">960</span><span class="op">,</span> <span class="dt">height</span><span class="op">:</span> <span class="dv">360</span><span class="op">,</span> <span class="dt">marginLeft</span><span class="op">:</span> <span class="dv">50</span><span class="op">,</span> <span class="dt">marginBottom</span><span class="op">:</span> <span class="dv">40</span><span class="op">,</span></span>
+<span id="cb9-67"><a href="#cb9-67" aria-hidden="true" tabindex="-1"></a>  <span class="dt">fx</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="kw">null</span><span class="op">,</span> <span class="dt">domain</span><span class="op">:</span> GS<span class="op">.</span><span class="at">MECHANISMS</span><span class="op">,</span> <span class="dt">padding</span><span class="op">:</span> <span class="fl">0.12</span>}<span class="op">,</span></span>
+<span id="cb9-68"><a href="#cb9-68" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> {<span class="dt">axis</span><span class="op">:</span> <span class="kw">null</span><span class="op">,</span> <span class="dt">domain</span><span class="op">:</span> methods}<span class="op">,</span></span>
+<span id="cb9-69"><a href="#cb9-69" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Relative bias of the Gini index (%)"</span><span class="op">,</span> <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span>}<span class="op">,</span></span>
+<span id="cb9-70"><a href="#cb9-70" aria-hidden="true" tabindex="-1"></a>  <span class="dt">color</span><span class="op">:</span> {<span class="dt">legend</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">domain</span><span class="op">:</span> GS<span class="op">.</span><span class="at">METHODS</span><span class="op">,</span> <span class="dt">range</span><span class="op">:</span> methodColors}<span class="op">,</span></span>
+<span id="cb9-71"><a href="#cb9-71" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb9-72"><a href="#cb9-72" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="op">-</span><span class="dv">2</span><span class="op">,</span> <span class="dv">2</span>]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"#5E8C61"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">1.5</span><span class="op">,</span> <span class="dt">strokeOpacity</span><span class="op">:</span> <span class="fl">0.7</span>})<span class="op">,</span></span>
+<span id="cb9-73"><a href="#cb9-73" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">barY</span>(missShown<span class="op">,</span> {<span class="dt">fx</span><span class="op">:</span> <span class="st">"mechanism"</span><span class="op">,</span> <span class="dt">x</span><span class="op">:</span> <span class="st">"method"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"RB"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"method"</span><span class="op">,</span> <span class="dt">tip</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb9-74"><a href="#cb9-74" aria-hidden="true" tabindex="-1"></a>      <span class="dt">title</span><span class="op">:</span> d <span class="kw">=&gt;</span> <span class="vs">`</span><span class="sc">${</span>d<span class="op">.</span><span class="at">mechanism</span><span class="sc">}</span><span class="vs"> · </span><span class="sc">${</span>d<span class="op">.</span><span class="at">method</span><span class="sc">}\n</span><span class="vs">Relative bias: </span><span class="sc">${</span>d<span class="op">.</span><span class="at">RB</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs">%</span><span class="sc">\n</span><span class="vs">Relative RMSE: </span><span class="sc">${</span>d<span class="op">.</span><span class="at">RRMSE</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs">%</span><span class="sc">\n</span><span class="vs">Mean estimate: </span><span class="sc">${</span>d<span class="op">.</span><span class="at">mean</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">4</span>)<span class="sc">}</span><span class="vs"> (true G = </span><span class="sc">${</span>sc<span class="op">.</span><span class="at">G</span><span class="sc">}</span><span class="vs">)`</span>})<span class="op">,</span></span>
+<span id="cb9-75"><a href="#cb9-75" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"#333"</span>})<span class="op">,</span></span>
+<span id="cb9-76"><a href="#cb9-76" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleY</span>([fullRB<span class="op">.</span><span class="at">RB</span>]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"#333"</span><span class="op">,</span> <span class="dt">strokeDasharray</span><span class="op">:</span> <span class="st">"5,3"</span>})</span>
+<span id="cb9-77"><a href="#cb9-77" aria-hidden="true" tabindex="-1"></a>  ]</span>
+<span id="cb9-78"><a href="#cb9-78" aria-hidden="true" tabindex="-1"></a>}) <span class="op">:</span> <span class="fu">html</span><span class="vs">`&lt;p class="pending"&gt;Select at least one method.&lt;/p&gt;`</span></span>
+<span id="cb9-79"><a href="#cb9-79" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-80"><a href="#cb9-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-81"><a href="#cb9-81" aria-hidden="true" tabindex="-1"></a>::: {.rb-legend}</span>
+<span id="cb9-82"><a href="#cb9-82" aria-hidden="true" tabindex="-1"></a>Green lines: limits of negligible bias (±2%). Dashed line: relative bias of $\widehat{G}_n^{c}$ with the complete sample, before any data are lost (${fullRB ? fullRB.RB.toFixed(2) : ""}%). Hover over the bars to see the values.</span>
+<span id="cb9-83"><a href="#cb9-83" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb9-84"><a href="#cb9-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-87"><a href="#cb9-87" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
+<span id="cb9-88"><a href="#cb9-88" aria-hidden="true" tabindex="-1"></a><span class="co">//| echo: false</span></span>
+<span id="cb9-89"><a href="#cb9-89" aria-hidden="true" tabindex="-1"></a>Inputs<span class="op">.</span><span class="fu">table</span>(missRes<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> ({<span class="dt">Mechanism</span><span class="op">:</span> d<span class="op">.</span><span class="at">mechanism</span><span class="op">,</span> <span class="dt">Method</span><span class="op">:</span> d<span class="op">.</span><span class="at">method</span><span class="op">,</span> <span class="st">"Mean estimate"</span><span class="op">:</span> <span class="op">+</span>d<span class="op">.</span><span class="at">mean</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">4</span>)<span class="op">,</span></span>
+<span id="cb9-90"><a href="#cb9-90" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Relative bias (%)"</span><span class="op">:</span> <span class="op">+</span>d<span class="op">.</span><span class="at">RB</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="op">,</span> <span class="st">"Relative RMSE (%)"</span><span class="op">:</span> <span class="op">+</span>d<span class="op">.</span><span class="at">RRMSE</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)}))<span class="op">,</span> {<span class="dt">rows</span><span class="op">:</span> <span class="dv">20</span>})</span>
+<span id="cb9-91"><a href="#cb9-91" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-92"><a href="#cb9-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-95"><a href="#cb9-95" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
+<span id="cb9-96"><a href="#cb9-96" aria-hidden="true" tabindex="-1"></a><span class="co">//| echo: false</span></span>
+<span id="cb9-97"><a href="#cb9-97" aria-hidden="true" tabindex="-1"></a>DOM<span class="op">.</span><span class="fu">download</span>(<span class="kw">new</span> <span class="bu">Blob</span>([d3<span class="op">.</span><span class="fu">csvFormat</span>(missRes<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> ({<span class="op">...</span>d<span class="op">,</span> <span class="dt">distribution</span><span class="op">:</span> sc<span class="op">.</span><span class="at">dist</span><span class="op">,</span> <span class="dt">G</span><span class="op">:</span> sc<span class="op">.</span><span class="at">G</span><span class="op">,</span> <span class="dt">n</span><span class="op">:</span> sc<span class="op">.</span><span class="at">n</span><span class="op">,</span> <span class="dt">missing_rate</span><span class="op">:</span> sc<span class="op">.</span><span class="at">rate</span><span class="op">,</span> <span class="dt">strength</span><span class="op">:</span> sc<span class="op">.</span><span class="at">strength</span><span class="op">,</span> <span class="dt">direction</span><span class="op">:</span> sc<span class="op">.</span><span class="at">direction</span><span class="op">,</span> <span class="dt">rho</span><span class="op">:</span> sc<span class="op">.</span><span class="at">rho</span>})))]<span class="op">,</span> {<span class="dt">type</span><span class="op">:</span> <span class="st">"text/csv"</span>})<span class="op">,</span> <span class="st">"ginius_missing_data_simulation.csv"</span><span class="op">,</span> <span class="st">"Download results (CSV)"</span>)</span>
+<span id="cb9-98"><a href="#cb9-98" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-99"><a href="#cb9-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-100"><a href="#cb9-100" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb9-101"><a href="#cb9-101" aria-hidden="true" tabindex="-1"></a><span class="fu">## How to read the results</span></span>
+<span id="cb9-102"><a href="#cb9-102" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Complete cases** (deleting the units with missing data) is only safe under **MCAR**. Under MAR and MNAR the respondents are no longer representative, and if the richest people do not respond, inequality is underestimated.</span>
+<span id="cb9-103"><a href="#cb9-103" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Mean imputation** always underestimates inequality, because all the imputed incomes are equal. It should never be used to estimate the Gini index.</span>
+<span id="cb9-104"><a href="#cb9-104" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Regression imputation** also underestimates inequality, because it ignores the residual variability of income.</span>
+<span id="cb9-105"><a href="#cb9-105" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Stochastic regression imputation** and **multiple imputation** add a random residual to the prediction. Under **MAR**, they remove most of the bias, *provided that the imputation model includes the variable* $x$ *that explains non-response*. Multiple imputation also reflects the uncertainty due to imputation and has a smaller error.</span>
+<span id="cb9-106"><a href="#cb9-106" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Under **MNAR**, no standard method removes the bias. Sensitivity analyses and auxiliary information on the non-respondents are needed.</span>
+<span id="cb9-107"><a href="#cb9-107" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Increase the **percentage of missing data**, the **strength** of the mechanism or the **inequality** of the data to see how the problems grow; reduce the correlation $\rho$ to see how imputation loses its advantage under MAR.</span>
+<span id="cb9-108"><a href="#cb9-108" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb9-109"><a href="#cb9-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-110"><a href="#cb9-110" aria-hidden="true" tabindex="-1"></a><span class="fu">## One sample: who does not respond?</span></span>
+<span id="cb9-111"><a href="#cb9-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-114"><a href="#cb9-114" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
+<span id="cb9-115"><a href="#cb9-115" aria-hidden="true" tabindex="-1"></a><span class="co">//| echo: false</span></span>
+<span id="cb9-116"><a href="#cb9-116" aria-hidden="true" tabindex="-1"></a>viewof exMech <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">radio</span>(GS<span class="op">.</span><span class="at">MECHANISMS</span><span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Mechanism"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="st">"MNAR"</span>})</span>
+<span id="cb9-117"><a href="#cb9-117" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-118"><a href="#cb9-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-121"><a href="#cb9-121" aria-hidden="true" tabindex="-1"></a><span class="in">```{ojs}</span></span>
+<span id="cb9-122"><a href="#cb9-122" aria-hidden="true" tabindex="-1"></a><span class="co">//| echo: false</span></span>
+<span id="cb9-123"><a href="#cb9-123" aria-hidden="true" tabindex="-1"></a>exData <span class="op">=</span> GS<span class="op">.</span><span class="fu">missingExample</span>({<span class="dt">dist</span><span class="op">:</span> sc<span class="op">.</span><span class="at">dist</span><span class="op">,</span> <span class="dt">G</span><span class="op">:</span> sc<span class="op">.</span><span class="at">G</span><span class="op">,</span> <span class="dt">n</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(sc<span class="op">.</span><span class="at">n</span><span class="op">,</span> <span class="dv">300</span>)<span class="op">,</span> <span class="dt">rate</span><span class="op">:</span> sc<span class="op">.</span><span class="at">rate</span><span class="op">,</span> <span class="dt">strength</span><span class="op">:</span> sc<span class="op">.</span><span class="at">strength</span><span class="op">,</span> <span class="dt">rho</span><span class="op">:</span> sc<span class="op">.</span><span class="at">rho</span><span class="op">,</span> <span class="dt">direction</span><span class="op">:</span> sc<span class="op">.</span><span class="at">direction</span><span class="op">,</span> <span class="dt">mechanism</span><span class="op">:</span> exMech})</span>
+<span id="cb9-124"><a href="#cb9-124" aria-hidden="true" tabindex="-1"></a>exQuint <span class="op">=</span> {</span>
+<span id="cb9-125"><a href="#cb9-125" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> ys <span class="op">=</span> exData<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">y</span>)<span class="op">.</span><span class="fu">sort</span>((a<span class="op">,</span> b) <span class="kw">=&gt;</span> a <span class="op">-</span> b)<span class="op">,</span> q <span class="op">=</span> [<span class="fl">0.2</span><span class="op">,</span> <span class="fl">0.4</span><span class="op">,</span> <span class="fl">0.6</span><span class="op">,</span> <span class="fl">0.8</span>]<span class="op">.</span><span class="fu">map</span>(p <span class="kw">=&gt;</span> ys[<span class="bu">Math</span><span class="op">.</span><span class="fu">floor</span>(p <span class="op">*</span> ys<span class="op">.</span><span class="at">length</span>)])<span class="op">;</span></span>
+<span id="cb9-126"><a href="#cb9-126" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> lab <span class="op">=</span> [<span class="st">"Q1 (poorest 20%)"</span><span class="op">,</span> <span class="st">"Q2"</span><span class="op">,</span> <span class="st">"Q3"</span><span class="op">,</span> <span class="st">"Q4"</span><span class="op">,</span> <span class="st">"Q5 (richest 20%)"</span>]<span class="op">;</span></span>
+<span id="cb9-127"><a href="#cb9-127" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> g <span class="op">=</span> d <span class="kw">=&gt;</span> lab[q<span class="op">.</span><span class="fu">filter</span>(t <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">y</span> <span class="op">&gt;=</span> t)<span class="op">.</span><span class="at">length</span>]<span class="op">;</span></span>
+<span id="cb9-128"><a href="#cb9-128" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> lab<span class="op">.</span><span class="fu">map</span>(l <span class="kw">=&gt;</span> { <span class="kw">const</span> s <span class="op">=</span> exData<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> <span class="fu">g</span>(d) <span class="op">===</span> l)<span class="op">;</span> <span class="cf">return</span> {<span class="dt">quintile</span><span class="op">:</span> l<span class="op">,</span> <span class="dt">missing</span><span class="op">:</span> <span class="dv">100</span> <span class="op">*</span> s<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">status</span> <span class="op">===</span> <span class="st">"Missing"</span>)<span class="op">.</span><span class="at">length</span> <span class="op">/</span> s<span class="op">.</span><span class="at">length</span>}<span class="op">;</span> })<span class="op">;</span></span>
+<span id="cb9-129"><a href="#cb9-129" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-130"><a href="#cb9-130" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1rem"&gt;</span><span class="sc">${</span>[</span>
+<span id="cb9-131"><a href="#cb9-131" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html</span><span class="vs">`&lt;div&gt;&lt;b&gt;Income and auxiliary variable x&lt;/b&gt;</span><span class="sc">${</span>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb9-132"><a href="#cb9-132" aria-hidden="true" tabindex="-1"></a>    <span class="dt">height</span><span class="op">:</span> <span class="dv">330</span><span class="op">,</span> <span class="dt">marginLeft</span><span class="op">:</span> <span class="dv">55</span><span class="op">,</span></span>
+<span id="cb9-133"><a href="#cb9-133" aria-hidden="true" tabindex="-1"></a>    <span class="dt">x</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Auxiliary variable x"</span><span class="op">,</span> <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span>}<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Income (log scale)"</span><span class="op">,</span> <span class="dt">type</span><span class="op">:</span> <span class="st">"log"</span><span class="op">,</span> <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span>}<span class="op">,</span></span>
+<span id="cb9-134"><a href="#cb9-134" aria-hidden="true" tabindex="-1"></a>    <span class="dt">color</span><span class="op">:</span> {<span class="dt">legend</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">domain</span><span class="op">:</span> [<span class="st">"Observed"</span><span class="op">,</span> <span class="st">"Missing"</span>]<span class="op">,</span> <span class="dt">range</span><span class="op">:</span> [<span class="st">"#1A5FA8"</span><span class="op">,</span> <span class="st">"#D43F3A"</span>]}<span class="op">,</span></span>
+<span id="cb9-135"><a href="#cb9-135" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marks</span><span class="op">:</span> [Plot<span class="op">.</span><span class="fu">dot</span>(exData<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"status"</span><span class="op">,</span> <span class="dt">r</span><span class="op">:</span> <span class="fl">2.6</span><span class="op">,</span> <span class="dt">fillOpacity</span><span class="op">:</span> <span class="fl">0.7</span>})]</span>
+<span id="cb9-136"><a href="#cb9-136" aria-hidden="true" tabindex="-1"></a>  })<span class="sc">}</span><span class="vs">&lt;/div&gt;`</span><span class="op">,</span></span>
+<span id="cb9-137"><a href="#cb9-137" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html</span><span class="vs">`&lt;div&gt;&lt;b&gt;Percentage of missing data by income quintile&lt;/b&gt;</span><span class="sc">${</span>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb9-138"><a href="#cb9-138" aria-hidden="true" tabindex="-1"></a>    <span class="dt">height</span><span class="op">:</span> <span class="dv">330</span><span class="op">,</span> <span class="dt">marginLeft</span><span class="op">:</span> <span class="dv">55</span><span class="op">,</span> <span class="dt">marginBottom</span><span class="op">:</span> <span class="dv">45</span><span class="op">,</span></span>
+<span id="cb9-139"><a href="#cb9-139" aria-hidden="true" tabindex="-1"></a>    <span class="dt">x</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="kw">null</span><span class="op">,</span> <span class="dt">domain</span><span class="op">:</span> exQuint<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">quintile</span>)<span class="op">,</span> <span class="dt">tickRotate</span><span class="op">:</span> <span class="op">-</span><span class="dv">15</span>}<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Missing (%)"</span><span class="op">,</span> <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> <span class="dv">100</span>]}<span class="op">,</span></span>
+<span id="cb9-140"><a href="#cb9-140" aria-hidden="true" tabindex="-1"></a>    <span class="dt">marks</span><span class="op">:</span> [Plot<span class="op">.</span><span class="fu">barY</span>(exQuint<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"quintile"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"missing"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"#D43F3A"</span><span class="op">,</span> <span class="dt">fillOpacity</span><span class="op">:</span> <span class="fl">0.8</span><span class="op">,</span> <span class="dt">tip</span><span class="op">:</span> <span class="kw">true</span>})<span class="op">,</span> Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">100</span> <span class="op">*</span> sc<span class="op">.</span><span class="at">rate</span>]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"#333"</span><span class="op">,</span> <span class="dt">strokeDasharray</span><span class="op">:</span> <span class="st">"4,3"</span>})<span class="op">,</span> Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>])]</span>
+<span id="cb9-141"><a href="#cb9-141" aria-hidden="true" tabindex="-1"></a>  })<span class="sc">}</span><span class="vs">&lt;/div&gt;`</span></span>
+<span id="cb9-142"><a href="#cb9-142" aria-hidden="true" tabindex="-1"></a>]<span class="sc">}</span><span class="vs">&lt;/div&gt;`</span></span>
+<span id="cb9-143"><a href="#cb9-143" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-144"><a href="#cb9-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-145"><a href="#cb9-145" aria-hidden="true" tabindex="-1"></a>:::{.rb-legend}</span>
+<span id="cb9-146"><a href="#cb9-146" aria-hidden="true" tabindex="-1"></a>Dashed line: overall percentage of missing data. Under MCAR the percentage is similar in every quintile; under MAR and MNAR it depends on income, directly (MNAR) or through $x$ (MAR).</span>
+<span id="cb9-147"><a href="#cb9-147" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb9-148"><a href="#cb9-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-149"><a href="#cb9-149" aria-hidden="true" tabindex="-1"></a><span class="fu">## Methods compared</span></span>
+<span id="cb9-150"><a href="#cb9-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-151"><a href="#cb9-151" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Method <span class="pp">|</span> What it does <span class="pp">|</span> When it works <span class="pp">|</span></span>
+<span id="cb9-152"><a href="#cb9-152" aria-hidden="true" tabindex="-1"></a><span class="pp">|---|---|---|</span></span>
+<span id="cb9-153"><a href="#cb9-153" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Complete cases <span class="pp">|</span> Deletes the units with missing income <span class="pp">|</span> MCAR only <span class="pp">|</span></span>
+<span id="cb9-154"><a href="#cb9-154" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Mean imputation <span class="pp">|</span> Replaces each missing income with the mean of the respondents <span class="pp">|</span> Never for inequality measures <span class="pp">|</span></span>
+<span id="cb9-155"><a href="#cb9-155" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Hot-deck imputation <span class="pp">|</span> Replaces each missing income with the income of a randomly chosen respondent <span class="pp">|</span> MCAR (or within classes that explain non-response) <span class="pp">|</span></span>
+<span id="cb9-156"><a href="#cb9-156" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Regression imputation <span class="pp">|</span> Predicts $\log y$ from $x$ with a linear regression fitted to the respondents <span class="pp">|</span> Not for inequality measures (ignores residual variability) <span class="pp">|</span></span>
+<span id="cb9-157"><a href="#cb9-157" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Stochastic regression imputation <span class="pp">|</span> Prediction plus a residual drawn at random from the respondents' residuals <span class="pp">|</span> MAR, if the model includes the variables that explain non-response <span class="pp">|</span></span>
+<span id="cb9-158"><a href="#cb9-158" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Multiple imputation ($M=5$) <span class="pp">|</span> Stochastic regression repeated $M$ times, refitting the model on bootstrap samples of the respondents; the $M$ Gini indices are averaged (Rubin's rules) <span class="pp">|</span> MAR; also gives valid variances and intervals <span class="pp">|</span></span>
+<span id="cb9-159"><a href="#cb9-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-160"><a href="#cb9-160" aria-hidden="true" tabindex="-1"></a>: Methods for dealing with missing data. {tbl-colwidths="<span class="co">[</span><span class="ot">24,46,30</span><span class="co">]</span>"}</span>
+<span id="cb9-161"><a href="#cb9-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-162"><a href="#cb9-162" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip appearance="simple"}</span>
+<span id="cb9-163"><a href="#cb9-163" aria-hidden="true" tabindex="-1"></a>**Good practice when estimating the Gini index with missing data.** Report the percentage of missing data and analyse the response mechanism; never use mean imputation or simply delete the incomplete cases unless the data are MCAR; include in the imputation model the variables related to income and to non-response; use multiple imputation with enough imputations for the percentage of missing data; and report the uncertainty due to imputation.</span>
+<span id="cb9-164"><a href="#cb9-164" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb9-165"><a href="#cb9-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-166"><a href="#cb9-166" aria-hidden="true" tabindex="-1"></a>The code of the simulator is in <span class="co">[</span><span class="ot">`js/gini-sim.js`</span><span class="co">](js/gini-sim.js)</span>. Estimator of the Gini index: $\widehat{G}_n^{c}$. Gamma is not included because the simulator generates the income and the auxiliary variable through a normal copula, which requires a closed-form quantile function.</span>
+<span id="cb9-167"><a href="#cb9-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-168"><a href="#cb9-168" aria-hidden="true" tabindex="-1"></a><span class="fu">## References</span></span>
+<span id="cb9-169"><a href="#cb9-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-170"><a href="#cb9-170" aria-hidden="true" tabindex="-1"></a>Van Buuren, S. (2018). *Flexible Imputation of Missing Data* (2nd ed.). CRC Press.\</span>
+<span id="cb9-171"><a href="#cb9-171" aria-hidden="true" tabindex="-1"></a>Little, R.J.A., &amp; Rubin, D.B. (2019). *Statistical Analysis with Missing Data* (3rd ed.). Wiley.\</span>
+<span id="cb9-172"><a href="#cb9-172" aria-hidden="true" tabindex="-1"></a>Álvarez-Verdejo, E., Moya-Fernández, P.J., &amp; Muñoz-Rosas, J.F. (2021). Single imputation methods and confidence intervals for the Gini index. *Mathematics*, 9(24), 3252.\</span>
+<span id="cb9-173"><a href="#cb9-173" aria-hidden="true" tabindex="-1"></a>Muñoz, J.F., &amp; Rueda, M. (2009). New imputation methods for missing data using quantiles. *Journal of Computational and Applied Mathematics*, 232(2), 305–317.</span>
+</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>GiniUs · PID2022-136235NB-I00 · Universidad de Granada · Last update: 17 November 2026</p>
+</div>   
+    <div class="nav-footer-center">
+<p>Funded by MICIU/AEI/10.13039/501100011033 and by ERDF/EU</p>
+</div>
+    <div class="nav-footer-right">
+<p>Built with <a href="https://quarto.org">Quarto</a> · Reproducible research</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

@@ -1,0 +1,223 @@
+---
+title: "Try it in R"
+subtitle: "Run and modify R code on the Gini index directly in your browser, without installing anything"
+toc: true
+---
+
+The exercises on this page run **real R in your web browser** thanks to [webR](https://docs.r-wasm.org/webr/latest/). Edit the code and press **Run**. The first run downloads R (about 20 MB) and takes a few seconds; later runs are immediate. Nothing is installed on your computer, and your code and data are not sent anywhere.
+
+::: {.callout-tip appearance="simple"}
+The functions `gini_a()`, `gini_b()` and `gini_c()` are loaded in every exercise. They compute the estimators $\widehat{G}_n^{a}$, $\widehat{G}_n^{b}$ and $\widehat{G}_n^{c}$ described in [Definition and estimation](gini-index.qmd). These exercises are suitable for classes, workshops and self-study.
+:::
+
+```{=html}
+<script type="module">
+  // webR is loaded only when the first exercise is run
+  let webRPromise = null;
+  async function getWebR(status) {
+    if (!webRPromise) {
+      webRPromise = (async () => {
+        status("Loading R in your browser (first time only)…");
+        const { WebR } = await import("https://webr.r-wasm.org/latest/webr.mjs");
+        const webR = new WebR();
+        await webR.init();
+        // Common functions available in every exercise
+        await webR.evalRVoid(`
+          gini_b <- function(y) { y <- sort(y); n <- length(y); 2 * sum(seq_len(n) * y) / (n * sum(y)) - (n + 1) / n }
+          gini_c <- function(y) { n <- length(y); n / (n - 1) * gini_b(y) }
+          gini_a <- function(y) { Fn <- ecdf(y)(y); sum((2 * Fn - 1) * y) / sum(y) }
+        `);
+        return webR;
+      })();
+    }
+    return webRPromise;
+  }
+
+  async function run(box) {
+    const code = box.querySelector("textarea").value;
+    const out = box.querySelector(".ex-output");
+    const status = msg => { out.innerHTML = `<span class="ex-status">${msg}</span>`; };
+    const btn = box.querySelector(".ex-run");
+    btn.disabled = true;
+    try {
+      const webR = await getWebR(status);
+      status("Running…");
+      const shelter = await new webR.Shelter();
+      try {
+        const res = await shelter.captureR(code, {withAutoprint: true, captureStreams: true, captureConditions: false,
+                                                  captureGraphics: {width: 640, height: 400}});
+        out.innerHTML = "";
+        const pre = document.createElement("pre");
+        pre.textContent = res.output.map(o => o.data).join("\n");
+        if (res.output.some(o => o.type === "stderr")) pre.classList.add("ex-stderr");
+        if (pre.textContent.trim()) out.appendChild(pre);
+        for (const img of (res.images || [])) {
+          const c = document.createElement("canvas");
+          c.width = img.width; c.height = img.height; c.className = "ex-plot";
+          c.getContext("2d").drawImage(img, 0, 0);
+          out.appendChild(c);
+        }
+        if (!out.childNodes.length) status("Done (no output).");
+      } finally { await shelter.purge(); }
+    } catch (e) {
+      out.innerHTML = `<pre class="ex-stderr"></pre>`;
+      out.querySelector("pre").textContent = "Error: " + (e.message || e);
+    } finally { btn.disabled = false; }
+  }
+
+  document.querySelectorAll(".exercise").forEach(box => {
+    const ta = box.querySelector("textarea");
+    const original = ta.value;
+    box.querySelector(".ex-run").addEventListener("click", () => run(box));
+    box.querySelector(".ex-reset").addEventListener("click", () => { ta.value = original; box.querySelector(".ex-output").innerHTML = ""; });
+    ta.addEventListener("keydown", e => { if ((e.ctrlKey || e.metaKey) && e.key === "Enter") { e.preventDefault(); run(box); } });
+  });
+</script>
+```
+
+## Exercise 1. Three estimators of the Gini index
+
+Compute the three estimators for a small sample. What happens if the richest person earns more?
+
+```{=html}
+<div class="exercise">
+<textarea spellcheck="false" rows="9">y <- c(10, 20, 30, 40, 60, 80)
+c(Ga = gini_a(y), Gb = gini_b(y), Gc = gini_c(y))
+
+# What happens if the richest person earns 200 instead of 80?
+y2 <- c(10, 20, 30, 40, 60, 200)
+c(Ga = gini_a(y2), Gb = gini_b(y2), Gc = gini_c(y2))
+
+# Check: Ga = Gb + 1/n when there are no ties
+gini_a(y) - gini_b(y) - 1 / length(y)</textarea>
+<div class="ex-buttons"><button class="btn btn-primary btn-sm ex-run">▶ Run</button><button class="btn btn-outline-secondary btn-sm ex-reset">Reset</button><span class="ex-hint">Ctrl/Cmd + Enter</span></div>
+<div class="ex-output"></div>
+</div>
+```
+
+**Question.** Why are the three estimators so different with only six observations? Which one would you report?
+
+## Exercise 2. The Lorenz curve
+
+```{=html}
+<div class="exercise">
+<textarea spellcheck="false" rows="12">set.seed(1)
+y <- rlnorm(500, meanlog = 0, sdlog = 0.8)   # lognormal incomes
+y <- sort(y)
+p <- c(0, seq_along(y) / length(y))           # cumulative share of population
+L <- c(0, cumsum(y) / sum(y))                 # cumulative share of income
+
+plot(p, L, type = "l", lwd = 3, col = "#1A5FA8", asp = 1,
+     xlab = "Cumulative share of population", ylab = "Cumulative share of income",
+     main = paste("Lorenz curve, Gini =", round(gini_c(y), 3)))
+abline(0, 1, col = "#D43F3A", lty = 2, lwd = 2)
+# Gini = 2 x area between the equality line and the Lorenz curve
+2 * (0.5 - sum(diff(p) * (head(L, -1) + tail(L, -1)) / 2))</textarea>
+<div class="ex-buttons"><button class="btn btn-primary btn-sm ex-run">▶ Run</button><button class="btn btn-outline-secondary btn-sm ex-reset">Reset</button><span class="ex-hint">Ctrl/Cmd + Enter</span></div>
+<div class="ex-output"></div>
+</div>
+```
+
+**Question.** Change `sdlog` to 0.3 and to 1.5. How do the curve and the Gini index change?
+
+## Exercise 3. The bias of the estimators: a small simulation
+
+For a lognormal distribution, the true Gini index is $G = 2\Phi(\sigma/\sqrt{2}) - 1$. Compare the average of the three estimators with the true value.
+
+```{=html}
+<div class="exercise">
+<textarea spellcheck="false" rows="15">set.seed(123)
+G     <- 0.1                              # true Gini index: try 0.1, 0.4 and 0.8
+sigma <- sqrt(2) * qnorm((G + 1) / 2)     # lognormal parameter with this Gini index
+n     <- 50                               # try 20, 50 and 500
+
+est <- replicate(2000, { y <- rlnorm(n, 0, sigma); c(Ga = gini_a(y), Gb = gini_b(y), Gc = gini_c(y)) })
+RB  <- 100 * (rowMeans(est) - G) / G       # relative bias (%)
+round(RB, 2)
+
+boxplot(t(est), col = c("#D43F3A", "#1A5FA8", "#C9962B"), ylab = "Estimates",
+        main = paste("G =", G, "  n =", n))
+abline(h = G, lty = 2, lwd = 2)</textarea>
+<div class="ex-buttons"><button class="btn btn-primary btn-sm ex-run">▶ Run</button><button class="btn btn-outline-secondary btn-sm ex-reset">Reset</button><span class="ex-hint">Ctrl/Cmd + Enter</span></div>
+<div class="ex-output"></div>
+</div>
+```
+
+**Question.** Which estimator is badly biased when inequality is low? Explore more scenarios with the [interactive bias explorer](simulation.qmd).
+
+## Exercise 4. Jackknife standard error and confidence interval
+
+```{=html}
+<div class="exercise">
+<textarea spellcheck="false" rows="14">set.seed(2)
+y <- rlnorm(100, 0, 1)
+n <- length(y)
+
+G_hat <- gini_c(y)
+G_loo <- sapply(seq_len(n), function(i) gini_c(y[-i]))   # leave-one-out estimates
+
+bias <- (n - 1) * (mean(G_loo) - G_hat)
+se   <- sqrt((n - 1) / n * sum((G_loo - mean(G_loo))^2))
+
+c(estimate = G_hat, bias = bias, se = se,
+  ci_lower = G_hat - 1.96 * se, ci_upper = G_hat + 1.96 * se,
+  true_G = 2 * pnorm(1 / sqrt(2)) - 1)</textarea>
+<div class="ex-buttons"><button class="btn btn-primary btn-sm ex-run">▶ Run</button><button class="btn btn-outline-secondary btn-sm ex-reset">Reset</button><span class="ex-hint">Ctrl/Cmd + Enter</span></div>
+<div class="ex-output"></div>
+</div>
+```
+
+**Question.** Is the true value inside the interval? The [calculator](calculator.qmd) applies the same method to your own data.
+
+## Exercise 5. Missing data: MCAR versus MNAR
+
+Delete 30% of the incomes completely at random (MCAR), or delete them more often among the richest (MNAR), and compare complete-case analysis with mean imputation.
+
+```{=html}
+<div class="exercise">
+<textarea spellcheck="false" rows="20">set.seed(3)
+n <- 1000
+y <- rlnorm(n, 0, 0.8)
+G_full <- gini_c(y)
+
+# MCAR: every unit has a 30% probability of not responding
+miss_mcar <- runif(n) < 0.30
+# MNAR: the probability of not responding grows with income (30% on average)
+p <- plogis(-1.2 + 1.5 * as.numeric(scale(log(y))))
+miss_mnar <- runif(n) < p
+
+complete <- function(miss) gini_c(y[!miss])
+mean_imp <- function(miss) { z <- y; z[miss] <- mean(y[!miss]); gini_c(z) }
+
+round(rbind(
+  MCAR = c(missing = mean(miss_mcar), complete_cases = complete(miss_mcar), mean_imputation = mean_imp(miss_mcar)),
+  MNAR = c(missing = mean(miss_mnar), complete_cases = complete(miss_mnar), mean_imputation = mean_imp(miss_mnar))), 3)
+c(Gini_full_sample = G_full)</textarea>
+<div class="ex-buttons"><button class="btn btn-primary btn-sm ex-run">▶ Run</button><button class="btn btn-outline-secondary btn-sm ex-reset">Reset</button><span class="ex-hint">Ctrl/Cmd + Enter</span></div>
+<div class="ex-output"></div>
+</div>
+```
+
+**Question.** Which method works under MCAR? What happens under MNAR? The [missing data simulator](missing-data.qmd) compares more methods, including multiple imputation.
+
+## Exercise 6. The R package giniVarCI
+
+The package developed in this project can also run in your browser. The first run installs it (it may take a minute).
+
+```{=html}
+<div class="exercise">
+<textarea spellcheck="false" rows="13">if (!requireNamespace("giniVarCI", quietly = TRUE))
+  webr::install("giniVarCI", repos = c("https://jfmunozrosas.r-universe.dev", "https://repo.r-wasm.org"))
+library(giniVarCI)
+
+set.seed(123)
+y <- gsample(n = 100, gini = 0.5, distribution = "lognormal")   # sample with G = 0.5
+igini(y)                               # estimate of the Gini index
+igini(y, interval = "zjackknife")      # with a jackknife confidence interval
+igini(y, interval = "ELchisq")         # empirical likelihood interval</textarea>
+<div class="ex-buttons"><button class="btn btn-primary btn-sm ex-run">▶ Run</button><button class="btn btn-outline-secondary btn-sm ex-reset">Reset</button><span class="ex-hint">Ctrl/Cmd + Enter</span></div>
+<div class="ex-output"></div>
+</div>
+```
+
+If the package cannot be installed in your browser, install it in R with `install.packages("giniVarCI")`. See the [giniVarCI page](software.qmd) for more examples.

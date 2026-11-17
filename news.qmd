@@ -1,0 +1,60 @@
+---
+title: "Status and news"
+subtitle: "Project status and short news on the activity of the team"
+---
+
+## Project status
+
+{{< include _status.md >}}
+
+## News
+
+<!-- Add new entries at the top, using the same format: date, tag and one or two sentences. -->
+
+{{< include _subscribe.qmd >}}
+
+::: {.news-list}
+
+::: {.news-item}
+<span class="news-date">November 2026</span> <span class="news-tag tag-web">Website</span>
+
+**New GiniUs website.** The project website moves to Quarto, with new interactive tools that run in the browser: a [Gini index calculator](calculator.qmd), a [missing data simulator](missing-data.qmd) (MCAR, MAR and MNAR), an [interactive bias explorer](simulation.qmd), [R exercises](practice.qmd) and an [inequality observatory](observatory.qmd).
+:::
+
+::: {.news-item}
+<span class="news-date">2026</span> <span class="news-tag tag-paper">Publication</span>
+
+**A practical guide to proper estimation and inference of the Gini index by avoiding often encountered methodological pitfalls**, by J.F. Muñoz, J.M. Pavía and E. Álvarez-Verdejo, published in *Social Indicators Research*. [DOI](https://doi.org/10.1007/s11205-026-03831-x)
+:::
+
+::: {.news-item}
+<span class="news-date">September 2026</span> <span class="news-tag tag-project">Project</span>
+
+**The project enters its fourth and last year** (September 2026 – August 2027).
+:::
+
+::: {.news-item}
+<span class="news-date">22 May 2024</span> <span class="news-tag tag-project">Seminar</span>
+
+**Seminar on the Gini index and the R package giniVarCI**, organised by the research group EPIC at the University of Granada. [See the photos](dissemination.qmd).
+:::
+
+::: {.news-item}
+<span class="news-date">January 2024</span> <span class="news-tag tag-paper">Software</span>
+
+**The R package giniVarCI is published on CRAN** (version 0.0.1-3). [More information](software.qmd).
+:::
+
+::: {.news-item}
+<span class="news-date">2023</span> <span class="news-tag tag-paper">Publication</span>
+
+**Exploring and correcting the bias in the estimation of the Gini measure of inequality**, by J.F. Muñoz, P.J. Moya-Fernández and E. Álvarez-Verdejo, published online in *Sociological Methods & Research*. [DOI](https://doi.org/10.1177/00491241231176847)
+:::
+
+::: {.news-item}
+<span class="news-date">1 September 2023</span> <span class="news-tag tag-project">Project</span>
+
+**The GiniUs project starts**, funded by the Spanish State Research Agency (PID2022-136235NB-I00).
+:::
+
+:::

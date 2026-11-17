@@ -1,0 +1,174 @@
+---
+title: "Team"
+subtitle: "18 researchers from four fields of knowledge and five countries"
+---
+
+Click on a name to open the researcher's profile. Researchers at foreign institutions reinforce the international character of the project, and the four fields of knowledge ensure that the new methods are transferred to the Social Sciences.
+
+## Principal investigators
+
+- **[Juan Francisco Muñoz Rosas](https://scholar.google.es/citations?user=gedX7Z8AAAAJ&hl=es&oi=ao)** (PI 1). University of Granada, Spain · Quantitative Methods for Economics and Business.
+- **[Francisco José González Gómez](https://scholar.google.com/citations?view_op=search_authors&mauthors=Francisco+Gonz%C3%A1lez-G%C3%B3mez+Granada)** (PI 2). University of Granada, Spain · Applied Economics.
+
+## Members by field
+
+::: {.field-card}
+### Quantitative Methods for Economics and Business
+
+<p class="lines">Gini index · Bias · Variance estimation · Missing data · Survey sampling · Econometrics · R software</p>
+
+- [Encarnación Álvarez Verdejo](https://scholar.google.es/citations?user=dBLU8iAAAAAJ&hl=es&oi=ao) — University of Granada, Spain
+- [Jorge Miguel Chica Olmo](https://scholar.google.es/citations?user=Q2Lq9ZQAAAAJ&hl=es&oi=ao) — University of Granada, Spain
+- [Irene García Garrido](https://produccioncientifica.ugr.es/investigadores/354680/detalle) — University of Granada, Spain
+- [Rosa María García Fernández](https://produccioncientifica.ugr.es/investigadores/357334/detalle) — University of Granada, Spain
+- [Pablo José Moya Fernández](https://scholar.google.es/citations?user=LWC3hNMAAAAJ&hl=es&oi=sra) — University of Granada, Spain
+- [Juan Francisco Muñoz Rosas](https://scholar.google.es/citations?user=gedX7Z8AAAAJ&hl=es&oi=ao) (PI 1) — University of Granada, Spain
+- [Yves G. Berger](https://scholar.google.com/citations?view_op=search_authors&mauthors=Yves+G.+Berger) — University of Southampton, United Kingdom
+:::
+
+::: {.field-card}
+### Applied Economics
+
+<p class="lines">Water economics · Well-being · Poverty · Labour economics</p>
+
+- [Francisco José González Gómez](https://scholar.google.com/citations?view_op=search_authors&mauthors=Francisco+Gonz%C3%A1lez-G%C3%B3mez+Granada) (PI 2) — University of Granada, Spain
+- [Jorge Guardiola Wanden-Berghe](https://scholar.google.es/citations?user=GwRVIK8AAAAJ&hl=es&oi=ao) — University of Granada, Spain
+- [Mª Nazaret Ibáñez Rueda](https://scholar.google.es/citations?user=8w_MCg0AAAAJ&hl=es&oi=ao) — University of León, Spain
+- [Samara López Ruiz](https://scholar.google.es/citations?user=Z9bNNRIAAAAJ&hl=es&oi=ao) — University of Valladolid, Spain
+- [José Antonio Rodríguez Martín](https://produccioncientifica.ugr.es/investigadores/355394/detalle) — University of Granada, Spain
+- [Tindara Addabbo](https://scholar.google.es/citations?user=yQKeFNQAAAAJ&hl=es&oi=ao) — University of Modena and Reggio Emilia, Italy
+- [Cecilia Tortajada Quiroz](https://scholar.google.es/citations?user=AByDTj8AAAAJ&hl=es&oi=ao) — University of Glasgow, United Kingdom
+:::
+
+::: {.field-card}
+### International and Spanish Economics
+
+<p class="lines">Tourism · Poverty · Regional development</p>
+
+- [Amalia Cristina Casas Jurado](https://scholar.google.es/citations?user=L_q6ekkAAAAJ&hl=es&oi=ao) — University of Granada, Spain
+- [Carmen María Llorca Rodríguez](https://scholar.google.es/citations?user=1vkldToAAAAJ&hl=es&oi=ao) — University of Granada, Spain
+:::
+
+::: {.field-card}
+### Business Management
+
+<p class="lines">Strategic management · International business · Servitization</p>
+
+- [Ferran Vendrell-Herrero](https://scholar.google.es/citations?user=9cL9quUAAAAJ&hl=es&oi=ao) — University of Edinburgh, United Kingdom
+- [Emanuel Gomes](https://scholar.google.es/citations?user=k5kf314AAAAJ&hl=es&oi=ao) — NOVA University Lisbon, Portugal
+:::
+
+<span class="pill">Quantitative Methods</span>
+<span class="pill">Applied Economics</span>
+<span class="pill">International Economics</span>
+<span class="pill">Business Management</span>
+<span class="pill">United Kingdom · Italy · Portugal</span>
+
+## Where we work
+
+Click on a marker to see the institution and its researchers.
+
+```{=html}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<div id="team-map" class="map-box" role="region" aria-label="Map of the institutions of the team"></div>
+<script>
+(function () {
+  const sites = [
+    {name: "Faculty of Economics and Business, University of Granada", city: "Granada, Spain", lat: 37.1938, lon: -3.5985, main: true,
+     who: "Principal investigators and most of the team (Quantitative Methods, Applied Economics, International and Spanish Economics)"},
+    {name: "University of Southampton", city: "Southampton, United Kingdom", lat: 50.9346, lon: -1.3960, who: "Yves G. Berger"},
+    {name: "University of Edinburgh Business School", city: "Edinburgh, United Kingdom", lat: 55.9441, lon: -3.1868, who: "Ferran Vendrell-Herrero"},
+    {name: "University of Glasgow", city: "Glasgow, United Kingdom", lat: 55.8721, lon: -4.2882, who: "Cecilia Tortajada Quiroz"},
+    {name: "Nova School of Business and Economics, NOVA University Lisbon", city: "Carcavelos (Lisbon), Portugal", lat: 38.6781, lon: -9.3263, who: "Emanuel Gomes"},
+    {name: "University of Modena and Reggio Emilia", city: "Modena, Italy", lat: 44.6380, lon: 10.9230, who: "Tindara Addabbo"},
+    {name: "University of León", city: "León, Spain", lat: 42.6140, lon: -5.5590, who: "Mª Nazaret Ibáñez Rueda"},
+    {name: "University of Valladolid", city: "Valladolid, Spain", lat: 41.6620, lon: -4.7150, who: "Samara López Ruiz"}
+  ];
+  function draw() {
+    if (typeof L === "undefined") { setTimeout(draw, 200); return; }
+    const map = L.map("team-map", {scrollWheelZoom: false});
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 18, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+    const pts = [];
+    for (const s of sites) {
+      const m = L.circleMarker([s.lat, s.lon], {radius: s.main ? 11 : 8, color: "#ffffff", weight: 2,
+        fillColor: s.main ? "#C9962B" : "#1A5FA8", fillOpacity: 0.95}).addTo(map);
+      m.bindPopup(`<b>${s.name}</b><br>${s.city}<br><span style="color:#555">${s.who}</span>`);
+      pts.push([s.lat, s.lon]);
+    }
+    map.fitBounds(pts, {padding: [30, 30]});
+  }
+  draw();
+})();
+</script>
+```
+
+## Co-authorship network
+
+Number of co-authored articles in journals indexed in the Journal Citation Reports between members of the project. Researchers at foreign institutions are written in capitals. Hover over a researcher to highlight his or her co-authorships.
+
+```{ojs}
+//| echo: false
+coauthNames = ["González", "Ibáñez", "López", "TORTAJADA", "Guardiola", "ADDABBO", "Álvarez", "Chica", "R.M. García", "Moya", "Muñoz", "BERGER", "VENDRELL", "GOMES", "Casas", "Llorca"]
+coauthField = ["Applied Economics", "Applied Economics", "Applied Economics", "Applied Economics", "Applied Economics", "Applied Economics",
+               "Quantitative Methods", "Quantitative Methods", "Quantitative Methods", "Quantitative Methods", "Quantitative Methods", "Quantitative Methods",
+               "Business Management", "Business Management", "International and Spanish Economics", "International and Spanish Economics"]
+coauthMatrix = {
+  // Columns of the original co-authorship table (row order = coauthNames)
+  const cols = {
+    "González":   [0, 2, 4, 5, 25, 0, 0, 2, 0, 2, 0, 0, 0, 0, 0, 0],
+    "Ibáñez":     [0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    "López":      [0, 0, 0, 0, 1, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0],
+    "TORTAJADA":  [0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    "Guardiola":  [0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0],
+    "ADDABBO":    [0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 4],
+    "Álvarez":    [0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 12, 0, 0, 0, 0, 0],
+    "Chica":      [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1],
+    "R.M. García":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 3, 8],
+    "Moya":       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0],
+    "Muñoz":      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0],
+    "BERGER":     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    "VENDRELL":   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 0, 0],
+    "GOMES":      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    "Casas":      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5]
+  };
+  const n = coauthNames.length, M = Array.from({length: n}, () => new Array(n).fill(0));
+  Object.values(cols).forEach((col, j) => col.forEach((v, i) => { if (v) { M[i][j] += v; M[j][i] += v; } }));
+  return M;
+}
+```
+
+```{ojs}
+//| echo: false
+{
+  const width = 640, height = 640, outer = Math.min(width, height) / 2 - 90, inner = outer - 14;
+  const fieldColor = d3.scaleOrdinal(["Quantitative Methods", "Applied Economics", "International and Spanish Economics", "Business Management"],
+                                     ["#1A5FA8", "#C9962B", "#D43F3A", "#5E8C61"]);
+  const chord = d3.chord().padAngle(0.04).sortSubgroups(d3.descending)(coauthMatrix);
+  const svg = d3.create("svg").attr("viewBox", [-width / 2, -height / 2, width, height]).attr("width", "100%").style("max-width", "640px").style("font", "13px sans-serif");
+  svg.append("g").attr("fill-opacity", 0.7).selectAll("path").data(chord).join("path")
+    .attr("d", d3.ribbon().radius(inner)).attr("fill", d => fieldColor(coauthField[d.source.index])).attr("stroke", "white")
+    .append("title").text(d => `${coauthNames[d.source.index]} – ${coauthNames[d.target.index]}: ${d.source.value} article(s)`);
+  const group = svg.append("g").selectAll("g").data(chord.groups).join("g");
+  group.append("path").attr("d", d3.arc().innerRadius(inner).outerRadius(outer)).attr("fill", d => fieldColor(coauthField[d.index]))
+    .append("title").text(d => `${coauthNames[d.index]}: ${d.value} co-authorship(s)`);
+  group.append("text").each(d => { d.angle = (d.startAngle + d.endAngle) / 2; })
+    .attr("dy", "0.35em")
+    .attr("transform", d => `rotate(${d.angle * 180 / Math.PI - 90}) translate(${outer + 8}) ${d.angle > Math.PI ? "rotate(180)" : ""}`)
+    .attr("text-anchor", d => d.angle > Math.PI ? "end" : null)
+    .text(d => coauthNames[d.index]);
+  const ribbonPaths = svg.select("g").selectAll("path");
+  group.on("mouseenter", (e, g) => ribbonPaths.attr("fill-opacity", d => d.source.index === g.index || d.target.index === g.index ? 0.9 : 0.08))
+       .on("mouseleave", () => ribbonPaths.attr("fill-opacity", null));
+  const legend = html`<div style="display:flex;flex-wrap:wrap;gap:.8rem;font-size:.85rem;margin:.3rem 0 1rem">${fieldColor.domain().map(f => html`<span><span style="display:inline-block;width:12px;height:12px;border-radius:2px;background:${fieldColor(f)};margin-right:4px"></span>${f}</span>`)}</div>`;
+  return html`${svg.node()}${legend}`;
+}
+```
+
+<p class="source">Source: co-authorships in JCR journals among the members of the project, as reported in the project proposal (2022).</p>
+
+## Join us
+
+External researchers interested in collaborating, in particular in the application areas (water, tourism, business management and gender inequality), are welcome to [get in touch](contact.qmd).

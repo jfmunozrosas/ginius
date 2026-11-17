@@ -1,0 +1,46 @@
+---
+title: "Links of interest"
+---
+
+## Websites on inequality
+
+- [World Inequality Lab](https://inequalitylab.world/en/)
+- [Society for the Study of Economic Inequality (ECINEQ)](http://www.ecineq.org/)
+- [International Association for Research in Income and Wealth (IARIW)](https://iariw.org/)
+- [Fight Inequality Alliance](https://www.fightinequality.org/)
+
+## Inequality observatories
+
+- [Observatorio de Desigualdad de Andalucía](https://observatoriodesigualdadandalucia.org/)
+- [Monitor de Desigualdad · CaixaBank Research](https://www.caixabankresearch.com/es/economia-y-mercados/sector-publico/monitor-desigualdad)
+- [Red Andaluza de Lucha contra la Pobreza y la Exclusión Social (EAPN Andalucía)](http://www.eapn-andalucia.org/)
+- [El Estado de la Pobreza · EAPN España](https://www.eapn.es/estadodepobreza/)
+- [Fundación FOESSA](https://www.foessa.es/)
+- [INE · Household Income Distribution Atlas](https://www.ine.es/en/experimental/atlas/experimental_atlas_en.htm)
+- [World Inequality Database (WID)](https://wid.world/)
+- [UNU-WIDER · World Income Inequality Database (WIID)](https://www.wider.unu.edu/wiid)
+- [OECD Income Distribution Database](https://www.oecd.org/en/data/datasets/income-and-wealth-distribution-database.html)
+- [LIS Cross-National Data Center](https://www.lisdatacenter.org/)
+
+See also the [GiniUs inequality observatory](observatory.qmd).
+
+## Institutions and agendas
+
+- [Eurostat](https://ec.europa.eu/eurostat)
+- [Instituto Nacional de Estadística (Spain)](https://www.ine.es/)
+- [World Bank](https://www.worldbank.org/en/home)
+- [The 2030 Agenda for Sustainable Development](https://sdgs.un.org/2030agenda)
+- [Horizon Europe, Pillar II: Global Challenges and European Industrial Competitiveness](https://research-and-innovation.ec.europa.eu/funding/funding-opportunities/funding-programmes-and-open-calls/horizon-europe_en)
+- [Spanish State Plan for Scientific, Technical and Innovation Research (PEICTI)](https://www.ciencia.gob.es/Estrategias-y-Planes/Planes-y-programas/PEICTI.html)
+
+## Datasets
+
+- [EU-SILC](https://ec.europa.eu/eurostat/web/microdata/european-union-statistics-on-income-and-living-conditions)
+- [HFCN — Eurosystem Household Finance and Consumption Network](https://www.ecb.europa.eu/pub/economic-research/research-networks/html/researcher_hfcn.en.html)
+- [AQUASTAT](https://www.fao.org/aquastat/en/)
+- [World Bank Enterprise Surveys](https://www.enterprisesurveys.org/en/enterprisesurveys)
+- [SHIW — Bank of Italy Survey on Household Income and Wealth](https://www.bancaditalia.it/statistiche/tematiche/indagini-famiglie-imprese/bilanci-famiglie/index.html)
+
+## Software
+
+- [R](https://www.r-project.org/) · [giniVarCI](https://cran.r-project.org/package=giniVarCI) · [Quarto](https://quarto.org/) · [Posit (RStudio)](https://posit.co/) · [Rcpp](https://www.rcpp.org/) · [Stata](https://www.stata.com/)

@@ -1,0 +1,14 @@
+---
+title: "Blog"
+subtitle: "Short posts on inequality measurement, the Gini index and the results of GiniUs"
+listing:
+  contents: posts
+  sort: "date desc"
+  type: default
+  categories: true
+  feed: true
+page-layout: full
+title-block-banner: false
+---
+
+{{< include ../_subscribe.qmd >}}

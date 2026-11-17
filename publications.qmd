@@ -1,0 +1,124 @@
+---
+title: "Publications"
+subtitle: "Articles, software and open data of the GiniUs project"
+---
+
+## Articles of the project
+
+Articles acknowledging project PID2022-136235NB-I00, in reverse chronological order.
+
+Muñoz, J.F., Pavía, J.M., & Álvarez-Verdejo, E. (2026). A practical guide to proper estimation and inference of the Gini index by avoiding often encountered methodological pitfalls. *Social Indicators Research*. <https://doi.org/10.1007/s11205-026-03831-x>
+
+Vaillant, Y., Lafuente, E., & Vendrell-Herrero, F. (2026). Automation, augmentation, or dual AI strategies for superior product line performance: the functional subsidiarity challenge. *International Journal of Production Economics*, 109931. <https://doi.org/10.1016/j.ijpe.2026.109931>
+
+Muñoz, J.F., Moya-Fernández, P.J., & Álvarez-Verdejo, E. (2025). Exploring and correcting the bias in the estimation of the Gini measure of inequality. *Sociological Methods & Research*, 54(1), 237–274 (online first 2023). <https://doi.org/10.1177/00491241231176847>
+
+García-Martínez, F.J., Osorio, F., & González-Gómez, F. (2025). Challenges of urban water cycle management in small Spanish municipalities: the case of the province of Granada. *Water*, 17(12), 1750. <https://doi.org/10.3390/w17121750>
+
+Tortajada, C., Radcliffe, J.C., van Rensburg, P., & González-Gómez, F. (2025). Sustainable water reuse for water security. *Environmental Research Letters*, 20(2), 021003. <https://doi.org/10.1088/1748-9326/adaf46>
+
+Vaillant, Y., Lafuente, E., & Vendrell-Herrero, F. (2025). AI platforms as cooperation enablers favoring the development of strategic situating capabilities within solution delivery ecosystems. *Journal of Product Innovation Management*. <https://doi.org/10.1111/jpim.12807>
+
+Vendrell-Herrero, F., Vaillant, Y., & Bustinza, O.F. (2025). Scalability in incumbent firms: the case of Nvidia. *Long Range Planning*, 102540. <https://doi.org/10.1016/j.lrp.2025.102540>
+
+Alguacil-Duarte, F., González-Gómez, F., & Grigoryan, K. (2024). Proposal of an index to evaluate the 'dewaterization' of the urban water cycle and a practical application. *Sustainable Water Resources Management*, 10(1), 6. <https://doi.org/10.1007/s40899-023-00984-2>
+
+Ibáñez-Rueda, N., Moya-Fernández, P., Guardiola, J., & González-Gómez, F. (2024). The role of knowledge in the decision of Granada University students to drink bottled water. *International Journal of Water Resources Development*. <https://doi.org/10.1080/07900627.2024.2310820>
+
+Muñoz, J.F., Blanco-Encomienda, F.J., Álvarez-Verdejo, E., & Vendrell-Herrero, F. (2024). Estimation of the lot fraction defective in a finite lot of products with auxiliary quality characteristics. *Quality Engineering*. <https://doi.org/10.1080/08982112.2024.2331145>
+
+Vaillant, Y., Vendrell-Herrero, F., Bustinza, O.F., & Xing, Y. (2024). HRM algorithms: moderating the relationship between chaotic markets and strategic renewal. *British Journal of Management*. <https://doi.org/10.1111/1467-8551.12852>
+
+Vendrell-Herrero, F., Gomes, E., Darko, C.K., & Lehman, D.W. (2024). When do firms learn? Learning before versus after exporting. *Small Business Economics*. <https://doi.org/10.1007/s11187-024-00898-z>
+
+## Software
+
+Muñoz, J.F., Pavía, J.M., & Álvarez-Verdejo, E. (2024). *giniVarCI: Gini Indices, Variances and Confidence Intervals for Finite and Infinite Populations*. R package version 0.0.1-3. <https://doi.org/10.32614/CRAN.package.giniVarCI>. See [the package page](software.qmd).
+
+## Open science (data and software of published papers)
+
+Muñoz, J.F., Blanco-Encomienda, F.J., Álvarez-Verdejo, E., & Vendrell-Herrero, F. (2023). *186 data sets and free software (using R) for simulation studies derived in the manuscript: Estimation of the lot fraction defective in a finite lot of products with auxiliary quality characteristics*. OSF repository. <https://doi.org/10.17605/OSF.IO/ADFNQ>
+
+## Working papers
+
+1. *The problem of missing data in strategic management research: critical issues, understanding and methodological insights.* F. Vendrell-Herrero, J.F. Muñoz, E. Gomes and D.W. Lehman.
+2. *The GiniUs library for the estimation of the Gini index.* J.F. Muñoz, J.M. Pavía and E. Álvarez-Verdejo. To be submitted to the *Journal of Statistical Software*.
+3. *How to avoid common mistakes in water studies with missing data?* J.F. Muñoz, E. Álvarez-Verdejo, C. Tortajada and M.D. Sarwar. To be submitted to *Water Research*.
+
+## Previous related publications of the team
+
+::: {.callout-note collapse="true"}
+## Poverty, inequality, polarisation, life satisfaction and well-being
+
+Addabbo, T., García, R.M., Llorca, C.M., & Maccagnan, A. (2016). A microsimulation model to measure the impact of the economic crisis on household income. *International Journal of Manpower*, 37(3), 474–493.\
+Addabbo, T., García, R.M., Llorca, C.M., & Maccagnan, A. (2018). Labor force heterogeneity and wage polarization: Italy and Spain. *Journal of Economic Studies*, 45, 979–993.\
+Álvarez-Verdejo, E., Moya-Fernández, P.J., & Muñoz-Rosas, J.F. (2021). Single imputation methods and confidence intervals for the Gini index. *Mathematics*, 9(24), 3252.\
+Berger, Y.G. (2008). A note on the asymptotic equivalence of jackknife and linearization variance estimation for the Gini coefficient. *Journal of Official Statistics*, 24(4), 541–555.\
+Berger, Y.G., & Gedik, İ. (2020). Confidence intervals of Gini coefficient under unequal probability sampling. *Journal of Official Statistics*, 36(2), 237–249.\
+Guardiola, J., & Picazo, A.J. (2014). Building weighted-domain composite indices of life satisfaction with data envelopment analysis. *Social Indicators Research*, 117(1), 257–274.\
+Guillen, M., Guardiola, J., & García, F. (2017). Sustainable development in times of economic crisis: a needs-based illustration from Granada (Spain). *Journal of Cleaner Production*, 150, 267–276.\
+Muñoz, J.F., Álvarez, E., & García, R.M. (2018). On estimating the poverty gap and the poverty severity indices with auxiliary information. *Sociological Methods & Research*, 47(3), 598–625.\
+Muñoz, J.F., Álvarez, E., García, R.M., & Barroso, L.J. (2015). Efficient estimation of the headcount index. *Social Indicators Research*, 123, 713–732.\
+Rodríguez, J.A., Jiménez, J.D., Salinas, J.A., & Martín, J. (2016). Millennium development goals 4 and 5: progress in the least developed countries of Asia. *Social Indicators Research*, 129(2), 489–504.\
+Rojas, M., & Guardiola, J. (2017). Hunger and the experience of being well: absolute and relative concerns. *World Development*, 96, 78–86.\
+Rueda, M., & Muñoz, J.F. (2011). Estimation of poverty measures with auxiliary information in sample surveys. *Quality & Quantity*, 45(3), 687–700.\
+Sánchez, C., & García, R.M. (2020). A multivariate indicator to compute middle class population. *Social Indicators Research*, 147(1), 1–14.\
+Suárez, M., Guardiola, J., & González, F. (2016). Do pro-environmental behaviors and awareness contribute to improve subjective well-being? *Applied Research in Quality of Life*, 11(2), 429–444.
+:::
+
+::: {.callout-note collapse="true"}
+## Missing data
+
+Álvarez, E., Arcos, A., González, S., Muñoz, J.F., & Rueda, M. (2013). Estimating population proportions in the presence of missing data. *Journal of Computational and Applied Mathematics*, 237(1), 470–476.\
+Berger, Y.G., & Escobar, E.L. (2017). Variance estimation of imputed estimators of change for repeated rotating surveys. *International Statistical Review*, 85(3), 421–438.\
+Muñoz, J.F., & Rueda, M. (2009). New imputation methods for missing data using quantiles. *Journal of Computational and Applied Mathematics*, 232(2), 305–317.
+:::
+
+::: {.callout-note collapse="true"}
+## Tourism
+
+Chica, J., González, J.G., & Zafra, J.L. (2020). Effects of location on Airbnb apartment pricing in Málaga. *Tourism Management*, 77, 103981.\
+Llorca, C.M., Casas, A.C., & García, R.M. (2017). Tourism and poverty alleviation: an empirical analysis using panel data on Peru's departments. *International Journal of Tourism Research*, 19(6), 746–756.\
+Llorca, C.M., Chica, J., & Casas, A.C. (2021). The effects of tourism on EU regional cohesion. *Journal of Sustainable Tourism*, 29(8), 1319–1343.\
+Llorca, C.M., García, R.M., & Casas, A.C. (2020). Domestic versus inbound tourism in poverty reduction: evidence from panel data. *Current Issues in Tourism*, 23(2), 197–216.\
+Martín, J.M., Rodríguez, J.A., Zermeño, K.A., & Salinas, J.A. (2018). Effects of vacation rental websites on the concentration of tourists. *International Journal of Environmental Research and Public Health*, 15(2), 347.\
+Martín, J.M., Salinas, J.A., Rodríguez, J.A., & Ostos, M.S. (2020). Analysis of tourism seasonality as a factor limiting the sustainable development of rural areas. *Journal of Hospitality & Tourism Research*, 44(1), 45–75.\
+Sainaghi, R., & Chica, J. (2022). The effects of location before and during COVID-19: impacts on revenue of Airbnb listings in Milan (Italy). *Annals of Tourism Research*, 96, 103464.\
+Salinas, J.A., Azevedo, P.S., Martín, J.M., & Rodríguez, J.A. (2020). Determinants of tourism destination competitiveness in the countries most visited by international tourists. *Tourism Management Perspectives*, 33, 100582.
+:::
+
+::: {.callout-note collapse="true"}
+## Water
+
+Albalate, D., Bel, G., González, F., & Picazo, A.J. (2020). Contract renewal in urban water services, incumbent advantage, and market concentration. *Public Administration Review*, 82(2), 314–324.\
+González, F., García, M.Á., & Guardiola, J. (2020). Some reflections on water for residential uses in developed countries. *International Journal of Water Resources Development*, 36(2–3), 311–324.\
+González, F., & García, M.Á. (2018). Prices and ownership in the water urban supply: a critical review. *Urban Water Journal*, 15(3), 259–268.\
+López, S., Moya, P.J., García, M.Á., & González, F. (2021). Acceptance of direct potable water reuse for domestic purposes: evidence from southern Spain. *International Journal of Water Resources Development*, 37(5), 772–792.\
+Moya, P.J., López, S., Guardiola, J., & González, F. (2021). Determinants of the acceptance of domestic use of recycled water by use type. *Sustainable Production and Consumption*, 27, 575–586.\
+Tortajada, C., González, F., Biswas, A.K., & Buurman, J. (2019). Water demand management strategies for water-scarce cities: the case of Spain. *Sustainable Cities and Society*, 45, 649–656.
+:::
+
+::: {.callout-note collapse="true"}
+## Estimation and properties
+
+Berger, Y.G. (2021). Testing conditional moment restriction models using empirical likelihood. *The Econometrics Journal*, 25(2), 384–403.\
+Berger, Y.G., & De La Riva, O. (2016). Empirical likelihood confidence intervals for complex sampling designs. *JRSS B*, 78(2), 319–341.\
+Berger, Y.G., & Kabzińska, E. (2020). Empirical likelihood approach for aligning information from multiple surveys. *International Statistical Review*, 88(1), 54–74.\
+Berger, Y.G., & Muñoz, J.F. (2015). On estimating quantiles using auxiliary information. *Journal of Official Statistics*, 31(1), 101–119.\
+Berger, Y.G., & Priam, R. (2016). A simple variance estimator of change for rotating repeated surveys. *JRSS A*, 179(1), 251–272.\
+Berger, Y.G., & Skinner, C.J. (2005). A jackknife variance estimator for unequal probability sampling. *JRSS B*, 67(1), 79–89.\
+Moya, P.J., Muñoz, J.F., Álvarez, E., & Blanco, F.J. (2023). Rescaled bootstrap confidence intervals for the population variance in the presence of outliers or spikes in the distribution of a variable of interest. *Communications in Statistics – Simulation and Computation*, 52(2), 466–481.\
+Muñoz, J.F., Arcos, A., Álvarez, E., & Rueda, M. (2014). New ratio and difference estimators of the finite population distribution function. *Mathematics and Computers in Simulation*, 102, 51–61.\
+Muñoz, J.F., Álvarez, E., Pérez, M., & Gutiérrez, L. (2016). Empirical comparisons of X-bar charts when control limits are estimated. *Quality and Reliability Engineering International*, 32(2), 453–464.\
+Oǧuz, M., & Berger, Y.G. (2020). Modelling multilevel data under complex sampling designs: an empirical likelihood approach. *Computational Statistics & Data Analysis*, 145, 106906.
+:::
+
+::: {.callout-note collapse="true"}
+## Business and management
+
+Herzallah, A., Gutiérrez, L.J., & Muñoz, J.F. (2017). Quality ambidexterity, competitive strategies, and financial performance. *International Journal of Operations & Production Management*, 37(10), 1496–1519.\
+Rosillo, E., Blanco, F.J., & Muñoz, J.F. (2022). Analysis of the evolution and impact of product quality in business. *Total Quality Management & Business Excellence*, 33(7–8), 907–928.\
+Vaillant, Y., Lafuente, E., Horváth, K., & Vendrell, F. (2021). Regions on course for the fourth industrial revolution: the role of a strong indigenous T-KIBS sector. *Regional Studies*, 55(10–11), 1816–1828.\
+Vendrell, F., Darko, C.K., Gomes, E., & Lehman, D.W. (2022). Home-market economic development as a moderator of the self-selection and learning-by-exporting effects. *Journal of International Business Studies*.\
+Vendrell, F., Gomes, E., Mellahi, K., & Child, J. (2017). Building international business bridges in geographically isolated areas. *Journal of World Business*, 52(4), 489–502.
+:::

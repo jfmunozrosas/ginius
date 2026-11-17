@@ -1,0 +1,47 @@
+<!--
+  Visit counter (GoatCounter, free and cookie-free).
+  1. Create an account at https://www.goatcounter.com with the code below (ginius).
+  2. In Settings, enable "Allow adding visitor counts on your website".
+  If the code "ginius" is not available, change GC_CODE here (two places: this line and data-goatcounter).
+-->
+<script data-goatcounter="https://ginius.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+(function () {
+  const GC_CODE = "ginius";
+  function show(n) {
+    const box = document.querySelector(".nav-footer-left") || document.querySelector("footer");
+    if (!box || document.getElementById("visit-counter")) return;
+    const s = document.createElement("span");
+    s.id = "visit-counter";
+    s.className = "visit-counter";
+    s.innerHTML = ` · <span class="vc-num">${n}</span> visits`;
+    box.appendChild(s);
+  }
+  // Skip local previews (quarto preview)
+  if (location.hostname === "localhost" || location.hostname === "127.0.0.1") return;
+  fetch(`https://${GC_CODE}.goatcounter.com/counter/TOTAL.json`)
+    .then(r => r.ok ? r.json() : null)
+    .then(d => { if (d && d.count) show(String(d.count).replace(/\s/g, ".")); })
+    .catch(() => {});
+})();
+</script>
+
+<script>
+// ---- Download counter ----
+// Every click on a downloadable file (CSV data, figures, infographic, video, R code, guides...)
+// is recorded in GoatCounter as an event "download/<file name>" (no cookies, no personal data).
+(function () {
+  const EXT = /\.(csv|xlsx|zip|png|svg|jpg|pdf|mp4|r|rds|rdata|qmd|txt|json|docx)(\?|#|$)/i;
+  document.addEventListener("click", function (e) {
+    const a = e.target.closest ? e.target.closest("a") : null;
+    if (!a) return;
+    const href = a.getAttribute("href") || "";
+    if (!a.hasAttribute("download") && !EXT.test(href)) return;
+    let name = a.getAttribute("download") || href.split("#")[0].split("?")[0].split("/").pop() || "file";
+    const page = location.pathname.split("/").pop() || "index.html";
+    if (window.goatcounter && window.goatcounter.count) {
+      window.goatcounter.count({path: "download/" + name, title: "Download: " + name + " (from " + page + ")", event: true});
+    }
+  }, true);
+})();
+</script>

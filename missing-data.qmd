@@ -1,0 +1,157 @@
+---
+title: "Missing data simulator"
+subtitle: "Bias of the Gini index under the MCAR, MAR and MNAR response mechanisms, and how to deal with it"
+---
+
+Missing data are very common in inequality studies: people are less willing to answer sensitive questions such as their income, and those who do not answer are often different from those who do. This simulator, linked to **objective OG2** of the project, shows how much the Gini index can be biased by missing data, depending on the **response mechanism** and on the **method** used to deal with the missing values. It runs a Monte Carlo experiment in your browser.
+
+## The three response mechanisms
+
+::: {.mech-grid}
+<div class="mech"><b>MCAR</b> · Missing completely at random<br>The probability of non-response is the same for everybody. The respondents are a random subsample of the sample.</div>
+<div class="mech mar"><b>MAR</b> · Missing at random<br>Non-response depends on an observed variable $x$ (for example, education, age or occupation) that is related to income, but not on income itself once $x$ is known.</div>
+<div class="mech mnar"><b>MNAR</b> · Missing not at random<br>Non-response depends on the income itself: for example, people with very high (or very low) incomes are less willing to report it.</div>
+:::
+
+In the simulation, the probability that unit $i$ does not respond follows a logistic model $P(\text{missing}_i)=\{1+\exp(-\alpha-\beta\,v_i)\}^{-1}$, where $v_i=0$ under MCAR, $v_i=x_i$ under MAR and $v_i$ is the (standardised) rank of $y_i$ under MNAR. The intercept $\alpha$ is set so that the expected percentage of missing data is the one chosen, and $\beta$ is the **strength** of the mechanism. The auxiliary variable $x$ is observed for everybody and its correlation with the (normal scores of) income is $\rho$.
+
+```{=html}
+<script src="js/gini-sim.js"></script>
+```
+
+```{ojs}
+//| echo: false
+//| output: false
+GS = new Promise(resolve => { const ok = () => window.GiniSim ? resolve(window.GiniSim) : setTimeout(ok, 50); ok(); })
+methodColors = ["#8A8F98", "#D43F3A", "#E89A3C", "#9C6ADE", "#1A5FA8", "#5E8C61"]
+```
+
+## Scenario
+
+```{ojs}
+//| echo: false
+viewof sc = Inputs.form({
+  dist: Inputs.select(["Pareto", "Dagum-p20", "Dagum-p0.5", "Lognormal", "Weibull"], {label: "Distribution of income", value: "Lognormal"}),
+  G: Inputs.range([0.2, 0.7], {label: "True Gini index (G)", step: 0.05, value: 0.35}),
+  n: Inputs.select([100, 200, 500, 1000], {label: "Sample size (n)", value: 200}),
+  rate: Inputs.range([0.05, 0.6], {label: "Percentage of missing data", step: 0.05, value: 0.3, format: x => `${Math.round(100 * x)}%`}),
+  strength: Inputs.radio(new Map([["Weak", 0.5], ["Moderate", 1], ["Strong", 2]]), {label: "Strength of the mechanism (MAR, MNAR)", value: 1}),
+  direction: Inputs.radio(new Map([["High incomes are more often missing", 1], ["Low incomes are more often missing", -1]]), {label: "Who does not respond?", value: 1}),
+  rho: Inputs.range([0, 0.95], {label: "Correlation between x and income (ρ)", step: 0.05, value: 0.6}),
+  R: Inputs.select([100, 200, 500, 1000], {label: "Replications (R)", value: 200})
+})
+```
+
+```{ojs}
+//| echo: false
+viewof methods = Inputs.checkbox(GS.METHODS, {label: "Methods to compare", value: GS.METHODS})
+```
+
+## Results: relative bias of the Gini index
+
+```{ojs}
+//| echo: false
+missRes = GS.missingExperiment({dist: sc.dist, G: sc.G, n: sc.n, R: sc.R, rate: sc.rate, strength: sc.strength, rho: sc.rho, direction: sc.direction, methods})
+fullRB = missRes.find(d => d.mechanism === "No missing data")
+missShown = missRes.filter(d => d.mechanism !== "No missing data")
+methods.length ? Plot.plot({
+  width: 960, height: 360, marginLeft: 50, marginBottom: 40,
+  fx: {label: null, domain: GS.MECHANISMS, padding: 0.12},
+  x: {axis: null, domain: methods},
+  y: {label: "Relative bias of the Gini index (%)", grid: true},
+  color: {legend: true, domain: GS.METHODS, range: methodColors},
+  marks: [
+    Plot.ruleY([-2, 2], {stroke: "#5E8C61", strokeWidth: 1.5, strokeOpacity: 0.7}),
+    Plot.barY(missShown, {fx: "mechanism", x: "method", y: "RB", fill: "method", tip: true,
+      title: d => `${d.mechanism} · ${d.method}\nRelative bias: ${d.RB.toFixed(2)}%\nRelative RMSE: ${d.RRMSE.toFixed(2)}%\nMean estimate: ${d.mean.toFixed(4)} (true G = ${sc.G})`}),
+    Plot.ruleY([0], {stroke: "#333"}),
+    Plot.ruleY([fullRB.RB], {stroke: "#333", strokeDasharray: "5,3"})
+  ]
+}) : html`<p class="pending">Select at least one method.</p>`
+```
+
+::: {.rb-legend}
+Green lines: limits of negligible bias (±2%). Dashed line: relative bias of $\widehat{G}_n^{c}$ with the complete sample, before any data are lost (${fullRB ? fullRB.RB.toFixed(2) : ""}%). Hover over the bars to see the values.
+:::
+
+```{ojs}
+//| echo: false
+Inputs.table(missRes.map(d => ({Mechanism: d.mechanism, Method: d.method, "Mean estimate": +d.mean.toFixed(4),
+  "Relative bias (%)": +d.RB.toFixed(2), "Relative RMSE (%)": +d.RRMSE.toFixed(2)})), {rows: 20})
+```
+
+```{ojs}
+//| echo: false
+DOM.download(new Blob([d3.csvFormat(missRes.map(d => ({...d, distribution: sc.dist, G: sc.G, n: sc.n, missing_rate: sc.rate, strength: sc.strength, direction: sc.direction, rho: sc.rho})))], {type: "text/csv"}), "ginius_missing_data_simulation.csv", "Download results (CSV)")
+```
+
+::: {.callout-note}
+## How to read the results
+- **Complete cases** (deleting the units with missing data) is only safe under **MCAR**. Under MAR and MNAR the respondents are no longer representative, and if the richest people do not respond, inequality is underestimated.
+- **Mean imputation** always underestimates inequality, because all the imputed incomes are equal. It should never be used to estimate the Gini index.
+- **Regression imputation** also underestimates inequality, because it ignores the residual variability of income.
+- **Stochastic regression imputation** and **multiple imputation** add a random residual to the prediction. Under **MAR**, they remove most of the bias, *provided that the imputation model includes the variable* $x$ *that explains non-response*. Multiple imputation also reflects the uncertainty due to imputation and has a smaller error.
+- Under **MNAR**, no standard method removes the bias. Sensitivity analyses and auxiliary information on the non-respondents are needed.
+- Increase the **percentage of missing data**, the **strength** of the mechanism or the **inequality** of the data to see how the problems grow; reduce the correlation $\rho$ to see how imputation loses its advantage under MAR.
+:::
+
+## One sample: who does not respond?
+
+```{ojs}
+//| echo: false
+viewof exMech = Inputs.radio(GS.MECHANISMS, {label: "Mechanism", value: "MNAR"})
+```
+
+```{ojs}
+//| echo: false
+exData = GS.missingExample({dist: sc.dist, G: sc.G, n: Math.max(sc.n, 300), rate: sc.rate, strength: sc.strength, rho: sc.rho, direction: sc.direction, mechanism: exMech})
+exQuint = {
+  const ys = exData.map(d => d.y).sort((a, b) => a - b), q = [0.2, 0.4, 0.6, 0.8].map(p => ys[Math.floor(p * ys.length)]);
+  const lab = ["Q1 (poorest 20%)", "Q2", "Q3", "Q4", "Q5 (richest 20%)"];
+  const g = d => lab[q.filter(t => d.y >= t).length];
+  return lab.map(l => { const s = exData.filter(d => g(d) === l); return {quintile: l, missing: 100 * s.filter(d => d.status === "Missing").length / s.length}; });
+}
+html`<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1rem">${[
+  html`<div><b>Income and auxiliary variable x</b>${Plot.plot({
+    height: 330, marginLeft: 55,
+    x: {label: "Auxiliary variable x", grid: true}, y: {label: "Income (log scale)", type: "log", grid: true},
+    color: {legend: true, domain: ["Observed", "Missing"], range: ["#1A5FA8", "#D43F3A"]},
+    marks: [Plot.dot(exData, {x: "x", y: "y", fill: "status", r: 2.6, fillOpacity: 0.7})]
+  })}</div>`,
+  html`<div><b>Percentage of missing data by income quintile</b>${Plot.plot({
+    height: 330, marginLeft: 55, marginBottom: 45,
+    x: {label: null, domain: exQuint.map(d => d.quintile), tickRotate: -15}, y: {label: "Missing (%)", grid: true, domain: [0, 100]},
+    marks: [Plot.barY(exQuint, {x: "quintile", y: "missing", fill: "#D43F3A", fillOpacity: 0.8, tip: true}), Plot.ruleY([100 * sc.rate], {stroke: "#333", strokeDasharray: "4,3"}), Plot.ruleY([0])]
+  })}</div>`
+]}</div>`
+```
+
+:::{.rb-legend}
+Dashed line: overall percentage of missing data. Under MCAR the percentage is similar in every quintile; under MAR and MNAR it depends on income, directly (MNAR) or through $x$ (MAR).
+:::
+
+## Methods compared
+
+| Method | What it does | When it works |
+|---|---|---|
+| Complete cases | Deletes the units with missing income | MCAR only |
+| Mean imputation | Replaces each missing income with the mean of the respondents | Never for inequality measures |
+| Hot-deck imputation | Replaces each missing income with the income of a randomly chosen respondent | MCAR (or within classes that explain non-response) |
+| Regression imputation | Predicts $\log y$ from $x$ with a linear regression fitted to the respondents | Not for inequality measures (ignores residual variability) |
+| Stochastic regression imputation | Prediction plus a residual drawn at random from the respondents' residuals | MAR, if the model includes the variables that explain non-response |
+| Multiple imputation ($M=5$) | Stochastic regression repeated $M$ times, refitting the model on bootstrap samples of the respondents; the $M$ Gini indices are averaged (Rubin's rules) | MAR; also gives valid variances and intervals |
+
+: Methods for dealing with missing data. {tbl-colwidths="[24,46,30]"}
+
+::: {.callout-tip appearance="simple"}
+**Good practice when estimating the Gini index with missing data.** Report the percentage of missing data and analyse the response mechanism; never use mean imputation or simply delete the incomplete cases unless the data are MCAR; include in the imputation model the variables related to income and to non-response; use multiple imputation with enough imputations for the percentage of missing data; and report the uncertainty due to imputation.
+:::
+
+The code of the simulator is in [`js/gini-sim.js`](js/gini-sim.js). Estimator of the Gini index: $\widehat{G}_n^{c}$. Gamma is not included because the simulator generates the income and the auxiliary variable through a normal copula, which requires a closed-form quantile function.
+
+## References
+
+Van Buuren, S. (2018). *Flexible Imputation of Missing Data* (2nd ed.). CRC Press.\
+Little, R.J.A., & Rubin, D.B. (2019). *Statistical Analysis with Missing Data* (3rd ed.). Wiley.\
+Álvarez-Verdejo, E., Moya-Fernández, P.J., & Muñoz-Rosas, J.F. (2021). Single imputation methods and confidence intervals for the Gini index. *Mathematics*, 9(24), 3252.\
+Muñoz, J.F., & Rueda, M. (2009). New imputation methods for missing data using quantiles. *Journal of Computational and Applied Mathematics*, 232(2), 305–317.

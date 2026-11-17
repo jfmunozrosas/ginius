@@ -1,0 +1,58 @@
+---
+title: "Gini index calculator"
+subtitle: "Estimate the Gini index of your own data, with its bias, standard error and confidence interval"
+toc: false
+html-table-processing: none
+---
+
+Paste your data or upload a CSV file to obtain the Gini index with the estimators studied in the project, its **jackknife bias** and **standard error**, a **95% confidence interval** (jackknife and bootstrap), the **Lorenz curve** and, if you choose a grouping variable (for example, sex or region), the **Gini index of each group**.
+
+::: {.callout-note appearance="simple"}
+**Your data never leave your computer.** All calculations run in your browser; nothing is uploaded or stored. The jackknife is computed in $\mathcal{O}(n)$ after sorting the data, so it is instantaneous even with hundreds of thousands of observations. For complex survey designs and other intervals (linearisation, empirical likelihood, BCa), use the R package [giniVarCI](software.qmd).
+:::
+
+```{=html}
+<script src="js/csv-parse.js"></script>
+<script src="js/gini-sim.js"></script>
+<div class="calc">
+  <div class="calc-step">
+    <h3>1. Your data</h3>
+    <p>Paste a list of incomes (one per line, or separated by spaces or semicolons), <b>or</b> a table with a header row (CSV, semicolon- or tab-separated, e.g. copied from Excel), <b>or</b> upload a file. Zero incomes are allowed; negative values are excluded.</p>
+    <textarea id="calc-input" class="form-control" rows="9" placeholder="income;sex&#10;12;Woman&#10;16;Man&#10;..."></textarea>
+    <div class="calc-row">
+      <input id="calc-file" type="file" accept=".csv,.txt,.tsv" hidden>
+      <button type="button" class="btn btn-primary btn-sm" id="calc-file-btn">Choose file…</button>
+      <span id="calc-file-name" class="calc-note">No file chosen</span>
+      <button type="button" class="btn btn-outline-primary btn-sm" data-example="list">Example: list of incomes</button>
+      <button type="button" class="btn btn-outline-primary btn-sm" data-example="sex">Example: incomes by sex</button>
+      <button type="button" class="btn btn-outline-primary btn-sm" data-example="regions">Example: 1,500 simulated incomes in 3 regions, with weights</button>
+    </div>
+  </div>
+
+  <div class="calc-step" id="calc-cols" hidden>
+    <h3>2. Variables</h3>
+    <div class="calc-row">
+      <label>Income variable <select id="calc-y" class="form-select"></select></label>
+      <label>Groups (optional) <select id="calc-g" class="form-select"></select></label>
+      <label>Sampling weights (optional) <select id="calc-w" class="form-select"></select></label>
+    </div>
+  </div>
+
+  <div class="calc-row">
+    <label class="calc-note"><input type="checkbox" id="calc-boot" checked> Bootstrap interval (1,000 resamples)</label>
+    <button type="button" id="calc-run" class="btn btn-primary">Compute</button>
+  </div>
+  <div id="calc-msg"></div>
+  <div id="calc-out"></div>
+</div>
+
+<script src="js/calculator-ui.js"></script>
+```
+
+## How to interpret the results
+
+- **$\widehat{G}_n^{b}$** is the usual estimator (equivalently, the Gini index with the mid-point distribution function); **$\widehat{G}_n^{c} = \frac{n}{n-1}\widehat{G}_n^{b}$** is its bias-corrected version; **$\widehat{G}_n^{a}$** is shown for comparison only: it overestimates inequality when inequality is low.
+- With **sampling weights**, the weighted estimator $\widehat{G}_{w}$ (mid-point distribution function) is used.
+- **Jackknife bias:** estimated bias of the estimator. With small samples or very skewed data the Gini index is usually **underestimated**.
+- **Standard error and 95% intervals:** precision of the estimate. Differences between groups, regions or years should be interpreted in the light of these margins of error.
+- With sampling weights, the jackknife and the bootstrap delete or resample one unit at a time and ignore the sampling design (strata, clusters); for complex surveys, use `fgini()` in **giniVarCI**.

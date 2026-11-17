@@ -1,0 +1,88 @@
+---
+title: "Research data and R code"
+subtitle: "Reproducible research: probability distributions with a given Gini index and Monte Carlo code"
+code-fold: false
+---
+
+The simulation studies of GiniUs use samples from continuous distributions frequently used to model incomes: **Pareto**, **Dagum** (with shape parameters $p=20$ and $p=0.5$), **lognormal**, **Weibull** and **Gamma**. Their parameters are chosen so that the Gini index takes a given value $G$, which allows the effect of inequality and skewness on the estimators to be studied. All the code fixes the random seed with `set.seed()`, so every result can be replicated.
+
+## Parameters for a given Gini index
+
+| Distribution | Gini index | Parameter for a given $G$ |
+|---|---|---|
+| Lognormal$(\mu,\sigma)$ | $2\Phi(\sigma/\sqrt{2})-1$ | $\sigma=\sqrt{2}\,\Phi^{-1}\{(G+1)/2\}$ |
+| Pareto (shape $\alpha$) | $1/(2\alpha-1)$ | $\alpha=(1+G)/(2G)$ |
+| Weibull (shape $k$) | $1-2^{-1/k}$ | $k=1/\log_2\{1/(1-G)\}$ |
+| Gamma (shape $k$) | $\dfrac{\Gamma(k+1/2)}{k\,\Gamma(k)\sqrt{\pi}}$ | numerical root in $k$ |
+| Dagum $(a,p)$ | $\dfrac{\Gamma(p)\Gamma(2p+1/a)}{\Gamma(2p)\Gamma(p+1/a)}-1$ | numerical root in $a$, for fixed $p$ |
+
+: Gini index of the distributions used in the project. {tbl-colwidths="[22,40,38]"}
+
+```r
+GINI.GAMMA <- function(k, GINI) gamma((2 * k + 1) / 2) / (k * gamma(k) * sqrt(pi)) - GINI
+GINI.DAGUM <- function(p, GINI, a) gamma(p) * gamma(2 * p + 1 / a) / (gamma(2 * p) * gamma(p + 1 / a)) - 1 - GINI
+
+G <- 0.4
+SIGMA.Log <- qnorm((G + 1) / 2) * sqrt(2)
+ALPHA.Par <- (1 + G) / (2 * G)
+K.Wei     <- 1 / log2(1 / (1 - G))
+K.Gam     <- uniroot(GINI.GAMMA, c(0.15, 130), GINI = G)$root
+a.Dag     <- uniroot(GINI.DAGUM, c(0.1, 16), GINI = G, p = 20)$root    # Dagum, p = 20
+a.Dag05   <- uniroot(GINI.DAGUM, c(0.1, 16), GINI = G, p = 0.5)$root   # Dagum, p = 0.5
+```
+
+## Samples
+
+```r
+library(VGAM)       # rpareto() and rdagum()
+set.seed(123)
+N <- 50
+Y.Par   <- rpareto(N, scale = 1, shape = ALPHA.Par)
+Y.Dag   <- rdagum(N, shape1.a = a.Dag, shape2.p = 20)
+Y.Dag05 <- rdagum(N, shape1.a = a.Dag05, shape2.p = 0.5)
+Y.Log   <- rlnorm(N, meanlog = 5, sdlog = SIGMA.Log)
+Y.Wei   <- rweibull(N, shape = K.Wei, scale = 1)
+Y.Gam   <- rgamma(N, shape = K.Gam, scale = 1)
+```
+
+The package **giniVarCI** does the same in one line: `giniVarCI::gsample(n = 50, gini = 0.4, distribution = "lognormal")`.
+
+## Monte Carlo study of the bias (Figure 2 of the proposal)
+
+```r
+library(VGAM)
+set.seed(2023)
+R <- 1000; N <- 50
+VECTOR.G <- seq(0.1, 0.8, by = 0.1)
+
+estimators <- function(y) {
+  n <- length(y)
+  Gb <- (2 / (n * sum(y))) * sum(rank(y) * y) - (n + 1) / n
+  c(Ga = Gb + 1 / n, Gb = Gb, Gc = n * Gb / (n - 1))
+}
+draw <- function(dist, G, n) {
+  switch(dist,
+    Pareto    = rpareto(n, scale = 1, shape = (1 + G) / (2 * G)),
+    Lognormal = rlnorm(n, 5, qnorm((G + 1) / 2) * sqrt(2)),
+    Weibull   = rweibull(n, shape = 1 / log2(1 / (1 - G))),
+    Gamma     = rgamma(n, shape = uniroot(GINI.GAMMA, c(0.15, 130), GINI = G)$root),
+    DagumP20  = rdagum(n, shape1.a = uniroot(GINI.DAGUM, c(0.1, 16), GINI = G, p = 20)$root, shape2.p = 20),
+    DagumP05  = rdagum(n, shape1.a = uniroot(GINI.DAGUM, c(0.1, 16), GINI = G, p = 0.5)$root, shape2.p = 0.5))
+}
+RB <- do.call(rbind, lapply(c("Pareto", "DagumP20", "DagumP05", "Lognormal", "Weibull", "Gamma"), function(dist)
+  do.call(rbind, lapply(VECTOR.G, function(G) {
+    est <- replicate(R, estimators(draw(dist, G, N)))
+    data.frame(distribution = dist, G = G, t(round(100 * (rowMeans(est) - G) / G, 2)))
+  }))))
+RB
+```
+
+The same study can be run interactively, with other sample sizes, in the [bias explorer](simulation.qmd).
+
+## Data repositories
+
+- **Probabilistic datasets.** Included in the R package [giniVarCI](software.qmd) (function `gsample()`) and deposited in the institutional repository [DIGIBUG](https://digibug.ugr.es/) of the University of Granada.
+- **Open science.** Data and R code of published articles: [OSF repository](https://doi.org/10.17605/OSF.IO/ADFNQ) of *Estimation of the lot fraction defective in a finite lot of products with auxiliary quality characteristics*.
+- **Official microdata.** EU-SILC, HFCN, AQUASTAT and WBES are available from the institutions that produce them (see [Links of interest](links.qmd)).
+- **Water datasets** (habits and prices): to be deposited at the Spanish Centre for Sociological Research (CIS) once the corresponding articles are published.
+- **Code of the interactive tools of this website:** [`js/gini-sim.js`](js/gini-sim.js) (open source).

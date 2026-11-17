@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Try it in R – GiniUs</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./images/favicon_ginius.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-2e67a60b6ceb0e571a24b65c8c311c23.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="Try it in R – GiniUs">
+<meta property="og:description" content="Run and modify R code on the Gini index directly in your browser, without installing anything">
+<meta property="og:image" content="https://jfmunozrosas.github.io/ginius/images/logo_ginius.png">
+<meta property="og:site_name" content="GiniUs">
+<meta property="og:image:height" content="132">
+<meta property="og:image:width" content="497">
+<meta name="twitter:title" content="Try it in R – GiniUs">
+<meta name="twitter:description" content="Run and modify R code on the Gini index directly in your browser, without installing anything">
+<meta name="twitter:image" content="https://jfmunozrosas.github.io/ginius/images/logo_ginius.png">
+<meta name="twitter:image-height" content="132">
+<meta name="twitter:image-width" content="497">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./images/logo_ginius.png" alt="GiniUs logo" class="navbar-logo">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-project" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Project</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-project">    
+        <li>
+    <a class="dropdown-item" href="./research.html">
+ <span class="dropdown-text">Research problems and questions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./project.html">
+ <span class="dropdown-text">Objectives, activities and work plan</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./results.html">
+ <span class="dropdown-text">Results and conclusions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./news.html">
+ <span class="dropdown-text">Status and news</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="./team.html"> 
+<span class="menu-text">Team</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-gini-index" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Gini index</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-gini-index">    
+        <li>
+    <a class="dropdown-item" href="./gini-index.html">
+ <span class="dropdown-text">Definition and estimation (with R code)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./simulation.html">
+ <span class="dropdown-text">Interactive bias explorer</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./missing-data.html">
+ <span class="dropdown-text">Missing data simulator (MCAR, MAR, MNAR)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./calculator.html">
+ <span class="dropdown-text">Gini index calculator</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./practice.html">
+ <span class="dropdown-text">Try it in R (in your browser)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./glossary.html">
+ <span class="dropdown-text">Glossary and FAQ</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./data-code.html">
+ <span class="dropdown-text">Research data and R code</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="./software.html"> 
+<span class="menu-text">giniVarCI</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./observatory.html"> 
+<span class="menu-text">Observatory</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./publications.html"> 
+<span class="menu-text">Publications</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-dissemination" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Dissemination</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-dissemination">    
+        <li>
+    <a class="dropdown-item" href="./dissemination.html">
+ <span class="dropdown-text">Seminars and conferences</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./blog/index.html">
+ <span class="dropdown-text">Blog</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./links.html">
+ <span class="dropdown-text">Links of interest</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./cite.html">
+ <span class="dropdown-text">How to cite</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="./contact.html"> 
+<span class="menu-text">Contact</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./feedback.html"> 
+<span class="menu-text">Your opinion</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./news.html"> 
+<span class="menu-text">● In progress (year 4)</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/jfmunozrosas/ginius"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#exercise-1.-three-estimators-of-the-gini-index" id="toc-exercise-1.-three-estimators-of-the-gini-index" class="nav-link active" data-scroll-target="#exercise-1.-three-estimators-of-the-gini-index">Exercise 1. Three estimators of the Gini index</a></li>
+  <li><a href="#exercise-2.-the-lorenz-curve" id="toc-exercise-2.-the-lorenz-curve" class="nav-link" data-scroll-target="#exercise-2.-the-lorenz-curve">Exercise 2. The Lorenz curve</a></li>
+  <li><a href="#exercise-3.-the-bias-of-the-estimators-a-small-simulation" id="toc-exercise-3.-the-bias-of-the-estimators-a-small-simulation" class="nav-link" data-scroll-target="#exercise-3.-the-bias-of-the-estimators-a-small-simulation">Exercise 3. The bias of the estimators: a small simulation</a></li>
+  <li><a href="#exercise-4.-jackknife-standard-error-and-confidence-interval" id="toc-exercise-4.-jackknife-standard-error-and-confidence-interval" class="nav-link" data-scroll-target="#exercise-4.-jackknife-standard-error-and-confidence-interval">Exercise 4. Jackknife standard error and confidence interval</a></li>
+  <li><a href="#exercise-5.-missing-data-mcar-versus-mnar" id="toc-exercise-5.-missing-data-mcar-versus-mnar" class="nav-link" data-scroll-target="#exercise-5.-missing-data-mcar-versus-mnar">Exercise 5. Missing data: MCAR versus MNAR</a></li>
+  <li><a href="#exercise-6.-the-r-package-ginivarci" id="toc-exercise-6.-the-r-package-ginivarci" class="nav-link" data-scroll-target="#exercise-6.-the-r-package-ginivarci">Exercise 6. The R package giniVarCI</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">Try it in R</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<p class="subtitle lead">Run and modify R code on the Gini index directly in your browser, without installing anything</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">November 17, 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>The exercises on this page run <strong>real R in your web browser</strong> thanks to <a href="https://docs.r-wasm.org/webr/latest/">webR</a>. Edit the code and press <strong>Run</strong>. The first run downloads R (about 20 MB) and takes a few seconds; later runs are immediate. Nothing is installed on your computer, and your code and data are not sent anywhere.</p>
+<div class="callout callout-style-simple callout-tip">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>The functions <code>gini_a()</code>, <code>gini_b()</code> and <code>gini_c()</code> are loaded in every exercise. They compute the estimators <span class="math inline">\widehat{G}_n^{a}</span>, <span class="math inline">\widehat{G}_n^{b}</span> and <span class="math inline">\widehat{G}_n^{c}</span> described in <a href="./gini-index.html">Definition and estimation</a>. These exercises are suitable for classes, workshops and self-study.</p>
+</div>
+</div>
+</div>
+<script type="module">
+  // webR is loaded only when the first exercise is run
+  let webRPromise = null;
+  async function getWebR(status) {
+    if (!webRPromise) {
+      webRPromise = (async () => {
+        status("Loading R in your browser (first time only)…");
+        const { WebR } = await import("https://webr.r-wasm.org/latest/webr.mjs");
+        const webR = new WebR();
+        await webR.init();
+        // Common functions available in every exercise
+        await webR.evalRVoid(`
+          gini_b <- function(y) { y <- sort(y); n <- length(y); 2 * sum(seq_len(n) * y) / (n * sum(y)) - (n + 1) / n }
+          gini_c <- function(y) { n <- length(y); n / (n - 1) * gini_b(y) }
+          gini_a <- function(y) { Fn <- ecdf(y)(y); sum((2 * Fn - 1) * y) / sum(y) }
+        `);
+        return webR;
+      })();
+    }
+    return webRPromise;
+  }
+
+  async function run(box) {
+    const code = box.querySelector("textarea").value;
+    const out = box.querySelector(".ex-output");
+    const status = msg => { out.innerHTML = `<span class="ex-status">${msg}</span>`; };
+    const btn = box.querySelector(".ex-run");
+    btn.disabled = true;
+    try {
+      const webR = await getWebR(status);
+      status("Running…");
+      const shelter = await new webR.Shelter();
+      try {
+        const res = await shelter.captureR(code, {withAutoprint: true, captureStreams: true, captureConditions: false,
+                                                  captureGraphics: {width: 640, height: 400}});
+        out.innerHTML = "";
+        const pre = document.createElement("pre");
+        pre.textContent = res.output.map(o => o.data).join("\n");
+        if (res.output.some(o => o.type === "stderr")) pre.classList.add("ex-stderr");
+        if (pre.textContent.trim()) out.appendChild(pre);
+        for (const img of (res.images || [])) {
+          const c = document.createElement("canvas");
+          c.width = img.width; c.height = img.height; c.className = "ex-plot";
+          c.getContext("2d").drawImage(img, 0, 0);
+          out.appendChild(c);
+        }
+        if (!out.childNodes.length) status("Done (no output).");
+      } finally { await shelter.purge(); }
+    } catch (e) {
+      out.innerHTML = `<pre class="ex-stderr"></pre>`;
+      out.querySelector("pre").textContent = "Error: " + (e.message || e);
+    } finally { btn.disabled = false; }
+  }
+
+  document.querySelectorAll(".exercise").forEach(box => {
+    const ta = box.querySelector("textarea");
+    const original = ta.value;
+    box.querySelector(".ex-run").addEventListener("click", () => run(box));
+    box.querySelector(".ex-reset").addEventListener("click", () => { ta.value = original; box.querySelector(".ex-output").innerHTML = ""; });
+    ta.addEventListener("keydown", e => { if ((e.ctrlKey || e.metaKey) && e.key === "Enter") { e.preventDefault(); run(box); } });
+  });
+</script>
+<section id="exercise-1.-three-estimators-of-the-gini-index" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-1.-three-estimators-of-the-gini-index">Exercise 1. Three estimators of the Gini index</h2>
+<p>Compute the three estimators for a small sample. What happens if the richest person earns more?</p>
+<div class="exercise">
+<textarea spellcheck="false" rows="9">y &lt;- c(10, 20, 30, 40, 60, 80)
+c(Ga = gini_a(y), Gb = gini_b(y), Gc = gini_c(y))
+
+# What happens if the richest person earns 200 instead of 80?
+y2 &lt;- c(10, 20, 30, 40, 60, 200)
+c(Ga = gini_a(y2), Gb = gini_b(y2), Gc = gini_c(y2))
+
+# Check: Ga = Gb + 1/n when there are no ties
+gini_a(y) - gini_b(y) - 1 / length(y)</textarea>
+<div class="ex-buttons"><button class="btn btn-primary btn-sm ex-run">▶ Run</button><button class="btn btn-outline-secondary btn-sm ex-reset">Reset</button><span class="ex-hint">Ctrl/Cmd + Enter</span></div>
+<div class="ex-output"></div>
+</div>
+<p><strong>Question.</strong> Why are the three estimators so different with only six observations? Which one would you report?</p>
+</section>
+<section id="exercise-2.-the-lorenz-curve" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-2.-the-lorenz-curve">Exercise 2. The Lorenz curve</h2>
+<div class="exercise">
+<textarea spellcheck="false" rows="12">set.seed(1)
+y &lt;- rlnorm(500, meanlog = 0, sdlog = 0.8)   # lognormal incomes
+y &lt;- sort(y)
+p &lt;- c(0, seq_along(y) / length(y))           # cumulative share of population
+L &lt;- c(0, cumsum(y) / sum(y))                 # cumulative share of income
+
+plot(p, L, type = "l", lwd = 3, col = "#1A5FA8", asp = 1,
+     xlab = "Cumulative share of population", ylab = "Cumulative share of income",
+     main = paste("Lorenz curve, Gini =", round(gini_c(y), 3)))
+abline(0, 1, col = "#D43F3A", lty = 2, lwd = 2)
+# Gini = 2 x area between the equality line and the Lorenz curve
+2 * (0.5 - sum(diff(p) * (head(L, -1) + tail(L, -1)) / 2))</textarea>
+<div class="ex-buttons"><button class="btn btn-primary btn-sm ex-run">▶ Run</button><button class="btn btn-outline-secondary btn-sm ex-reset">Reset</button><span class="ex-hint">Ctrl/Cmd + Enter</span></div>
+<div class="ex-output"></div>
+</div>
+<p><strong>Question.</strong> Change <code>sdlog</code> to 0.3 and to 1.5. How do the curve and the Gini index change?</p>
+</section>
+<section id="exercise-3.-the-bias-of-the-estimators-a-small-simulation" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-3.-the-bias-of-the-estimators-a-small-simulation">Exercise 3. The bias of the estimators: a small simulation</h2>
+<p>For a lognormal distribution, the true Gini index is <span class="math inline">G = 2\Phi(\sigma/\sqrt{2}) - 1</span>. Compare the average of the three estimators with the true value.</p>
+<div class="exercise">
+<textarea spellcheck="false" rows="15">set.seed(123)
+G     &lt;- 0.1                              # true Gini index: try 0.1, 0.4 and 0.8
+sigma &lt;- sqrt(2) * qnorm((G + 1) / 2)     # lognormal parameter with this Gini index
+n     &lt;- 50                               # try 20, 50 and 500
+
+est &lt;- replicate(2000, { y &lt;- rlnorm(n, 0, sigma); c(Ga = gini_a(y), Gb = gini_b(y), Gc = gini_c(y)) })
+RB  &lt;- 100 * (rowMeans(est) - G) / G       # relative bias (%)
+round(RB, 2)
+
+boxplot(t(est), col = c("#D43F3A", "#1A5FA8", "#C9962B"), ylab = "Estimates",
+        main = paste("G =", G, "  n =", n))
+abline(h = G, lty = 2, lwd = 2)</textarea>
+<div class="ex-buttons"><button class="btn btn-primary btn-sm ex-run">▶ Run</button><button class="btn btn-outline-secondary btn-sm ex-reset">Reset</button><span class="ex-hint">Ctrl/Cmd + Enter</span></div>
+<div class="ex-output"></div>
+</div>
+<p><strong>Question.</strong> Which estimator is badly biased when inequality is low? Explore more scenarios with the <a href="./simulation.html">interactive bias explorer</a>.</p>
+</section>
+<section id="exercise-4.-jackknife-standard-error-and-confidence-interval" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-4.-jackknife-standard-error-and-confidence-interval">Exercise 4. Jackknife standard error and confidence interval</h2>
+<div class="exercise">
+<textarea spellcheck="false" rows="14">set.seed(2)
+y &lt;- rlnorm(100, 0, 1)
+n &lt;- length(y)
+
+G_hat &lt;- gini_c(y)
+G_loo &lt;- sapply(seq_len(n), function(i) gini_c(y[-i]))   # leave-one-out estimates
+
+bias &lt;- (n - 1) * (mean(G_loo) - G_hat)
+se   &lt;- sqrt((n - 1) / n * sum((G_loo - mean(G_loo))^2))
+
+c(estimate = G_hat, bias = bias, se = se,
+  ci_lower = G_hat - 1.96 * se, ci_upper = G_hat + 1.96 * se,
+  true_G = 2 * pnorm(1 / sqrt(2)) - 1)</textarea>
+<div class="ex-buttons"><button class="btn btn-primary btn-sm ex-run">▶ Run</button><button class="btn btn-outline-secondary btn-sm ex-reset">Reset</button><span class="ex-hint">Ctrl/Cmd + Enter</span></div>
+<div class="ex-output"></div>
+</div>
+<p><strong>Question.</strong> Is the true value inside the interval? The <a href="./calculator.html">calculator</a> applies the same method to your own data.</p>
+</section>
+<section id="exercise-5.-missing-data-mcar-versus-mnar" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-5.-missing-data-mcar-versus-mnar">Exercise 5. Missing data: MCAR versus MNAR</h2>
+<p>Delete 30% of the incomes completely at random (MCAR), or delete them more often among the richest (MNAR), and compare complete-case analysis with mean imputation.</p>
+<div class="exercise">
+<textarea spellcheck="false" rows="20">set.seed(3)
+n &lt;- 1000
+y &lt;- rlnorm(n, 0, 0.8)
+G_full &lt;- gini_c(y)
+
+# MCAR: every unit has a 30% probability of not responding
+miss_mcar &lt;- runif(n) &lt; 0.30
+# MNAR: the probability of not responding grows with income (30% on average)
+p &lt;- plogis(-1.2 + 1.5 * as.numeric(scale(log(y))))
+miss_mnar &lt;- runif(n) &lt; p
+
+complete &lt;- function(miss) gini_c(y[!miss])
+mean_imp &lt;- function(miss) { z &lt;- y; z[miss] &lt;- mean(y[!miss]); gini_c(z) }
+
+round(rbind(
+  MCAR = c(missing = mean(miss_mcar), complete_cases = complete(miss_mcar), mean_imputation = mean_imp(miss_mcar)),
+  MNAR = c(missing = mean(miss_mnar), complete_cases = complete(miss_mnar), mean_imputation = mean_imp(miss_mnar))), 3)
+c(Gini_full_sample = G_full)</textarea>
+<div class="ex-buttons"><button class="btn btn-primary btn-sm ex-run">▶ Run</button><button class="btn btn-outline-secondary btn-sm ex-reset">Reset</button><span class="ex-hint">Ctrl/Cmd + Enter</span></div>
+<div class="ex-output"></div>
+</div>
+<p><strong>Question.</strong> Which method works under MCAR? What happens under MNAR? The <a href="./missing-data.html">missing data simulator</a> compares more methods, including multiple imputation.</p>
+</section>
+<section id="exercise-6.-the-r-package-ginivarci" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-6.-the-r-package-ginivarci">Exercise 6. The R package giniVarCI</h2>
+<p>The package developed in this project can also run in your browser. The first run installs it (it may take a minute).</p>
+<div class="exercise">
+<textarea spellcheck="false" rows="13">if (!requireNamespace("giniVarCI", quietly = TRUE))
+  webr::install("giniVarCI", repos = c("https://jfmunozrosas.r-universe.dev", "https://repo.r-wasm.org"))
+library(giniVarCI)
+
+set.seed(123)
+y &lt;- gsample(n = 100, gini = 0.5, distribution = "lognormal")   # sample with G = 0.5
+igini(y)                               # estimate of the Gini index
+igini(y, interval = "zjackknife")      # with a jackknife confidence interval
+igini(y, interval = "ELchisq")         # empirical likelihood interval</textarea>
+<div class="ex-buttons"><button class="btn btn-primary btn-sm ex-run">▶ Run</button><button class="btn btn-outline-secondary btn-sm ex-reset">Reset</button><span class="ex-hint">Ctrl/Cmd + Enter</span></div>
+<div class="ex-output"></div>
+</div>
+<p>If the package cannot be installed in your browser, install it in R with <code>install.packages("giniVarCI")</code>. See the <a href="./software.html">giniVarCI page</a> for more examples.</p>
+
+
+<!-- -->
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<!--
+  Visit counter (GoatCounter, free and cookie-free).
+  1. Create an account at https://www.goatcounter.com with the code below (ginius).
+  2. In Settings, enable "Allow adding visitor counts on your website".
+  If the code "ginius" is not available, change GC_CODE here (two places: this line and data-goatcounter).
+-->
+<script data-goatcounter="https://ginius.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+<script>
+(function () {
+  const GC_CODE = "ginius";
+  function show(n) {
+    const box = document.querySelector(".nav-footer-left") || document.querySelector("footer");
+    if (!box || document.getElementById("visit-counter")) return;
+    const s = document.createElement("span");
+    s.id = "visit-counter";
+    s.className = "visit-counter";
+    s.innerHTML = ` · <span class="vc-num">${n}</span> visits`;
+    box.appendChild(s);
+  }
+  // Skip local previews (quarto preview)
+  if (location.hostname === "localhost" || location.hostname === "127.0.0.1") return;
+  fetch(`https://${GC_CODE}.goatcounter.com/counter/TOTAL.json`)
+    .then(r => r.ok ? r.json() : null)
+    .then(d => { if (d && d.count) show(String(d.count).replace(/\s/g, ".")); })
+    .catch(() => {});
+})();
+</script>
+
+<script>
+// ---- Download counter ----
+// Every click on a downloadable file (CSV data, figures, infographic, video, R code, guides...)
+// is recorded in GoatCounter as an event "download/<file name>" (no cookies, no personal data).
+(function () {
+  const EXT = /\.(csv|xlsx|zip|png|svg|jpg|pdf|mp4|r|rds|rdata|qmd|txt|json|docx)(\?|#|$)/i;
+  document.addEventListener("click", function (e) {
+    const a = e.target.closest ? e.target.closest("a") : null;
+    if (!a) return;
+    const href = a.getAttribute("href") || "";
+    if (!a.hasAttribute("download") && !EXT.test(href)) return;
+    let name = a.getAttribute("download") || href.split("#")[0].split("?")[0].split("/").pop() || "file";
+    const page = location.pathname.split("/").pop() || "index.html";
+    if (window.goatcounter && window.goatcounter.count) {
+      window.goatcounter.count({path: "download/" + name, title: "Download: " + name + " (from " + page + ")", event: true});
+    }
+  }, true);
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/jfmunozrosas\.github\.io\/ginius");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Try it in R"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "Run and modify R code on the Gini index directly in your browser, without installing anything"</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">toc:</span><span class="co"> true</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>The exercises on this page run **real R in your web browser** thanks to [webR](https://docs.r-wasm.org/webr/latest/). Edit the code and press **Run**. The first run downloads R (about 20 MB) and takes a few seconds; later runs are immediate. Nothing is installed on your computer, and your code and data are not sent anywhere.</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip appearance="simple"}</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>The functions <span class="in">`gini_a()`</span>, <span class="in">`gini_b()`</span> and <span class="in">`gini_c()`</span> are loaded in every exercise. They compute the estimators $\widehat{G}_n^{a}$, $\widehat{G}_n^{b}$ and $\widehat{G}_n^{c}$ described in <span class="co">[</span><span class="ot">Definition and estimation</span><span class="co">](gini-index.qmd)</span>. These exercises are suitable for classes, workshops and self-study.</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;script type="module"&gt;</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="in">  // webR is loaded only when the first exercise is run</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="in">  let webRPromise = null;</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="in">  async function getWebR(status) {</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="in">    if (!webRPromise) {</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="in">      webRPromise = (async () =&gt; {</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="in">        status("Loading R in your browser (first time only)…");</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="in">        const { WebR } = await import("https://webr.r-wasm.org/latest/webr.mjs");</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="in">        const webR = new WebR();</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="in">        await webR.init();</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="in">        // Common functions available in every exercise</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="in">        await webR.evalRVoid(`</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="in">          gini_b &lt;- function(y) { y &lt;- sort(y); n &lt;- length(y); 2 * sum(seq_len(n) * y) / (n * sum(y)) - (n + 1) / n }</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="in">          gini_c &lt;- function(y) { n &lt;- length(y); n / (n - 1) * gini_b(y) }</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="in">          gini_a &lt;- function(y) { Fn &lt;- ecdf(y)(y); sum((2 * Fn - 1) * y) / sum(y) }</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="in">        `);</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="in">        return webR;</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="in">      })();</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="in">    return webRPromise;</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="in">  }</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="in">  async function run(box) {</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="in">    const code = box.querySelector("textarea").value;</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="in">    const out = box.querySelector(".ex-output");</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="in">    const status = msg =&gt; { out.innerHTML = `&lt;span class="ex-status"&gt;${msg}&lt;/span&gt;`; };</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="in">    const btn = box.querySelector(".ex-run");</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="in">    btn.disabled = true;</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="in">    try {</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="in">      const webR = await getWebR(status);</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="in">      status("Running…");</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="in">      const shelter = await new webR.Shelter();</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="in">      try {</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="in">        const res = await shelter.captureR(code, {withAutoprint: true, captureStreams: true, captureConditions: false,</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="in">                                                  captureGraphics: {width: 640, height: 400}});</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="in">        out.innerHTML = "";</span></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="in">        const pre = document.createElement("pre");</span></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="in">        pre.textContent = res.output.map(o =&gt; o.data).join("\n");</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="in">        if (res.output.some(o =&gt; o.type === "stderr")) pre.classList.add("ex-stderr");</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="in">        if (pre.textContent.trim()) out.appendChild(pre);</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="in">        for (const img of (res.images || [])) {</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="in">          const c = document.createElement("canvas");</span></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="in">          c.width = img.width; c.height = img.height; c.className = "ex-plot";</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="in">          c.getContext("2d").drawImage(img, 0, 0);</span></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="in">          out.appendChild(c);</span></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="in">        }</span></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="in">        if (!out.childNodes.length) status("Done (no output).");</span></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="in">      } finally { await shelter.purge(); }</span></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="in">    } catch (e) {</span></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="in">      out.innerHTML = `&lt;pre class="ex-stderr"&gt;&lt;/pre&gt;`;</span></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a><span class="in">      out.querySelector("pre").textContent = "Error: " + (e.message || e);</span></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="in">    } finally { btn.disabled = false; }</span></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a><span class="in">  }</span></span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a><span class="in">  document.querySelectorAll(".exercise").forEach(box =&gt; {</span></span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a><span class="in">    const ta = box.querySelector("textarea");</span></span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a><span class="in">    const original = ta.value;</span></span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a><span class="in">    box.querySelector(".ex-run").addEventListener("click", () =&gt; run(box));</span></span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a><span class="in">    box.querySelector(".ex-reset").addEventListener("click", () =&gt; { ta.value = original; box.querySelector(".ex-output").innerHTML = ""; });</span></span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a><span class="in">    ta.addEventListener("keydown", e =&gt; { if ((e.ctrlKey || e.metaKey) &amp;&amp; e.key === "Enter") { e.preventDefault(); run(box); } });</span></span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a><span class="in">  });</span></span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/script&gt;</span></span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 1. Three estimators of the Gini index</span></span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a>Compute the three estimators for a small sample. What happens if the richest person earns more?</span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class="exercise"&gt;</span></span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;textarea spellcheck="false" rows="9"&gt;y &lt;- c(10, 20, 30, 40, 60, 80)</span></span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a><span class="in">c(Ga = gini_a(y), Gb = gini_b(y), Gc = gini_c(y))</span></span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a><span class="in"># What happens if the richest person earns 200 instead of 80?</span></span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a><span class="in">y2 &lt;- c(10, 20, 30, 40, 60, 200)</span></span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a><span class="in">c(Ga = gini_a(y2), Gb = gini_b(y2), Gc = gini_c(y2))</span></span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a><span class="in"># Check: Ga = Gb + 1/n when there are no ties</span></span>
+<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a><span class="in">gini_a(y) - gini_b(y) - 1 / length(y)&lt;/textarea&gt;</span></span>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class="ex-buttons"&gt;&lt;button class="btn btn-primary btn-sm ex-run"&gt;▶ Run&lt;/button&gt;&lt;button class="btn btn-outline-secondary btn-sm ex-reset"&gt;Reset&lt;/button&gt;&lt;span class="ex-hint"&gt;Ctrl/Cmd + Enter&lt;/span&gt;&lt;/div&gt;</span></span>
+<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class="ex-output"&gt;&lt;/div&gt;</span></span>
+<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
+<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a>**Question.** Why are the three estimators so different with only six observations? Which one would you report?</span>
+<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 2. The Lorenz curve</span></span>
+<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
+<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class="exercise"&gt;</span></span>
+<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;textarea spellcheck="false" rows="12"&gt;set.seed(1)</span></span>
+<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a><span class="in">y &lt;- rlnorm(500, meanlog = 0, sdlog = 0.8)   # lognormal incomes</span></span>
+<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a><span class="in">y &lt;- sort(y)</span></span>
+<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a><span class="in">p &lt;- c(0, seq_along(y) / length(y))           # cumulative share of population</span></span>
+<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a><span class="in">L &lt;- c(0, cumsum(y) / sum(y))                 # cumulative share of income</span></span>
+<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a><span class="in">plot(p, L, type = "l", lwd = 3, col = "#1A5FA8", asp = 1,</span></span>
+<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a><span class="in">     xlab = "Cumulative share of population", ylab = "Cumulative share of income",</span></span>
+<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a><span class="in">     main = paste("Lorenz curve, Gini =", round(gini_c(y), 3)))</span></span>
+<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a><span class="in">abline(0, 1, col = "#D43F3A", lty = 2, lwd = 2)</span></span>
+<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a><span class="in"># Gini = 2 x area between the equality line and the Lorenz curve</span></span>
+<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a><span class="in">2 * (0.5 - sum(diff(p) * (head(L, -1) + tail(L, -1)) / 2))&lt;/textarea&gt;</span></span>
+<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class="ex-buttons"&gt;&lt;button class="btn btn-primary btn-sm ex-run"&gt;▶ Run&lt;/button&gt;&lt;button class="btn btn-outline-secondary btn-sm ex-reset"&gt;Reset&lt;/button&gt;&lt;span class="ex-hint"&gt;Ctrl/Cmd + Enter&lt;/span&gt;&lt;/div&gt;</span></span>
+<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class="ex-output"&gt;&lt;/div&gt;</span></span>
+<span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
+<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-120"><a href="#cb1-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-121"><a href="#cb1-121" aria-hidden="true" tabindex="-1"></a>**Question.** Change <span class="in">`sdlog`</span> to 0.3 and to 1.5. How do the curve and the Gini index change?</span>
+<span id="cb1-122"><a href="#cb1-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-123"><a href="#cb1-123" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 3. The bias of the estimators: a small simulation</span></span>
+<span id="cb1-124"><a href="#cb1-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-125"><a href="#cb1-125" aria-hidden="true" tabindex="-1"></a>For a lognormal distribution, the true Gini index is $G = 2\Phi(\sigma/\sqrt{2}) - 1$. Compare the average of the three estimators with the true value.</span>
+<span id="cb1-126"><a href="#cb1-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-127"><a href="#cb1-127" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
+<span id="cb1-128"><a href="#cb1-128" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class="exercise"&gt;</span></span>
+<span id="cb1-129"><a href="#cb1-129" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;textarea spellcheck="false" rows="15"&gt;set.seed(123)</span></span>
+<span id="cb1-130"><a href="#cb1-130" aria-hidden="true" tabindex="-1"></a><span class="in">G     &lt;- 0.1                              # true Gini index: try 0.1, 0.4 and 0.8</span></span>
+<span id="cb1-131"><a href="#cb1-131" aria-hidden="true" tabindex="-1"></a><span class="in">sigma &lt;- sqrt(2) * qnorm((G + 1) / 2)     # lognormal parameter with this Gini index</span></span>
+<span id="cb1-132"><a href="#cb1-132" aria-hidden="true" tabindex="-1"></a><span class="in">n     &lt;- 50                               # try 20, 50 and 500</span></span>
+<span id="cb1-133"><a href="#cb1-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-134"><a href="#cb1-134" aria-hidden="true" tabindex="-1"></a><span class="in">est &lt;- replicate(2000, { y &lt;- rlnorm(n, 0, sigma); c(Ga = gini_a(y), Gb = gini_b(y), Gc = gini_c(y)) })</span></span>
+<span id="cb1-135"><a href="#cb1-135" aria-hidden="true" tabindex="-1"></a><span class="in">RB  &lt;- 100 * (rowMeans(est) - G) / G       # relative bias (%)</span></span>
+<span id="cb1-136"><a href="#cb1-136" aria-hidden="true" tabindex="-1"></a><span class="in">round(RB, 2)</span></span>
+<span id="cb1-137"><a href="#cb1-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-138"><a href="#cb1-138" aria-hidden="true" tabindex="-1"></a><span class="in">boxplot(t(est), col = c("#D43F3A", "#1A5FA8", "#C9962B"), ylab = "Estimates",</span></span>
+<span id="cb1-139"><a href="#cb1-139" aria-hidden="true" tabindex="-1"></a><span class="in">        main = paste("G =", G, "  n =", n))</span></span>
+<span id="cb1-140"><a href="#cb1-140" aria-hidden="true" tabindex="-1"></a><span class="in">abline(h = G, lty = 2, lwd = 2)&lt;/textarea&gt;</span></span>
+<span id="cb1-141"><a href="#cb1-141" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class="ex-buttons"&gt;&lt;button class="btn btn-primary btn-sm ex-run"&gt;▶ Run&lt;/button&gt;&lt;button class="btn btn-outline-secondary btn-sm ex-reset"&gt;Reset&lt;/button&gt;&lt;span class="ex-hint"&gt;Ctrl/Cmd + Enter&lt;/span&gt;&lt;/div&gt;</span></span>
+<span id="cb1-142"><a href="#cb1-142" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class="ex-output"&gt;&lt;/div&gt;</span></span>
+<span id="cb1-143"><a href="#cb1-143" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
+<span id="cb1-144"><a href="#cb1-144" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-145"><a href="#cb1-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-146"><a href="#cb1-146" aria-hidden="true" tabindex="-1"></a>**Question.** Which estimator is badly biased when inequality is low? Explore more scenarios with the <span class="co">[</span><span class="ot">interactive bias explorer</span><span class="co">](simulation.qmd)</span>.</span>
+<span id="cb1-147"><a href="#cb1-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-148"><a href="#cb1-148" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 4. Jackknife standard error and confidence interval</span></span>
+<span id="cb1-149"><a href="#cb1-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-150"><a href="#cb1-150" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
+<span id="cb1-151"><a href="#cb1-151" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class="exercise"&gt;</span></span>
+<span id="cb1-152"><a href="#cb1-152" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;textarea spellcheck="false" rows="14"&gt;set.seed(2)</span></span>
+<span id="cb1-153"><a href="#cb1-153" aria-hidden="true" tabindex="-1"></a><span class="in">y &lt;- rlnorm(100, 0, 1)</span></span>
+<span id="cb1-154"><a href="#cb1-154" aria-hidden="true" tabindex="-1"></a><span class="in">n &lt;- length(y)</span></span>
+<span id="cb1-155"><a href="#cb1-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-156"><a href="#cb1-156" aria-hidden="true" tabindex="-1"></a><span class="in">G_hat &lt;- gini_c(y)</span></span>
+<span id="cb1-157"><a href="#cb1-157" aria-hidden="true" tabindex="-1"></a><span class="in">G_loo &lt;- sapply(seq_len(n), function(i) gini_c(y[-i]))   # leave-one-out estimates</span></span>
+<span id="cb1-158"><a href="#cb1-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-159"><a href="#cb1-159" aria-hidden="true" tabindex="-1"></a><span class="in">bias &lt;- (n - 1) * (mean(G_loo) - G_hat)</span></span>
+<span id="cb1-160"><a href="#cb1-160" aria-hidden="true" tabindex="-1"></a><span class="in">se   &lt;- sqrt((n - 1) / n * sum((G_loo - mean(G_loo))^2))</span></span>
+<span id="cb1-161"><a href="#cb1-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-162"><a href="#cb1-162" aria-hidden="true" tabindex="-1"></a><span class="in">c(estimate = G_hat, bias = bias, se = se,</span></span>
+<span id="cb1-163"><a href="#cb1-163" aria-hidden="true" tabindex="-1"></a><span class="in">  ci_lower = G_hat - 1.96 * se, ci_upper = G_hat + 1.96 * se,</span></span>
+<span id="cb1-164"><a href="#cb1-164" aria-hidden="true" tabindex="-1"></a><span class="in">  true_G = 2 * pnorm(1 / sqrt(2)) - 1)&lt;/textarea&gt;</span></span>
+<span id="cb1-165"><a href="#cb1-165" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class="ex-buttons"&gt;&lt;button class="btn btn-primary btn-sm ex-run"&gt;▶ Run&lt;/button&gt;&lt;button class="btn btn-outline-secondary btn-sm ex-reset"&gt;Reset&lt;/button&gt;&lt;span class="ex-hint"&gt;Ctrl/Cmd + Enter&lt;/span&gt;&lt;/div&gt;</span></span>
+<span id="cb1-166"><a href="#cb1-166" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class="ex-output"&gt;&lt;/div&gt;</span></span>
+<span id="cb1-167"><a href="#cb1-167" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
+<span id="cb1-168"><a href="#cb1-168" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-169"><a href="#cb1-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-170"><a href="#cb1-170" aria-hidden="true" tabindex="-1"></a>**Question.** Is the true value inside the interval? The <span class="co">[</span><span class="ot">calculator</span><span class="co">](calculator.qmd)</span> applies the same method to your own data.</span>
+<span id="cb1-171"><a href="#cb1-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-172"><a href="#cb1-172" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 5. Missing data: MCAR versus MNAR</span></span>
+<span id="cb1-173"><a href="#cb1-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-174"><a href="#cb1-174" aria-hidden="true" tabindex="-1"></a>Delete 30% of the incomes completely at random (MCAR), or delete them more often among the richest (MNAR), and compare complete-case analysis with mean imputation.</span>
+<span id="cb1-175"><a href="#cb1-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-176"><a href="#cb1-176" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
+<span id="cb1-177"><a href="#cb1-177" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class="exercise"&gt;</span></span>
+<span id="cb1-178"><a href="#cb1-178" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;textarea spellcheck="false" rows="20"&gt;set.seed(3)</span></span>
+<span id="cb1-179"><a href="#cb1-179" aria-hidden="true" tabindex="-1"></a><span class="in">n &lt;- 1000</span></span>
+<span id="cb1-180"><a href="#cb1-180" aria-hidden="true" tabindex="-1"></a><span class="in">y &lt;- rlnorm(n, 0, 0.8)</span></span>
+<span id="cb1-181"><a href="#cb1-181" aria-hidden="true" tabindex="-1"></a><span class="in">G_full &lt;- gini_c(y)</span></span>
+<span id="cb1-182"><a href="#cb1-182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-183"><a href="#cb1-183" aria-hidden="true" tabindex="-1"></a><span class="in"># MCAR: every unit has a 30% probability of not responding</span></span>
+<span id="cb1-184"><a href="#cb1-184" aria-hidden="true" tabindex="-1"></a><span class="in">miss_mcar &lt;- runif(n) &lt; 0.30</span></span>
+<span id="cb1-185"><a href="#cb1-185" aria-hidden="true" tabindex="-1"></a><span class="in"># MNAR: the probability of not responding grows with income (30% on average)</span></span>
+<span id="cb1-186"><a href="#cb1-186" aria-hidden="true" tabindex="-1"></a><span class="in">p &lt;- plogis(-1.2 + 1.5 * as.numeric(scale(log(y))))</span></span>
+<span id="cb1-187"><a href="#cb1-187" aria-hidden="true" tabindex="-1"></a><span class="in">miss_mnar &lt;- runif(n) &lt; p</span></span>
+<span id="cb1-188"><a href="#cb1-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-189"><a href="#cb1-189" aria-hidden="true" tabindex="-1"></a><span class="in">complete &lt;- function(miss) gini_c(y[!miss])</span></span>
+<span id="cb1-190"><a href="#cb1-190" aria-hidden="true" tabindex="-1"></a><span class="in">mean_imp &lt;- function(miss) { z &lt;- y; z[miss] &lt;- mean(y[!miss]); gini_c(z) }</span></span>
+<span id="cb1-191"><a href="#cb1-191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-192"><a href="#cb1-192" aria-hidden="true" tabindex="-1"></a><span class="in">round(rbind(</span></span>
+<span id="cb1-193"><a href="#cb1-193" aria-hidden="true" tabindex="-1"></a><span class="in">  MCAR = c(missing = mean(miss_mcar), complete_cases = complete(miss_mcar), mean_imputation = mean_imp(miss_mcar)),</span></span>
+<span id="cb1-194"><a href="#cb1-194" aria-hidden="true" tabindex="-1"></a><span class="in">  MNAR = c(missing = mean(miss_mnar), complete_cases = complete(miss_mnar), mean_imputation = mean_imp(miss_mnar))), 3)</span></span>
+<span id="cb1-195"><a href="#cb1-195" aria-hidden="true" tabindex="-1"></a><span class="in">c(Gini_full_sample = G_full)&lt;/textarea&gt;</span></span>
+<span id="cb1-196"><a href="#cb1-196" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class="ex-buttons"&gt;&lt;button class="btn btn-primary btn-sm ex-run"&gt;▶ Run&lt;/button&gt;&lt;button class="btn btn-outline-secondary btn-sm ex-reset"&gt;Reset&lt;/button&gt;&lt;span class="ex-hint"&gt;Ctrl/Cmd + Enter&lt;/span&gt;&lt;/div&gt;</span></span>
+<span id="cb1-197"><a href="#cb1-197" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class="ex-output"&gt;&lt;/div&gt;</span></span>
+<span id="cb1-198"><a href="#cb1-198" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
+<span id="cb1-199"><a href="#cb1-199" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-200"><a href="#cb1-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-201"><a href="#cb1-201" aria-hidden="true" tabindex="-1"></a>**Question.** Which method works under MCAR? What happens under MNAR? The <span class="co">[</span><span class="ot">missing data simulator</span><span class="co">](missing-data.qmd)</span> compares more methods, including multiple imputation.</span>
+<span id="cb1-202"><a href="#cb1-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-203"><a href="#cb1-203" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 6. The R package giniVarCI</span></span>
+<span id="cb1-204"><a href="#cb1-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-205"><a href="#cb1-205" aria-hidden="true" tabindex="-1"></a>The package developed in this project can also run in your browser. The first run installs it (it may take a minute).</span>
+<span id="cb1-206"><a href="#cb1-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-207"><a href="#cb1-207" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
+<span id="cb1-208"><a href="#cb1-208" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class="exercise"&gt;</span></span>
+<span id="cb1-209"><a href="#cb1-209" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;textarea spellcheck="false" rows="13"&gt;if (!requireNamespace("giniVarCI", quietly = TRUE))</span></span>
+<span id="cb1-210"><a href="#cb1-210" aria-hidden="true" tabindex="-1"></a><span class="in">  webr::install("giniVarCI", repos = c("https://jfmunozrosas.r-universe.dev", "https://repo.r-wasm.org"))</span></span>
+<span id="cb1-211"><a href="#cb1-211" aria-hidden="true" tabindex="-1"></a><span class="in">library(giniVarCI)</span></span>
+<span id="cb1-212"><a href="#cb1-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-213"><a href="#cb1-213" aria-hidden="true" tabindex="-1"></a><span class="in">set.seed(123)</span></span>
+<span id="cb1-214"><a href="#cb1-214" aria-hidden="true" tabindex="-1"></a><span class="in">y &lt;- gsample(n = 100, gini = 0.5, distribution = "lognormal")   # sample with G = 0.5</span></span>
+<span id="cb1-215"><a href="#cb1-215" aria-hidden="true" tabindex="-1"></a><span class="in">igini(y)                               # estimate of the Gini index</span></span>
+<span id="cb1-216"><a href="#cb1-216" aria-hidden="true" tabindex="-1"></a><span class="in">igini(y, interval = "zjackknife")      # with a jackknife confidence interval</span></span>
+<span id="cb1-217"><a href="#cb1-217" aria-hidden="true" tabindex="-1"></a><span class="in">igini(y, interval = "ELchisq")         # empirical likelihood interval&lt;/textarea&gt;</span></span>
+<span id="cb1-218"><a href="#cb1-218" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class="ex-buttons"&gt;&lt;button class="btn btn-primary btn-sm ex-run"&gt;▶ Run&lt;/button&gt;&lt;button class="btn btn-outline-secondary btn-sm ex-reset"&gt;Reset&lt;/button&gt;&lt;span class="ex-hint"&gt;Ctrl/Cmd + Enter&lt;/span&gt;&lt;/div&gt;</span></span>
+<span id="cb1-219"><a href="#cb1-219" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class="ex-output"&gt;&lt;/div&gt;</span></span>
+<span id="cb1-220"><a href="#cb1-220" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
+<span id="cb1-221"><a href="#cb1-221" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-222"><a href="#cb1-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-223"><a href="#cb1-223" aria-hidden="true" tabindex="-1"></a>If the package cannot be installed in your browser, install it in R with <span class="in">`install.packages("giniVarCI")`</span>. See the <span class="co">[</span><span class="ot">giniVarCI page</span><span class="co">](software.qmd)</span> for more examples.</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>GiniUs · PID2022-136235NB-I00 · Universidad de Granada · Last update: 17 November 2026</p>
+</div>   
+    <div class="nav-footer-center">
+<p>Funded by MICIU/AEI/10.13039/501100011033 and by ERDF/EU</p>
+</div>
+    <div class="nav-footer-right">
+<p>Built with <a href="https://quarto.org">Quarto</a> · Reproducible research</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

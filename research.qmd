@@ -1,0 +1,105 @@
+---
+title: "Research problems and questions"
+subtitle: "Why the Gini index needs new methodological developments"
+---
+
+Inequality is a source of conflict in society, and its measurement is essential to respond to the social and economic concerns of citizens. Recent events (the 2008 financial crisis, COVID-19, inflation, rising energy costs and interest rates) increase the risk of widening inequality. To have a realistic view of inequality and design corrective policies, **measurements must be reliable, without biases or errors**: a large bias can lead to invalid inferences and wrong conclusions (Särndal et al., 2003).
+
+The **Gini index** ($G$) is the most popular inequality indicator. It is easy to interpret (0 means perfect equality and 1 maximum inequality) and allows comparisons between countries, regions or groups (by sex, age, etc.). The project identifies and quantifies **four problems**, formulates **eleven research questions** and tests **two hypotheses** that had not been investigated in the literature.
+
+## Theoretical framework
+
+Let $Y$ be a continuous, non-negative variable (e.g. income) with mean $\mu$ and distribution function $F(y)$. The most popular formulations of the Gini index are (Berger and Gedik, 2020):
+
+$$
+G = \frac{1}{\mu}\int \{2F(y)-1\}\,y\,dF(y) = \frac{1}{2\mu}\iint |x-y|\,dF(x)\,dF(y).
+$$
+
+In practice, $G$ is estimated from a sample $S$ of size $n$. There is a great **controversy** about which empirical version should be used, because the many available expressions give different results (Giorgi and Gigliarano, 2017). The three most common estimators are
+
+$$
+\widehat{G}_n^{a} = \frac{2}{n\bar{y}}\sum_{i\in S} y_i\widehat{F}_n(y_i) - 1, \qquad
+\widehat{G}_n^{b} = \frac{1}{2n^2\bar{y}}\sum_{i\in S}\sum_{j\in S}|y_i-y_j|, \qquad
+\widehat{G}_n^{c} = \frac{n}{n-1}\,\widehat{G}_n^{b},
+$$
+
+where $\widehat{G}_n^{c}$ is frequently used to reduce the bias of $\widehat{G}_n^{b}$. All the expressions are listed on the page [Definition and estimation](gini-index.qmd).
+
+## Problem 1. Large biases in the estimation of the Gini index
+
+::: {.rq}
+**Question 1.** Is there an exhaustive review that collects all the expressions of the Gini index and establishes the relationships among them?
+
+**Question 2.** Which expression of the Gini index should be used, given the data available in an empirical study of inequality?
+
+**Question 3.** Can characteristics of the data, such as skewness or inequality, affect the bias of the Gini estimators?
+:::
+
+No reference collects and relates all the expressions of the Gini index; Giorgi and Gigliarano (2017) ignore finite populations and estimators such as $\widehat{G}_n^{c}$. Previous studies on the bias (Deltas, 2003; Davidson, 2009; Berger and Gedik, 2020) analyse a single estimator with data of similar inequality and skewness. The project tests two new hypotheses:
+
+::: {.hyp}
+**H1.** The skewness of the data affects the bias of the Gini estimators.\
+**H2.** The inequality of the data affects the bias of the Gini estimators.
+:::
+
+A Monte Carlo study with **48 scenarios** (Pareto, Dagum with $p=20$ and $p=0.5$, lognormal, Weibull and Gamma distributions, with $G = 0.1,\ldots,0.8$ and $n=50$) showed that:
+
+- $\widehat{G}_n^{a}$ has **excessively large biases** with low inequality;
+- **skewness** has an important effect on the bias of the three estimators;
+- in highly skewed distributions, **inequality** also has an important effect on the bias.
+
+The bias is considered *negligible* when $|RB| < 2\%$, *acceptable* when $|RB| < 5\%$, and *large* otherwise, where $RB = 100\times\{E(\widehat{G})-G\}/G$ is the relative bias. You can reproduce and extend this study with the [interactive bias explorer](simulation.qmd).
+
+::: {.rq}
+**Question 4.** Which methods should be applied to reduce this bias?
+
+**Question 5.** Can a criterion be established to help institutions and researchers know when their data may have large biases, so that correction techniques must be applied?
+:::
+
+The project investigates the **bootstrap** (including the rescaled bootstrap; Berger and Muñoz, 2015; Muñoz et al., 2018; Moya et al., 2023), the **jackknife** (Berger and Skinner, 2005; Berger, 2008) and the **empirical bootstrap** (Pfeffermann and Correa, 2012), and a practical criterion based on the relative bias, the bias ratio and the mean squared error.
+
+## Problem 2. Missing data and the Gini index
+
+::: {.rq}
+**Question 6.** What are the consequences of missing data for the estimation of the Gini index?
+
+**Question 7.** What is the best strategy to deal with missing data in studies based on the Gini index, so that estimates are precise, robust and reliable?
+:::
+
+The consequences of missing data (non-response bias, larger variance, distortion of the relationships between variables) have not been exhaustively investigated for the Gini index. The most common solution is to replace each missing value by one (single imputation) or several (multiple imputation) plausible values (Van Buuren, 2018; Muñoz and Rueda, 2009). Studies on inequality measures have important limitations: they do not compare imputation techniques, ignore the effect of skewness and inequality, and **ignore the type of non-response mechanism**. Missing data are very likely because people are less willing to answer sensitive questions such as income, which generates larger non-response bias. The [missing data simulator](missing-data.qmd) illustrates the problem under the three mechanisms (MCAR, MAR and MNAR).
+
+## Problem 3. Lack of software for the Gini index
+
+::: {.rq}
+**Question 8.** Is there software that computes the different expressions of the Gini index, their variances and confidence intervals with all the methods available in the literature?
+:::
+
+When the project started, R packages such as *DescTools* and *laeken* did not estimate the variance and only provided bootstrap intervals; *ineq*, *reldist*, *GiniWegNeg* and *dineq* only computed point estimates. Stata (*fastgini*, *ineqdeco*, *ineqerr*), SPSS and SAS had similar limitations. Other methods (jackknife, linearisation, empirical likelihood) can be more accurate (Berger, 2008; Berger and Gedik, 2020). This problem has been solved with the R package [**giniVarCI**](software.qmd).
+
+## Problem 4. Applications in the Social Sciences
+
+::: {.rq}
+**Question 9.** What are the applications of the Gini index, and which techniques are used to deal with missing data, in the research areas of the members of the project?
+
+**Question 10.** Do inequality studies in these areas use the optimal expression of the Gini index and confidence intervals with desirable properties?
+
+**Question 11.** Do inequality studies with missing information in these areas deal with missing data with the required scientific rigour?
+:::
+
+The review of the literature found studies on **water** that use multiple imputation with 50% missing data without reporting the imputation model or checking its assumptions, or that impute with the mean; studies in **strategic management and international business** (some in ABS 4\* and 4 journals) that use five imputations with 23% missing data or ignore the non-response mechanism with 75% missing data; and studies on **tourism** and inequality that simply delete the cases with missing data. Some do not use the unbiased version of the Gini index, so bias is a serious problem with small samples or highly skewed data. The project prepares **methodological contributions** for each area that explain how to detect and avoid these biases and errors.
+
+## References
+
+Berger, Y.G. (2008). A note on the asymptotic equivalence of jackknife and linearization variance estimation for the Gini coefficient. *Journal of Official Statistics*, 24(4), 541–555.\
+Berger, Y.G., & Gedik, İ. (2020). Confidence intervals of Gini coefficient under unequal probability sampling. *Journal of Official Statistics*, 36(2), 237–249.\
+Berger, Y.G., & Muñoz, J.F. (2015). On estimating quantiles using auxiliary information. *Journal of Official Statistics*, 31(1), 101–119.\
+Berger, Y.G., & Skinner, C.J. (2005). A jackknife variance estimator for unequal probability sampling. *JRSS B*, 67(1), 79–89.\
+Davidson, R. (2009). Reliable inference for the Gini index. *Journal of Econometrics*, 150(1), 30–40.\
+Deltas, G. (2003). The small-sample bias of the Gini coefficient. *Review of Economics and Statistics*, 85(1), 226–234.\
+Giorgi, G.M., & Gigliarano, C. (2017). The Gini concentration index: a review of the inference literature. *Journal of Economic Surveys*, 31(4), 1130–1148.\
+Moya, P.J., Muñoz, J.F., Álvarez, E., & Blanco, F.J. (2023). Rescaled bootstrap confidence intervals for the population variance in the presence of outliers or spikes. *Communications in Statistics – Simulation and Computation*, 52(2), 466–481.\
+Muñoz, J.F., Álvarez, E., & García, R.M. (2018). On estimating the poverty gap and the poverty severity indices with auxiliary information. *Sociological Methods & Research*, 47(3), 598–625.\
+Muñoz, J.F., & Rueda, M. (2009). New imputation methods for missing data using quantiles. *Journal of Computational and Applied Mathematics*, 232(2), 305–317.\
+Pfeffermann, D., & Correa, S. (2012). Empirical bootstrap bias correction and estimation of prediction mean square error in small area estimation. *Biometrika*, 99(2), 457–472.\
+Särndal, C.E., Swensson, B., & Wretman, J.H. (2003). *Model Assisted Survey Sampling*. Springer.\
+Van Buuren, S. (2018). *Flexible Imputation of Missing Data*. CRC Press.

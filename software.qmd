@@ -1,0 +1,68 @@
+---
+title: "The R package giniVarCI"
+subtitle: "Gini indices, variances and confidence intervals for finite and infinite populations"
+code-fold: false
+---
+
+**giniVarCI** is the open-source R package developed in GiniUs (objective OG3). It is available on [CRAN](https://cran.r-project.org/package=giniVarCI) and on [R-universe](https://jfmunozrosas.r-universe.dev/giniVarCI), where it can also be used in the browser with webR (see the [R exercises](practice.qmd)).
+
+> Muñoz, J.F., Pavía, J.M., & Álvarez-Verdejo, E. (2024). *giniVarCI: Gini Indices, Variances and Confidence Intervals for Finite and Infinite Populations*. R package version 0.0.1-3. <https://doi.org/10.32614/CRAN.package.giniVarCI>
+
+## What it does
+
+1. Estimates the Gini index for samples from **infinite populations** (`igini()`, `iginindex()`) and from **finite populations** with survey weights or inclusion probabilities (`fgini()`, `fginindex()`), with the different expressions of the literature.
+2. Computes **variances and confidence intervals** with different methods: percentile and BCa bootstrap, jackknife, linearisation and empirical likelihood (`igini()`, `fgini()`), and compares them (`icompareCI()`, `fcompareCI()`).
+3. Computes the **Gini index of continuous probability distributions** (Beta, Burr, chi-squared, Dagum, F, Fisk, Gamma, Gompertz, lognormal, Pareto, etc.: functions `gbeta()`, `gdagum()`, `ggamma()`, ...).
+4. Draws **samples with a Gini index set by the user** (`gsample()`), very useful for simulation studies.
+5. Uses **Rcpp** (C++), so calculations are faster than in other packages that compute the Gini index.
+
+## Installation
+
+```r
+install.packages("giniVarCI")            # from CRAN
+library(giniVarCI)
+vignette("GiniVarInterval", package = "giniVarCI")
+```
+
+## Examples
+
+**Infinite populations.**
+
+```r
+set.seed(123)
+y <- gsample(n = 100, gini = 0.5, distribution = "lognormal")
+
+igini(y)                             # Gini index (with bias correction)
+iginindex(y, method = 5)             # a specific expression of the Gini index
+igini(y, interval = "zjackknife")    # jackknife interval
+igini(y, interval = "BCa")           # BCa bootstrap interval
+igini(y, interval = "ELchisq")       # empirical likelihood interval
+icompareCI(y, plotCI = TRUE)         # compares all the intervals
+```
+
+Intervals available in `igini()`: `"pbootstrap"`, `"BCa"`, `"zjackknife"`, `"tjackknife"`, `"zalinearization"`, `"zblinearization"`, `"talinearization"`, `"tblinearization"`, `"ELchisq"` and `"ELboot"`.
+
+**Finite populations (survey data).**
+
+```r
+data(eusilc, package = "laeken")
+y <- eusilc$eqIncome[eusilc$db040 == "Burgenland"]
+w <- eusilc$rb050[eusilc$db040 == "Burgenland"]
+
+fgini(y, w)                                    # weighted Gini index
+fginindex(y, w, method = 3)                    # Berger (2008), mid-point distribution function
+fgini(y, w, interval = "zjackknife")           # jackknife interval
+fgini(y, w, interval = "zalinearization")      # linearisation interval
+```
+
+Methods available in `fginindex()`: 1, Langel and Tillé (2013); 2 (default), Alfons and Templ (2012) and Langel and Tillé (2013); 3, Berger (2008); 4, Berger and Gedik-Balay (2020); 5, Lerman and Yitzhaki (1989).
+
+## Documentation
+
+- [Reference manual (PDF)](https://cran.r-project.org/web/packages/giniVarCI/giniVarCI.pdf)
+- [Vignette: estimation, variances and intervals for the Gini index](https://cran.r-project.org/web/packages/giniVarCI/vignettes/GiniVarInterval.html)
+- [Package page on CRAN](https://cran.r-project.org/package=giniVarCI)
+
+::: {.callout-tip appearance="simple"}
+Without installing anything, you can estimate the Gini index of your own data, with its jackknife and bootstrap intervals, in the [Gini index calculator](calculator.qmd).
+:::

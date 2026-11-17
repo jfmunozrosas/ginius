@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>The Gini index: definition and estimation – GiniUs</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./images/favicon_ginius.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-2e67a60b6ceb0e571a24b65c8c311c23.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="The Gini index: definition and estimation – GiniUs">
+<meta property="og:description" content="Definitions, estimators for infinite and finite populations, and R code">
+<meta property="og:image" content="https://jfmunozrosas.github.io/ginius/images/logo_ginius.png">
+<meta property="og:site_name" content="GiniUs">
+<meta property="og:image:height" content="132">
+<meta property="og:image:width" content="497">
+<meta name="twitter:title" content="The Gini index: definition and estimation – GiniUs">
+<meta name="twitter:description" content="Definitions, estimators for infinite and finite populations, and R code">
+<meta name="twitter:image" content="https://jfmunozrosas.github.io/ginius/images/logo_ginius.png">
+<meta name="twitter:image-height" content="132">
+<meta name="twitter:image-width" content="497">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./images/logo_ginius.png" alt="GiniUs logo" class="navbar-logo">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-project" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Project</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-project">    
+        <li>
+    <a class="dropdown-item" href="./research.html">
+ <span class="dropdown-text">Research problems and questions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./project.html">
+ <span class="dropdown-text">Objectives, activities and work plan</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./results.html">
+ <span class="dropdown-text">Results and conclusions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./news.html">
+ <span class="dropdown-text">Status and news</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="./team.html"> 
+<span class="menu-text">Team</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-gini-index" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Gini index</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-gini-index">    
+        <li>
+    <a class="dropdown-item" href="./gini-index.html">
+ <span class="dropdown-text">Definition and estimation (with R code)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./simulation.html">
+ <span class="dropdown-text">Interactive bias explorer</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./missing-data.html">
+ <span class="dropdown-text">Missing data simulator (MCAR, MAR, MNAR)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./calculator.html">
+ <span class="dropdown-text">Gini index calculator</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./practice.html">
+ <span class="dropdown-text">Try it in R (in your browser)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./glossary.html">
+ <span class="dropdown-text">Glossary and FAQ</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./data-code.html">
+ <span class="dropdown-text">Research data and R code</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="./software.html"> 
+<span class="menu-text">giniVarCI</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./observatory.html"> 
+<span class="menu-text">Observatory</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./publications.html"> 
+<span class="menu-text">Publications</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-dissemination" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Dissemination</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-dissemination">    
+        <li>
+    <a class="dropdown-item" href="./dissemination.html">
+ <span class="dropdown-text">Seminars and conferences</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./blog/index.html">
+ <span class="dropdown-text">Blog</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./links.html">
+ <span class="dropdown-text">Links of interest</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./cite.html">
+ <span class="dropdown-text">How to cite</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="./contact.html"> 
+<span class="menu-text">Contact</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./feedback.html"> 
+<span class="menu-text">Your opinion</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./news.html"> 
+<span class="menu-text">● In progress (year 4)</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/jfmunozrosas/ginius"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#definitions" id="toc-definitions" class="nav-link active" data-scroll-target="#definitions">Definitions</a></li>
+  <li><a href="#estimation-in-infinite-populations" id="toc-estimation-in-infinite-populations" class="nav-link" data-scroll-target="#estimation-in-infinite-populations">Estimation in infinite populations</a></li>
+  <li><a href="#estimation-in-finite-populations" id="toc-estimation-in-finite-populations" class="nav-link" data-scroll-target="#estimation-in-finite-populations">Estimation in finite populations</a></li>
+  <li><a href="#with-the-r-package-ginivarci" id="toc-with-the-r-package-ginivarci" class="nav-link" data-scroll-target="#with-the-r-package-ginivarci">With the R package giniVarCI</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">The Gini index: definition and estimation</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<p class="subtitle lead">Definitions, estimators for infinite and finite populations, and R code</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">November 17, 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><img src="images/logo_ginius.png" class="img-fluid" style="width:40.0%" alt="GiniUs logo"></p>
+<section id="definitions" class="level2">
+<h2 class="anchored" data-anchor-id="definitions">Definitions</h2>
+<p>Let <span class="math inline">Y</span> be a non-negative continuous random variable with distribution function <span class="math inline">F_Y</span> and mean <span class="math inline">\mu_Y = E[Y]=\int_0^{\infty} y\,dF_Y(y)</span>. The Gini index has several equivalent definitions.</p>
+<p><strong>Definition 1</strong> (Lorenz, 1905; Langel and Tillé, 2013). Twice the area between the line of equality and the Lorenz curve <span class="math inline">L_\alpha</span>: <span class="math display">
+G = 2\left(0.5 - \int_{0}^{1} L_{\alpha}\, d\alpha \right), \qquad
+L_{\alpha} = \frac{1}{\mu_{Y}}\int_{0}^{Y_{\alpha}}y\,dF_{Y}(y)=\frac{1}{\mu_{Y}}\int_{0}^{\alpha}Y_{u}\,du,
+</span> where <span class="math inline">Y_{\alpha}=F_{Y}^{-1}(\alpha)=\inf\{t:F_{Y}(t)\geq \alpha\}</span> is the <span class="math inline">\alpha</span>-quantile of <span class="math inline">Y</span>.</p>
+<p><strong>Definition 2</strong> (Kendall and Stuart, 1977). Half the relative mean absolute difference: <span class="math display">
+G = \frac{D_{G}}{2 \mu_{Y}}, \qquad D_{G}=E|X-Y|=\int_{0}^{\infty}\!\!\int_{0}^{\infty} |x-y|\,dF_{Y}(x)\,dF_{Y}(y).
+</span></p>
+<p><strong>Definition 3</strong> (Qin et al., 2010; Berger and Gedik-Balay, 2020): <span class="math display">
+G=\frac{1}{\mu_{Y}}\int_{0}^{\infty}\{2F_{Y}(y)-1\}\,y\,dF_{Y}(y)=1 - \frac{1}{\mu_{Y}}\int_{0}^{\infty}\{1-F_{Y}(y)\}^{2}dy.
+</span></p>
+<p><strong>Definition 4</strong> (Anand, 1983; Lerman and Yitzhaki, 1984): <span class="math display">
+G=\frac{2}{\mu_{Y}}\,\mathrm{cov}\{Y, F_{Y}(Y)\}.
+</span></p>
+<p><strong>Definition 5</strong> (Yitzhaki, 1998; Peng, 2011; Berger and Gedik-Balay, 2020): <span class="math display">
+G=1 - \frac{\mu_{Z}}{\mu_{Y}}, \qquad \mu_{Z} = E(Z)= \int_{0}^{\infty}\{1-F_{Z}(z)\}\,dz,
+</span> where <span class="math inline">Z=\min\{Y_{a}, Y_{b}\}</span> and <span class="math inline">Y_{a}</span>, <span class="math inline">Y_{b}</span> are independent copies of <span class="math inline">Y</span>.</p>
+<div class="callout callout-style-simple callout-tip">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>All these estimators, with variances and confidence intervals, are implemented in the R package <a href="./software.html"><strong>giniVarCI</strong></a>, developed in this project: <code>install.packages("giniVarCI")</code>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="estimation-in-infinite-populations" class="level2">
+<h2 class="anchored" data-anchor-id="estimation-in-infinite-populations">Estimation in infinite populations</h2>
+<p>We use a sample of size <span class="math inline">n=50</span> from a Pareto distribution. The R functions below are written in base R so that they can be read and checked easily; <strong>giniVarCI</strong> computes them much faster with C++ code.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample selection (Pareto distribution with scale 1 and shape 1.5, by inversion)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>rpareto_base <span class="ot">&lt;-</span> <span class="cf">function</span>(n, <span class="at">scale =</span> <span class="dv">1</span>, shape) scale <span class="sc">/</span> <span class="fu">runif</span>(n)<span class="sc">^</span>(<span class="dv">1</span> <span class="sc">/</span> shape)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>Y.n <span class="ot">&lt;-</span> <span class="fu">rpareto_base</span>(<span class="at">n =</span> <span class="dv">50</span>, <span class="at">shape =</span> <span class="fl">1.5</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(Y.n, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  2.295  1.172  1.815  1.086  1.042  7.840  1.531  1.079  1.487  1.686
+[11]  1.030  1.695  1.296  1.450  4.553  1.073  2.546  8.268  2.103  1.032
+[21]  1.081  1.277  1.346  1.004  1.325  1.258  1.500  1.415  2.287  3.588
+[31]  1.025  1.071  1.280  1.165 11.818  1.636  1.202  2.774  2.146  2.651
+[41]  3.660  1.799  1.801  1.944  3.504  3.730  2.641  1.664  2.418  1.108</code></pre>
+</div>
+</div>
+<p><strong>Estimator <span class="math inline">\widehat{G}_{n}^{a}</span>:</strong> <span class="math display">\widehat{G}_{n}^{a}= \frac{1}{n\overline{y}}\sum_{i \in S}\{2\widehat{F}_{n}(y_{i})-1\}y_{i}= \frac{1}{T}\sum_{i \in S}\{2\widehat{F}_{n}(y_{i})-1\}y_{i},\qquad T=\sum_{i \in S}y_{i}.</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>Gn.a <span class="ot">&lt;-</span> <span class="cf">function</span>(y) {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  FDi <span class="ot">&lt;-</span> <span class="fu">sapply</span>(y, <span class="cf">function</span>(Yi) <span class="fu">mean</span>(y <span class="sc">&lt;=</span> Yi))</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">1</span> <span class="sc">/</span> <span class="fu">sum</span>(y)) <span class="sc">*</span> <span class="fu">sum</span>((<span class="dv">2</span> <span class="sc">*</span> FDi <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> y)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">Gn.a</span>(Y.n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3803843</code></pre>
+</div>
+</div>
+<p><strong>Estimator <span class="math inline">\widehat{G}_{n}^{b}</span>:</strong> <span class="math display">\widehat{G}_{n}^{b}=\frac{1}{2n^{2}\overline{y}}\sum_{i \in S}\sum_{j \in S}|y_{i}-y_{j}|=\frac{1}{2nT}\sum_{i \in S}\sum_{j \in S}|y_{i}-y_{j}|.</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>Gn.b <span class="ot">&lt;-</span> <span class="cf">function</span>(y) {</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(y)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  ABSi <span class="ot">&lt;-</span> <span class="fu">sapply</span>(y, <span class="cf">function</span>(Yi) <span class="fu">sum</span>(<span class="fu">abs</span>(y <span class="sc">-</span> Yi)))</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(ABSi) <span class="sc">/</span> (<span class="dv">2</span> <span class="sc">*</span> n <span class="sc">*</span> <span class="fu">sum</span>(y))</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">Gn.b</span>(Y.n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3603843</code></pre>
+</div>
+</div>
+<p><strong>Estimators <span class="math inline">\widehat{G}_{n}^{b1}</span>, <span class="math inline">\widehat{G}_{n}^{b2}</span> and <span class="math inline">\widehat{G}_{n}^{b3}</span></strong> (equivalent expressions of <span class="math inline">\widehat{G}_{n}^{b}</span> based on the ordered sample <span class="math inline">y_{(1)}\le\cdots\le y_{(n)}</span>): <span class="math display">\widehat{G}_{n}^{b1} = \frac{2}{nT}\sum_{i=1}^{n} i\, y_{(i)} - \frac{n+1}{n},\qquad
+\widehat{G}_{n}^{b2} = \frac{2\widehat{\beta}}{n} - \frac{n+1}{n},\quad \widehat{\beta}=\frac{1}{T}\sum_{i=1}^{n} i\,y_{(i)},\qquad
+\widehat{G}_{n}^{b3} = \frac{2}{T}\,\mathrm{cov}(i, y_{(i)}).</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>Gn.b1 <span class="ot">&lt;-</span> <span class="cf">function</span>(y) { n <span class="ot">&lt;-</span> <span class="fu">length</span>(y); (<span class="dv">2</span> <span class="sc">/</span> (n <span class="sc">*</span> <span class="fu">sum</span>(y))) <span class="sc">*</span> <span class="fu">sum</span>((<span class="dv">1</span><span class="sc">:</span>n) <span class="sc">*</span> <span class="fu">sort</span>(y)) <span class="sc">-</span> (n <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">/</span> n }</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>Gn.b2 <span class="ot">&lt;-</span> <span class="cf">function</span>(y) { n <span class="ot">&lt;-</span> <span class="fu">length</span>(y); Beta <span class="ot">&lt;-</span> <span class="fu">sum</span>((<span class="dv">1</span><span class="sc">:</span>n) <span class="sc">*</span> <span class="fu">sort</span>(y)) <span class="sc">/</span> <span class="fu">sum</span>(y); <span class="dv">2</span> <span class="sc">*</span> Beta <span class="sc">/</span> n <span class="sc">-</span> (n <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">/</span> n }</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>Gn.b3 <span class="ot">&lt;-</span> <span class="cf">function</span>(y) { n <span class="ot">&lt;-</span> <span class="fu">length</span>(y); (<span class="dv">2</span> <span class="sc">/</span> <span class="fu">sum</span>(y)) <span class="sc">*</span> (<span class="fu">mean</span>((<span class="dv">1</span><span class="sc">:</span>n) <span class="sc">*</span> <span class="fu">sort</span>(y)) <span class="sc">-</span> <span class="fu">mean</span>(<span class="dv">1</span><span class="sc">:</span>n) <span class="sc">*</span> <span class="fu">mean</span>(y)) }</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">b1 =</span> <span class="fu">Gn.b1</span>(Y.n), <span class="at">b2 =</span> <span class="fu">Gn.b2</span>(Y.n), <span class="at">b3 =</span> <span class="fu">Gn.b3</span>(Y.n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       b1        b2        b3 
+0.3603843 0.3603843 0.3603843 </code></pre>
+</div>
+</div>
+<p><strong>Estimator <span class="math inline">\widehat{G}_{n}^{c}</span></strong> (bias-corrected version): <span class="math display">\widehat{G}_{n}^{c}= \frac{n}{n-1}\widehat{G}_{n}^{b}=\frac{1}{2(n-1)T}\sum_{i \in S}\sum_{j \in S}|y_{i}-y_{j}|.</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>Gn.c <span class="ot">&lt;-</span> <span class="cf">function</span>(y) { n <span class="ot">&lt;-</span> <span class="fu">length</span>(y); n <span class="sc">*</span> <span class="fu">Gn.b</span>(y) <span class="sc">/</span> (n <span class="sc">-</span> <span class="dv">1</span>) }</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Gn.c</span>(Y.n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3677391</code></pre>
+</div>
+</div>
+<p><strong>Estimators <span class="math inline">\widehat{G}_{n}^{c1}</span>, <span class="math inline">\widehat{G}_{n}^{c2}</span> and <span class="math inline">\widehat{G}_{n}^{c3}</span>:</strong> <span class="math display">\widehat{G}_{n}^{c1} = \frac{2}{(n-1)T}\sum_{i=1}^{n} i\, y_{(i)} - \frac{n+1}{n-1},\qquad
+\widehat{G}_{n}^{c2} = \frac{1}{2\overline{y}}\binom{n}{2}^{-1}\sum_{1 \leq i_{1} &lt; i_{2} \leq n} |y_{i_{1}}-y_{i_{2}}|,\qquad
+\widehat{G}_{n}^{c3} = 1 - \frac{\overline{z}}{\overline{y}},</span> where <span class="math inline">z_i = (n-1)^{-1}\sum_{j\neq i}\min(y_i,y_j)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>Gn.c1 <span class="ot">&lt;-</span> <span class="cf">function</span>(y) { n <span class="ot">&lt;-</span> <span class="fu">length</span>(y); (<span class="dv">2</span> <span class="sc">/</span> ((n <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> <span class="fu">sum</span>(y))) <span class="sc">*</span> <span class="fu">sum</span>((<span class="dv">1</span><span class="sc">:</span>n) <span class="sc">*</span> <span class="fu">sort</span>(y)) <span class="sc">-</span> (n <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">/</span> (n <span class="sc">-</span> <span class="dv">1</span>) }</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>Gn.c2 <span class="ot">&lt;-</span> <span class="cf">function</span>(y) {</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(y); pairs <span class="ot">&lt;-</span> <span class="fu">combn</span>(n, <span class="dv">2</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">1</span> <span class="sc">/</span> (<span class="dv">2</span> <span class="sc">*</span> <span class="fu">mean</span>(y))) <span class="sc">*</span> <span class="fu">sum</span>(<span class="fu">abs</span>(y[pairs[<span class="dv">1</span>, ]] <span class="sc">-</span> y[pairs[<span class="dv">2</span>, ]])) <span class="sc">/</span> <span class="fu">choose</span>(n, <span class="dv">2</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>Gn.c3 <span class="ot">&lt;-</span> <span class="cf">function</span>(y) {</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(y)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  zi <span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span>n, <span class="cf">function</span>(i) <span class="fu">sum</span>(<span class="fu">pmin</span>(y[<span class="sc">-</span>i], y[i]))) <span class="sc">/</span> (n <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span> <span class="sc">-</span> <span class="fu">mean</span>(zi) <span class="sc">/</span> <span class="fu">mean</span>(y)</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">c1 =</span> <span class="fu">Gn.c1</span>(Y.n), <span class="at">c2 =</span> <span class="fu">Gn.c2</span>(Y.n), <span class="at">c3 =</span> <span class="fu">Gn.c3</span>(Y.n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       c1        c2        c3 
+0.3677391 0.3677391 0.3677391 </code></pre>
+</div>
+</div>
+</section>
+<section id="estimation-in-finite-populations" class="level2">
+<h2 class="anchored" data-anchor-id="estimation-in-finite-populations">Estimation in finite populations</h2>
+<p>A sample of size <span class="math inline">n=50</span> is selected by simple random sampling without replacement from a population of size <span class="math inline">N=10{,}000</span> generated from a Pareto distribution. The survey weights are <span class="math inline">w_i = N/n</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>Y.N <span class="ot">&lt;-</span> <span class="fu">rpareto_base</span>(<span class="at">n =</span> <span class="dv">10000</span>, <span class="at">shape =</span> <span class="fl">1.5</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>Y.n <span class="ot">&lt;-</span> <span class="fu">sample</span>(Y.N, <span class="at">size =</span> <span class="dv">50</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>w.n <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">10000</span> <span class="sc">/</span> <span class="dv">50</span>, <span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Estimator <span class="math inline">\widehat{G}_{w}^{a}</span>:</strong> <span class="math display">\widehat{G}_{w}^{a}= \frac{2}{\widehat{N}\overline{y}_{w}}\sum_{i \in S}w_{i}y_{i}\widehat{F}_{w}(y_{i})-1.</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>Gw.a <span class="ot">&lt;-</span> <span class="cf">function</span>(y, w) {</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  N.Hat <span class="ot">&lt;-</span> <span class="fu">sum</span>(w)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  FDi <span class="ot">&lt;-</span> <span class="fu">sapply</span>(y, <span class="cf">function</span>(Yi) <span class="fu">sum</span>(w <span class="sc">*</span> (y <span class="sc">&lt;=</span> Yi)) <span class="sc">/</span> N.Hat)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  Mean.y <span class="ot">&lt;-</span> <span class="fu">sum</span>(w <span class="sc">*</span> y) <span class="sc">/</span> N.Hat</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">2</span> <span class="sc">/</span> (N.Hat <span class="sc">*</span> Mean.y)) <span class="sc">*</span> <span class="fu">sum</span>(w <span class="sc">*</span> y <span class="sc">*</span> FDi) <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="fu">Gw.a</span>(Y.n, w.n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3356694</code></pre>
+</div>
+</div>
+<p><strong>Estimator <span class="math inline">\widehat{G}_{w}^{b}</span>:</strong> <span class="math display">\widehat{G}_{w}^{b}=\frac{1}{2\widehat{N}^{2}\overline{y}_{w}}\sum_{i \in S}\sum_{j \in S}w_{i}w_{j}|y_{i}-y_{j}|.</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>Gw.b <span class="ot">&lt;-</span> <span class="cf">function</span>(y, w) {</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  N.Hat <span class="ot">&lt;-</span> <span class="fu">sum</span>(w)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  ABSi <span class="ot">&lt;-</span> <span class="fu">sapply</span>(y, <span class="cf">function</span>(Yi) <span class="fu">sum</span>(w <span class="sc">*</span> <span class="fu">abs</span>(y <span class="sc">-</span> Yi)))</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  Mean.y <span class="ot">&lt;-</span> <span class="fu">sum</span>(w <span class="sc">*</span> y) <span class="sc">/</span> N.Hat</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(w <span class="sc">*</span> ABSi) <span class="sc">/</span> (<span class="dv">2</span> <span class="sc">*</span> N.Hat<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> Mean.y)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="fu">Gw.b</span>(Y.n, w.n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3156694</code></pre>
+</div>
+</div>
+<p><strong>Estimator <span class="math inline">\widehat{G}_{w}^{c}</span>:</strong> <span class="math display">\widehat{G}_{w}^{c} =1 - \frac{\overline{z}_{w}}{\overline{y}_{w}}.</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>Gw.c <span class="ot">&lt;-</span> <span class="cf">function</span>(y, w) {</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  N.Hat <span class="ot">&lt;-</span> <span class="fu">sum</span>(w); n <span class="ot">&lt;-</span> <span class="fu">length</span>(y)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  zi <span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span>n, <span class="cf">function</span>(i) <span class="fu">sum</span>(w[<span class="sc">-</span>i] <span class="sc">*</span> <span class="fu">pmin</span>(y[<span class="sc">-</span>i], y[i])) <span class="sc">/</span> (N.Hat <span class="sc">-</span> w[i]))</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span> <span class="sc">-</span> (<span class="fu">sum</span>(w <span class="sc">*</span> zi) <span class="sc">/</span> N.Hat) <span class="sc">/</span> (<span class="fu">sum</span>(w <span class="sc">*</span> y) <span class="sc">/</span> N.Hat)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="fu">Gw.c</span>(Y.n, w.n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3221116</code></pre>
+</div>
+</div>
+</section>
+<section id="with-the-r-package-ginivarci" class="level2">
+<h2 class="anchored" data-anchor-id="with-the-r-package-ginivarci">With the R package giniVarCI</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"giniVarCI"</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(giniVarCI)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Infinite populations: estimate with bias correction and confidence interval</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="fu">igini</span>(Y.n)                              <span class="co"># point estimate</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="fu">igini</span>(Y.n, <span class="at">interval =</span> <span class="st">"zjackknife"</span>)     <span class="co"># jackknife interval</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="fu">icompareCI</span>(Y.n, <span class="at">plotCI =</span> <span class="cn">TRUE</span>)          <span class="co"># compares all the intervals</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Finite populations: survey weights</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="fu">fgini</span>(Y.n, w.n, <span class="at">interval =</span> <span class="st">"zalinearization"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>See the <a href="./software.html">giniVarCI page</a> for more examples.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<p>Anand, S. (1983). <em>Inequality and Poverty in Malaysia: Measurement and Decomposition</em>. The World Bank.<br>
+Berger, Y.G., &amp; Gedik-Balay, İ. (2020). Confidence intervals of Gini coefficient under unequal probability sampling. <em>Journal of Official Statistics</em>, 36(2), 237–249.<br>
+Kendall, M., &amp; Stuart, A. (1977). <em>The Advanced Theory of Statistics. Vol. 1: Distribution Theory</em>. Griffin.<br>
+Langel, M., &amp; Tillé, Y. (2013). Variance estimation of the Gini index: revisiting a result several times published. <em>JRSS A</em>, 176(2), 521–540.<br>
+Lerman, R.I., &amp; Yitzhaki, S. (1984). A note on the calculation and interpretation of the Gini index. <em>Economics Letters</em>, 15(3–4), 363–368.<br>
+Lorenz, M.O. (1905). Methods of measuring the concentration of wealth. <em>Publications of the American Statistical Association</em>, 9(70), 209–219.<br>
+Peng, L. (2011). Empirical likelihood methods for the Gini index. <em>Australian &amp; New Zealand Journal of Statistics</em>, 53(2), 131–139.<br>
+Qin, Y., Rao, J.N.K., &amp; Wu, C. (2010). Empirical likelihood confidence intervals for the Gini measure of income inequality. <em>Economic Modelling</em>, 27(6), 1429–1435.<br>
+Yitzhaki, S. (1998). More than a dozen alternative ways of spelling Gini. <em>Research on Economic Inequality</em>, 8, 13–30.</p>
+
+
+<!-- -->
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<!--
+  Visit counter (GoatCounter, free and cookie-free).
+  1. Create an account at https://www.goatcounter.com with the code below (ginius).
+  2. In Settings, enable "Allow adding visitor counts on your website".
+  If the code "ginius" is not available, change GC_CODE here (two places: this line and data-goatcounter).
+-->
+<script data-goatcounter="https://ginius.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+<script>
+(function () {
+  const GC_CODE = "ginius";
+  function show(n) {
+    const box = document.querySelector(".nav-footer-left") || document.querySelector("footer");
+    if (!box || document.getElementById("visit-counter")) return;
+    const s = document.createElement("span");
+    s.id = "visit-counter";
+    s.className = "visit-counter";
+    s.innerHTML = ` · <span class="vc-num">${n}</span> visits`;
+    box.appendChild(s);
+  }
+  // Skip local previews (quarto preview)
+  if (location.hostname === "localhost" || location.hostname === "127.0.0.1") return;
+  fetch(`https://${GC_CODE}.goatcounter.com/counter/TOTAL.json`)
+    .then(r => r.ok ? r.json() : null)
+    .then(d => { if (d && d.count) show(String(d.count).replace(/\s/g, ".")); })
+    .catch(() => {});
+})();
+</script>
+
+<script>
+// ---- Download counter ----
+// Every click on a downloadable file (CSV data, figures, infographic, video, R code, guides...)
+// is recorded in GoatCounter as an event "download/<file name>" (no cookies, no personal data).
+(function () {
+  const EXT = /\.(csv|xlsx|zip|png|svg|jpg|pdf|mp4|r|rds|rdata|qmd|txt|json|docx)(\?|#|$)/i;
+  document.addEventListener("click", function (e) {
+    const a = e.target.closest ? e.target.closest("a") : null;
+    if (!a) return;
+    const href = a.getAttribute("href") || "";
+    if (!a.hasAttribute("download") && !EXT.test(href)) return;
+    let name = a.getAttribute("download") || href.split("#")[0].split("?")[0].split("/").pop() || "file";
+    const page = location.pathname.split("/").pop() || "index.html";
+    if (window.goatcounter && window.goatcounter.count) {
+      window.goatcounter.count({path: "download/" + name, title: "Download: " + name + " (from " + page + ")", event: true});
+    }
+  }, true);
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/jfmunozrosas\.github\.io\/ginius");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb21" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "The Gini index: definition and estimation"</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "Definitions, estimators for infinite and finite populations, and R code"</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="an">code-fold:</span><span class="co"> false</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/logo_ginius.png)</span>{width=40% fig-alt="GiniUs logo"}</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="fu">## Definitions</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>Let $Y$ be a non-negative continuous random variable with distribution function $F_Y$ and mean $\mu_Y = E<span class="co">[</span><span class="ot">Y</span><span class="co">]</span>=\int_0^{\infty} y\,dF_Y(y)$. The Gini index has several equivalent definitions.</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>**Definition 1** (Lorenz, 1905; Langel and Tillé, 2013). Twice the area between the line of equality and the Lorenz curve $L_\alpha$:</span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>G = 2\left(0.5 - \int_{0}^{1} L_{\alpha}\, d\alpha \right), \qquad</span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>L_{\alpha} = \frac{1}{\mu_{Y}}\int_{0}^{Y_{\alpha}}y\,dF_{Y}(y)=\frac{1}{\mu_{Y}}\int_{0}^{\alpha}Y_{u}\,du,</span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>where $Y_{\alpha}=F_{Y}^{-1}(\alpha)=\inf<span class="sc">\{</span>t:F_{Y}(t)\geq \alpha<span class="sc">\}</span>$ is the $\alpha$-quantile of $Y$.</span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>**Definition 2** (Kendall and Stuart, 1977). Half the relative mean absolute difference:</span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>G = \frac{D_{G}}{2 \mu_{Y}}, \qquad D_{G}=E|X-Y|=\int_{0}^{\infty}<span class="sc">\!\!</span>\int_{0}^{\infty} |x-y|\,dF_{Y}(x)\,dF_{Y}(y).</span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a>**Definition 3** (Qin et al., 2010; Berger and Gedik-Balay, 2020):</span>
+<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a>G=\frac{1}{\mu_{Y}}\int_{0}^{\infty}<span class="sc">\{</span>2F_{Y}(y)-1<span class="sc">\}</span>\,y\,dF_{Y}(y)=1 - \frac{1}{\mu_{Y}}\int_{0}^{\infty}<span class="sc">\{</span>1-F_{Y}(y)<span class="sc">\}</span>^{2}dy.</span>
+<span id="cb21-28"><a href="#cb21-28" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-30"><a href="#cb21-30" aria-hidden="true" tabindex="-1"></a>**Definition 4** (Anand, 1983; Lerman and Yitzhaki, 1984):</span>
+<span id="cb21-31"><a href="#cb21-31" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb21-32"><a href="#cb21-32" aria-hidden="true" tabindex="-1"></a>G=\frac{2}{\mu_{Y}}\,\mathrm{cov}<span class="sc">\{</span>Y, F_{Y}(Y)<span class="sc">\}</span>.</span>
+<span id="cb21-33"><a href="#cb21-33" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb21-34"><a href="#cb21-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-35"><a href="#cb21-35" aria-hidden="true" tabindex="-1"></a>**Definition 5** (Yitzhaki, 1998; Peng, 2011; Berger and Gedik-Balay, 2020):</span>
+<span id="cb21-36"><a href="#cb21-36" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb21-37"><a href="#cb21-37" aria-hidden="true" tabindex="-1"></a>G=1 - \frac{\mu_{Z}}{\mu_{Y}}, \qquad \mu_{Z} = E(Z)= \int_{0}^{\infty}<span class="sc">\{</span>1-F_{Z}(z)<span class="sc">\}</span>\,dz,</span>
+<span id="cb21-38"><a href="#cb21-38" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb21-39"><a href="#cb21-39" aria-hidden="true" tabindex="-1"></a>where $Z=\min<span class="sc">\{</span>Y_{a}, Y_{b}<span class="sc">\}</span>$ and $Y_{a}$, $Y_{b}$ are independent copies of $Y$.</span>
+<span id="cb21-40"><a href="#cb21-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-41"><a href="#cb21-41" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip appearance="simple"}</span>
+<span id="cb21-42"><a href="#cb21-42" aria-hidden="true" tabindex="-1"></a>All these estimators, with variances and confidence intervals, are implemented in the R package <span class="co">[</span><span class="ot">**giniVarCI**</span><span class="co">](software.qmd)</span>, developed in this project: <span class="in">`install.packages("giniVarCI")`</span>.</span>
+<span id="cb21-43"><a href="#cb21-43" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb21-44"><a href="#cb21-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-45"><a href="#cb21-45" aria-hidden="true" tabindex="-1"></a><span class="fu">## Estimation in infinite populations</span></span>
+<span id="cb21-46"><a href="#cb21-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-47"><a href="#cb21-47" aria-hidden="true" tabindex="-1"></a>We use a sample of size $n=50$ from a Pareto distribution. The R functions below are written in base R so that they can be read and checked easily; **giniVarCI** computes them much faster with C++ code.</span>
+<span id="cb21-48"><a href="#cb21-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-51"><a href="#cb21-51" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb21-52"><a href="#cb21-52" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample selection (Pareto distribution with scale 1 and shape 1.5, by inversion)</span></span>
+<span id="cb21-53"><a href="#cb21-53" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb21-54"><a href="#cb21-54" aria-hidden="true" tabindex="-1"></a>rpareto_base <span class="ot">&lt;-</span> <span class="cf">function</span>(n, <span class="at">scale =</span> <span class="dv">1</span>, shape) scale <span class="sc">/</span> <span class="fu">runif</span>(n)<span class="sc">^</span>(<span class="dv">1</span> <span class="sc">/</span> shape)</span>
+<span id="cb21-55"><a href="#cb21-55" aria-hidden="true" tabindex="-1"></a>Y.n <span class="ot">&lt;-</span> <span class="fu">rpareto_base</span>(<span class="at">n =</span> <span class="dv">50</span>, <span class="at">shape =</span> <span class="fl">1.5</span>)</span>
+<span id="cb21-56"><a href="#cb21-56" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(Y.n, <span class="dv">3</span>)</span>
+<span id="cb21-57"><a href="#cb21-57" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-58"><a href="#cb21-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-59"><a href="#cb21-59" aria-hidden="true" tabindex="-1"></a>**Estimator $\widehat{G}_{n}^{a}$:**</span>
+<span id="cb21-60"><a href="#cb21-60" aria-hidden="true" tabindex="-1"></a>$$\widehat{G}_{n}^{a}= \frac{1}{n\overline{y}}\sum_{i \in S}\{2\widehat{F}_{n}(y_{i})-1\}y_{i}= \frac{1}{T}\sum_{i \in S}\{2\widehat{F}_{n}(y_{i})-1\}y_{i},\qquad T=\sum_{i \in S}y_{i}.$$</span>
+<span id="cb21-61"><a href="#cb21-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-64"><a href="#cb21-64" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb21-65"><a href="#cb21-65" aria-hidden="true" tabindex="-1"></a>Gn.a <span class="ot">&lt;-</span> <span class="cf">function</span>(y) {</span>
+<span id="cb21-66"><a href="#cb21-66" aria-hidden="true" tabindex="-1"></a>  FDi <span class="ot">&lt;-</span> <span class="fu">sapply</span>(y, <span class="cf">function</span>(Yi) <span class="fu">mean</span>(y <span class="sc">&lt;=</span> Yi))</span>
+<span id="cb21-67"><a href="#cb21-67" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">1</span> <span class="sc">/</span> <span class="fu">sum</span>(y)) <span class="sc">*</span> <span class="fu">sum</span>((<span class="dv">2</span> <span class="sc">*</span> FDi <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> y)</span>
+<span id="cb21-68"><a href="#cb21-68" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb21-69"><a href="#cb21-69" aria-hidden="true" tabindex="-1"></a><span class="fu">Gn.a</span>(Y.n)</span>
+<span id="cb21-70"><a href="#cb21-70" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-71"><a href="#cb21-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-72"><a href="#cb21-72" aria-hidden="true" tabindex="-1"></a>**Estimator $\widehat{G}_{n}^{b}$:**</span>
+<span id="cb21-73"><a href="#cb21-73" aria-hidden="true" tabindex="-1"></a>$$\widehat{G}_{n}^{b}=\frac{1}{2n^{2}\overline{y}}\sum_{i \in S}\sum_{j \in S}|y_{i}-y_{j}|=\frac{1}{2nT}\sum_{i \in S}\sum_{j \in S}|y_{i}-y_{j}|.$$</span>
+<span id="cb21-74"><a href="#cb21-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-77"><a href="#cb21-77" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb21-78"><a href="#cb21-78" aria-hidden="true" tabindex="-1"></a>Gn.b <span class="ot">&lt;-</span> <span class="cf">function</span>(y) {</span>
+<span id="cb21-79"><a href="#cb21-79" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(y)</span>
+<span id="cb21-80"><a href="#cb21-80" aria-hidden="true" tabindex="-1"></a>  ABSi <span class="ot">&lt;-</span> <span class="fu">sapply</span>(y, <span class="cf">function</span>(Yi) <span class="fu">sum</span>(<span class="fu">abs</span>(y <span class="sc">-</span> Yi)))</span>
+<span id="cb21-81"><a href="#cb21-81" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(ABSi) <span class="sc">/</span> (<span class="dv">2</span> <span class="sc">*</span> n <span class="sc">*</span> <span class="fu">sum</span>(y))</span>
+<span id="cb21-82"><a href="#cb21-82" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb21-83"><a href="#cb21-83" aria-hidden="true" tabindex="-1"></a><span class="fu">Gn.b</span>(Y.n)</span>
+<span id="cb21-84"><a href="#cb21-84" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-85"><a href="#cb21-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-86"><a href="#cb21-86" aria-hidden="true" tabindex="-1"></a>**Estimators $\widehat{G}_{n}^{b1}$, $\widehat{G}_{n}^{b2}$ and $\widehat{G}_{n}^{b3}$** (equivalent expressions of $\widehat{G}_{n}^{b}$ based on the ordered sample $y_{(1)}\le\cdots\le y_{(n)}$):</span>
+<span id="cb21-87"><a href="#cb21-87" aria-hidden="true" tabindex="-1"></a>$$\widehat{G}_{n}^{b1} = \frac{2}{nT}\sum_{i=1}^{n} i\, y_{(i)} - \frac{n+1}{n},\qquad</span>
+<span id="cb21-88"><a href="#cb21-88" aria-hidden="true" tabindex="-1"></a>\widehat{G}_{n}^{b2} = \frac{2\widehat{\beta}}{n} - \frac{n+1}{n},\quad \widehat{\beta}=\frac{1}{T}\sum_{i=1}^{n} i\,y_{(i)},\qquad</span>
+<span id="cb21-89"><a href="#cb21-89" aria-hidden="true" tabindex="-1"></a>\widehat{G}_{n}^{b3} = \frac{2}{T}\,\mathrm{cov}(i, y_{(i)}).$$</span>
+<span id="cb21-90"><a href="#cb21-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-93"><a href="#cb21-93" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb21-94"><a href="#cb21-94" aria-hidden="true" tabindex="-1"></a>Gn.b1 <span class="ot">&lt;-</span> <span class="cf">function</span>(y) { n <span class="ot">&lt;-</span> <span class="fu">length</span>(y); (<span class="dv">2</span> <span class="sc">/</span> (n <span class="sc">*</span> <span class="fu">sum</span>(y))) <span class="sc">*</span> <span class="fu">sum</span>((<span class="dv">1</span><span class="sc">:</span>n) <span class="sc">*</span> <span class="fu">sort</span>(y)) <span class="sc">-</span> (n <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">/</span> n }</span>
+<span id="cb21-95"><a href="#cb21-95" aria-hidden="true" tabindex="-1"></a>Gn.b2 <span class="ot">&lt;-</span> <span class="cf">function</span>(y) { n <span class="ot">&lt;-</span> <span class="fu">length</span>(y); Beta <span class="ot">&lt;-</span> <span class="fu">sum</span>((<span class="dv">1</span><span class="sc">:</span>n) <span class="sc">*</span> <span class="fu">sort</span>(y)) <span class="sc">/</span> <span class="fu">sum</span>(y); <span class="dv">2</span> <span class="sc">*</span> Beta <span class="sc">/</span> n <span class="sc">-</span> (n <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">/</span> n }</span>
+<span id="cb21-96"><a href="#cb21-96" aria-hidden="true" tabindex="-1"></a>Gn.b3 <span class="ot">&lt;-</span> <span class="cf">function</span>(y) { n <span class="ot">&lt;-</span> <span class="fu">length</span>(y); (<span class="dv">2</span> <span class="sc">/</span> <span class="fu">sum</span>(y)) <span class="sc">*</span> (<span class="fu">mean</span>((<span class="dv">1</span><span class="sc">:</span>n) <span class="sc">*</span> <span class="fu">sort</span>(y)) <span class="sc">-</span> <span class="fu">mean</span>(<span class="dv">1</span><span class="sc">:</span>n) <span class="sc">*</span> <span class="fu">mean</span>(y)) }</span>
+<span id="cb21-97"><a href="#cb21-97" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">b1 =</span> <span class="fu">Gn.b1</span>(Y.n), <span class="at">b2 =</span> <span class="fu">Gn.b2</span>(Y.n), <span class="at">b3 =</span> <span class="fu">Gn.b3</span>(Y.n))</span>
+<span id="cb21-98"><a href="#cb21-98" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-99"><a href="#cb21-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-100"><a href="#cb21-100" aria-hidden="true" tabindex="-1"></a>**Estimator $\widehat{G}_{n}^{c}$** (bias-corrected version):</span>
+<span id="cb21-101"><a href="#cb21-101" aria-hidden="true" tabindex="-1"></a>$$\widehat{G}_{n}^{c}= \frac{n}{n-1}\widehat{G}_{n}^{b}=\frac{1}{2(n-1)T}\sum_{i \in S}\sum_{j \in S}|y_{i}-y_{j}|.$$</span>
+<span id="cb21-102"><a href="#cb21-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-105"><a href="#cb21-105" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb21-106"><a href="#cb21-106" aria-hidden="true" tabindex="-1"></a>Gn.c <span class="ot">&lt;-</span> <span class="cf">function</span>(y) { n <span class="ot">&lt;-</span> <span class="fu">length</span>(y); n <span class="sc">*</span> <span class="fu">Gn.b</span>(y) <span class="sc">/</span> (n <span class="sc">-</span> <span class="dv">1</span>) }</span>
+<span id="cb21-107"><a href="#cb21-107" aria-hidden="true" tabindex="-1"></a><span class="fu">Gn.c</span>(Y.n)</span>
+<span id="cb21-108"><a href="#cb21-108" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-109"><a href="#cb21-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-110"><a href="#cb21-110" aria-hidden="true" tabindex="-1"></a>**Estimators $\widehat{G}_{n}^{c1}$, $\widehat{G}_{n}^{c2}$ and $\widehat{G}_{n}^{c3}$:**</span>
+<span id="cb21-111"><a href="#cb21-111" aria-hidden="true" tabindex="-1"></a>$$\widehat{G}_{n}^{c1} = \frac{2}{(n-1)T}\sum_{i=1}^{n} i\, y_{(i)} - \frac{n+1}{n-1},\qquad</span>
+<span id="cb21-112"><a href="#cb21-112" aria-hidden="true" tabindex="-1"></a>\widehat{G}_{n}^{c2} = \frac{1}{2\overline{y}}\binom{n}{2}^{-1}\sum_{1 \leq i_{1} &lt; i_{2} \leq n} |y_{i_{1}}-y_{i_{2}}|,\qquad</span>
+<span id="cb21-113"><a href="#cb21-113" aria-hidden="true" tabindex="-1"></a>\widehat{G}_{n}^{c3} = 1 - \frac{\overline{z}}{\overline{y}},$$</span>
+<span id="cb21-114"><a href="#cb21-114" aria-hidden="true" tabindex="-1"></a>where $z_i = (n-1)^{-1}\sum_{j\neq i}\min(y_i,y_j)$.</span>
+<span id="cb21-115"><a href="#cb21-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-118"><a href="#cb21-118" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb21-119"><a href="#cb21-119" aria-hidden="true" tabindex="-1"></a>Gn.c1 <span class="ot">&lt;-</span> <span class="cf">function</span>(y) { n <span class="ot">&lt;-</span> <span class="fu">length</span>(y); (<span class="dv">2</span> <span class="sc">/</span> ((n <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> <span class="fu">sum</span>(y))) <span class="sc">*</span> <span class="fu">sum</span>((<span class="dv">1</span><span class="sc">:</span>n) <span class="sc">*</span> <span class="fu">sort</span>(y)) <span class="sc">-</span> (n <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">/</span> (n <span class="sc">-</span> <span class="dv">1</span>) }</span>
+<span id="cb21-120"><a href="#cb21-120" aria-hidden="true" tabindex="-1"></a>Gn.c2 <span class="ot">&lt;-</span> <span class="cf">function</span>(y) {</span>
+<span id="cb21-121"><a href="#cb21-121" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(y); pairs <span class="ot">&lt;-</span> <span class="fu">combn</span>(n, <span class="dv">2</span>)</span>
+<span id="cb21-122"><a href="#cb21-122" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">1</span> <span class="sc">/</span> (<span class="dv">2</span> <span class="sc">*</span> <span class="fu">mean</span>(y))) <span class="sc">*</span> <span class="fu">sum</span>(<span class="fu">abs</span>(y[pairs[<span class="dv">1</span>, ]] <span class="sc">-</span> y[pairs[<span class="dv">2</span>, ]])) <span class="sc">/</span> <span class="fu">choose</span>(n, <span class="dv">2</span>)</span>
+<span id="cb21-123"><a href="#cb21-123" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb21-124"><a href="#cb21-124" aria-hidden="true" tabindex="-1"></a>Gn.c3 <span class="ot">&lt;-</span> <span class="cf">function</span>(y) {</span>
+<span id="cb21-125"><a href="#cb21-125" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(y)</span>
+<span id="cb21-126"><a href="#cb21-126" aria-hidden="true" tabindex="-1"></a>  zi <span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span>n, <span class="cf">function</span>(i) <span class="fu">sum</span>(<span class="fu">pmin</span>(y[<span class="sc">-</span>i], y[i]))) <span class="sc">/</span> (n <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb21-127"><a href="#cb21-127" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span> <span class="sc">-</span> <span class="fu">mean</span>(zi) <span class="sc">/</span> <span class="fu">mean</span>(y)</span>
+<span id="cb21-128"><a href="#cb21-128" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb21-129"><a href="#cb21-129" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">c1 =</span> <span class="fu">Gn.c1</span>(Y.n), <span class="at">c2 =</span> <span class="fu">Gn.c2</span>(Y.n), <span class="at">c3 =</span> <span class="fu">Gn.c3</span>(Y.n))</span>
+<span id="cb21-130"><a href="#cb21-130" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-131"><a href="#cb21-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-132"><a href="#cb21-132" aria-hidden="true" tabindex="-1"></a><span class="fu">## Estimation in finite populations</span></span>
+<span id="cb21-133"><a href="#cb21-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-134"><a href="#cb21-134" aria-hidden="true" tabindex="-1"></a>A sample of size $n=50$ is selected by simple random sampling without replacement from a population of size $N=10{,}000$ generated from a Pareto distribution. The survey weights are $w_i = N/n$.</span>
+<span id="cb21-135"><a href="#cb21-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-138"><a href="#cb21-138" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb21-139"><a href="#cb21-139" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb21-140"><a href="#cb21-140" aria-hidden="true" tabindex="-1"></a>Y.N <span class="ot">&lt;-</span> <span class="fu">rpareto_base</span>(<span class="at">n =</span> <span class="dv">10000</span>, <span class="at">shape =</span> <span class="fl">1.5</span>)</span>
+<span id="cb21-141"><a href="#cb21-141" aria-hidden="true" tabindex="-1"></a>Y.n <span class="ot">&lt;-</span> <span class="fu">sample</span>(Y.N, <span class="at">size =</span> <span class="dv">50</span>)</span>
+<span id="cb21-142"><a href="#cb21-142" aria-hidden="true" tabindex="-1"></a>w.n <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">10000</span> <span class="sc">/</span> <span class="dv">50</span>, <span class="dv">50</span>)</span>
+<span id="cb21-143"><a href="#cb21-143" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-144"><a href="#cb21-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-145"><a href="#cb21-145" aria-hidden="true" tabindex="-1"></a>**Estimator $\widehat{G}_{w}^{a}$:**</span>
+<span id="cb21-146"><a href="#cb21-146" aria-hidden="true" tabindex="-1"></a>$$\widehat{G}_{w}^{a}= \frac{2}{\widehat{N}\overline{y}_{w}}\sum_{i \in S}w_{i}y_{i}\widehat{F}_{w}(y_{i})-1.$$</span>
+<span id="cb21-147"><a href="#cb21-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-150"><a href="#cb21-150" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb21-151"><a href="#cb21-151" aria-hidden="true" tabindex="-1"></a>Gw.a <span class="ot">&lt;-</span> <span class="cf">function</span>(y, w) {</span>
+<span id="cb21-152"><a href="#cb21-152" aria-hidden="true" tabindex="-1"></a>  N.Hat <span class="ot">&lt;-</span> <span class="fu">sum</span>(w)</span>
+<span id="cb21-153"><a href="#cb21-153" aria-hidden="true" tabindex="-1"></a>  FDi <span class="ot">&lt;-</span> <span class="fu">sapply</span>(y, <span class="cf">function</span>(Yi) <span class="fu">sum</span>(w <span class="sc">*</span> (y <span class="sc">&lt;=</span> Yi)) <span class="sc">/</span> N.Hat)</span>
+<span id="cb21-154"><a href="#cb21-154" aria-hidden="true" tabindex="-1"></a>  Mean.y <span class="ot">&lt;-</span> <span class="fu">sum</span>(w <span class="sc">*</span> y) <span class="sc">/</span> N.Hat</span>
+<span id="cb21-155"><a href="#cb21-155" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">2</span> <span class="sc">/</span> (N.Hat <span class="sc">*</span> Mean.y)) <span class="sc">*</span> <span class="fu">sum</span>(w <span class="sc">*</span> y <span class="sc">*</span> FDi) <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb21-156"><a href="#cb21-156" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb21-157"><a href="#cb21-157" aria-hidden="true" tabindex="-1"></a><span class="fu">Gw.a</span>(Y.n, w.n)</span>
+<span id="cb21-158"><a href="#cb21-158" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-159"><a href="#cb21-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-160"><a href="#cb21-160" aria-hidden="true" tabindex="-1"></a>**Estimator $\widehat{G}_{w}^{b}$:**</span>
+<span id="cb21-161"><a href="#cb21-161" aria-hidden="true" tabindex="-1"></a>$$\widehat{G}_{w}^{b}=\frac{1}{2\widehat{N}^{2}\overline{y}_{w}}\sum_{i \in S}\sum_{j \in S}w_{i}w_{j}|y_{i}-y_{j}|.$$</span>
+<span id="cb21-162"><a href="#cb21-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-165"><a href="#cb21-165" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb21-166"><a href="#cb21-166" aria-hidden="true" tabindex="-1"></a>Gw.b <span class="ot">&lt;-</span> <span class="cf">function</span>(y, w) {</span>
+<span id="cb21-167"><a href="#cb21-167" aria-hidden="true" tabindex="-1"></a>  N.Hat <span class="ot">&lt;-</span> <span class="fu">sum</span>(w)</span>
+<span id="cb21-168"><a href="#cb21-168" aria-hidden="true" tabindex="-1"></a>  ABSi <span class="ot">&lt;-</span> <span class="fu">sapply</span>(y, <span class="cf">function</span>(Yi) <span class="fu">sum</span>(w <span class="sc">*</span> <span class="fu">abs</span>(y <span class="sc">-</span> Yi)))</span>
+<span id="cb21-169"><a href="#cb21-169" aria-hidden="true" tabindex="-1"></a>  Mean.y <span class="ot">&lt;-</span> <span class="fu">sum</span>(w <span class="sc">*</span> y) <span class="sc">/</span> N.Hat</span>
+<span id="cb21-170"><a href="#cb21-170" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(w <span class="sc">*</span> ABSi) <span class="sc">/</span> (<span class="dv">2</span> <span class="sc">*</span> N.Hat<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> Mean.y)</span>
+<span id="cb21-171"><a href="#cb21-171" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb21-172"><a href="#cb21-172" aria-hidden="true" tabindex="-1"></a><span class="fu">Gw.b</span>(Y.n, w.n)</span>
+<span id="cb21-173"><a href="#cb21-173" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-174"><a href="#cb21-174" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-175"><a href="#cb21-175" aria-hidden="true" tabindex="-1"></a>**Estimator $\widehat{G}_{w}^{c}$:**</span>
+<span id="cb21-176"><a href="#cb21-176" aria-hidden="true" tabindex="-1"></a>$$\widehat{G}_{w}^{c} =1 - \frac{\overline{z}_{w}}{\overline{y}_{w}}.$$</span>
+<span id="cb21-177"><a href="#cb21-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-180"><a href="#cb21-180" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb21-181"><a href="#cb21-181" aria-hidden="true" tabindex="-1"></a>Gw.c <span class="ot">&lt;-</span> <span class="cf">function</span>(y, w) {</span>
+<span id="cb21-182"><a href="#cb21-182" aria-hidden="true" tabindex="-1"></a>  N.Hat <span class="ot">&lt;-</span> <span class="fu">sum</span>(w); n <span class="ot">&lt;-</span> <span class="fu">length</span>(y)</span>
+<span id="cb21-183"><a href="#cb21-183" aria-hidden="true" tabindex="-1"></a>  zi <span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span>n, <span class="cf">function</span>(i) <span class="fu">sum</span>(w[<span class="sc">-</span>i] <span class="sc">*</span> <span class="fu">pmin</span>(y[<span class="sc">-</span>i], y[i])) <span class="sc">/</span> (N.Hat <span class="sc">-</span> w[i]))</span>
+<span id="cb21-184"><a href="#cb21-184" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span> <span class="sc">-</span> (<span class="fu">sum</span>(w <span class="sc">*</span> zi) <span class="sc">/</span> N.Hat) <span class="sc">/</span> (<span class="fu">sum</span>(w <span class="sc">*</span> y) <span class="sc">/</span> N.Hat)</span>
+<span id="cb21-185"><a href="#cb21-185" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb21-186"><a href="#cb21-186" aria-hidden="true" tabindex="-1"></a><span class="fu">Gw.c</span>(Y.n, w.n)</span>
+<span id="cb21-187"><a href="#cb21-187" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-188"><a href="#cb21-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-189"><a href="#cb21-189" aria-hidden="true" tabindex="-1"></a><span class="fu">## With the R package giniVarCI</span></span>
+<span id="cb21-190"><a href="#cb21-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-193"><a href="#cb21-193" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb21-194"><a href="#cb21-194" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb21-195"><a href="#cb21-195" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"giniVarCI"</span>)</span>
+<span id="cb21-196"><a href="#cb21-196" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(giniVarCI)</span>
+<span id="cb21-197"><a href="#cb21-197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-198"><a href="#cb21-198" aria-hidden="true" tabindex="-1"></a><span class="co"># Infinite populations: estimate with bias correction and confidence interval</span></span>
+<span id="cb21-199"><a href="#cb21-199" aria-hidden="true" tabindex="-1"></a><span class="fu">igini</span>(Y.n)                              <span class="co"># point estimate</span></span>
+<span id="cb21-200"><a href="#cb21-200" aria-hidden="true" tabindex="-1"></a><span class="fu">igini</span>(Y.n, <span class="at">interval =</span> <span class="st">"zjackknife"</span>)     <span class="co"># jackknife interval</span></span>
+<span id="cb21-201"><a href="#cb21-201" aria-hidden="true" tabindex="-1"></a><span class="fu">icompareCI</span>(Y.n, <span class="at">plotCI =</span> <span class="cn">TRUE</span>)          <span class="co"># compares all the intervals</span></span>
+<span id="cb21-202"><a href="#cb21-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-203"><a href="#cb21-203" aria-hidden="true" tabindex="-1"></a><span class="co"># Finite populations: survey weights</span></span>
+<span id="cb21-204"><a href="#cb21-204" aria-hidden="true" tabindex="-1"></a><span class="fu">fgini</span>(Y.n, w.n, <span class="at">interval =</span> <span class="st">"zalinearization"</span>)</span>
+<span id="cb21-205"><a href="#cb21-205" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-206"><a href="#cb21-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-207"><a href="#cb21-207" aria-hidden="true" tabindex="-1"></a>See the <span class="co">[</span><span class="ot">giniVarCI page</span><span class="co">](software.qmd)</span> for more examples.</span>
+<span id="cb21-208"><a href="#cb21-208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-209"><a href="#cb21-209" aria-hidden="true" tabindex="-1"></a><span class="fu">## References</span></span>
+<span id="cb21-210"><a href="#cb21-210" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-211"><a href="#cb21-211" aria-hidden="true" tabindex="-1"></a>Anand, S. (1983). *Inequality and Poverty in Malaysia: Measurement and Decomposition*. The World Bank.\</span>
+<span id="cb21-212"><a href="#cb21-212" aria-hidden="true" tabindex="-1"></a>Berger, Y.G., &amp; Gedik-Balay, İ. (2020). Confidence intervals of Gini coefficient under unequal probability sampling. *Journal of Official Statistics*, 36(2), 237–249.\</span>
+<span id="cb21-213"><a href="#cb21-213" aria-hidden="true" tabindex="-1"></a>Kendall, M., &amp; Stuart, A. (1977). *The Advanced Theory of Statistics. Vol. 1: Distribution Theory*. Griffin.\</span>
+<span id="cb21-214"><a href="#cb21-214" aria-hidden="true" tabindex="-1"></a>Langel, M., &amp; Tillé, Y. (2013). Variance estimation of the Gini index: revisiting a result several times published. *JRSS A*, 176(2), 521–540.\</span>
+<span id="cb21-215"><a href="#cb21-215" aria-hidden="true" tabindex="-1"></a>Lerman, R.I., &amp; Yitzhaki, S. (1984). A note on the calculation and interpretation of the Gini index. *Economics Letters*, 15(3–4), 363–368.\</span>
+<span id="cb21-216"><a href="#cb21-216" aria-hidden="true" tabindex="-1"></a>Lorenz, M.O. (1905). Methods of measuring the concentration of wealth. *Publications of the American Statistical Association*, 9(70), 209–219.\</span>
+<span id="cb21-217"><a href="#cb21-217" aria-hidden="true" tabindex="-1"></a>Peng, L. (2011). Empirical likelihood methods for the Gini index. *Australian &amp; New Zealand Journal of Statistics*, 53(2), 131–139.\</span>
+<span id="cb21-218"><a href="#cb21-218" aria-hidden="true" tabindex="-1"></a>Qin, Y., Rao, J.N.K., &amp; Wu, C. (2010). Empirical likelihood confidence intervals for the Gini measure of income inequality. *Economic Modelling*, 27(6), 1429–1435.\</span>
+<span id="cb21-219"><a href="#cb21-219" aria-hidden="true" tabindex="-1"></a>Yitzhaki, S. (1998). More than a dozen alternative ways of spelling Gini. *Research on Economic Inequality*, 8, 13–30.</span>
+</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>GiniUs · PID2022-136235NB-I00 · Universidad de Granada · Last update: 17 November 2026</p>
+</div>   
+    <div class="nav-footer-center">
+<p>Funded by MICIU/AEI/10.13039/501100011033 and by ERDF/EU</p>
+</div>
+    <div class="nav-footer-right">
+<p>Built with <a href="https://quarto.org">Quarto</a> · Reproducible research</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

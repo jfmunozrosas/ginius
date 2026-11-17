@@ -1,0 +1,102 @@
+project:
+  type: website
+  output-dir: docs
+  resources:
+    - "data/*.csv"
+    - "js/*"
+    - "images/*"
+    - "CITATION.cff"
+
+website:
+  title: "GiniUs"
+  description: "GiniUs research project (PID2022-136235NB-I00). Challenges for the analysis of inequality with applications in the Social Sciences: using new methodological developments to avoid biases and errors in the Gini index."
+  site-url: "https://jfmunozrosas.github.io/ginius"   # <- cambiar por la URL definitiva
+  favicon: images/favicon_ginius.png
+  page-navigation: true
+  back-to-top-navigation: true
+  open-graph:
+    image: images/logo_ginius.png
+  twitter-card:
+    image: images/logo_ginius.png
+  navbar:
+    logo: images/logo_ginius.png
+    logo-alt: "GiniUs logo"
+    title: false
+    left:
+      - href: index.qmd
+        text: Home
+      - text: Project
+        menu:
+          - href: research.qmd
+            text: "Research problems and questions"
+          - href: project.qmd
+            text: "Objectives, activities and work plan"
+          - href: results.qmd
+            text: "Results and conclusions"
+          - href: news.qmd
+            text: "Status and news"
+      - href: team.qmd
+        text: Team
+      - text: Gini index
+        menu:
+          - href: gini-index.qmd
+            text: "Definition and estimation (with R code)"
+          - href: simulation.qmd
+            text: "Interactive bias explorer"
+          - href: missing-data.qmd
+            text: "Missing data simulator (MCAR, MAR, MNAR)"
+          - href: calculator.qmd
+            text: "Gini index calculator"
+          - href: practice.qmd
+            text: "Try it in R (in your browser)"
+          - href: glossary.qmd
+            text: "Glossary and FAQ"
+          - href: data-code.qmd
+            text: "Research data and R code"
+      - href: software.qmd
+        text: giniVarCI
+      - href: observatory.qmd
+        text: Observatory
+      - href: publications.qmd
+        text: Publications
+      - text: Dissemination
+        menu:
+          - href: dissemination.qmd
+            text: "Seminars and conferences"
+          - href: blog/index.qmd
+            text: "Blog"
+          - href: links.qmd
+            text: "Links of interest"
+          - href: cite.qmd
+            text: "How to cite"
+      - href: contact.qmd
+        text: Contact
+      - href: feedback.qmd
+        text: "Your opinion"
+    right:
+      - href: news.qmd
+        text: "● In progress (year 4)"
+        aria-label: "Project status: in progress, year 4"
+      - icon: github
+        href: https://github.com/jfmunozrosas/ginius   # <- cambiar
+        aria-label: GitHub
+  page-footer:
+    left: "GiniUs · PID2022-136235NB-I00 · Universidad de Granada · Last update: 17 November 2026"
+    center: "Funded by MICIU/AEI/10.13039/501100011033 and by ERDF/EU"
+    right: "Built with [Quarto](https://quarto.org) · Reproducible research"
+
+date-modified: "2026-11-17"
+
+format:
+  html:
+    theme:
+      light: [cosmo, styles.scss]
+    toc: true
+    toc-depth: 2
+    code-fold: true
+    code-tools: true
+    code-copy: true
+    smooth-scroll: true
+    html-math-method: katex
+    lang: en
+    include-after-body: _goatcounter.html
