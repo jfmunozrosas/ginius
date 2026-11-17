@@ -1,0 +1,25 @@
+---
+title: "In one minute: Does tourism reduce socio-economic inequality? Insights from the pandemic based on space and time models for the EU"
+date: "2026-11-17"
+categories: [video, inequality]
+description: "Does tourism help to reduce poverty and social exclusion in European regions?"
+image: ../../../media/videos/tourism-poverty-pandemic.jpg
+---
+
+```{=html}
+<video controls preload="none" poster="../../../media/videos/tourism-poverty-pandemic.jpg" style="width:100%;border-radius:8px"><source src="../../../media/videos/tourism-poverty-pandemic.mp4" type="video/mp4"></video>
+```
+
+**C.M. Llorca-Rodríguez, R.M. García-Fernández and J. Chica-Olmo** (*Economia Politica*, 2026; JCR Q2). [Read the article](https://doi.org/10.1007/s40888-025-00390-1).
+
+**The question.** Does tourism help to reduce poverty and social exclusion in European regions?
+
+**What they found.**
+
+- International (inbound) tourism increases poverty and social exclusion in destination regions.
+- Domestic tourism reduces them, in destinations and in neighbouring regions.
+- Some other effects are statistically significant but economically very small.
+
+**Why it matters.** Tourism does not reduce poverty by itself. Market structures, labour regulation, competitiveness and social protection decide who benefits.
+
+All the videos are on the page [Our research in one minute](../../../videos.qmd).

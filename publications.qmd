@@ -5,31 +5,11 @@ subtitle: "Articles, software and open data of the GiniUs project"
 
 ## Articles of the project
 
-Articles acknowledging project PID2022-136235NB-I00, in reverse chronological order.
+::: {.callout-tip appearance="simple"}
+**Our research in one minute.** The articles on inequality and poverty have a short [video](videos.qmd) that explains, in plain language, the question, the method and the main conclusions. Look for **▶ 1-min video** next to the title.
+:::
 
-Muñoz, J.F., Pavía, J.M., & Álvarez-Verdejo, E. (2026). A practical guide to proper estimation and inference of the Gini index by avoiding often encountered methodological pitfalls. *Social Indicators Research*. <https://doi.org/10.1007/s11205-026-03831-x>
-
-Vaillant, Y., Lafuente, E., & Vendrell-Herrero, F. (2026). Automation, augmentation, or dual AI strategies for superior product line performance: the functional subsidiarity challenge. *International Journal of Production Economics*, 109931. <https://doi.org/10.1016/j.ijpe.2026.109931>
-
-Muñoz, J.F., Moya-Fernández, P.J., & Álvarez-Verdejo, E. (2025). Exploring and correcting the bias in the estimation of the Gini measure of inequality. *Sociological Methods & Research*, 54(1), 237–274 (online first 2023). <https://doi.org/10.1177/00491241231176847>
-
-García-Martínez, F.J., Osorio, F., & González-Gómez, F. (2025). Challenges of urban water cycle management in small Spanish municipalities: the case of the province of Granada. *Water*, 17(12), 1750. <https://doi.org/10.3390/w17121750>
-
-Tortajada, C., Radcliffe, J.C., van Rensburg, P., & González-Gómez, F. (2025). Sustainable water reuse for water security. *Environmental Research Letters*, 20(2), 021003. <https://doi.org/10.1088/1748-9326/adaf46>
-
-Vaillant, Y., Lafuente, E., & Vendrell-Herrero, F. (2025). AI platforms as cooperation enablers favoring the development of strategic situating capabilities within solution delivery ecosystems. *Journal of Product Innovation Management*. <https://doi.org/10.1111/jpim.12807>
-
-Vendrell-Herrero, F., Vaillant, Y., & Bustinza, O.F. (2025). Scalability in incumbent firms: the case of Nvidia. *Long Range Planning*, 102540. <https://doi.org/10.1016/j.lrp.2025.102540>
-
-Alguacil-Duarte, F., González-Gómez, F., & Grigoryan, K. (2024). Proposal of an index to evaluate the 'dewaterization' of the urban water cycle and a practical application. *Sustainable Water Resources Management*, 10(1), 6. <https://doi.org/10.1007/s40899-023-00984-2>
-
-Ibáñez-Rueda, N., Moya-Fernández, P., Guardiola, J., & González-Gómez, F. (2024). The role of knowledge in the decision of Granada University students to drink bottled water. *International Journal of Water Resources Development*. <https://doi.org/10.1080/07900627.2024.2310820>
-
-Muñoz, J.F., Blanco-Encomienda, F.J., Álvarez-Verdejo, E., & Vendrell-Herrero, F. (2024). Estimation of the lot fraction defective in a finite lot of products with auxiliary quality characteristics. *Quality Engineering*. <https://doi.org/10.1080/08982112.2024.2331145>
-
-Vaillant, Y., Vendrell-Herrero, F., Bustinza, O.F., & Xing, Y. (2024). HRM algorithms: moderating the relationship between chaotic markets and strategic renewal. *British Journal of Management*. <https://doi.org/10.1111/1467-8551.12852>
-
-Vendrell-Herrero, F., Gomes, E., Darko, C.K., & Lehman, D.W. (2024). When do firms learn? Learning before versus after exporting. *Small Business Economics*. <https://doi.org/10.1007/s11187-024-00898-z>
+{{< include _pubs_table.md >}}
 
 ## Software
 

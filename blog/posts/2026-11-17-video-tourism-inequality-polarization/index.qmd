@@ -1,0 +1,25 @@
+---
+title: "In one minute: Dynamic spatio-temporal modelling of tourism impact on income inequality and polarization: inbound and domestic flows in the EU"
+date: "2026-11-17"
+categories: [video, inequality]
+description: "Does tourism make income more equal in European regions, or less?"
+image: ../../../media/videos/tourism-inequality-polarization.jpg
+---
+
+```{=html}
+<video controls preload="none" poster="../../../media/videos/tourism-inequality-polarization.jpg" style="width:100%;border-radius:8px"><source src="../../../media/videos/tourism-inequality-polarization.mp4" type="video/mp4"></video>
+```
+
+**C.M. Llorca-Rodríguez, A.C. Casas-Jurado, R.M. García-Fernández and J. Chica-Olmo** (*Papers in Regional Science*, 2025; JCR Q2, ABS 3). [Read the article](https://doi.org/10.1016/j.pirs.2025.100122).
+
+**The question.** Does tourism make income more equal in European regions, or less?
+
+**What they found.**
+
+- Overall, tourism and inequality follow an inverted-U shape.
+- Inbound tourism increases inequality and polarization in destinations; domestic tourism reduces them.
+- Both types improve the income distribution of neighbouring regions.
+
+**Why it matters.** Useful for the EU Cohesion Policy: domestic tourism supports cohesion, and social protection (education, health, unemployment and retirement) should be strengthened.
+
+All the videos are on the page [Our research in one minute](../../../videos.qmd).

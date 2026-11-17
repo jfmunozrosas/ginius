@@ -1,0 +1,25 @@
+---
+title: "In one minute: Does economic growth drive equitable water and sanitation access? Assessing inequality reduction across 64 nations"
+date: "2026-11-17"
+categories: [video, inequality]
+description: "When a country grows richer, does access to water and sanitation become more equal?"
+image: ../../../media/videos/water-sanitation-growth.jpg
+---
+
+```{=html}
+<video controls preload="none" poster="../../../media/videos/water-sanitation-growth.jpg" style="width:100%;border-radius:8px"><source src="../../../media/videos/water-sanitation-growth.mp4" type="video/mp4"></video>
+```
+
+**M. García-López, S. López-Ruiz and G. Cuadrado-Quesada** (*Sustainable Development*, 2026; JCR Q1). [Read the article](https://doi.org/10.1002/sd.70894).
+
+**The question.** When a country grows richer, does access to water and sanitation become more equal?
+
+**What they found.**
+
+- Growth improves access overall, but the poorest and rural populations are left behind.
+- Inequality in sanitation is not related to growth.
+- Unequal access to water also holds back GDP per capita.
+
+**Why it matters.** Growth alone will not deliver water and sanitation for all (SDG 6). Effective governance and efficient water use are needed.
+
+All the videos are on the page [Our research in one minute](../../../videos.qmd).

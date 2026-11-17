@@ -1,0 +1,25 @@
+---
+title: "In one minute: The “Happy and Poor” paradox: why do some poor people report being very happy?"
+date: "2026-11-17"
+categories: [video, inequality]
+description: "Many people living in poverty say they are very happy. How can that be?"
+image: ../../../media/videos/happy-and-poor.jpg
+---
+
+```{=html}
+<video controls preload="none" poster="../../../media/videos/happy-and-poor.jpg" style="width:100%;border-radius:8px"><source src="../../../media/videos/happy-and-poor.mp4" type="video/mp4"></video>
+```
+
+**J. Guardiola, F. García-Quero and A. García-García** (*Applied Research in Quality of Life*, 2026; JCR Q1). [Read the article](https://doi.org/10.1007/s11482-026-10637-z).
+
+**The question.** Many people living in poverty say they are very happy. How can that be?
+
+**Six explanations.**
+
+- Their basic needs are met and they are satisfied in key areas of life; they adapt to hardship and have modest aspirations.
+- Scientists and policymakers may misjudge how well they are doing.
+- Their culture supports happiness, and maldevelopment has not eroded it.
+
+**Why it matters.** Poverty is not only a lack of income. Listening to how people evaluate their own lives helps design better development policies.
+
+All the videos are on the page [Our research in one minute](../../../videos.qmd).

@@ -6,6 +6,7 @@ project:
     - "js/*"
     - "images/*"
     - "CITATION.cff"
+    - "media/videos/*"
 
 website:
   title: "GiniUs"
@@ -61,8 +62,10 @@ website:
         text: Publications
       - text: Dissemination
         menu:
+          - href: videos.qmd
+            text: "Our research in one minute (videos)"
           - href: dissemination.qmd
-            text: "Seminars and conferences"
+            text: "Seminars, workshops and conferences"
           - href: blog/index.qmd
             text: "Blog"
           - href: links.qmd

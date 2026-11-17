@@ -1,0 +1,10 @@
+name: Ginius
+title:
+username: ginius
+account: ginius
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 7605244
+bundleId: 12832675
+url: https://ginius.shinyapps.io/Ginius/
+version: 1

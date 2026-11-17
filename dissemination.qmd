@@ -1,7 +1,28 @@
 ---
 title: "Seminars and conferences"
-subtitle: "Seminars, conferences, research stays and inequality in the news"
+subtitle: "Workshops, seminars, conferences, science communication and inequality in the news"
 ---
+
+## Workshops organised by the project {#aecpa}
+
+### 10 September 2026 · Working group on inequality at the XVIII AECPA Congress (Granada)
+
+Members of GiniUs organised the working group **GT 5.4 "Desigualdad, medición y políticas públicas: desafíos metodológicos y aplicaciones en ciencia política"** (*Inequality, measurement and public policies: methodological challenges and applications in political science*) at the [XVIII Congress of the Spanish Association of Political Science and Administration (AECPA)](https://aecpa.es/uploads/public/Programa_EXTENSO.%5B4%5D.pdf), held at the Faculty of Political Science and Sociology of the University of Granada (9–11 September 2026). The session, on Thursday 10 September, brought together many members of the project to discuss the measurement of inequality and its applications.
+
+- **Coordinator:** Samara López Ruiz (University of Granada).
+- **Discussant:** Encarnación Álvarez Verdejo (University of Granada).
+
+| Paper | Author |
+|---|---|
+| Beyond economic growth: inequality and governance in access to water and sanitation | Samara López Ruiz (UGR) |
+| El latinoamericano "feliz y pobre": ¿por qué las personas de América Latina parecen ser muy felices, incluso en situaciones de dificultad? | Jorge Guardiola Wanden-Berghe (UGR) |
+| Medición de la desigualdad con el índice de Gini y la biblioteca de R giniVarCI: aplicaciones en ciencia política | Juan Francisco Muñoz Rosas (UGR) |
+| Más allá de "quién obtiene qué": hacia un enfoque relacional-distributivo de las políticas públicas | Juan Carbajal (Universidad Carlos III de Madrid) |
+| Does it really entail a cost? Exploring the relationship between subjective well-being and willingness to pay to conserve water in Andalusia (Spain) | Francisco González-Gómez (UGR) |
+| Inferencia para el índice de Gini bajo imputación múltiple: varianza e intervalos de confianza con bootstrap | Pablo José Moya Fernández (UGR) |
+| The rise of factories: an opportunity for upward mobility? The case of Milan (1880–1910) | Simone Frisoni (Universidad Carlos III de Madrid) |
+
+: Papers presented in the working group GT 5.4 (XVIII AECPA Congress, Granada, 10 September 2026). {tbl-colwidths="[72,28]"}
 
 ## Seminars
 
@@ -10,6 +31,21 @@ subtitle: "Seminars, conferences, research stays and inequality in the news"
 *Aspectos metodológicos del índice de Gini y biblioteca de R giniVarCI para su estimación y construcción de intervalos de confianza.* E. Álvarez, P.J. Moya, J.F. Muñoz and J.M. Pavía. Seminar organised by the research group [EPIC (Economía Pública y Globalización, SEJ-393)](https://epic.ugr.es/en), University of Granada.
 
 ![Seminar of 22 May 2024 on the Gini index and the R package giniVarCI.](images/seminar_2024_05_22.jpg){.photo fig-alt="Participants in the seminar on the Gini index and the R package giniVarCI, University of Granada, 22 May 2024"}
+
+## Encuentro Internacional de Especialización para la Investigación en Economía y Empresa (EIEE) {#eiee}
+
+The [EIEE](https://eiee.es/) is an international meeting for researchers in economics and business organised by the universities of Almería, Granada, Málaga, Jaén and Castilla-La Mancha. Members of GiniUs have taken part in its last two editions.
+
+### IX EIEE · Ciudad Real, 21–23 October 2026
+
+Hosted by the University of Castilla-La Mancha. Juan Francisco Muñoz Rosas chaired the session on **Quantitative Methods** (Friday 23 October), which included the paper *Inferencia mediante remuestreo en la medición de la pobreza: evidencia para los índices Foster–Greer–Thorbecke* (P.A. Cano Chica). [Programme](https://eiee.es/es/programa.html).
+
+### VIII EIEE · Cartagena, 6–8 November 2024
+
+Hosted by the Faculty of Business Sciences of the Technical University of Cartagena. [Proceedings](https://eiee.es/sites/default/files/VIIIEIEE/ACTAS_VIIIEIEE_2024.pdf).
+
+- *Errores comunes en la estimación del índice de Gini y biblioteca GiniVarCI para su estimación y construcción de intervalos de confianza.* E. Álvarez Verdejo, J.F. Muñoz Rosas, J.M. Pavía Miralles and P.A. Cano Chica.
+- *Métodos rápidos y convenientes para calcular la varianza jackknife de los índices de Theil y sus versiones corregidas por sesgo.* V.E. Yáñez Justicia, E. Álvarez Verdejo, J.F. Muñoz Rosas and A.J. López Montoya.
 
 ## Conferences
 
@@ -34,6 +70,10 @@ Conferences of interest for the project with confirmed dates for 2027. Dates and
 :::
 
 Other regular meetings of interest whose 2027 dates have not yet been announced: the Spring Servitization Conference, the useR! conference, the SEIO and ASEPELT congresses, COMPSTAT and CMStatistics.
+
+## Science communication: our research in one minute
+
+To bring the results of the project closer to society, the articles of the team on inequality and poverty are explained in **[one-minute videos](videos.qmd)** in plain language. They can be freely shared in classes, talks and social networks, citing GiniUs. They are also published in the [blog](blog/index.qmd).
 
 ## Research stays
 

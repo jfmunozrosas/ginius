@@ -16,21 +16,45 @@ subtitle: "Project status and short news on the activity of the team"
 ::: {.news-list}
 
 ::: {.news-item}
+<span class="news-date">November 2026</span> <span class="news-tag tag-web">Videos</span>
+
+**Our research in one minute.** Eight [one-minute videos](videos.qmd) explain, in plain language, the team's articles on inequality and poverty: the Gini index, the "happy and poor" paradox, water and sanitation, tourism, young talents' earnings and innovation. They are also published in the [blog](blog/index.qmd).
+:::
+
+::: {.news-item}
 <span class="news-date">November 2026</span> <span class="news-tag tag-web">Website</span>
 
 **New GiniUs website.** The project website moves to Quarto, with new interactive tools that run in the browser: a [Gini index calculator](calculator.qmd), a [missing data simulator](missing-data.qmd) (MCAR, MAR and MNAR), an [interactive bias explorer](simulation.qmd), [R exercises](practice.qmd) and an [inequality observatory](observatory.qmd).
 :::
 
 ::: {.news-item}
-<span class="news-date">2026</span> <span class="news-tag tag-paper">Publication</span>
+<span class="news-date">23 October 2026</span> <span class="news-tag tag-project">Conference</span>
 
-**A practical guide to proper estimation and inference of the Gini index by avoiding often encountered methodological pitfalls**, by J.F. Muñoz, J.M. Pavía and E. Álvarez-Verdejo, published in *Social Indicators Research*. [DOI](https://doi.org/10.1007/s11205-026-03831-x)
+**IX EIEE (Ciudad Real).** J.F. Muñoz Rosas chairs the session on Quantitative Methods at the IX Encuentro Internacional de Especialización para la Investigación en Economía y Empresa, hosted by the University of Castilla-La Mancha. [More information](dissemination.qmd#eiee).
+:::
+
+::: {.news-item}
+<span class="news-date">10 September 2026</span> <span class="news-tag tag-project">Workshop</span>
+
+**Working group on inequality at the XVIII AECPA Congress (Granada).** Members of the project organise the working group *Inequality, measurement and public policies* (GT 5.4), coordinated by S. López Ruiz with E. Álvarez Verdejo as discussant, with papers by J. Guardiola, J.F. Muñoz, F. González-Gómez, P.J. Moya and S. López Ruiz. [Programme and papers](dissemination.qmd#aecpa).
 :::
 
 ::: {.news-item}
 <span class="news-date">September 2026</span> <span class="news-tag tag-project">Project</span>
 
 **The project enters its fourth and last year** (September 2026 – August 2027).
+:::
+
+::: {.news-item}
+<span class="news-date">April 2026</span> <span class="news-tag tag-paper">Publication</span>
+
+**A practical guide to proper estimation and inference of the Gini index by avoiding often encountered methodological pitfalls**, by J.F. Muñoz, J.M. Pavía and E. Álvarez-Verdejo, published in *Social Indicators Research*. [DOI](https://doi.org/10.1007/s11205-026-03831-x) · [Video](videos.qmd#gini-practical-guide)
+:::
+
+::: {.news-item}
+<span class="news-date">November 2024</span> <span class="news-tag tag-project">Conference</span>
+
+**VIII EIEE (Cartagena).** Two papers by members of the project: common errors in the estimation of the Gini index and the giniVarCI library, and fast jackknife variances for Theil indices. [More information](dissemination.qmd#eiee).
 :::
 
 ::: {.news-item}
@@ -48,7 +72,7 @@ subtitle: "Project status and short news on the activity of the team"
 ::: {.news-item}
 <span class="news-date">2023</span> <span class="news-tag tag-paper">Publication</span>
 
-**Exploring and correcting the bias in the estimation of the Gini measure of inequality**, by J.F. Muñoz, P.J. Moya-Fernández and E. Álvarez-Verdejo, published online in *Sociological Methods & Research*. [DOI](https://doi.org/10.1177/00491241231176847)
+**Exploring and correcting the bias in the estimation of the Gini measure of inequality**, by J.F. Muñoz, P.J. Moya-Fernández and E. Álvarez-Verdejo, published online in *Sociological Methods & Research*. [DOI](https://doi.org/10.1177/00491241231176847) · [Video](videos.qmd#gini-bias)
 :::
 
 ::: {.news-item}

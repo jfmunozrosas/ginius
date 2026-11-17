@@ -1,0 +1,25 @@
+---
+title: "In one minute: Innovation and poverty-related income gaps in Europe: evidence from the North–South divide"
+date: "2026-11-17"
+categories: [video, inequality]
+description: "How are innovation and entrepreneurship related to the income gaps that affect the poorest households in Europe?"
+image: ../../../media/videos/innovation-poverty-gaps.jpg
+---
+
+```{=html}
+<video controls preload="none" poster="../../../media/videos/innovation-poverty-gaps.jpg" style="width:100%;border-radius:8px"><source src="../../../media/videos/innovation-poverty-gaps.mp4" type="video/mp4"></video>
+```
+
+**P.A. Cano-Chica, V.E. Yáñez-Justicia, A. Rodríguez-Copete, E. Álvarez-Verdejo and A.J. López-Montoya** (*Journal of Poverty*, 2026; JCR Q3). [Read the article](https://doi.org/10.1080/10875549.2026.2671664).
+
+**The question.** How are innovation and entrepreneurship related to the income gaps that affect the poorest households in Europe?
+
+**What the study analyses.**
+
+- How innovation dynamics interact with income inequality and poverty-related vulnerability.
+- Differences between Northern and Southern Europe.
+- Changes within countries over time and differences between countries.
+
+**Why it matters.** Innovation policies can widen or narrow income gaps. Knowing where and how helps to design fairer innovation policies in Europe.
+
+All the videos are on the page [Our research in one minute](../../../videos.qmd).

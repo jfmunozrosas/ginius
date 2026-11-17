@@ -34,3 +34,8 @@ Built with [Quarto](https://quarto.org) and published with GitHub Pages from the
 ## Requisitos
 
 R (paquetes base) para descargar los datos del observatorio al renderizar. Las herramientas interactivas se ejecutan en el navegador (Observable JS, webR) y no necesitan servidor.
+
+## Vídeos de un minuto ("Our research in one minute")
+
+Los textos de cada vídeo están en `tools/videos.json`. Para crear o actualizar vídeos (requiere Python con Pillow y ffmpeg):
+`python3 tools/make_paper_videos.py render <slug>` (o sin slug para todos). Se guardan en `media/videos/` (MP4 y portada JPG). Después hay que añadir la tarjeta en `videos.qmd`, una entrada en el blog y el enlace "▶ 1-min video" en `_pubs_table.md`.

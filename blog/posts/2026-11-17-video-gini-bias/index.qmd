@@ -1,0 +1,25 @@
+---
+title: "In one minute: Exploring and correcting the bias in the estimation of the Gini measure of inequality"
+date: "2026-11-17"
+categories: [video, Gini index]
+description: "There are many formulas to estimate the Gini index from a sample. Do they all give the right answer?"
+image: ../../../media/videos/gini-bias.jpg
+---
+
+```{=html}
+<video controls preload="none" poster="../../../media/videos/gini-bias.jpg" style="width:100%;border-radius:8px"><source src="../../../media/videos/gini-bias.mp4" type="video/mp4"></video>
+```
+
+**J.F. Muñoz, P.J. Moya-Fernández and E. Álvarez-Verdejo** (*Sociological Methods & Research*, 2025; JCR Q1). [Read the article](https://doi.org/10.1177/00491241231176847).
+
+**The question.** There are many formulas to estimate the Gini index from a sample. Do they all give the right answer?
+
+**What they found.**
+
+- One popular formula strongly overestimates inequality when inequality is low.
+- With skewed and unequal data, the usual estimators tend to underestimate inequality.
+- Bootstrap and jackknife corrections reduce the bias, and a simple criterion tells when to use them.
+
+**Why it matters.** Differences in inequality between countries, regions or groups can come from the formula used, not from real differences. Choosing the right estimator avoids wrong conclusions.
+
+All the videos are on the page [Our research in one minute](../../../videos.qmd).

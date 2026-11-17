@@ -1,0 +1,25 @@
+---
+title: "In one minute: A practical guide to proper estimation and inference of the Gini index by avoiding often encountered methodological pitfalls"
+date: "2026-11-17"
+categories: [video, Gini index]
+description: "The Gini index is the most used measure of inequality. But computing it from data is error-prone. Do common practices give wrong numbers and wrong margins of error?"
+image: ../../../media/videos/gini-practical-guide.jpg
+---
+
+```{=html}
+<video controls preload="none" poster="../../../media/videos/gini-practical-guide.jpg" style="width:100%;border-radius:8px"><source src="../../../media/videos/gini-practical-guide.mp4" type="video/mp4"></video>
+```
+
+**J.F. Muñoz, J.M. Pavía and E. Álvarez-Verdejo** (*Social Indicators Research*, 2026; JCR Q1). [Read the article](https://doi.org/10.1007/s11205-026-03831-x).
+
+**The question.** The Gini index is the most used measure of inequality. But computing it from data is error-prone. Do common practices give wrong numbers and wrong margins of error?
+
+**What they found.**
+
+- Some widely used formulas give inaccurate estimates of inequality.
+- A popular regression-based method seriously underestimates the margin of error when incomes are very skewed and unequal.
+- Jackknife methods give the most accurate margins of error.
+
+**Why it matters.** Margins of error that are too small can make us believe inequality changed when it did not. The paper gives practical recommendations and the free R package giniVarCI.
+
+All the videos are on the page [Our research in one minute](../../../videos.qmd).

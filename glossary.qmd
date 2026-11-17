@@ -76,5 +76,8 @@ Report the percentage of missing data, analyse the response mechanism, avoid mea
 **Where can I find official data on inequality?**
 In the [observatory](observatory.qmd) (Eurostat, World Bank and INE) and in the [links of interest](links.qmd).
 
+**Is there an easy way to learn about your results without reading the articles?**
+Yes. Our [one-minute videos](videos.qmd) explain the articles on inequality and poverty in plain language, and the [blog](blog/index.qmd) publishes short posts on our work.
+
 **Can I use the materials of this website in my classes?**
-Yes, citing the source as indicated in [How to cite](cite.qmd).
+Yes, citing the source as indicated in [How to cite](cite.qmd). This includes the [one-minute videos](videos.qmd).

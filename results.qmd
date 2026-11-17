@@ -3,7 +3,7 @@ title: "Results and conclusions"
 subtitle: "Main findings of GiniUs, by general objective"
 ---
 
-This page summarises the main results of the project. It is updated as new articles are published; the full list is in [Publications](publications.qmd).
+This page summarises the main results of the project. It is updated as new articles are published; the full list is in [Publications](publications.qmd). The main articles are also explained in plain language in [one-minute videos](videos.qmd).
 
 ## OG1 · The bias of the Gini index
 
@@ -45,8 +45,8 @@ This page summarises the main results of the project. It is updated as new artic
 
 ## OG4 · Applications and social impact
 
-**In progress.** Applications in water economics, tourism and business management. See the [publications](publications.qmd) of the team in these areas.
+**In progress.** Applications in water economics, tourism, well-being and the labour market. Several of them are explained in [one-minute videos](videos.qmd): tourism and inequality in the EU, tourism and poverty during the pandemic, growth and equal access to water and sanitation, the "happy and poor" paradox and the earnings of young talents. See all the [publications](publications.qmd) of the team.
 
 ## OG5 · Dissemination
 
-**In progress.** See [Publications](publications.qmd) and [Seminars and conferences](dissemination.qmd).
+**In progress.** See [Publications](publications.qmd), the [one-minute videos](videos.qmd) and [Workshops, seminars and conferences](dissemination.qmd), including the working group on inequality organised at the XVIII AECPA Congress (Granada, 2026) and the participation in the VIII and IX EIEE.

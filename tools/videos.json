@@ -1,0 +1,195 @@
+[
+ {
+  "slug": "gini-practical-guide",
+  "title": "A practical guide to proper estimation and inference of the Gini index by avoiding often encountered methodological pitfalls",
+  "journal": "Social Indicators Research",
+  "year": "2026",
+  "authors": "J.F. Muñoz, J.M. Pavía and E. Álvarez-Verdejo",
+  "doi": "10.1007/s11205-026-03831-x",
+  "question": "The Gini index is the most used measure of inequality. But computing it from data is error-prone. Do common practices give wrong numbers and wrong margins of error?",
+  "how": [
+   "Reviews the many formulas used to compute the Gini index",
+   "Tests common methodological pitfalls in large simulation studies",
+   "Compares ways of estimating its margin of error"
+  ],
+  "findings_label": "WHAT THEY FOUND",
+  "findings": [
+   "Some widely used formulas give inaccurate estimates of inequality",
+   "A popular regression-based method seriously underestimates the margin of error when incomes are very skewed and unequal",
+   "Jackknife methods give the most accurate margins of error"
+  ],
+  "why": "Margins of error that are too small can make us believe inequality changed when it did not. The paper gives practical recommendations and the free R package giniVarCI.",
+  "quality": [
+   "JCR Q1"
+  ]
+ },
+ {
+  "slug": "gini-bias",
+  "title": "Exploring and correcting the bias in the estimation of the Gini measure of inequality",
+  "journal": "Sociological Methods & Research",
+  "year": "2025",
+  "authors": "J.F. Muñoz, P.J. Moya-Fernández and E. Álvarez-Verdejo",
+  "doi": "10.1177/00491241231176847",
+  "question": "There are many formulas to estimate the Gini index from a sample. Do they all give the right answer?",
+  "how": [
+   "Classifies the most common estimators of the Gini index",
+   "Monte Carlo simulations in a wide range of scenarios",
+   "Applications to real data sets"
+  ],
+  "findings_label": "WHAT THEY FOUND",
+  "findings": [
+   "One popular formula strongly overestimates inequality when inequality is low",
+   "With skewed and unequal data, the usual estimators tend to underestimate inequality",
+   "Bootstrap and jackknife corrections reduce the bias, and a simple criterion tells when to use them"
+  ],
+  "why": "Differences in inequality between countries, regions or groups can come from the formula used, not from real differences. Choosing the right estimator avoids wrong conclusions.",
+  "quality": [
+   "JCR Q1"
+  ]
+ },
+ {
+  "slug": "tourism-poverty-pandemic",
+  "title": "Does tourism reduce socio-economic inequality? Insights from the pandemic based on space and time models for the EU",
+  "journal": "Economia Politica",
+  "year": "2026",
+  "authors": "C.M. Llorca-Rodríguez, R.M. García-Fernández and J. Chica-Olmo",
+  "doi": "10.1007/s40888-025-00390-1",
+  "question": "Does tourism help to reduce poverty and social exclusion in European regions?",
+  "how": [
+   "EU regions, including the COVID-19 pandemic",
+   "Rate of people at risk of poverty or social exclusion (AROPE)",
+   "Spatial models: destinations and neighbouring regions"
+  ],
+  "findings_label": "WHAT THEY FOUND",
+  "findings": [
+   "International (inbound) tourism increases poverty and social exclusion in destination regions",
+   "Domestic tourism reduces them, in destinations and in neighbouring regions",
+   "Some other effects are statistically significant but economically very small"
+  ],
+  "why": "Tourism does not reduce poverty by itself. Market structures, labour regulation, competitiveness and social protection decide who benefits.",
+  "quality": [
+   "JCR Q2"
+  ]
+ },
+ {
+  "slug": "happy-and-poor",
+  "title": "The “Happy and Poor” paradox: why do some poor people report being very happy?",
+  "journal": "Applied Research in Quality of Life",
+  "year": "2026",
+  "authors": "J. Guardiola, F. García-Quero and A. García-García",
+  "doi": "10.1007/s11482-026-10637-z",
+  "question": "Many people living in poverty say they are very happy. How can that be?",
+  "how": [
+   "Systematic review of 40 studies",
+   "Evidence mainly from the Global South",
+   "Different measures of happiness and poverty"
+  ],
+  "findings_label": "SIX EXPLANATIONS",
+  "findings": [
+   "Their basic needs are met and they are satisfied in key areas of life; they adapt to hardship and have modest aspirations",
+   "Scientists and policymakers may misjudge how well they are doing",
+   "Their culture supports happiness, and maldevelopment has not eroded it"
+  ],
+  "why": "Poverty is not only a lack of income. Listening to how people evaluate their own lives helps design better development policies.",
+  "quality": [
+   "JCR Q1"
+  ]
+ },
+ {
+  "slug": "water-sanitation-growth",
+  "title": "Does economic growth drive equitable water and sanitation access? Assessing inequality reduction across 64 nations",
+  "journal": "Sustainable Development",
+  "year": "2026",
+  "authors": "M. García-López, S. López-Ruiz and G. Cuadrado-Quesada",
+  "doi": "10.1002/sd.70894",
+  "question": "When a country grows richer, does access to water and sanitation become more equal?",
+  "how": [
+   "64 countries, about 13.5 years each",
+   "Data by income quintile and by rural and urban areas",
+   "Regression models (OLS, 2SLS and SUR)"
+  ],
+  "findings_label": "WHAT THEY FOUND",
+  "findings": [
+   "Growth improves access overall, but the poorest and rural populations are left behind",
+   "Inequality in sanitation is not related to growth",
+   "Unequal access to water also holds back GDP per capita"
+  ],
+  "why": "Growth alone will not deliver water and sanitation for all (SDG 6). Effective governance and efficient water use are needed.",
+  "quality": [
+   "JCR Q1"
+  ]
+ },
+ {
+  "slug": "tourism-inequality-polarization",
+  "title": "Dynamic spatio-temporal modelling of tourism impact on income inequality and polarization: inbound and domestic flows in the EU",
+  "journal": "Papers in Regional Science",
+  "year": "2025",
+  "authors": "C.M. Llorca-Rodríguez, A.C. Casas-Jurado, R.M. García-Fernández and J. Chica-Olmo",
+  "doi": "10.1016/j.pirs.2025.100122",
+  "question": "Does tourism make income more equal in European regions, or less?",
+  "how": [
+   "EU regions over time",
+   "International (inbound) versus domestic tourism",
+   "Spatial models: destinations and their neighbours"
+  ],
+  "findings_label": "WHAT THEY FOUND",
+  "findings": [
+   "Overall, tourism and inequality follow an inverted-U shape",
+   "Inbound tourism increases inequality and polarization in destinations; domestic tourism reduces them",
+   "Both types improve the income distribution of neighbouring regions"
+  ],
+  "why": "Useful for the EU Cohesion Policy: domestic tourism supports cohesion, and social protection (education, health, unemployment and retirement) should be strengthened.",
+  "quality": [
+   "JCR Q2",
+   "ABS 3"
+  ]
+ },
+ {
+  "slug": "talents-earnings",
+  "title": "Inequalities in talents’ earnings: a tale of two European countries",
+  "journal": "Social Indicators Research",
+  "year": "2025",
+  "authors": "T. Addabbo and C. Mussida",
+  "doi": "10.1007/s11205-025-03692-w",
+  "question": "Are young graduates paid differently in Italy and in Germany? And are women paid less than men?",
+  "how": [
+   "Graduates aged 25 to 40",
+   "EU-SILC data for 2012 and 2022",
+   "Wage gaps across the whole wage distribution"
+  ],
+  "findings_label": "WHAT THEY FOUND",
+  "findings": [
+   "The wage gap against Italian talents grew in 2022, mainly because the same qualifications are paid less",
+   "The gap grew more for women, especially at the top",
+   "Gender gap among talents: Italy from 10% to 22.5%; Germany from 27.5% to 15%"
+  ],
+  "why": "Better pay and conditions in Germany help explain why young Italian talents move there. Policies are needed to attract and keep talent.",
+  "quality": [
+   "JCR Q1"
+  ]
+ },
+ {
+  "slug": "innovation-poverty-gaps",
+  "title": "Innovation and poverty-related income gaps in Europe: evidence from the North–South divide",
+  "journal": "Journal of Poverty",
+  "year": "2026",
+  "authors": "P.A. Cano-Chica, V.E. Yáñez-Justicia, A. Rodríguez-Copete, E. Álvarez-Verdejo and A.J. López-Montoya",
+  "doi": "10.1080/10875549.2026.2671664",
+  "question": "How are innovation and entrepreneurship related to the income gaps that affect the poorest households in Europe?",
+  "how": [
+   "Eurostat and Global Entrepreneurship Monitor data",
+   "Inequality measured by the S80/S20 ratio",
+   "Fixed-effects panel and Bayesian hierarchical models"
+  ],
+  "findings_label": "WHAT THE STUDY ANALYSES",
+  "findings": [
+   "How innovation dynamics interact with income inequality and poverty-related vulnerability",
+   "Differences between Northern and Southern Europe",
+   "Changes within countries over time and differences between countries"
+  ],
+  "why": "Innovation policies can widen or narrow income gaps. Knowing where and how helps to design fairer innovation policies in Europe.",
+  "quality": [
+   "JCR Q3"
+  ]
+ }
+]

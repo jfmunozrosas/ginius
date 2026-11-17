@@ -54,12 +54,27 @@ Publications, conferences, seminars and research stays. [Publications →](publi
 :::
 :::
 
+## Our research in one minute
+
+Research on inequality should reach everyone. Our **one-minute videos** explain the articles of the team in plain language: the question, what was found and why it matters for society.
+
+::: {.video-grid}
+<a href="videos.html#gini-practical-guide"><img src="media/videos/gini-practical-guide.jpg" alt="Video: a practical guide to the Gini index"><span class="vt">How to estimate the Gini index without errors</span></a>
+<a href="videos.html#happy-and-poor"><img src="media/videos/happy-and-poor.jpg" alt="Video: the happy and poor paradox"><span class="vt">The "happy and poor" paradox</span></a>
+<a href="videos.html#water-sanitation-growth"><img src="media/videos/water-sanitation-growth.jpg" alt="Video: economic growth and equal access to water"><span class="vt">Does growth make access to water more equal?</span></a>
+
+:::
+
+[See all the videos →](videos.qmd){.btn .btn-primary .btn-sm}
+
 ## Latest news
 
 ::: {.news-mini}
+- **November 2026** · [Our research in one minute](videos.qmd): eight short videos explain the team's articles on inequality and poverty in plain language.
 - **November 2026** · New website, with a [Gini index calculator](calculator.qmd), a [missing data simulator](missing-data.qmd), an [interactive bias explorer](simulation.qmd), [R exercises in your browser](practice.qmd) and an [inequality observatory](observatory.qmd).
+- **23 October 2026** · The project takes part in the [IX EIEE](dissemination.qmd#eiee) (Ciudad Real).
+- **10 September 2026** · [Working group on inequality](dissemination.qmd#aecpa) organised by members of the project at the XVIII AECPA Congress (Granada).
 - **2026** · *A practical guide to proper estimation and inference of the Gini index*, published in *Social Indicators Research*.
-- **22 May 2024** · [Seminar](dissemination.qmd) on methodological aspects of the Gini index and the R package giniVarCI.
 :::
 
 [All news →](news.qmd){.btn .btn-outline-primary .btn-sm}
@@ -71,7 +86,8 @@ Publications, conferences, seminars and research stays. [Publications →](publi
 3. **Interactivity.** The [bias explorer](simulation.qmd) and the [missing data simulator](missing-data.qmd) run Monte Carlo experiments in your browser under many scenarios.
 4. **Tools.** The [calculator](calculator.qmd) estimates the Gini index of your own data with its standard error and confidence interval, and the [R exercises](practice.qmd) run in your browser without installing anything.
 5. **Inequality observatory.** The [observatory](observatory.qmd) shows official Gini indices from Eurostat, the World Bank and the Spanish Statistical Office (INE).
-6. **Dissemination and internationalisation.** Results, data and software are openly available to researchers worldwide.
+6. **Science communication.** [One-minute videos](videos.qmd) explain our articles on inequality in plain language, so that the results reach society.
+7. **Dissemination and internationalisation.** Results, data and software are openly available to researchers worldwide.
 
 ## Funding
 

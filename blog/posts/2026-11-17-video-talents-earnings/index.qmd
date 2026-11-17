@@ -1,0 +1,25 @@
+---
+title: "In one minute: Inequalities in talents’ earnings: a tale of two European countries"
+date: "2026-11-17"
+categories: [video, inequality]
+description: "Are young graduates paid differently in Italy and in Germany? And are women paid less than men?"
+image: ../../../media/videos/talents-earnings.jpg
+---
+
+```{=html}
+<video controls preload="none" poster="../../../media/videos/talents-earnings.jpg" style="width:100%;border-radius:8px"><source src="../../../media/videos/talents-earnings.mp4" type="video/mp4"></video>
+```
+
+**T. Addabbo and C. Mussida** (*Social Indicators Research*, 2025; JCR Q1). [Read the article](https://doi.org/10.1007/s11205-025-03692-w).
+
+**The question.** Are young graduates paid differently in Italy and in Germany? And are women paid less than men?
+
+**What they found.**
+
+- The wage gap against Italian talents grew in 2022, mainly because the same qualifications are paid less.
+- The gap grew more for women, especially at the top.
+- Gender gap among talents: Italy from 10% to 22.5%; Germany from 27.5% to 15%.
+
+**Why it matters.** Better pay and conditions in Germany help explain why young Italian talents move there. Policies are needed to attract and keep talent.
+
+All the videos are on the page [Our research in one minute](../../../videos.qmd).
