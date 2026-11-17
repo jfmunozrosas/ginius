@@ -257,6 +257,7 @@ img.infographic, .infographic img { width: 100%; max-width: 900px; display: bloc
   b { color: $gini-blue; } }
 .mech.mar { border-left-color: $gini-orange; } .mech.mnar { border-left-color: $gini-red; }
 .photo { width: 100%; border-radius: 10px; box-shadow: 0 3px 14px rgba(0,0,0,.12); }
+.photo-portrait { max-width: 420px; display: block; margin: 0 auto; }
 .rb-legend { font-size: .85rem; color: #555; }
 .sym-water { color: #1E88E5; } .sym-firm { color: #6D4C41; }
 .vid-link { display: inline-block; margin-left: .35rem; padding: 0 .45rem; border-radius: 10px; font-size: .78em; font-weight: 600;

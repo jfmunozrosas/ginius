@@ -53,4 +53,4 @@ This page summarises the main results of the project. It is updated as new artic
 
 ## OG5 · Dissemination
 
-**In progress.** See [Publications](publications.qmd), the [one-minute videos](videos.qmd) and [Workshops, seminars and conferences](dissemination.qmd), including the working group on inequality organised at the XVIII AECPA Congress (Granada, 2026) and the participation in the VIII and IX EIEE.
+**In progress.** See [Publications](publications.qmd), the [one-minute videos](videos.qmd) and [seminars, conferences and meetings](dissemination.qmd), including the working group on inequality organised at the XVIII AECPA Congress (Granada, 2026) and the participation in the VIII and IX EIEE.

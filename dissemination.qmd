@@ -1,11 +1,22 @@
 ---
 title: "Seminars and conferences"
-subtitle: "Workshops, seminars, conferences, science communication and inequality in the news"
+subtitle: "Seminars, conferences and meetings in which we have participated, science communication and inequality in the news"
 ---
 
-## Workshops organised by the project {#aecpa}
+## Seminars, conferences and meetings in which we have participated {#participation}
 
-### 10 September 2026 · Working group on inequality at the XVIII AECPA Congress (Granada)
+Members of GiniUs present the results of the project at seminars, national and international conferences and research meetings. The most recent come first. All these activities, with their sources, are also listed on the [Impact](impact.qmd) page.
+
+### 21–23 October 2026 · IX EIEE, Ciudad Real {#eiee}
+
+The [Encuentro Internacional de Especialización para la Investigación en Economía y Empresa (EIEE)](https://eiee.es/) is an international meeting for researchers in economics and business organised by the universities of Almería, Granada, Málaga, Jaén, Cartagena and Castilla-La Mancha. Its ninth edition was hosted by the University of Castilla-La Mancha in Ciudad Real. [Programme](https://eiee.es/es/programa.html).
+
+- Juan Francisco Muñoz Rosas chaired the session on **Quantitative Methods** (Friday 23 October).
+- *Finite-sample performance of resampling-based confidence intervals for the Foster–Greer–Thorbecke class* (in the programme: *Inferencia mediante remuestreo en la medición de la pobreza: evidencia para los índices Foster–Greer–Thorbecke*). P.A. Cano-Chica, V.E. Yáñez-Justicia, E. Álvarez-Verdejo and A.J. López-Montoya. Funded by project PID2022-136235NB-I00.
+
+![IX EIEE (Ciudad Real, October 2026): Pedro Antonio Cano-Chica and Juan Francisco Muñoz Rosas at the presentation of the paper on confidence intervals for the Foster–Greer–Thorbecke poverty indices.](images/eiee_2026_ciudad_real.jpg){.photo .photo-portrait fig-alt="Two members of GiniUs next to the screen showing the paper Finite-Sample Performance of Resampling-Based Confidence Intervals for the Foster-Greer-Thorbecke Class at the IX EIEE in Ciudad Real"}
+
+### 10 September 2026 · Working group on inequality at the XVIII AECPA Congress (Granada) {#aecpa}
 
 Members of GiniUs organised the working group **GT 5.4 "Desigualdad, medición y políticas públicas: desafíos metodológicos y aplicaciones en ciencia política"** (*Inequality, measurement and public policies: methodological challenges and applications in political science*) at the [XVIII Congress of the Spanish Association of Political Science and Administration (AECPA)](https://aecpa.es/uploads/public/Programa_EXTENSO.%5B4%5D.pdf), held at the Faculty of Political Science and Sociology of the University of Granada (9–11 September 2026). The session, on Thursday 10 September, brought together many members of the project to discuss the measurement of inequality and its applications.
 
@@ -24,7 +35,33 @@ Members of GiniUs organised the working group **GT 5.4 "Desigualdad, medición y
 
 : Papers presented in the working group GT 5.4 (XVIII AECPA Congress, Granada, 10 September 2026). {tbl-colwidths="[72,28]"}
 
-## Seminars
+### 9–11 December 2025 · CrossMED 2025, University of Granada {#conferences-2025}
+
+International conference *Landscapes Across the Mediterranean* (2nd edition), organised with IEREK at the University of Granada.
+
+- *The Gini index in inequality research: theory and practice with the R package giniVarCI.* J.F. Muñoz Rosas.
+
+### 10–11 March 2025 · ICFM-25, Paris
+
+International Conference on Financial Mathematics.
+
+- *A novel weighted estimator to minimize the bias problem in the Gini index estimation.* J.F. Muñoz Rosas.
+
+### 7–8 March 2025 · ICMATAP-25, Paris
+
+International Conference on Mathematical Applications, organised by the South Asia Institute for Research and Publications (SAIRAP).
+
+- *Analysis of skewness in Gini index estimation and its impact on confidence intervals.* J.F. Muñoz Rosas.
+- *Common pitfalls in the Gini index estimation and the giniVarCI package for the estimation and the construction of confidence intervals for the Gini index.* J.F. Muñoz Rosas.
+
+### 6–8 November 2024 · VIII EIEE, Cartagena {#eiee-2024}
+
+Hosted by the Faculty of Business Sciences of the Technical University of Cartagena. [Proceedings](https://eiee.es/sites/default/files/VIIIEIEE/ACTAS_VIIIEIEE_2024.pdf).
+
+- *Errores comunes en la estimación del índice de Gini y biblioteca GiniVarCI para su estimación y construcción de intervalos de confianza.* E. Álvarez Verdejo, J.F. Muñoz Rosas, J.M. Pavía Miralles and P.A. Cano Chica.
+- *Métodos rápidos y convenientes para calcular la varianza jackknife de los índices de Theil y sus versiones corregidas por sesgo.* V.E. Yáñez Justicia, E. Álvarez Verdejo, J.F. Muñoz Rosas and A.J. López Montoya.
+
+![VIII EIEE (Cartagena, November 2024): members of GiniUs at the meeting.](images/eiee_2024_cartagena.jpg){.photo fig-alt="Five participants of the VIII EIEE standing next to the poster of the meeting at the Technical University of Cartagena, November 2024"}
 
 ### 22 May 2024 · Methodological aspects of the Gini index and the R package giniVarCI
 
@@ -32,40 +69,7 @@ Members of GiniUs organised the working group **GT 5.4 "Desigualdad, medición y
 
 ![Seminar of 22 May 2024 on the Gini index and the R package giniVarCI.](images/seminar_2024_05_22.jpg){.photo fig-alt="Participants in the seminar on the Gini index and the R package giniVarCI, University of Granada, 22 May 2024"}
 
-## Encuentro Internacional de Especialización para la Investigación en Economía y Empresa (EIEE) {#eiee}
-
-The [EIEE](https://eiee.es/) is an international meeting for researchers in economics and business organised by the universities of Almería, Granada, Málaga, Jaén and Castilla-La Mancha. Members of GiniUs have taken part in its last two editions.
-
-### IX EIEE · Ciudad Real, 21–23 October 2026
-
-Hosted by the University of Castilla-La Mancha. Juan Francisco Muñoz Rosas chaired the session on **Quantitative Methods** (Friday 23 October), which included the paper *Inferencia mediante remuestreo en la medición de la pobreza: evidencia para los índices Foster–Greer–Thorbecke* (P.A. Cano Chica). [Programme](https://eiee.es/es/programa.html).
-
-### VIII EIEE · Cartagena, 6–8 November 2024
-
-Hosted by the Faculty of Business Sciences of the Technical University of Cartagena. [Proceedings](https://eiee.es/sites/default/files/VIIIEIEE/ACTAS_VIIIEIEE_2024.pdf).
-
-- *Errores comunes en la estimación del índice de Gini y biblioteca GiniVarCI para su estimación y construcción de intervalos de confianza.* E. Álvarez Verdejo, J.F. Muñoz Rosas, J.M. Pavía Miralles and P.A. Cano Chica.
-- *Métodos rápidos y convenientes para calcular la varianza jackknife de los índices de Theil y sus versiones corregidas por sesgo.* V.E. Yáñez Justicia, E. Álvarez Verdejo, J.F. Muñoz Rosas and A.J. López Montoya.
-
-## Conferences {#conferences}
-
-### Conferences in 2025 {#conferences-2025}
-
-::: {.conf-table}
-
-| Dates | Conference | Venue | Contribution of the project |
-|---|---|---|---|
-| 9–11 December 2025 | CrossMED 2025 · International conference *Landscapes Across the Mediterranean* (2nd edition), organised with IEREK | University of Granada (Spain) | *The Gini index in inequality research: theory and practice with the R package giniVarCI* · J.F. Muñoz Rosas |
-| 10–11 March 2025 | ICFM-25 · International Conference on Financial Mathematics | Paris (France) | *A novel weighted estimator to minimize the bias problem in the Gini index estimation* · J.F. Muñoz Rosas |
-| 7–8 March 2025 | ICMATAP-25 · International Conference on Mathematical Applications, organised by SAIRAP | Paris (France) | *Analysis of skewness in Gini index estimation and its impact on confidence intervals* · J.F. Muñoz Rosas |
-| 7–8 March 2025 | ICMATAP-25 · International Conference on Mathematical Applications, organised by SAIRAP | Paris (France) | *Common pitfalls in the Gini index estimation and the giniVarCI package for the estimation and the construction of confidence intervals for the Gini index* · J.F. Muñoz Rosas |
-
-:::
-
-These contributions present results of objective OG1 (bias of the Gini index and its correction, including a weighted estimator) and the free R package [giniVarCI](software.qmd). Certificates of presentation are available from the project.
-
-
-### Upcoming conferences (2027) {#upcoming-conferences-2027}
+## Upcoming conferences (2027) {#upcoming-conferences-2027}
 
 Conferences of interest for the project with confirmed dates for 2027. Dates and venues are taken from the official websites (checked in November 2026); please check them before planning a trip.
 

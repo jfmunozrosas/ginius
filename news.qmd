@@ -48,7 +48,7 @@ subtitle: "Project status and short news on the activity of the team"
 ::: {.news-item}
 <span class="news-date">23 October 2026</span> <span class="news-tag tag-project">Conference</span>
 
-**IX EIEE (Ciudad Real).** J.F. Muñoz Rosas chairs the session on Quantitative Methods at the IX Encuentro Internacional de Especialización para la Investigación en Economía y Empresa, hosted by the University of Castilla-La Mancha. [More information](dissemination.qmd#eiee).
+**IX EIEE (Ciudad Real).** J.F. Muñoz Rosas chairs the session on Quantitative Methods at the IX Encuentro Internacional de Especialización para la Investigación en Economía y Empresa, hosted by the University of Castilla-La Mancha, and P.A. Cano-Chica presents the project paper on confidence intervals for the Foster–Greer–Thorbecke poverty indices. [More information and photo](dissemination.qmd#eiee).
 :::
 
 ::: {.news-item}
@@ -84,7 +84,7 @@ subtitle: "Project status and short news on the activity of the team"
 ::: {.news-item}
 <span class="news-date">November 2024</span> <span class="news-tag tag-project">Conference</span>
 
-**VIII EIEE (Cartagena).** Two papers by members of the project: common errors in the estimation of the Gini index and the giniVarCI library, and fast jackknife variances for Theil indices. [More information](dissemination.qmd#eiee).
+**VIII EIEE (Cartagena).** Two papers by members of the project: common errors in the estimation of the Gini index and the giniVarCI library, and fast jackknife variances for Theil indices. [More information and photo](dissemination.qmd#eiee-2024).
 :::
 
 ::: {.news-item}
