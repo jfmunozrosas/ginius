@@ -1,0 +1,29 @@
+---
+title: "In one minute: Challenges of Urban Water Cycle Management in Small Spanish Municipalities: The Case of the Province of Granada"
+date: "2026-11-17"
+categories: [video, water, inequality]
+description: "Do people in small villages get the same water services as people in cities?"
+image: ../../../media/videos/water-small-municipalities.jpg
+---
+
+```{=html}
+<video controls preload="none" poster="../../../media/videos/water-small-municipalities.jpg" style="width:100%;border-radius:8px"><source src="../../../media/videos/water-small-municipalities.mp4" type="video/mp4"></video>
+```
+
+**F.J. García-Martínez, F. Osorio and F. González-Gómez** (*Water*, 2025; JCR Q2). [Read the article](https://doi.org/10.3390/w17121750).
+
+**The question.** Do people in small villages get the same water services as people in cities?
+
+**What they found.**
+
+- Water management in Spain shows two very different realities: populated areas and small towns.
+- Small municipalities face specific problems in managing the urban water cycle.
+- Recommendations: create optimal service areas and an independent regulatory body.
+
+**Key result (in the video).** Two realities of water management, and what to do. *Source: Water (2025), province of Granada (Spain).*
+
+**Why it matters.** Better organisation and regulation can bring rural water services closer to urban standards.
+
+**Link with inequality.** Territorial inequality: whether you live in a city or a village should not decide the quality of your water service.
+
+All the videos are on the page [Our research in one minute](../../../videos.qmd).

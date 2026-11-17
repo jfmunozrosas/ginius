@@ -63,6 +63,7 @@ Research on inequality should reach everyone. Our **one-minute videos** explain 
 <a href="videos.html#happy-and-poor"><img src="media/videos/happy-and-poor.jpg" alt="Video: the happy and poor paradox"><span class="vt">The "happy and poor" paradox</span></a>
 <a href="videos.html#water-sanitation-growth"><img src="media/videos/water-sanitation-growth.jpg" alt="Video: economic growth and equal access to water"><span class="vt">Does growth make access to water more equal?</span></a>
 
+<a href="videos.html#water-gender-habits"><img src="media/videos/water-gender-habits.jpg" alt="Video: gender and saving water at home"><span class="vt">Do women and men save water in the same way?</span></a>
 :::
 
 [See all the videos →](videos.qmd){.btn .btn-primary .btn-sm}
@@ -70,9 +71,10 @@ Research on inequality should reach everyone. Our **one-minute videos** explain 
 ## Latest news
 
 ::: {.news-mini}
+- **November 2026** · [Four new videos](videos.qmd): water prices, gender and saving water, water in small villages, and the precision of official surveys, each with its link to inequality.
 - **November 2026** · [Objective OG1 achieved](results.qmd#og1): the bias of the Gini index is identified and corrected.
 - **November 2026** · 27 articles of the project now in [open access](publications.qmd) (17 in DIGIBUG).
-- **November 2026** · [Our research in one minute](videos.qmd): eight short videos explain the team's articles on inequality and poverty in plain language.
+- **November 2026** · [Our research in one minute](videos.qmd): twelve short videos explain the team's articles on inequality, poverty and access to water in plain language.
 - **November 2026** · New website, with a [Gini index calculator](calculator.qmd), a [missing data simulator](missing-data.qmd), an [interactive bias explorer](simulation.qmd), [R exercises in your browser](practice.qmd) and an [inequality observatory](observatory.qmd).
 - **23 October 2026** · The project takes part in the [IX EIEE](dissemination.qmd#eiee) (Ciudad Real).
 - **10 September 2026** · [Working group on inequality](dissemination.qmd#aecpa) organised by members of the project at the XVIII AECPA Congress (Granada).

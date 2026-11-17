@@ -173,6 +173,41 @@
   <media:content url="https://jfmunozrosas.github.io/ginius/media/videos/innovation-poverty-gaps.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
+  <title>In one minute: Unconditional variance estimation under complex surveys</title>
+  <dc:creator>GiniUs team</dc:creator>
+  <link>https://jfmunozrosas.github.io/ginius/blog/posts/2026-11-17-video-survey-variance/</link>
+  <description><![CDATA[ 
+
+
+
+
+<video controls="" preload="none" poster="../../../media/videos/survey-variance.jpg" style="width:100%;border-radius:8px"><source src="../../../media/videos/survey-variance.mp4" type="video/mp4"></video>
+<p><strong>Y.G. Berger</strong> (<em>International Statistical Review</em>, 2025; JCR Q1). <a href="https://doi.org/10.1111/insr.70001">Read the article</a>.</p>
+<p><strong>The question.</strong> How precise are the figures we get from large official surveys?</p>
+<p><strong>What they found.</strong></p>
+<ul>
+<li>The margin of error can be computed without complex correction terms.</li>
+<li>The estimator is simple and asymptotically unbiased under stratified, multistage and informative designs.</li>
+<li>It also gives hypothesis tests and works under ordered systematic sampling.</li>
+</ul>
+<p><strong>Key result (in the video).</strong> A simpler way to get the margin of error. <em>Source: International Statistical Review (2025).</em></p>
+<p><strong>Why it matters.</strong> Simple and reliable margins of error make it easier to use survey data correctly.</p>
+<p><strong>Link with inequality.</strong> Inequality and poverty are measured with complex surveys such as EU-SILC. Reliable margins of error tell us whether a change in inequality is real.</p>
+<p>All the videos are on the page <a href="../../../videos.html">Our research in one minute</a>.</p>
+
+
+<!-- -->
+
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
+  <category>video</category>
+  <category>survey methods</category>
+  <category>inequality</category>
+  <guid>https://jfmunozrosas.github.io/ginius/blog/posts/2026-11-17-video-survey-variance/</guid>
+  <pubDate>Mon, 16 Nov 2026 23:00:00 GMT</pubDate>
+  <media:content url="https://jfmunozrosas.github.io/ginius/media/videos/survey-variance.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
   <title>In one minute: Inequalities in talents’ earnings: a tale of two European countries</title>
   <dc:creator>GiniUs team</dc:creator>
   <link>https://jfmunozrosas.github.io/ginius/blog/posts/2026-11-17-video-talents-earnings/</link>
@@ -272,6 +307,76 @@
   <media:content url="https://jfmunozrosas.github.io/ginius/media/videos/tourism-poverty-pandemic.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
+  <title>In one minute: Pro-environmental behaviour in household water use. A gender perspective</title>
+  <dc:creator>GiniUs team</dc:creator>
+  <link>https://jfmunozrosas.github.io/ginius/blog/posts/2026-11-17-video-water-gender-habits/</link>
+  <description><![CDATA[ 
+
+
+
+
+<video controls="" preload="none" poster="../../../media/videos/water-gender-habits.jpg" style="width:100%;border-radius:8px"><source src="../../../media/videos/water-gender-habits.mp4" type="video/mp4"></video>
+<p><strong>L. Granda, P.J. Moya-Fernández, R.M. Soriano-Miras and F. González-Gómez</strong> (<em>Sustainable Water Resources Management</em>, 2024). <a href="https://doi.org/10.1007/s40899-023-01027-6">Read the article</a>.</p>
+<p><strong>The question.</strong> Do women and men save water at home in the same way?</p>
+<p><strong>What they found.</strong></p>
+<ul>
+<li>There is no gender gap in the number of water-saving habits.</li>
+<li>But there are differences in specific habits.</li>
+<li>They follow how household chores are shared: tasks traditionally done by women or by men.</li>
+</ul>
+<p><strong>Key result (in the video).</strong> Saving water at home: women and men. <em>Source: Sustainable Water Resources Management (2024), ten household water uses.</em></p>
+<p><strong>Why it matters.</strong> Water-saving campaigns work better when they reach the person who actually does each household task.</p>
+<p><strong>Link with inequality.</strong> Gender inequality in sharing household chores also shapes who carries the effort of saving water at home.</p>
+<p>All the videos are on the page <a href="../../../videos.html">Our research in one minute</a>.</p>
+
+
+<!-- -->
+
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
+  <category>video</category>
+  <category>water</category>
+  <category>inequality</category>
+  <guid>https://jfmunozrosas.github.io/ginius/blog/posts/2026-11-17-video-water-gender-habits/</guid>
+  <pubDate>Mon, 16 Nov 2026 23:00:00 GMT</pubDate>
+  <media:content url="https://jfmunozrosas.github.io/ginius/media/videos/water-gender-habits.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>In one minute: Changing prices after the reform of local public services: remunicipalization versus privatization</title>
+  <dc:creator>GiniUs team</dc:creator>
+  <link>https://jfmunozrosas.github.io/ginius/blog/posts/2026-11-17-video-water-prices-reform/</link>
+  <description><![CDATA[ 
+
+
+
+
+<video controls="" preload="none" poster="../../../media/videos/water-prices-reform.jpg" style="width:100%;border-radius:8px"><source src="../../../media/videos/water-prices-reform.mp4" type="video/mp4"></video>
+<p><strong>D. Albalate, G. Bel, F. González-Gómez, J.C. Hernández-Gutiérrez and A.J. Picazo-Tadeo</strong> (<em>Journal of Regulatory Economics</em>, 2024; JCR Q3). <a href="https://doi.org/10.1007/s11149-024-09472-7">Read the article</a>.</p>
+<p><strong>The question.</strong> When a town takes its water service back from a private company, or hands it over to one, what happens to the water bill?</p>
+<p><strong>What they found.</strong></p>
+<ul>
+<li>Remunicipalization showed smaller price increases than privatization.</li>
+<li>But that gap came from a few towns with abnormally low prices before the reform.</li>
+<li>Once these towns are accounted for, the type of reform makes no difference to prices.</li>
+</ul>
+<p><strong>Key result (in the video).</strong> What happened to water prices after the reform. <em>Source: Journal of Regulatory Economics (2024), Spanish municipalities.</em></p>
+<p><strong>Why it matters.</strong> Decisions about who runs public services should rest on evidence about what citizens pay, not only on ideology.</p>
+<p><strong>Link with inequality.</strong> Water bills weigh more on low-income households. Knowing what drives water prices helps protect affordability and the human right to water.</p>
+<p>All the videos are on the page <a href="../../../videos.html">Our research in one minute</a>.</p>
+
+
+<!-- -->
+
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
+  <category>video</category>
+  <category>water</category>
+  <category>inequality</category>
+  <guid>https://jfmunozrosas.github.io/ginius/blog/posts/2026-11-17-video-water-prices-reform/</guid>
+  <pubDate>Mon, 16 Nov 2026 23:00:00 GMT</pubDate>
+  <media:content url="https://jfmunozrosas.github.io/ginius/media/videos/water-prices-reform.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
   <title>In one minute: Does economic growth drive equitable water and sanitation access? Assessing inequality reduction across 64 nations</title>
   <dc:creator>GiniUs team</dc:creator>
   <link>https://jfmunozrosas.github.io/ginius/blog/posts/2026-11-17-video-water-sanitation-growth/</link>
@@ -303,6 +408,41 @@
   <guid>https://jfmunozrosas.github.io/ginius/blog/posts/2026-11-17-video-water-sanitation-growth/</guid>
   <pubDate>Mon, 16 Nov 2026 23:00:00 GMT</pubDate>
   <media:content url="https://jfmunozrosas.github.io/ginius/media/videos/water-sanitation-growth.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>In one minute: Challenges of Urban Water Cycle Management in Small Spanish Municipalities: The Case of the Province of Granada</title>
+  <dc:creator>GiniUs team</dc:creator>
+  <link>https://jfmunozrosas.github.io/ginius/blog/posts/2026-11-17-video-water-small-municipalities/</link>
+  <description><![CDATA[ 
+
+
+
+
+<video controls="" preload="none" poster="../../../media/videos/water-small-municipalities.jpg" style="width:100%;border-radius:8px"><source src="../../../media/videos/water-small-municipalities.mp4" type="video/mp4"></video>
+<p><strong>F.J. García-Martínez, F. Osorio and F. González-Gómez</strong> (<em>Water</em>, 2025; JCR Q2). <a href="https://doi.org/10.3390/w17121750">Read the article</a>.</p>
+<p><strong>The question.</strong> Do people in small villages get the same water services as people in cities?</p>
+<p><strong>What they found.</strong></p>
+<ul>
+<li>Water management in Spain shows two very different realities: populated areas and small towns.</li>
+<li>Small municipalities face specific problems in managing the urban water cycle.</li>
+<li>Recommendations: create optimal service areas and an independent regulatory body.</li>
+</ul>
+<p><strong>Key result (in the video).</strong> Two realities of water management, and what to do. <em>Source: Water (2025), province of Granada (Spain).</em></p>
+<p><strong>Why it matters.</strong> Better organisation and regulation can bring rural water services closer to urban standards.</p>
+<p><strong>Link with inequality.</strong> Territorial inequality: whether you live in a city or a village should not decide the quality of your water service.</p>
+<p>All the videos are on the page <a href="../../../videos.html">Our research in one minute</a>.</p>
+
+
+<!-- -->
+
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
+  <category>video</category>
+  <category>water</category>
+  <category>inequality</category>
+  <guid>https://jfmunozrosas.github.io/ginius/blog/posts/2026-11-17-video-water-small-municipalities/</guid>
+  <pubDate>Mon, 16 Nov 2026 23:00:00 GMT</pubDate>
+  <media:content url="https://jfmunozrosas.github.io/ginius/media/videos/water-small-municipalities.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>Welcome to the new GiniUs website</title>

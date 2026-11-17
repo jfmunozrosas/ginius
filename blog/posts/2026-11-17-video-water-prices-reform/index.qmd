@@ -1,0 +1,29 @@
+---
+title: "In one minute: Changing prices after the reform of local public services: remunicipalization versus privatization"
+date: "2026-11-17"
+categories: [video, water, inequality]
+description: "When a town takes its water service back from a private company, or hands it over to one, what happens to the water bill?"
+image: ../../../media/videos/water-prices-reform.jpg
+---
+
+```{=html}
+<video controls preload="none" poster="../../../media/videos/water-prices-reform.jpg" style="width:100%;border-radius:8px"><source src="../../../media/videos/water-prices-reform.mp4" type="video/mp4"></video>
+```
+
+**D. Albalate, G. Bel, F. González-Gómez, J.C. Hernández-Gutiérrez and A.J. Picazo-Tadeo** (*Journal of Regulatory Economics*, 2024; JCR Q3). [Read the article](https://doi.org/10.1007/s11149-024-09472-7).
+
+**The question.** When a town takes its water service back from a private company, or hands it over to one, what happens to the water bill?
+
+**What they found.**
+
+- Remunicipalization showed smaller price increases than privatization.
+- But that gap came from a few towns with abnormally low prices before the reform.
+- Once these towns are accounted for, the type of reform makes no difference to prices.
+
+**Key result (in the video).** What happened to water prices after the reform. *Source: Journal of Regulatory Economics (2024), Spanish municipalities.*
+
+**Why it matters.** Decisions about who runs public services should rest on evidence about what citizens pay, not only on ideology.
+
+**Link with inequality.** Water bills weigh more on low-income households. Knowing what drives water prices helps protect affordability and the human right to water.
+
+All the videos are on the page [Our research in one minute](../../../videos.qmd).

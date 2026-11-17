@@ -465,5 +465,229 @@
    ],
    "note": "Source: Journal of Poverty (2026). Results by country and over time in the article."
   }
+ },
+ {
+  "slug": "water-prices-reform",
+  "title": "Changing prices after the reform of local public services: remunicipalization versus privatization",
+  "journal": "Journal of Regulatory Economics",
+  "year": 2024,
+  "authors": "D. Albalate, G. Bel, F. González-Gómez, J.C. Hernández-Gutiérrez and A.J. Picazo-Tadeo",
+  "doi": "10.1007/s11149-024-09472-7",
+  "quality": [
+   "JCR Q3"
+  ],
+  "question": "When a town takes its water service back from a private company, or hands it over to one, what happens to the water bill?",
+  "how": [
+   "Spanish municipalities that changed how their urban water is managed",
+   "Water prices before and after remunicipalization or privatization",
+   "Statistical comparison that checks for atypical cases"
+  ],
+  "findings": [
+   "Remunicipalization showed smaller price increases than privatization",
+   "But that gap came from a few towns with abnormally low prices before the reform",
+   "Once these towns are accounted for, the type of reform makes no difference to prices"
+  ],
+  "why": "Decisions about who runs public services should rest on evidence about what citizens pay, not only on ideology.",
+  "inequality_link": "Water bills weigh more on low-income households. Knowing what drives water prices helps protect affordability and the human right to water.",
+  "figure": {
+   "type": "links",
+   "label": "KEY RESULT",
+   "title": "What happened to water prices after the reform",
+   "links": [
+    [
+     "Remunicipalization",
+     "Price increase",
+     "↓",
+     "smaller",
+     "GREEN"
+    ],
+    [
+     "A few atypical towns",
+     "Explain that difference",
+     "!",
+     "key cases",
+     "GOLD"
+    ],
+    [
+     "Accounting for them",
+     "Price change by reform type",
+     "=",
+     "no difference",
+     "GR"
+    ],
+    [
+     "Extreme-left local councils",
+     "Remunicipalization",
+     "↑",
+     "more likely",
+     "BLUE"
+    ]
+   ],
+   "note": "Source: Journal of Regulatory Economics (2024), Spanish municipalities."
+  }
+ },
+ {
+  "slug": "water-gender-habits",
+  "title": "Pro-environmental behaviour in household water use. A gender perspective",
+  "journal": "Sustainable Water Resources Management",
+  "year": 2024,
+  "authors": "L. Granda, P.J. Moya-Fernández, R.M. Soriano-Miras and F. González-Gómez",
+  "doi": "10.1007/s40899-023-01027-6",
+  "quality": [],
+  "question": "Do women and men save water at home in the same way?",
+  "how": [
+   "Survey on ten everyday uses of water in the home",
+   "Comparison of water-saving habits of women and men",
+   "Analysis of each household use, one by one"
+  ],
+  "findings": [
+   "There is no gender gap in the number of water-saving habits",
+   "But there are differences in specific habits",
+   "They follow how household chores are shared: tasks traditionally done by women or by men"
+  ],
+  "why": "Water-saving campaigns work better when they reach the person who actually does each household task.",
+  "inequality_link": "Gender inequality in sharing household chores also shapes who carries the effort of saving water at home.",
+  "figure": {
+   "type": "links",
+   "label": "KEY RESULT",
+   "title": "Saving water at home: women and men",
+   "links": [
+    [
+     "Number of water-saving habits",
+     "Women vs men",
+     "=",
+     "no gap",
+     "GR"
+    ],
+    [
+     "Specific household uses",
+     "Women vs men",
+     "≠",
+     "differences",
+     "GOLD"
+    ],
+    [
+     "Who does each chore",
+     "Who saves water in that task",
+     "→",
+     "explains",
+     "BLUE"
+    ]
+   ],
+   "note": "Source: Sustainable Water Resources Management (2024), ten household water uses."
+  }
+ },
+ {
+  "slug": "water-small-municipalities",
+  "title": "Challenges of Urban Water Cycle Management in Small Spanish Municipalities: The Case of the Province of Granada",
+  "journal": "Water",
+  "year": 2025,
+  "authors": "F.J. García-Martínez, F. Osorio and F. González-Gómez",
+  "doi": "10.3390/w17121750",
+  "quality": [
+   "JCR Q2"
+  ],
+  "question": "Do people in small villages get the same water services as people in cities?",
+  "how": [
+   "Review of how urban water services are managed in Spain",
+   "Focus on small municipalities in the province of Granada",
+   "Problems identified and recommendations proposed"
+  ],
+  "findings": [
+   "Water management in Spain shows two very different realities: populated areas and small towns",
+   "Small municipalities face specific problems in managing the urban water cycle",
+   "Recommendations: create optimal service areas and an independent regulatory body"
+  ],
+  "why": "Better organisation and regulation can bring rural water services closer to urban standards.",
+  "inequality_link": "Territorial inequality: whether you live in a city or a village should not decide the quality of your water service.",
+  "figure": {
+   "type": "links",
+   "label": "KEY RESULT",
+   "title": "Two realities of water management, and what to do",
+   "links": [
+    [
+     "Populated service areas",
+     "Urban water cycle management",
+     "✓",
+     "one reality",
+     "BLUE"
+    ],
+    [
+     "Small municipalities",
+     "Urban water cycle management",
+     "!",
+     "problems",
+     "RED"
+    ],
+    [
+     "Recommendation 1",
+     "Optimal service areas",
+     "→",
+     "reorganise",
+     "GREEN"
+    ],
+    [
+     "Recommendation 2",
+     "Independent regulatory body",
+     "→",
+     "regulate",
+     "GREEN"
+    ]
+   ],
+   "note": "Source: Water (2025), province of Granada (Spain)."
+  }
+ },
+ {
+  "slug": "survey-variance",
+  "title": "Unconditional variance estimation under complex surveys",
+  "journal": "International Statistical Review",
+  "year": 2025,
+  "authors": "Y.G. Berger",
+  "doi": "10.1111/insr.70001",
+  "quality": [
+   "JCR Q1"
+  ],
+  "question": "How precise are the figures we get from large official surveys?",
+  "how": [
+   "Surveys that select households with unequal probabilities, in strata and stages",
+   "A new “unconditional” way of computing the margin of error",
+   "Mathematical proofs of its properties"
+  ],
+  "findings": [
+   "The margin of error can be computed without complex correction terms",
+   "The estimator is simple and asymptotically unbiased under stratified, multistage and informative designs",
+   "It also gives hypothesis tests and works under ordered systematic sampling"
+  ],
+  "why": "Simple and reliable margins of error make it easier to use survey data correctly.",
+  "inequality_link": "Inequality and poverty are measured with complex surveys such as EU-SILC. Reliable margins of error tell us whether a change in inequality is real.",
+  "figure": {
+   "type": "links",
+   "label": "KEY RESULT",
+   "title": "A simpler way to get the margin of error",
+   "links": [
+    [
+     "Classic estimators",
+     "Joint-inclusion probabilities and population corrections",
+     "!",
+     "needed",
+     "RED"
+    ],
+    [
+     "Unconditional approach",
+     "The same complex terms",
+     "✗",
+     "not needed",
+     "GREEN"
+    ],
+    [
+     "Unconditional approach",
+     "Stratified, multistage, informative designs",
+     "✓",
+     "unbiased",
+     "GREEN"
+    ]
+   ],
+   "note": "Source: International Statistical Review (2025)."
+  }
  }
 ]

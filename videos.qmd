@@ -4,7 +4,7 @@ subtitle: "Short videos that explain, in plain language, the articles of the tea
 toc: false
 ---
 
-Research on inequality should reach everyone, not only specialists. Each of these **one-minute videos** explains an article of the team in plain language: the question, how it was answered, what was found, **a key result shown as a figure** and why it matters for society. You can share them freely on social networks, in classes or in public talks, citing GiniUs. Each video shows the quality indicators of the journal: JCR quartile in the year of publication and, where applicable, rating in the Chartered ABS *Academic Journal Guide*.
+Research on inequality should reach everyone, not only specialists. Each of these **one-minute videos** explains an article of the team in plain language: the question, how it was answered, what was found, **a key result shown as a figure** and why it matters for society. You can share them freely on social networks, in classes or in public talks, citing GiniUs. Videos of articles on water services or survey methods also explain their **link with inequality**. Each video shows the quality indicators of the journal: JCR quartile in the year of publication and, where applicable, rating in the Chartered ABS *Academic Journal Guide*.
 
 ::: {.video-grid}
 <a href="#gini-practical-guide"><img src="media/videos/gini-practical-guide.jpg" alt="Video: A practical guide to proper estimation and inference of the Gini index by avoiding often encountered methodological pitfalls"><span class="vt">A practical guide to proper estimation and inference of the Gini index by avoiding often encountered methodological pitfalls</span></a>
@@ -16,6 +16,10 @@ Research on inequality should reach everyone, not only specialists. Each of thes
 <a href="#talents-earnings"><img src="media/videos/talents-earnings.jpg" alt="Video: Inequalities in talents’ earnings: a tale of two European countries"><span class="vt">Inequalities in talents’ earnings: a tale of two European countries</span></a>
 <a href="#innovation-poverty-gaps"><img src="media/videos/innovation-poverty-gaps.jpg" alt="Video: Innovation and poverty-related income gaps in Europe: evidence from the North–South divide"><span class="vt">Innovation and poverty-related income gaps in Europe: evidence from the North–South divide</span></a>
 
+<a href="#water-prices-reform"><img src="media/videos/water-prices-reform.jpg" alt="Video: Changing prices after the reform of local public services: remunicipalization versus privatization"><span class="vt">Changing prices after the reform of local public services: remunicipalization versus privatization</span></a>
+<a href="#water-gender-habits"><img src="media/videos/water-gender-habits.jpg" alt="Video: Pro-environmental behaviour in household water use. A gender perspective"><span class="vt">Pro-environmental behaviour in household water use. A gender perspective</span></a>
+<a href="#water-small-municipalities"><img src="media/videos/water-small-municipalities.jpg" alt="Video: Challenges of Urban Water Cycle Management in Small Spanish Municipalities: The Case of the Province of Granada"><span class="vt">Challenges of Urban Water Cycle Management in Small Spanish Municipalities: The Case of the Province of Granada</span></a>
+<a href="#survey-variance"><img src="media/videos/survey-variance.jpg" alt="Video: Unconditional variance estimation under complex surveys"><span class="vt">Unconditional variance estimation under complex surveys</span></a>
 :::
 
 ::: {#gini-practical-guide .video-card}
@@ -176,6 +180,94 @@ Research on inequality should reach everyone, not only specialists. Each of thes
 **Why it matters.** Innovation policies can widen or narrow income gaps. Knowing where and how helps to design fairer innovation policies in Europe.
 
 [Download the video (MP4)](media/videos/innovation-poverty-gaps.mp4){.btn .btn-outline-primary .btn-sm download=""}
+:::
+
+::: {#water-prices-reform .video-card}
+### Changing prices after the reform of local public services: remunicipalization versus privatization
+
+<p class="meta">D. Albalate, G. Bel, F. González-Gómez, J.C. Hernández-Gutiérrez and A.J. Picazo-Tadeo · <i>Journal of Regulatory Economics</i> (2024) · <b>JCR Q3</b> · <a href="https://doi.org/10.1007/s11149-024-09472-7" target="_blank">doi.org/10.1007/s11149-024-09472-7</a></p>
+
+```{=html}
+<video controls preload="none" poster="media/videos/water-prices-reform.jpg" aria-label="One-minute video: Changing prices after the reform of local public services: remunicipalization versus privatization"><source src="media/videos/water-prices-reform.mp4" type="video/mp4">Your browser does not support HTML5 video. <a href="media/videos/water-prices-reform.mp4">Download the video</a>.</video>
+```
+
+**The question.** When a town takes its water service back from a private company, or hands it over to one, what happens to the water bill?
+
+**What they found.** Remunicipalization showed smaller price increases than privatization. But that gap came from a few towns with abnormally low prices before the reform. Once these towns are accounted for, the type of reform makes no difference to prices.
+
+**Key result (in the video).** What happened to water prices after the reform. *Source: Journal of Regulatory Economics (2024), Spanish municipalities.*
+
+**Why it matters.** Decisions about who runs public services should rest on evidence about what citizens pay, not only on ideology.
+
+**Link with inequality.** Water bills weigh more on low-income households. Knowing what drives water prices helps protect affordability and the human right to water.
+
+[Download the video (MP4)](media/videos/water-prices-reform.mp4){.btn .btn-outline-primary .btn-sm download=""}
+:::
+
+::: {#water-gender-habits .video-card}
+### Pro-environmental behaviour in household water use. A gender perspective
+
+<p class="meta">L. Granda, P.J. Moya-Fernández, R.M. Soriano-Miras and F. González-Gómez · <i>Sustainable Water Resources Management</i> (2024) · <a href="https://doi.org/10.1007/s40899-023-01027-6" target="_blank">doi.org/10.1007/s40899-023-01027-6</a></p>
+
+```{=html}
+<video controls preload="none" poster="media/videos/water-gender-habits.jpg" aria-label="One-minute video: Pro-environmental behaviour in household water use. A gender perspective"><source src="media/videos/water-gender-habits.mp4" type="video/mp4">Your browser does not support HTML5 video. <a href="media/videos/water-gender-habits.mp4">Download the video</a>.</video>
+```
+
+**The question.** Do women and men save water at home in the same way?
+
+**What they found.** There is no gender gap in the number of water-saving habits. But there are differences in specific habits. They follow how household chores are shared: tasks traditionally done by women or by men.
+
+**Key result (in the video).** Saving water at home: women and men. *Source: Sustainable Water Resources Management (2024), ten household water uses.*
+
+**Why it matters.** Water-saving campaigns work better when they reach the person who actually does each household task.
+
+**Link with inequality.** Gender inequality in sharing household chores also shapes who carries the effort of saving water at home.
+
+[Download the video (MP4)](media/videos/water-gender-habits.mp4){.btn .btn-outline-primary .btn-sm download=""}
+:::
+
+::: {#water-small-municipalities .video-card}
+### Challenges of Urban Water Cycle Management in Small Spanish Municipalities: The Case of the Province of Granada
+
+<p class="meta">F.J. García-Martínez, F. Osorio and F. González-Gómez · <i>Water</i> (2025) · <b>JCR Q2</b> · <a href="https://doi.org/10.3390/w17121750" target="_blank">doi.org/10.3390/w17121750</a></p>
+
+```{=html}
+<video controls preload="none" poster="media/videos/water-small-municipalities.jpg" aria-label="One-minute video: Challenges of Urban Water Cycle Management in Small Spanish Municipalities: The Case of the Province of Granada"><source src="media/videos/water-small-municipalities.mp4" type="video/mp4">Your browser does not support HTML5 video. <a href="media/videos/water-small-municipalities.mp4">Download the video</a>.</video>
+```
+
+**The question.** Do people in small villages get the same water services as people in cities?
+
+**What they found.** Water management in Spain shows two very different realities: populated areas and small towns. Small municipalities face specific problems in managing the urban water cycle. Recommendations: create optimal service areas and an independent regulatory body.
+
+**Key result (in the video).** Two realities of water management, and what to do. *Source: Water (2025), province of Granada (Spain).*
+
+**Why it matters.** Better organisation and regulation can bring rural water services closer to urban standards.
+
+**Link with inequality.** Territorial inequality: whether you live in a city or a village should not decide the quality of your water service.
+
+[Download the video (MP4)](media/videos/water-small-municipalities.mp4){.btn .btn-outline-primary .btn-sm download=""}
+:::
+
+::: {#survey-variance .video-card}
+### Unconditional variance estimation under complex surveys
+
+<p class="meta">Y.G. Berger · <i>International Statistical Review</i> (2025) · <b>JCR Q1</b> · <a href="https://doi.org/10.1111/insr.70001" target="_blank">doi.org/10.1111/insr.70001</a></p>
+
+```{=html}
+<video controls preload="none" poster="media/videos/survey-variance.jpg" aria-label="One-minute video: Unconditional variance estimation under complex surveys"><source src="media/videos/survey-variance.mp4" type="video/mp4">Your browser does not support HTML5 video. <a href="media/videos/survey-variance.mp4">Download the video</a>.</video>
+```
+
+**The question.** How precise are the figures we get from large official surveys?
+
+**What they found.** The margin of error can be computed without complex correction terms. The estimator is simple and asymptotically unbiased under stratified, multistage and informative designs. It also gives hypothesis tests and works under ordered systematic sampling.
+
+**Key result (in the video).** A simpler way to get the margin of error. *Source: International Statistical Review (2025).*
+
+**Why it matters.** Simple and reliable margins of error make it easier to use survey data correctly.
+
+**Link with inequality.** Inequality and poverty are measured with complex surveys such as EU-SILC. Reliable margins of error tell us whether a change in inequality is real.
+
+[Download the video (MP4)](media/videos/survey-variance.mp4){.btn .btn-outline-primary .btn-sm download=""}
 :::
 
 ::: {.callout-note appearance="simple"}

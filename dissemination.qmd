@@ -47,9 +47,23 @@ Hosted by the Faculty of Business Sciences of the Technical University of Cartag
 - *Errores comunes en la estimación del índice de Gini y biblioteca GiniVarCI para su estimación y construcción de intervalos de confianza.* E. Álvarez Verdejo, J.F. Muñoz Rosas, J.M. Pavía Miralles and P.A. Cano Chica.
 - *Métodos rápidos y convenientes para calcular la varianza jackknife de los índices de Theil y sus versiones corregidas por sesgo.* V.E. Yáñez Justicia, E. Álvarez Verdejo, J.F. Muñoz Rosas and A.J. López Montoya.
 
-## Conferences
+## Conferences {#conferences}
 
-Conferences where the results of the project are presented will be listed here.
+### Conferences in 2025 {#conferences-2025}
+
+::: {.conf-table}
+
+| Dates | Conference | Venue | Contribution of the project |
+|---|---|---|---|
+| 9–11 December 2025 | CrossMED 2025 · International conference *Landscapes Across the Mediterranean* (2nd edition), organised with IEREK | University of Granada (Spain) | *The Gini index in inequality research: theory and practice with the R package giniVarCI* · J.F. Muñoz Rosas |
+| 10–11 March 2025 | ICFM-25 · International Conference on Financial Mathematics | Paris (France) | *A novel weighted estimator to minimize the bias problem in the Gini index estimation* · J.F. Muñoz Rosas |
+| 7–8 March 2025 | ICMATAP-25 · International Conference on Mathematical Applications, organised by SAIRAP | Paris (France) | *Analysis of skewness in Gini index estimation and its impact on confidence intervals* · J.F. Muñoz Rosas |
+| 7–8 March 2025 | ICMATAP-25 · International Conference on Mathematical Applications, organised by SAIRAP | Paris (France) | *Common pitfalls in the Gini index estimation and the giniVarCI package for the estimation and the construction of confidence intervals for the Gini index* · J.F. Muñoz Rosas |
+
+:::
+
+These contributions present results of objective OG1 (bias of the Gini index and its correction, including a weighted estimator) and the free R package [giniVarCI](software.qmd). Certificates of presentation are available from the project.
+
 
 ### Upcoming conferences (2027) {#upcoming-conferences-2027}
 

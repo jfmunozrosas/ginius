@@ -1,0 +1,29 @@
+---
+title: "In one minute: Pro-environmental behaviour in household water use. A gender perspective"
+date: "2026-11-17"
+categories: [video, water, inequality]
+description: "Do women and men save water at home in the same way?"
+image: ../../../media/videos/water-gender-habits.jpg
+---
+
+```{=html}
+<video controls preload="none" poster="../../../media/videos/water-gender-habits.jpg" style="width:100%;border-radius:8px"><source src="../../../media/videos/water-gender-habits.mp4" type="video/mp4"></video>
+```
+
+**L. Granda, P.J. Moya-Fernández, R.M. Soriano-Miras and F. González-Gómez** (*Sustainable Water Resources Management*, 2024). [Read the article](https://doi.org/10.1007/s40899-023-01027-6).
+
+**The question.** Do women and men save water at home in the same way?
+
+**What they found.**
+
+- There is no gender gap in the number of water-saving habits.
+- But there are differences in specific habits.
+- They follow how household chores are shared: tasks traditionally done by women or by men.
+
+**Key result (in the video).** Saving water at home: women and men. *Source: Sustainable Water Resources Management (2024), ten household water uses.*
+
+**Why it matters.** Water-saving campaigns work better when they reach the person who actually does each household task.
+
+**Link with inequality.** Gender inequality in sharing household chores also shapes who carries the effort of saving water at home.
+
+All the videos are on the page [Our research in one minute](../../../videos.qmd).

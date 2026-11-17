@@ -118,8 +118,19 @@ def s3(v, t, dur):
 def s4(v, t, dur):
     img, d = frame(e := env(t, dur)); corner_logo(img, e)
     label(d, "WHY IT MATTERS", appear(t, 0.1) * e, 120, RED)
-    f = F("SemiBold", 40); lines = wrap(d, v["why"], f, 1040); y0 = 370 - (len(lines) - 1) * 28
-    for i, ln in enumerate(lines): text(d, (W / 2, y0 + i * 56), ln, f, DK, appear(t, 0.7 + 0.45 * i) * e)
+    link = v.get("inequality_link")
+    f = F("SemiBold", 38 if link else 40); lines = wrap(d, v["why"], f, 1040)
+    yc = 250 if link else 370; y0 = yc - (len(lines) - 1) * 27
+    for i, ln in enumerate(lines): text(d, (W / 2, y0 + i * 54), ln, f, DK, appear(t, 0.7 + 0.45 * i) * e)
+    if link:
+        a = appear(t, 2.6, 0.8) * e
+        if a > 0:
+            fl = F("SemiBold", 30); ll = wrap(d, link, fl, 960); h = 80 + 42 * len(ll); top = 640 - h
+            d.rounded_rectangle([120, top, W - 120, 640], radius=22, fill=mix((253, 247, 234), a), outline=mix(GOLD, a), width=4)
+            fb = F("Bold", 22); lab = "LINK WITH INEQUALITY"; w = d.textlength(lab, font=fb)
+            d.rounded_rectangle([W / 2 - w / 2 - 18, top - 20, W / 2 + w / 2 + 18, top + 20], radius=20, fill=mix(GOLD, a))
+            text(d, (W / 2, top), lab, fb, (255, 255, 255), a)
+            for i, ln in enumerate(ll): text(d, (W / 2, top + 50 + i * 42), ln, fl, DK, a, "ma")
     return img
 
 def s5(v, t, dur):

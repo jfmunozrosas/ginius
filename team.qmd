@@ -8,7 +8,7 @@ Click on a name to open the researcher's profile. Researchers at foreign institu
 ## Principal investigators
 
 - **[Juan Francisco Muñoz Rosas](https://scholar.google.es/citations?user=gedX7Z8AAAAJ&hl=es&oi=ao)** (PI 1). University of Granada, Spain · Quantitative Methods for Economics and Business.
-- **[Francisco José González Gómez](https://scholar.google.com/citations?view_op=search_authors&mauthors=Francisco+Gonz%C3%A1lez-G%C3%B3mez+Granada)** (PI 2). University of Granada, Spain · Applied Economics.
+- **[Francisco José González Gómez](https://scholar.google.com/citations?hl=es&user=tOdG-zoAAAAJ)** (PI 2). University of Granada, Spain · Applied Economics.
 
 ## Members by field
 
@@ -23,7 +23,7 @@ Click on a name to open the researcher's profile. Researchers at foreign institu
 - [Rosa María García Fernández](https://produccioncientifica.ugr.es/investigadores/357334/detalle) — University of Granada, Spain
 - [Pablo José Moya Fernández](https://scholar.google.es/citations?user=LWC3hNMAAAAJ&hl=es&oi=sra) — University of Granada, Spain
 - [Juan Francisco Muñoz Rosas](https://scholar.google.es/citations?user=gedX7Z8AAAAJ&hl=es&oi=ao) (PI 1) — University of Granada, Spain
-- [Yves G. Berger](https://scholar.google.com/citations?view_op=search_authors&mauthors=Yves+G.+Berger) — University of Southampton, United Kingdom
+- [Yves G. Berger](https://scholar.google.com/citations?hl=es&user=dmIZIusAAAAJ) — University of Southampton, United Kingdom
 :::
 
 ::: {.field-card}
@@ -31,7 +31,7 @@ Click on a name to open the researcher's profile. Researchers at foreign institu
 
 <p class="lines">Water economics · Well-being · Poverty · Labour economics</p>
 
-- [Francisco José González Gómez](https://scholar.google.com/citations?view_op=search_authors&mauthors=Francisco+Gonz%C3%A1lez-G%C3%B3mez+Granada) (PI 2) — University of Granada, Spain
+- [Francisco José González Gómez](https://scholar.google.com/citations?hl=es&user=tOdG-zoAAAAJ) (PI 2) — University of Granada, Spain
 - [Jorge Guardiola Wanden-Berghe](https://scholar.google.es/citations?user=GwRVIK8AAAAJ&hl=es&oi=ao) — University of Granada, Spain
 - [Mª Nazaret Ibáñez Rueda](https://scholar.google.es/citations?user=8w_MCg0AAAAJ&hl=es&oi=ao) — University of León, Spain
 - [Samara López Ruiz](https://scholar.google.es/citations?user=Z9bNNRIAAAAJ&hl=es&oi=ao) — University of Valladolid, Spain

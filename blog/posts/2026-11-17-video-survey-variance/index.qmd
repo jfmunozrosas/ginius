@@ -1,0 +1,29 @@
+---
+title: "In one minute: Unconditional variance estimation under complex surveys"
+date: "2026-11-17"
+categories: [video, survey methods, inequality]
+description: "How precise are the figures we get from large official surveys?"
+image: ../../../media/videos/survey-variance.jpg
+---
+
+```{=html}
+<video controls preload="none" poster="../../../media/videos/survey-variance.jpg" style="width:100%;border-radius:8px"><source src="../../../media/videos/survey-variance.mp4" type="video/mp4"></video>
+```
+
+**Y.G. Berger** (*International Statistical Review*, 2025; JCR Q1). [Read the article](https://doi.org/10.1111/insr.70001).
+
+**The question.** How precise are the figures we get from large official surveys?
+
+**What they found.**
+
+- The margin of error can be computed without complex correction terms.
+- The estimator is simple and asymptotically unbiased under stratified, multistage and informative designs.
+- It also gives hypothesis tests and works under ordered systematic sampling.
+
+**Key result (in the video).** A simpler way to get the margin of error. *Source: International Statistical Review (2025).*
+
+**Why it matters.** Simple and reliable margins of error make it easier to use survey data correctly.
+
+**Link with inequality.** Inequality and poverty are measured with complex surveys such as EU-SILC. Reliable margins of error tell us whether a change in inequality is real.
+
+All the videos are on the page [Our research in one minute](../../../videos.qmd).

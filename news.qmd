@@ -16,6 +16,12 @@ subtitle: "Project status and short news on the activity of the team"
 ::: {.news-list}
 
 ::: {.news-item}
+<span class="news-date">November 2026</span> <span class="news-tag tag-web">Videos</span>
+
+**Four new one-minute videos.** Who runs the water service and what happens to the bill; whether women and men save water at home in the same way; the water services of small villages; and how precise official surveys are. Each video explains its **link with inequality**. [Watch them](videos.qmd).
+:::
+
+::: {.news-item}
 <span class="news-date">November 2026</span> <span class="news-tag tag-project">Project</span>
 
 **Objective OG1 achieved.** The first general objective of the project, *identify and reduce the bias in studies based on the Gini index*, has been completed. Its results are published in *Sociological Methods & Research* and *Social Indicators Research* and implemented in [giniVarCI](software.qmd). See the [conclusions](results.qmd#og1).
@@ -64,6 +70,18 @@ subtitle: "Project status and short news on the activity of the team"
 :::
 
 ::: {.news-item}
+<span class="news-date">December 2025</span> <span class="news-tag tag-project">Conference</span>
+
+**The Gini index and giniVarCI at CrossMED 2025.** J.F. Muñoz Rosas presented *The Gini index in inequality research: theory and practice with the R package giniVarCI* at the international conference *Landscapes Across the Mediterranean* (2nd edition), University of Granada, 9–11 December 2025. [More](dissemination.qmd#conferences-2025).
+:::
+
+::: {.news-item}
+<span class="news-date">March 2025</span> <span class="news-tag tag-project">Conference</span>
+
+**Three contributions on the Gini index in Paris.** At ICMATAP-25 (7–8 March) and ICFM-25 (10–11 March), J.F. Muñoz Rosas presented results on skewness and confidence intervals, common pitfalls and the giniVarCI package, and a new weighted estimator that reduces the bias of the Gini index. [More](dissemination.qmd#conferences-2025).
+:::
+
+::: {.news-item}
 <span class="news-date">November 2024</span> <span class="news-tag tag-project">Conference</span>
 
 **VIII EIEE (Cartagena).** Two papers by members of the project: common errors in the estimation of the Gini index and the giniVarCI library, and fast jackknife variances for Theil indices. [More information](dissemination.qmd#eiee).
@@ -82,15 +100,15 @@ subtitle: "Project status and short news on the activity of the team"
 :::
 
 ::: {.news-item}
-<span class="news-date">2023</span> <span class="news-tag tag-paper">Publication</span>
-
-**Exploring and correcting the bias in the estimation of the Gini measure of inequality**, by J.F. Muñoz, P.J. Moya-Fernández and E. Álvarez-Verdejo, published online in *Sociological Methods & Research*. [DOI](https://doi.org/10.1177/00491241231176847) · [Video](videos.qmd#gini-bias)
-:::
-
-::: {.news-item}
 <span class="news-date">1 September 2023</span> <span class="news-tag tag-project">Project</span>
 
 **The GiniUs project starts**, funded by the Spanish State Research Agency (PID2022-136235NB-I00).
+:::
+
+::: {.news-item}
+<span class="news-date">2023</span> <span class="news-tag tag-paper">Publication</span>
+
+**Exploring and correcting the bias in the estimation of the Gini measure of inequality**, by J.F. Muñoz, P.J. Moya-Fernández and E. Álvarez-Verdejo, published online in *Sociological Methods & Research*. [DOI](https://doi.org/10.1177/00491241231176847) · [Video](videos.qmd#gini-bias)
 :::
 
 :::
