@@ -1,0 +1,50 @@
+---
+title: "Knowledge transfer"
+subtitle: "How the research of the team reaches public administrations, companies and society"
+---
+
+Members of GiniUs transfer their knowledge on the economics of public services, tariffs and inequality to public administrations and to the companies that manage these services. This page gathers the main transfer activities of the team.
+
+## Update of the Tariff Guide for urban water services (FEMP and DAQUAS, 2024–2025) {#guia-tarifas-agua}
+
+::: {.transfer-card}
+**Actualización de la Guía de Tarifas de los Servicios del Ciclo Urbano del Agua** (*Update of the Tariff Guide for urban water cycle services*)
+
+- **Authors and coordinators:** [Francisco José González Gómez](team.qmd) (Professor of Applied Economics and researcher at the Water Institute, University of Granada) and David Ortiz Rodríguez (Professor of Financial Economics and Accounting, University of Granada). [Samara López Ruiz](team.qmd), then at the University of Granada, took part in drafting the guide.
+- **Funded by** the Spanish Federation of Municipalities and Provinces ([FEMP](https://www.femp.es/)).
+- **Promoted jointly by** the FEMP and the Spanish Association of Urban Water Management Companies (AEAS, now [DAQUAS](https://www.daquas.es/)).
+- **Presented** on 11 February 2025 at the FEMP headquarters in Madrid, at the event where the FEMP and AEAS-AGA also signed a collaboration agreement.
+
+[Download the guide (PDF)](https://www.daquas.es/images//2025/ACTUALIZACION_GUIA_TARIFAS_AGUA_2024.pdf){.btn .btn-primary .btn-sm} [Watch the presentation (from minute 32)](https://www.youtube.com/watch?v=xH_0UR7ZlKg&t=1920s){.btn .btn-outline-primary .btn-sm}
+:::
+
+### What the guide is
+
+The guide helps Spanish municipalities and water companies to **set the tariffs of drinking water supply and sanitation**. It updates the 2011 guide to reflect new Spanish and European regulation and has three parts:
+
+1. why the 2011 guide had to be updated;
+2. a detailed chart of accounts that adapts the General Accounting Plan to urban water services. It adds phases that were not in the 2011 guide, such as desalination, regeneration and reuse of water, and items for digitalisation and the circular economy;
+3. interpretations, recommendations and reflections on the costs of the service and on tariff systems.
+
+### Link with the project
+
+How much a household pays for water, and whether tariffs take into account the size and income of the household, are questions about **inequality in access to a basic service**. The team studies these questions in its research on the [water services of small villages, tariffs and the right to water](videos.qmd), and the guide brings this knowledge to the people who design the tariffs.
+
+### The presentation in Madrid (11 February 2025)
+
+The University of Granada authors presented two parts of the guide: *Interpretations, recommendations and reflections on the tariff guide* (Francisco González Gómez) and *Review of the costs to consider when designing tariffs* (David Ortiz Rodríguez). The presentation of the University of Granada starts at minute 32 of the video.
+
+```{=html}
+<div class="video-wrap">
+<iframe src="https://www.youtube-nocookie.com/embed/xH_0UR7ZlKg?start=1920" title="Presentation of the update of the Tariff Guide for urban water services (FEMP, Madrid, 11 February 2025)" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+```
+
+### Sources and news
+
+- [The guide (PDF), on the DAQUAS website](https://www.daquas.es/images//2025/ACTUALIZACION_GUIA_TARIFAS_AGUA_2024.pdf)
+- [Programme of the presentation at the FEMP (PDF)](https://redciudadesclima.es/wp-content/uploads/2025/01/Programa20Presentacion20Guia20Tarifas20Agua.pdf)
+- [News at Canal UGR (University of Granada)](https://canal.ugr.es/noticia/actualizacion-de-la-guia-de-tarifas-de-los-servicios-del-ciclo-urbano-del-agua/)
+- [News at DAQUAS: AEAS-AGA and the FEMP sign a collaboration agreement and present the update of the guide](https://www.daquas.es/component/content/article/8-noticias/369-aeas-aga-y-la-femp-firman-un-convenio-de-colaboracion-y-presentan-la-actualizacion-de-la-guia-de-tarifas-de-los-servicios-de-abastecimiento-y-saneamiento-de-agua?Itemid=101)
+- [News at the FEMP website](https://www.femp.es/?s=Actualizaci%C3%B3n+de+la+Gu%C3%ADa+de+Tarifas+de+los+Servicios+del+Ciclo+Urbano+del+Agua)
+- [Video of the presentation on YouTube](https://www.youtube.com/watch?v=xH_0UR7ZlKg&t=1920s)

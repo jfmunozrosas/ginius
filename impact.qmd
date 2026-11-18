@@ -36,6 +36,7 @@ n   <- nrow(pubs); q1 <- sum(pubs$jcr == "Q1"); q12 <- sum(pubs$jcr %in% c("Q1",
 oa  <- sum(pubs$open_access != ""); vid <- sum(pubs$video != "")
 a3  <- sum(pubs$abs %in% c("3", "4", "4*"))
 diss <- sum(imp$category %in% c("Workshop", "Seminar", "Conference"))
+trf  <- sum(imp$category == "Knowledge transfer")
 cat(sprintf('
 <div class="kpi-grid">
 <div class="kpi"><div class="kpi-n">%d</div><div class="kpi-l">articles in JCR journals (2024–2026)</div></div>
@@ -44,10 +45,11 @@ cat(sprintf('
 <div class="kpi"><div class="kpi-n">%d</div><div class="kpi-l">in open access (repository)</div></div>
 <div class="kpi"><div class="kpi-n">%d</div><div class="kpi-l">explained in one-minute videos</div></div>
 <div class="kpi"><div class="kpi-n">%d</div><div class="kpi-l">workshops, seminars and conferences</div></div>
+<div class="kpi"><div class="kpi-n">%d</div><div class="kpi-l"><a href="transfer.html">knowledge transfer</a> activities</div></div>
 <div class="kpi"><div class="kpi-n" data-gc="TOTAL">…</div><div class="kpi-l">visits to this website</div></div>
 <div class="kpi"><div class="kpi-n"><img class="kpi-badge" src="https://cranlogs.r-pkg.org/badges/grand-total/giniVarCI" alt="Total CRAN downloads of giniVarCI"></div><div class="kpi-l">downloads of giniVarCI from CRAN</div></div>
 </div>
-', n, q1, q12, a3, oa, vid, diss))
+', n, q1, q12, a3, oa, vid, diss, trf))
 ```
 
 ::: {.source}

@@ -68,6 +68,8 @@ website:
             text: "Our research in one minute (videos)"
           - href: dissemination.qmd
             text: "Seminars, conferences and meetings"
+          - href: transfer.qmd
+            text: "Knowledge transfer"
           - href: blog/index.qmd
             text: "Blog"
           - href: links.qmd

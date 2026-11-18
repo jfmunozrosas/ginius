@@ -41,6 +41,13 @@ International conference *Landscapes Across the Mediterranean* (2nd edition), or
 
 - *The Gini index in inequality research: theory and practice with the R package giniVarCI.* J.F. Muñoz Rosas.
 
+### 5–6 June 2025 · II International Congress "The value of water", University of Jaén {#jaen-2025}
+
+[II Congreso Internacional El Valor del Agua: Nuevas Perspectivas en un Mundo Global](https://eventos.ujaen.es/116619/detail/ii-congreso-internacional-el-valor-del-agua-nuevas-perspectivas-en-un-mundo-global-5-6-de-junio-de-.html) (*The value of water: new perspectives in a global world*), University of Jaén. Both papers were presented in session 25, *Urban water management in the global economy (1950–2024)*. Only the abstracts have been published, in the congress book of communications (pp. 288–289).
+
+- *Retos de la gestión del ciclo urbano del agua en pequeños municipios de la provincia de Granada* (Challenges of urban water cycle management in small municipalities of the province of Granada). F.J. García-Martínez, F. Osorio Robles and **F. González-Gómez**. The paper reviews the gap between the professional water services of large areas and those of small villages, which lack economic, human and material resources.
+- *El derecho humano al agua como fuente de vida, desde la cosmovisión indígena en Bolivia, Chile, Colombia y México* (The human right to water as a source of life, from the indigenous worldview in Bolivia, Chile, Colombia and Mexico). K. Añaños Bedriñana and **J.A. Rodríguez Martín**. Interviews with indigenous experts and leaders on the protection and management of the right to water (SDG 6).
+
 ### 10–11 March 2025 · ICFM-25, Paris
 
 International Conference on Financial Mathematics.

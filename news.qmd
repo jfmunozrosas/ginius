@@ -76,9 +76,21 @@ subtitle: "Project status and short news on the activity of the team"
 :::
 
 ::: {.news-item}
+<span class="news-date">June 2025</span> <span class="news-tag tag-project">Conference</span>
+
+**Water services and the right to water at the University of Jaén.** F. González-Gómez and J.A. Rodríguez Martín presented two papers at the II International Congress *The value of water: new perspectives in a global world* (Jaén, 5–6 June 2025): one on the challenges of the water services of small municipalities of Granada and one on the human right to water from the indigenous worldview in Latin America. [More](dissemination.qmd#jaen-2025).
+:::
+
+::: {.news-item}
 <span class="news-date">March 2025</span> <span class="news-tag tag-project">Conference</span>
 
 **Three contributions on the Gini index in Paris.** At ICMATAP-25 (7–8 March) and ICFM-25 (10–11 March), J.F. Muñoz Rosas presented results on skewness and confidence intervals, common pitfalls and the giniVarCI package, and a new weighted estimator that reduces the bias of the Gini index. [More](dissemination.qmd#conferences-2025).
+:::
+
+::: {.news-item}
+<span class="news-date">February 2025</span> <span class="news-tag tag-project">Transfer</span>
+
+**A tariff guide for Spanish water services.** F. González-Gómez and D. Ortiz Rodríguez (University of Granada) wrote the update of the *Tariff Guide for urban water services*, funded by the Spanish Federation of Municipalities and Provinces (FEMP) and promoted by the FEMP and AEAS (now DAQUAS). It was presented at the FEMP headquarters in Madrid on 11 February 2025. [More](transfer.qmd).
 :::
 
 ::: {.news-item}
